@@ -100,6 +100,24 @@
             height: 100%;
             border-radius: 999px;
         }
+        /* Style for backup list rankings */
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 900;
+            color: white;
+            margin-right: 8px;
+            flex-shrink: 0;
+        }
+        .rank-1 { background: linear-gradient(135deg, #FFD700, #FDB931); box-shadow: 0 2px 5px rgba(253,185,49,0.4); }
+        .rank-2 { background: linear-gradient(135deg, #E0E0E0, #9E9E9E); box-shadow: 0 2px 5px rgba(158,158,158,0.4); }
+        .rank-3 { background: linear-gradient(135deg, #CD7F32, #A0522D); box-shadow: 0 2px 5px rgba(160,82,45,0.4); }
+        .rank-other { background: #E2E8F0; color: #4A5568; }
     </style>
 </head>
 <body class="text-gray-800 font-sans antialiased pb-24">
@@ -109,9 +127,9 @@
         <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
             <div>
                 <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🏨✨</h1>
-                <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">5/22-5/29 多重備案最終決選版</p>
+                <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">5/22-5/29 終極備案擴充版</p>
             </div>
-            <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('記得在免費取消期限前決定喔！')">
+            <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('隨時做好切換行程的準備，是親子遊的最高境界！')">
                 🐻
             </div>
         </div>
@@ -121,9 +139,9 @@
     <main class="max-w-4xl mx-auto px-4 mt-6">
         
         <!-- Dashboard / Quick Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-6 max-w-4xl mx-auto">
-            <!-- 訂房備忘錄 (New) -->
-            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-4 text-center shadow-sm border-[3px] border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md col-span-2 md:col-span-1" onclick="showModal('hotelModal')">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-4xl mx-auto">
+            <!-- 訂房備忘錄 -->
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-4 text-center shadow-sm border-[3px] border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('hotelModal')">
                 <div class="text-2xl mb-1 relative inline-block">
                     🏨
                     <span class="absolute -top-1 -right-2 flex h-3 w-3">
@@ -142,25 +160,11 @@
                 <div class="text-sm font-black text-kawaii-blue">10.8萬 TWD</div>
             </div>
 
-            <!-- 隊伍 -->
-            <div class="bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-light-pink">
-                <div class="text-2xl mb-1">👨‍👩‍👧‍👦</div>
-                <div class="text-xs text-gray-500 font-bold">隊伍</div>
-                <div class="text-sm font-black text-kawaii-pink">2大 2小</div>
-            </div>
-
-            <!-- SOP -->
-            <div class="bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-yellow cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('sopModal')">
-                <div class="text-2xl mb-1">🎒</div>
-                <div class="text-xs text-gray-500 font-bold">必看</div>
-                <div class="text-sm font-black text-yellow-600">生存法則</div>
-            </div>
-
-            <!-- 替換景點 -->
-            <div class="bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-cyan-200 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('backupModal')">
-                <div class="text-2xl mb-1">🗺️</div>
-                <div class="text-xs text-gray-500 font-bold">替換景點</div>
-                <div class="text-sm font-black text-cyan-600">備用彈藥庫</div>
+            <!-- 替換景點 (Expanded) -->
+            <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-4 text-center shadow-sm border-[3px] border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('backupModal')">
+                <div class="text-2xl mb-1 animate-pulse drop-shadow">🗺️</div>
+                <div class="text-xs text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block mb-0.5 shadow-sm">全區 60 選 1</div>
+                <div class="text-sm font-black text-cyan-800">終極備用彈藥庫</div>
             </div>
         </div>
 
@@ -185,7 +189,7 @@
 
     <!-- Modals -->
 
-    <!-- Hotel Dashboard Modal (NEW) -->
+    <!-- Hotel Dashboard Modal -->
     <div id="hotelModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-lg rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
             <button onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
@@ -404,69 +408,153 @@
         </div>
     </div>
 
-    <!-- SOP Modal -->
-    <div id="sopModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
-        <div class="bg-white w-11/12 max-w-lg rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto" id="sopModalContent">
-            <button onclick="closeModal('sopModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
-            <h2 class="text-2xl font-black text-kawaii-blue mb-4 flex items-center gap-2"><span>💡</span> 通用實戰提醒 (生存法則)</h2>
-            
-            <div class="space-y-4">
-                <div class="bg-red-50 p-4 rounded-2xl border border-red-200">
-                    <h3 class="font-bold text-red-800 flex items-center gap-2 mb-2"><span class="text-xl">⚠️</span> 山路防禦駕駛</h3>
-                    <ul class="text-sm space-y-2 text-red-900 list-none pl-1">
-                        <li class="flex items-start gap-2"><span class="text-red-500 mt-0.5">🤢</span> <span><strong>防吐守則：</strong>Day 1 與 Day 7 遇山路，請提早吃暈車藥。午餐只吃七分飽，車上備妥嘔吐袋與濕紙巾。</span></li>
-                    </ul>
-                </div>
-
-                <div class="bg-blue-50 p-4 rounded-2xl border border-blue-100">
-                    <h3 class="font-bold text-blue-800 flex items-center gap-2 mb-2"><span class="text-xl">🏨</span> 星級飯店入住注意</h3>
-                    <ul class="text-sm space-y-2 text-blue-900 list-none pl-1">
-                        <li class="flex items-start gap-2"><span class="text-blue-500 mt-0.5">🅿️</span> <span><strong>飯店停車費：</strong>高級飯店（如日光、日航、KOKO）通常需另付每日停車費（約1000-1500円），Luigans 則有專屬車位，請於 Check-in 時確認。</span></li>
-                        <li class="flex items-start gap-2"><span class="text-blue-500 mt-0.5">🏖️</span> <span><strong>Luigans 渡假村：</strong>若最終選擇 Luigans，D4、D5 這裡本身就是絕佳放電場所，可善用飯店大草皮與設施。</span></li>
-                    </ul>
-                </div>
-
-                <div class="bg-pink-50 p-4 rounded-2xl border border-pink-100">
-                    <h3 class="font-bold text-pink-800 flex items-center gap-2 mb-2"><span class="text-xl">🚗</span> 租車與導航核心觀念</h3>
-                    <ul class="text-sm space-y-2 text-pink-900 list-none pl-1">
-                        <li class="flex items-start gap-2"><span class="text-pink-500 mt-0.5">🛡️</span> <span><strong>保險買好買滿：</strong>請務必買最高級別（含 NOC）。</span></li>
-                        <li class="flex items-start gap-2"><span class="text-pink-500 mt-0.5">📍</span> <span><strong>Mapcode 萬能：</strong>日本車載導航輸入 Mapcode 才是最精準的，請提前查好各景點與飯店的 Mapcode。</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Backup Modal -->
+    <!-- Ultimate Backup Modal (EXPANDED TO 60 ITEMS) -->
     <div id="backupModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
-        <div class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto" id="backupModalContent">
-            <button onclick="closeModal('backupModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
-            <h2 class="text-2xl font-black text-cyan-600 mb-2 flex items-center gap-2"><span>🗺️</span> 備用彈藥庫</h2>
-            <p class="text-xs text-gray-500 mb-4 bg-gray-50 p-2 rounded-lg">計畫趕不上變化時，從這裡抽牌。**隨時準備放棄某個景點**是最高指導原則。</p>
+        <div class="bg-white w-11/12 max-w-6xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto" id="backupModalContent">
+            <button onclick="closeModal('backupModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-20 text-lg">✕</button>
             
-            <div class="space-y-4">
-                <div class="border-2 border-kawaii-light-pink p-3 rounded-2xl bg-white shadow-sm hover:shadow-md transition">
-                    <h3 class="font-bold text-kawaii-pink text-base">🌸 福岡：雨天與室內備案</h3>
-                    <ul class="text-sm mt-2 space-y-2 text-gray-700 list-disc pl-5">
-                        <li><strong>福岡市科學館：</strong>高度互動，對 6.5 歲大寶非常有啟發，門票便宜。</li>
-                        <li><strong>Boss E・ZO FUKUOKA：</strong>teamLab Forest 視覺效果絕佳，可躲大雨。</li>
-                    </ul>
-                </div>
+            <div class="sticky top-0 bg-white/95 backdrop-blur-md pt-2 pb-4 border-b border-gray-100 z-10 mb-8">
+                <h2 class="text-2xl md:text-4xl font-black text-cyan-600 flex items-center gap-3 drop-shadow-sm">
+                    <span class="text-4xl">🗺️</span> 終極備用彈藥庫 <span class="text-sm bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full mt-1">全區 60 選</span>
+                </h2>
+                <p class="text-sm text-gray-500 mt-2 font-bold ml-12">
+                    遇到下雨、小孩崩潰、或單純想換口味？直接從這裡抽牌！已依推薦度嚴選排序。
+                </p>
+            </div>
+            
+            <div class="space-y-12">
+                <!-- ================= 大分 / 別府 Area ================= -->
+                <section>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">♨️</span>
+                        <h3 class="text-2xl font-black text-kawaii-blue border-b-4 border-kawaii-blue pb-1">大分 / 別府區域</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- 景點 -->
+                        <div class="bg-blue-50/30 rounded-2xl p-5 border border-blue-100 shadow-sm">
+                            <h4 class="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-1">1</span><div><h5 class="font-bold text-gray-800">九州自然動物園 (African Safari)</h5><p class="text-xs text-gray-600 mt-1">此生必去！搭乘叢林巴士親手餵獅子，自駕也能開進野生區，震撼度破表。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-2">2</span><div><h5 class="font-bold text-gray-800">大分海之卵水族館</h5><p class="text-xs text-gray-600 mt-1">九州頂級親子水族館。戶外Asobeach白沙灘可與海豚零距離，海象互動秀極為精彩。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-3">3</span><div><h5 class="font-bold text-gray-800">高崎山自然動物園</h5><p class="text-xs text-gray-600 mt-1">無柵欄零距離觀察野生日本獼猴！猴群就在腳邊走動，餵食秀時幾百隻猴子狂奔超壯觀。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">4</span><div><h5 class="font-bold text-gray-800">和諧粉彩樂園 (Harmonyland)</h5><p class="text-xs text-gray-600 mt-1">三麗鷗迷的聖地。戶外設施適合幼童，花車大遊行水準極高，建議平日前往避開人潮。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">5</span><div><h5 class="font-bold text-gray-800">城島高原遊樂園</h5><p class="text-xs text-gray-600 mt-1">雖然以木製雲霄飛車聞名，但園內的室內「玩具王國」擁有海量積木與森林家族，幼童狂愛。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">6</span><div><h5 class="font-bold text-gray-800">湯布院 Floral Village (童話村)</h5><p class="text-xs text-gray-600 mt-1">完美復刻英國科茲窩村莊，內有「貓頭鷹之森」與小羊餵食區(備妥100円硬幣)，超好拍照。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">7</span><div><h5 class="font-bold text-gray-800">別府地獄巡禮 (單館挑選)</h5><p class="text-xs text-gray-600 mt-1">帶幼童不建議買全票走完。推薦挑選「海地獄(看鈷藍色泉水)」或「血之池地獄」拍個照即可。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">8</span><div><h5 class="font-bold text-gray-800">大分農業文化公園</h5><p class="text-xs text-gray-600 mt-1">免費的超巨大放電聖地！擁有超大型戶外攀爬網與長溜滑梯，自駕途中最佳中繼站。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">9</span><div><h5 class="font-bold text-gray-800">大分縣立美術館 (OPAM)</h5><p class="text-xs text-gray-600 mt-1">遇大雨的完美救贖！一樓大廳有免費的藝術互動遊具，建築絕美，小孩能在藝術空間跑跳。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">10</span><div><h5 class="font-bold text-gray-800">別府空中纜車</h5><p class="text-xs text-gray-600 mt-1">西日本最大級纜車，車廂極大可直接推嬰兒車。10分鐘直達鶴見岳山頂，俯瞰別府灣無敵海景。</p></div></div></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 美食 -->
+                        <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
+                            <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-1">1</span><div><h5 class="font-bold text-gray-800">龜正迴轉壽司 (別府)</h5><p class="text-xs text-gray-600 mt-1">別府超神人氣名店！海鮮切片厚到不講武德，CP值極高，但需提早去抽號碼牌排隊。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-2">2</span><div><h5 class="font-bold text-gray-800">餐廳 東洋軒 (別府)</h5><p class="text-xs text-gray-600 mt-1">大分名產「柚子胡椒炸雞(とり天)」的發源地！外皮酥脆肉質軟嫩，對親子客非常友善。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-3">3</span><div><h5 class="font-bold text-gray-800">岡本屋商店 (明礬溫泉)</h5><p class="text-xs text-gray-600 mt-1">傳奇的「地獄蒸布丁」。溫泉蒸氣賦予濃郁蛋香，搭配微苦焦糖，小孩會一口接一口。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">4</span><div><h5 class="font-bold text-gray-800">水天 迴轉壽司 (大分/別府)</h5><p class="text-xs text-gray-600 mt-1">若不想排龜正，水天是極佳替代方案。平板點餐零壓力，環境舒適，握壽司水準極高。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">5</span><div><h5 class="font-bold text-gray-800">地獄蒸工房 鐵輪 (別府)</h5><p class="text-xs text-gray-600 mt-1">租借溫泉爐灶，自己動手蒸海鮮與蔬菜！體驗感滿分，且蒸熟的食物原汁原味非常健康。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">6</span><div><h5 class="font-bold text-gray-800">Milch 半熟起司塔 (由布院)</h5><p class="text-xs text-gray-600 mt-1">湯之坪街道必吃散步甜點第一名！熱熱吃內餡爆漿，買給小孩邊走邊吃完美安撫。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">7</span><div><h5 class="font-bold text-gray-800">由布まぶし 心 (由布院)</h5><p class="text-xs text-gray-600 mt-1">超強豐後牛釜飯一鍋三吃！但內用常需排隊1小時，強烈建議「提前預訂外帶便當」帶去野餐。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">8</span><div><h5 class="font-bold text-gray-800">とよ常 Toyotsune (別府)</h5><p class="text-xs text-gray-600 mt-1">別府站前超人氣天丼！特上天丼的兩隻巨無霸炸蝦視覺震撼，獨門醬汁淋在飯上超開胃。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">9</span><div><h5 class="font-bold text-gray-800">金賞可樂餅 (由布院)</h5><p class="text-xs text-gray-600 mt-1">曾經得過全日本金賞！外皮極度酥脆，內餡馬鈴薯綿密，是小孩討食時的最佳街頭小吃。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">10</span><div><h5 class="font-bold text-gray-800">B-speak 蛋糕捲 (由布院)</h5><p class="text-xs text-gray-600 mt-1">由布院御三家旅館出品，蛋糕體極度鬆軟且不過甜，早上很容易完售，建議一早就去搶。</p></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                <div class="border-2 border-kawaii-light-blue p-3 rounded-2xl bg-white shadow-sm hover:shadow-md transition">
-                    <h3 class="font-bold text-kawaii-blue text-base">♨️ 海地獄機動補考計畫</h3>
-                    <ul class="text-sm mt-2 space-y-2 text-gray-700 list-disc pl-5">
-                        <li>原為重點景點，但改為機動安插。若 <strong>Day 1</strong>、<strong>Day 3</strong>、<strong>Day 4</strong> 中間有1小時以上空檔與體力，隨時可以開車過去看一眼鈷藍色溫泉。</li>
-                    </ul>
-                </div>
+                <!-- ================= 福岡 Area ================= -->
+                <section>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">🌸</span>
+                        <h3 class="text-2xl font-black text-kawaii-pink border-b-4 border-kawaii-pink pb-1">福岡 區域</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- 景點 -->
+                        <div class="bg-pink-50/30 rounded-2xl p-5 border border-pink-100 shadow-sm">
+                            <h4 class="text-lg font-bold text-pink-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-1">1</span><div><h5 class="font-bold text-gray-800">海之中道海濱公園</h5><p class="text-xs text-gray-600 mt-1">福岡最神放電聖地！租電動腳踏車穿梭，有動物之森看水豚，還有巨大純白彈跳床。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-2">2</span><div><h5 class="font-bold text-gray-800">麵包超人兒童博物館</h5><p class="text-xs text-gray-600 mt-1">3歲幼童的絕對領域。100%全室內冷氣房，室內沙坑與劇場秀完美救援雨天或酷暑。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-3">3</span><div><h5 class="font-bold text-gray-800">LaLaport 福岡 (巨大鋼彈)</h5><p class="text-xs text-gray-600 mt-1">1:1真實比例鋼彈超震撼！頂樓有戶外免費跑道與兒童遊戲區，吃喝玩樂一站滿足。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">4</span><div><h5 class="font-bold text-gray-800">福岡市科學館</h5><p class="text-xs text-gray-600 mt-1">高水準的科學互動設施，對6.5歲大寶極具啟發性。門票便宜且全室內，激推的備案。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">5</span><div><h5 class="font-bold text-gray-800">Boss E・ZO FUKUOKA</h5><p class="text-xs text-gray-600 mt-1">PayPay巨蛋旁的娛樂城。內有絕美的 teamLab Forest 光影森林，好玩又好拍。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">6</span><div><h5 class="font-bold text-gray-800">Mark Is 福岡百道 (ASOBLE)</h5><p class="text-xs text-gray-600 mt-1">商場二樓隱藏著超巨大的免費室內攀爬網樂園 (ASOBLE)，父母可輪流逛街顧小孩。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">7</span><div><h5 class="font-bold text-gray-800">KidZania Fukuoka (LaLaport內)</h5><p class="text-xs text-gray-600 mt-1">超人氣兒童職業體驗城！讓孩子穿上制服體驗警察、空服員等職業，大寶會愛死。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">8</span><div><h5 class="font-bold text-gray-800">福岡市動植物園</h5><p class="text-xs text-gray-600 mt-1">近期翻新後動線極佳，能近距離看企鵝，還有連通動物園與植物園的免費單軌小纜車。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">9</span><div><h5 class="font-bold text-gray-800">AEON MALL 福岡 (永旺夢樂城)</h5><p class="text-xs text-gray-600 mt-1">距離市區與機場都不遠的超大 Mall，如果想瘋狂採買嬰幼童裝與玩具，來這就對了。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">10</span><div><h5 class="font-bold text-gray-800">糸島半島 櫻井二見浦</h5><p class="text-xs text-gray-600 mt-1">福岡近郊兜風首選！絕美純白海中鳥居與夫妻岩，沿路有多間極具風格的海景咖啡廳。</p></div></div></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 美食 -->
+                        <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
+                            <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-1">1</span><div><h5 class="font-bold text-gray-800">敘敘苑燒肉 (KITTE博多店)</h5><p class="text-xs text-gray-600 mt-1">平日中午的「商業午餐」CP值爆表！在尊榮環境吃頂級燒肉，慰勞大人旅途辛勞首選。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-2">2</span><div><h5 class="font-bold text-gray-800">努努雞 (博多車站等)</h5><p class="text-xs text-gray-600 mt-1">福岡超狂名產「冷吃的炸雞」！越啃越涮嘴，直接外帶回飯店當宵夜配啤酒，無敵享受。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-3">3</span><div><h5 class="font-bold text-gray-800">極味屋 漢堡排 (博多/天神)</h5><p class="text-xs text-gray-600 mt-1">自己用熱鐵石烤的伊萬里牛漢堡排！肉汁極度狂暴，但排隊人潮多，建議非尖峰時段去。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">4</span><div><h5 class="font-bold text-gray-800">稚加榮 福岡總店</h5><p class="text-xs text-gray-600 mt-1">高級活魚料亭，店中央有巨大水槽小孩看超嗨。午餐時段提供「明太子吃到飽」超划算。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">5</span><div><h5 class="font-bold text-gray-800">肉一 燒肉 (博多車站周邊)</h5><p class="text-xs text-gray-600 mt-1">超難訂位的平價頂級單點和牛燒肉！肉質極佳且價格合理，若能訂到位絕對要吃。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">6</span><div><h5 class="font-bold text-gray-800">shin-shin 拉麵</h5><p class="text-xs text-gray-600 mt-1">博多超人氣豚骨拉麵，特色是極細麵與甘甜湯頭，口味大眾化，幼童接受度非常高。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">7</span><div><h5 class="font-bold text-gray-800">Bills 水上公園</h5><p class="text-xs text-gray-600 mt-1">號稱世界第一的 ricotta 鬆餅！位於水上公園環境極美，充滿度假感，鬆餅綿密入口即化。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">8</span><div><h5 class="font-bold text-gray-800">椒房庵 (博多車站 9F)</h5><p class="text-xs text-gray-600 mt-1">想吃頂級白飯與明太子來這就對了。現烤的明太子玉子燒定食水準極高，長輩小孩都適合。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">9</span><div><h5 class="font-bold text-gray-800">彌生軒 (やよい軒)</h5><p class="text-xs text-gray-600 mt-1">日本平價連鎖定食王者。白飯無限吃到飽，附設兒童餐，大人累壞時的無腦吃飯首選。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">10</span><div><h5 class="font-bold text-gray-800">伊都菜彩 (糸島自駕順遊)</h5><p class="text-xs text-gray-600 mt-1">日本最大級農產直銷所！能買到神級便宜的草莓與在地熟食便當，自駕途中必停採購點。</p></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-                <div class="border-2 border-green-200 p-3 rounded-2xl bg-white shadow-sm hover:shadow-md transition">
-                    <h3 class="font-bold text-green-700 text-base">🐻 熊本：疲勞度低備案</h3>
-                    <ul class="text-sm mt-2 space-y-2 text-gray-700 list-disc pl-5">
-                        <li><strong>熊本市動植物園：</strong>大人500円/幼兒免費，CP值突破天際。</li>
-                        <li><strong>Asobi Park PLUS (櫻町商場)：</strong>純室內兒童樂園，逛街與放電同時滿足。</li>
-                    </ul>
-                </div>
+                <!-- ================= 熊本 Area ================= -->
+                <section>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="text-4xl">🐻</span>
+                        <h3 class="text-2xl font-black text-green-600 border-b-4 border-green-500 pb-1">熊本 區域</h3>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- 景點 -->
+                        <div class="bg-green-50/30 rounded-2xl p-5 border border-green-100 shadow-sm">
+                            <h4 class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-1">1</span><div><h5 class="font-bold text-gray-800">阿蘇農場樂園 (元氣之森)</h5><p class="text-xs text-gray-600 mt-1">建在森林裡的大型體能挑戰區！各種巨大攀爬網與迷宮，保證讓小孩徹底放電回程秒睡。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-2">2</span><div><h5 class="font-bold text-gray-800">熊本市動植物園</h5><p class="text-xs text-gray-600 mt-1">佛心神點！大人門票僅500円，幼童免費。除了動物還有附設懷舊的平價投幣遊樂園。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-3">3</span><div><h5 class="font-bold text-gray-800">熊本熊廣場 (部長辦公室)</h5><p class="text-xs text-gray-600 mt-1">來熊本必朝聖。提前查好時刻表，看熊本熊本尊現場唱跳秀，氣氛超嗨，小孩會跟著跳。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">4</span><div><h5 class="font-bold text-gray-800">熊本城 & 櫻之馬場 城彩苑</h5><p class="text-xs text-gray-600 mt-1">熊本城重建後的「特別見學通路」推車完全無障礙。城下的城彩苑充滿復古風情與小吃。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">5</span><div><h5 class="font-bold text-gray-800">阿蘇牛奶牧場</h5><p class="text-xs text-gray-600 mt-1">可以體驗擠牛奶、餵食小羊與賽豬。動物互動溫和，非常適合當作阿蘇下山時的收心站。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">6</span><div><h5 class="font-bold text-gray-800">Asobi Park PLUS (櫻町商場)</h5><p class="text-xs text-gray-600 mt-1">位在 KOKO 飯店樓下商場的室內樂園！有光影互動沙灘與氣墊，市區遇雨躲避的絕佳去處。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">7</span><div><h5 class="font-bold text-gray-800">阿蘇卡德利動物樂園</h5><p class="text-xs text-gray-600 mt-1">最大的賣點是可以「抱小熊拍照」以及搭乘「直升機」近距離俯瞰阿蘇火山口！</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">8</span><div><h5 class="font-bold text-gray-800">草千里濱</h5><p class="text-xs text-gray-600 mt-1">海拔極高的遼闊草原，能看到馬群與遠方冒煙的火山口。風景壯麗，但風大需注意保暖。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">9</span><div><h5 class="font-bold text-gray-800">白川水源</h5><p class="text-xs text-gray-600 mt-1">日本名水百選。湧泉極度清澈見底，可以讓小孩帶空瓶去裝天然水喝，環境非常清幽。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">10</span><div><h5 class="font-bold text-gray-800">上下通商店街 & 鶴屋百貨</h5><p class="text-xs text-gray-600 mt-1">西日本最大級的拱廊商店街！有遮雨棚，無懼風雨，藥妝店與餐廳林立，熊本逛街核心。</p></div></div></div>
+                            </div>
+                        </div>
+                        
+                        <!-- 美食 -->
+                        <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
+                            <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
+                            <div class="space-y-3">
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-1">1</span><div><h5 class="font-bold text-gray-800">燒肉きんぐ (燒肉King)</h5><p class="text-xs text-gray-600 mt-1">家庭客神店！學齡前兒童直接免費，平板點餐送餐快，豐富的附餐與甜點讓小孩吃得超開心。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-2">2</span><div><h5 class="font-bold text-gray-800">勝烈亭豬排 (新市街本店)</h5><p class="text-xs text-gray-600 mt-1">熊本必吃米其林推薦！厚切豬排外酥內嫩。主動提供兒童餐具與畫畫紙，親子友善度滿分。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-3">3</span><div><h5 class="font-bold text-gray-800">赤牛丼 いまきん食堂 (阿蘇)</h5><p class="text-xs text-gray-600 mt-1">阿蘇內牧溫泉的傳說級美食。滿滿的半熟赤牛烤肉蓋飯，肉質軟嫩，但假日排隊極其恐怖。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">4</span><div><h5 class="font-bold text-gray-800">熊本拉麵 黑亭</h5><p class="text-xs text-gray-600 mt-1">焦香蒜油豚骨湯頭，風味強烈極具記憶點。店內有提供兒童套餐，是體驗道地熊本拉麵首選。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">5</span><div><h5 class="font-bold text-gray-800">城彩苑 散步小吃</h5><p class="text-xs text-gray-600 mt-1">逛熊本城必吃。推薦「天草海膽可樂餅」與包著紅豆餡的「熊本熊人形燒」，好吃又好拍。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">6</span><div><h5 class="font-bold text-gray-800">ASO MILK FACTORY (阿蘇)</h5><p class="text-xs text-gray-600 mt-1">阿蘇自駕必停！這裡的鮮奶霜淇淋濃郁到化不開，年輪蛋糕與起司塔也絕對要買來當點心。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">7</span><div><h5 class="font-bold text-gray-800">菅乃屋 (熊本車站/市區)</h5><p class="text-xs text-gray-600 mt-1">熊本特色名產「馬肉料理」專門店。馬肉刺身毫無腥味且鮮甜，適合想嚐鮮的家長挑戰。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">8</span><div><h5 class="font-bold text-gray-800">隱庵 彩林 (黑川溫泉)</h5><p class="text-xs text-gray-600 mt-1">若去黑川溫泉散步，必吃這家的「銅鑼燒」。外皮現烤微酥，搭配冰涼內餡，絕配。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">9</span><div><h5 class="font-bold text-gray-800">桂花拉麵</h5><p class="text-xs text-gray-600 mt-1">與黑亭齊名的熊本拉麵老字號，湯頭加入麻油與特製中太麵，在市區有多家分店，方便造訪。</p></div></div></div>
+                                <div class="bg-white p-3 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition"><div class="flex items-start"><span class="rank-badge rank-other">10</span><div><h5 class="font-bold text-gray-800">麓 (Roku) 泡芙 (黑川溫泉)</h5><p class="text-xs text-gray-600 mt-1">黑川溫泉街的人氣排隊甜點。外皮烤得極其酥脆，一口咬下滿滿的卡士達醬爆漿而出。</p></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
             </div>
         </div>
     </div>
@@ -875,7 +963,7 @@
         // Close modals on outside click
         window.onclick = function(event) {
             if (event.target.classList.contains('bg-gray-900/60')) {
-                const modals = ['budgetModal', 'sopModal', 'backupModal', 'hotelModal'];
+                const modals = ['budgetModal', 'backupModal', 'hotelModal'];
                 modals.forEach(id => {
                     const el = document.getElementById(id);
                     if(el && !el.classList.contains('hidden')) {
