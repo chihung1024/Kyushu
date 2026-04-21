@@ -148,8 +148,8 @@
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                     </span>
                 </div>
-                <div class="text-xs text-purple-600 font-bold">目前訂房狀態</div>
-                <div class="text-sm font-black text-purple-800">3間飯店 已確認</div>
+                <div class="text-xs text-purple-600 font-bold">目前訂房狀態與比較</div>
+                <div class="text-sm font-black text-purple-800">大分二選一 ‧ 其餘確認</div>
             </div>
 
             <!-- 預算 -->
@@ -188,35 +188,79 @@
 
     <!-- Modals -->
 
-    <!-- Hotel Dashboard Modal -->
+    <!-- Hotel Dashboard Modal (UPDATED WITH COMPARISONS) -->
     <div id="hotelModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
-        <div class="bg-white w-11/12 max-w-lg rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
+        <div class="bg-white w-11/12 max-w-2xl rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
             <button onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
-            <h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2"><span>🏨</span> 飯店訂單資訊</h2>
+            <h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2"><span>🏨</span> 飯店訂單資訊與抉擇分析</h2>
             <p class="text-xs text-gray-500 mb-4 bg-purple-50 p-2 rounded-lg border border-purple-100">
-                以下為您最新提供的實際訂房單據總整理（均已換算為單房的台幣價格）。若在期限前有看到更好的，仍可隨時取消更換！
+                目前福岡與熊本皆已確認！僅剩大分區需在取消期限前二擇一，並記得主動取消另一間訂單。
             </p>
 
-            <div class="space-y-4">
+            <div class="space-y-6">
                 <!-- Stage 1 -->
                 <div class="border-2 border-kawaii-light-blue rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">♨️</div>
                     <h3 class="font-bold text-kawaii-blue mb-3">第一階段 (3晚)：5/29 - 6/1</h3>
                     
-                    <div class="p-3 bg-blue-50/70 rounded-xl border-2 border-blue-200 shadow-sm">
-                        <div class="flex justify-between items-start mb-1">
-                            <div>
-                                <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">倫勃朗奧塔酒店 (Rembrandt) <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 標準雙床房 (Booking.com折扣)</div>
+                    <div class="space-y-2">
+                        <!-- 首選 -->
+                        <div class="p-3 bg-blue-50/70 rounded-xl border-2 border-blue-200 shadow-sm">
+                            <div class="flex justify-between items-start mb-1">
+                                <div>
+                                    <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">倫勃朗奧塔酒店 (Rembrandt) <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認首選</span></div>
+                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 標準雙床房 (Booking.com折扣)</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-black text-blue-700 text-sm">3晚共 7,776</div>
+                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,592</div>
+                                </div>
                             </div>
-                            <div class="text-right">
-                                <div class="font-black text-blue-700 text-sm">3晚共 7,776</div>
-                                <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,592</div>
+                            <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
+                                ⏰ 免費取消期限：2026/05/28 23:59 前
                             </div>
                         </div>
-                        <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
-                            ⏰ 免費取消期限：2026/05/28 23:59 前
+
+                        <!-- 備選 1 -->
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition">
+                            <div class="flex justify-between items-start mb-1">
+                                <div>
+                                    <div class="font-bold text-gray-600 text-sm flex items-center gap-1.5">大分力量飯店 (Hotel Forza) <span class="bg-teal-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認備選</span></div>
+                                    <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 併床房 (Booking.com折扣)</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-bold text-gray-600 text-sm">3晚約 7,530</div>
+                                    <div class="text-[11px] text-gray-500 mt-0.5">單晚每房: 2,510</div>
+                                </div>
+                            </div>
+                            <div class="text-xs text-red-400 font-bold mt-2 flex items-center gap-1">
+                                ⏰ 免費取消期限：2026/05/27 23:59 前
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- 比較區塊 -->
+                    <div class="mt-4 bg-blue-50/40 rounded-xl p-3 border border-blue-100">
+                        <h4 class="text-xs font-black text-blue-800 mb-2 flex items-center gap-1"><span class="text-sm">⚖️</span> 兩間決策 PK 分析</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="bg-white p-2.5 rounded-lg shadow-sm border border-blue-100 text-xs">
+                                <div class="font-bold text-blue-700 mb-1.5 border-b border-blue-50 pb-1">👑 倫勃朗 (Rembrandt)</div>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li><strong class="text-gray-800">🚗 停車：</strong>附設大型停車場，<span class="text-green-600 font-bold">對自駕與搬行李極度友善</span>。</li>
+                                    <li><strong class="text-gray-800">✨ 特點：</strong>老牌星級大飯店，房間寬敞度較優，住宿品質極穩。</li>
+                                    <li><strong class="text-gray-800">🛍️ 機能：</strong>距車站與鬧區稍遠(需步行一小段)，但自駕採買無影響。</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg shadow-sm border border-teal-100 text-xs">
+                                <div class="font-bold text-teal-700 mb-1.5 border-b border-teal-50 pb-1">💡 大分力量 (Forza)</div>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li><strong class="text-gray-800">🚗 停車：</strong><span class="text-red-500 font-bold">無自有停車場</span>，需停周邊收費特約再走過來，帶幼童較辛苦。</li>
+                                    <li><strong class="text-gray-800">✨ 特點：</strong>設備極新穎，房內有按摩椅(墊)、Netflix，小孩會愛。</li>
+                                    <li><strong class="text-gray-800">🛍️ 機能：</strong>位於中央町商店街內，下樓直接開吃開逛，遇雨免撐傘。</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-gray-500 mt-2 font-bold text-center">結論建議：考量您有租車與幼兒，若想輕鬆搬行李首選「倫勃朗」；若想每晚下樓立刻逛街吃宵夜選「Forza」。</p>
                     </div>
                 </div>
 
@@ -225,19 +269,22 @@
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">🏖️</div>
                     <h3 class="font-bold text-kawaii-pink mb-3">第二階段 (2晚)：6/1 - 6/3</h3>
                     
-                    <div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-200 shadow-sm">
-                        <div class="flex justify-between items-start mb-1">
-                            <div>
-                                <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">The Luigans Spa <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 Grand Cabin Room (Agoda)</div>
+                    <div class="space-y-2">
+                        <!-- 首選 -->
+                        <div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-200 shadow-sm">
+                            <div class="flex justify-between items-start mb-1">
+                                <div>
+                                    <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">The Luigans Spa <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
+                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 Grand Cabin Room (Agoda)</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-black text-pink-600 text-sm">2晚共 5,311</div>
+                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,655</div>
+                                </div>
                             </div>
-                            <div class="text-right">
-                                <div class="font-black text-pink-600 text-sm">2晚共 5,311</div>
-                                <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,655</div>
+                            <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
+                                ⏰ 免費取消期限：2026/05/29 23:59 前
                             </div>
-                        </div>
-                        <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
-                            ⏰ 免費取消期限：2026/05/29 23:59 前
                         </div>
                     </div>
                 </div>
@@ -247,19 +294,22 @@
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">🐻</div>
                     <h3 class="font-bold text-green-600 mb-3">第三階段 (2晚)：6/3 - 6/5</h3>
                     
-                    <div class="p-3 bg-green-50/70 rounded-xl border-2 border-green-200 shadow-sm">
-                        <div class="flex justify-between items-start mb-1">
-                            <div>
-                                <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">KOKO HOTEL Premier 熊本 <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 高級雙床房 (Booking.com折扣)</div>
+                    <div class="space-y-2">
+                        <!-- 首選 -->
+                        <div class="p-3 bg-green-50/70 rounded-xl border-2 border-green-200 shadow-sm">
+                            <div class="flex justify-between items-start mb-1">
+                                <div>
+                                    <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">KOKO HOTEL Premier 熊本 <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
+                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 高級雙床房 (Booking.com折扣)</div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="font-black text-green-700 text-sm">2晚共 5,465</div>
+                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,732</div>
+                                </div>
                             </div>
-                            <div class="text-right">
-                                <div class="font-black text-green-700 text-sm">2晚共 5,465</div>
-                                <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,732</div>
+                            <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
+                                ⏰ 免費取消期限：2026/06/02 23:59 前
                             </div>
-                        </div>
-                        <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
-                            ⏰ 免費取消期限：2026/06/02 23:59 前
                         </div>
                     </div>
                 </div>
