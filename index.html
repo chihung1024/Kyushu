@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九州親子大冒險 🚗💨 (多重訂房備案版)</title>
+    <title>九州親子大冒險 🚗💨 (機票飯店確認版)</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
     <script>
@@ -100,7 +100,6 @@
             height: 100%;
             border-radius: 999px;
         }
-        /* Style for backup list rankings */
         .rank-badge {
             display: inline-flex;
             align-items: center;
@@ -127,9 +126,9 @@
         <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
             <div>
                 <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🏨✨</h1>
-                <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">5/22-5/29 終極備案擴充版</p>
+                <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">5/29-6/5 機票與訂房確認版</p>
             </div>
-            <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('隨時做好切換行程的準備，是親子遊的最高境界！')">
+            <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('恭喜機票飯店都已落定！接下來只要期待出發就好囉！')">
                 🐻
             </div>
         </div>
@@ -145,22 +144,22 @@
                 <div class="text-2xl mb-1 relative inline-block">
                     🏨
                     <span class="absolute -top-1 -right-2 flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                     </span>
                 </div>
-                <div class="text-xs text-purple-600 font-bold">訂房與取消死線</div>
-                <div class="text-sm font-black text-purple-800">重要備忘錄</div>
+                <div class="text-xs text-purple-600 font-bold">目前訂房狀態</div>
+                <div class="text-sm font-black text-purple-800">3間飯店 已確認</div>
             </div>
 
             <!-- 預算 -->
             <div class="bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('budgetModal')">
                 <div class="text-2xl mb-1">💰</div>
-                <div class="text-xs text-gray-500 font-bold">安全預算</div>
-                <div class="text-sm font-black text-kawaii-blue">10.6萬 TWD</div>
+                <div class="text-xs text-gray-500 font-bold">實際預算結算</div>
+                <div class="text-sm font-black text-kawaii-blue">10.5萬 TWD</div>
             </div>
 
-            <!-- 替換景點 (Expanded) -->
+            <!-- 替換景點 -->
             <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-4 text-center shadow-sm border-[3px] border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('backupModal')">
                 <div class="text-2xl mb-1 animate-pulse drop-shadow">🗺️</div>
                 <div class="text-xs text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block mb-0.5 shadow-sm">全區 60 選 1</div>
@@ -193,50 +192,30 @@
     <div id="hotelModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-lg rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
             <button onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
-            <h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2"><span>🏨</span> 決策與取消死線</h2>
+            <h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2"><span>🏨</span> 飯店訂單資訊</h2>
             <p class="text-xs text-gray-500 mb-4 bg-purple-50 p-2 rounded-lg border border-purple-100">
-                目前保留多個備選方案。請務必在「紅字取消期限」前決定最終入住飯店，並主動取消不要的訂單，以免被扣全額房費！(已為您切換為「單房」計價)
+                以下為您最新提供的實際訂房單據總整理（均已換算為單房的台幣價格）。若在期限前有看到更好的，仍可隨時取消更換！
             </p>
 
             <div class="space-y-4">
                 <!-- Stage 1 -->
                 <div class="border-2 border-kawaii-light-blue rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">♨️</div>
-                    <h3 class="font-bold text-kawaii-blue mb-3">第一階段 (3晚)：5/22 - 5/25</h3>
+                    <h3 class="font-bold text-kawaii-blue mb-3">第一階段 (3晚)：5/29 - 6/1</h3>
                     
-                    <div class="space-y-2">
-                        <!-- 首選 -->
-                        <div class="p-3 bg-blue-50/70 rounded-xl border-2 border-blue-200 shadow-sm">
-                            <div class="flex justify-between items-start mb-1">
-                                <div>
-                                    <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">日光大分綠洲大廈酒店 <span class="bg-blue-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">預定首選</span></div>
-                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 標準雙床房 (Booking)</div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-black text-blue-700 text-sm">3晚約 9,207</div>
-                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 3,069</div>
-                                </div>
+                    <div class="p-3 bg-blue-50/70 rounded-xl border-2 border-blue-200 shadow-sm">
+                        <div class="flex justify-between items-start mb-1">
+                            <div>
+                                <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">倫勃朗奧塔酒店 (Rembrandt) <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
+                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 標準雙床房 (Booking.com折扣)</div>
                             </div>
-                            <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
-                                ⏰ 免費取消期限：2026/05/21 前
+                            <div class="text-right">
+                                <div class="font-black text-blue-700 text-sm">3晚共 7,776</div>
+                                <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,592</div>
                             </div>
                         </div>
-
-                        <!-- 備選 -->
-                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition">
-                            <div class="flex justify-between items-start mb-1">
-                                <div>
-                                    <div class="font-bold text-gray-600 text-sm">GRAND BASE 別府駅東</div>
-                                    <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 Superior Family (Agoda)</div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-bold text-gray-600 text-sm">3晚約 7,548</div>
-                                    <div class="text-[11px] text-gray-500 mt-0.5">單晚每房: 2,516</div>
-                                </div>
-                            </div>
-                            <div class="text-xs text-red-400 font-bold mt-2 flex items-center gap-1">
-                                ⏰ 免費取消期限：2026/05/20 前
-                            </div>
+                        <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
+                            ⏰ 免費取消期限：2026/05/28 23:59 前
                         </div>
                     </div>
                 </div>
@@ -244,41 +223,21 @@
                 <!-- Stage 2 -->
                 <div class="border-2 border-kawaii-light-pink rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">🏖️</div>
-                    <h3 class="font-bold text-kawaii-pink mb-3">第二階段 (2晚)：5/25 - 5/27</h3>
+                    <h3 class="font-bold text-kawaii-pink mb-3">第二階段 (2晚)：6/1 - 6/3</h3>
                     
-                    <div class="space-y-2">
-                        <!-- 首選 -->
-                        <div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-200 shadow-sm">
-                            <div class="flex justify-between items-start mb-1">
-                                <div>
-                                    <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">The Luigans Spa <span class="bg-pink-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">預定首選</span></div>
-                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 高級雙床間 (Agoda)</div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-black text-pink-600 text-sm">2晚約 5,712</div>
-                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,856</div>
-                                </div>
+                    <div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-200 shadow-sm">
+                        <div class="flex justify-between items-start mb-1">
+                            <div>
+                                <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">The Luigans Spa <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
+                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 Grand Cabin Room (Agoda)</div>
                             </div>
-                            <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
-                                ⏰ 免費取消期限：2026/05/23 前
+                            <div class="text-right">
+                                <div class="font-black text-pink-600 text-sm">2晚共 5,311</div>
+                                <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,655</div>
                             </div>
                         </div>
-
-                        <!-- 備選 -->
-                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition">
-                            <div class="flex justify-between items-start mb-1">
-                                <div>
-                                    <div class="font-bold text-gray-600 text-sm">Hotel Ritza HAKATA</div>
-                                    <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 Queen Suite (Agoda)</div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-bold text-gray-600 text-sm">2晚約 6,216</div>
-                                    <div class="text-[11px] text-gray-500 mt-0.5">單晚每房: 3,108</div>
-                                </div>
-                            </div>
-                            <div class="text-xs text-red-400 font-bold mt-2 flex items-center gap-1">
-                                ⏰ 免費取消期限：2026/05/22 前
-                            </div>
+                        <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
+                            ⏰ 免費取消期限：2026/05/29 23:59 前
                         </div>
                     </div>
                 </div>
@@ -286,58 +245,21 @@
                 <!-- Stage 3 -->
                 <div class="border-2 border-green-200 rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">🐻</div>
-                    <h3 class="font-bold text-green-600 mb-3">第三階段 (2晚)：5/27 - 5/29</h3>
+                    <h3 class="font-bold text-green-600 mb-3">第三階段 (2晚)：6/3 - 6/5</h3>
                     
-                    <div class="space-y-2">
-                        <!-- 首選 -->
-                        <div class="p-3 bg-green-50/70 rounded-xl border-2 border-green-200 shadow-sm">
-                            <div class="flex justify-between items-start mb-1">
-                                <div>
-                                    <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">KOKO HOTEL Premier <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">預定首選</span></div>
-                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 高級雙床房 (Trip.com)</div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-black text-green-700 text-sm">2晚約 5,594</div>
-                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,797</div>
-                                </div>
+                    <div class="p-3 bg-green-50/70 rounded-xl border-2 border-green-200 shadow-sm">
+                        <div class="flex justify-between items-start mb-1">
+                            <div>
+                                <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">KOKO HOTEL Premier 熊本 <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
+                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 高級雙床房 (Booking.com折扣)</div>
                             </div>
-                            <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
-                                ⏰ 免費取消期限：2026/05/25 23:59 前
+                            <div class="text-right">
+                                <div class="font-black text-green-700 text-sm">2晚共 5,465</div>
+                                <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,732</div>
                             </div>
                         </div>
-
-                        <!-- 備選 1 -->
-                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition">
-                            <div class="flex justify-between items-start mb-1">
-                                <div>
-                                    <div class="font-bold text-gray-600 text-sm">Hotel Nikko Kumamoto</div>
-                                    <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 Standard Twin (Agoda)</div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-bold text-gray-600 text-sm">2晚約 7,520</div>
-                                    <div class="text-[11px] text-gray-500 mt-0.5">單晚每房: 3,760</div>
-                                </div>
-                            </div>
-                            <div class="text-xs text-red-400 font-bold mt-2 flex items-center gap-1">
-                                ⏰ 免費取消期限：2026/05/26 前
-                            </div>
-                        </div>
-
-                        <!-- 備選 2 -->
-                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition">
-                            <div class="flex justify-between items-start mb-1">
-                                <div>
-                                    <div class="font-bold text-gray-600 text-sm">FAV Hotel Kumamoto</div>
-                                    <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 行政雙層床房 (Klook)</div>
-                                </div>
-                                <div class="text-right">
-                                    <div class="font-bold text-gray-600 text-sm">2晚約 5,708</div>
-                                    <div class="text-[11px] text-gray-500 mt-0.5">單晚每房: 2,854</div>
-                                </div>
-                            </div>
-                            <div class="text-xs text-red-400 font-bold mt-2 flex items-center gap-1">
-                                ⏰ 免費取消期限：2026/05/20 前
-                            </div>
+                        <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
+                            ⏰ 免費取消期限：2026/06/02 23:59 前
                         </div>
                     </div>
                 </div>
@@ -351,8 +273,8 @@
     <div id="budgetModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 shadow-2xl relative transform transition-transform scale-95" id="budgetModalContent">
             <button onclick="closeModal('budgetModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
-            <h2 class="text-2xl font-black text-kawaii-pink mb-5 flex items-center gap-2"><span>📊</span> 終極安全預算檢視表 <span class="text-xs bg-red-100 text-red-500 px-2 py-1 rounded-full ml-auto">精準預估</span></h2>
-            <p class="text-xs text-gray-500 mb-4">住宿費以【預定首選單房】(日光3晚+Luigans2晚+KOKO2晚) 精準計算，完美符合一家四口開銷。</p>
+            <h2 class="text-2xl font-black text-kawaii-pink mb-5 flex items-center gap-2"><span>📊</span> 實際預算結算表 <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full ml-auto">極致精準</span></h2>
+            <p class="text-xs text-gray-500 mb-4">住宿費依據您的 3 份訂房確認單(1間房)，將各項開銷精確計算得出。</p>
 
             <div class="space-y-4">
                 <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
@@ -366,11 +288,11 @@
                 <div class="bg-kawaii-light-blue/30 p-3 rounded-xl border border-blue-100 shadow-inner relative">
                     <div class="absolute -right-2 -top-2 text-2xl opacity-50 pointer-events-none">🏨</div>
                     <div class="flex justify-between items-end mb-1">
-                        <span class="font-bold text-sm text-blue-800">🏨 住宿 (首選 7 晚單房加總)</span>
-                        <span class="font-black text-kawaii-blue">20,513 TWD</span>
+                        <span class="font-bold text-sm text-blue-800">🏨 住宿 (3間確認預訂單房加總)</span>
+                        <span class="font-black text-kawaii-blue">18,552 TWD</span>
                     </div>
-                    <p class="text-[10px] text-blue-600 mb-1 leading-tight">9,207(大分) + 5,712(福岡) + 5,594(熊本)</p>
-                    <div class="progress-bar-bg bg-blue-100"><div class="progress-bar-fill bg-kawaii-blue w-[20%]"></div></div>
+                    <p class="text-[10px] text-blue-600 mb-1 leading-tight">7,776(大分) + 5,311(福岡) + 5,465(熊本)</p>
+                    <div class="progress-bar-bg bg-blue-100"><div class="progress-bar-fill bg-kawaii-blue w-[18%]"></div></div>
                 </div>
 
                 <div class="bg-red-50 p-3 rounded-xl border border-red-200">
@@ -379,7 +301,7 @@
                         <span class="font-black text-red-600">20,000 TWD</span>
                     </div>
                     <p class="text-[10px] text-red-600 mb-1 leading-tight">租車本體、KEP、大環線油資、停車費</p>
-                    <div class="progress-bar-bg bg-red-100"><div class="progress-bar-fill bg-red-400 w-[18%]"></div></div>
+                    <div class="progress-bar-bg bg-red-100"><div class="progress-bar-fill bg-red-400 w-[19%]"></div></div>
                 </div>
 
                 <div class="bg-kawaii-light-pink/30 p-3 rounded-xl border border-pink-100">
@@ -402,7 +324,7 @@
                 
                 <div class="flex justify-between items-center p-4 bg-slate-800 rounded-xl border-2 border-slate-700 shadow-lg">
                     <span class="font-black text-white">總計預估</span>
-                    <span class="font-black text-2xl text-white tracking-tight">106,513 <span class="text-sm text-gray-300">TWD</span></span>
+                    <span class="font-black text-2xl text-white tracking-tight">104,552 <span class="text-sm text-gray-300">TWD</span></span>
                 </div>
             </div>
         </div>
@@ -564,10 +486,10 @@
         const itineraryData = [
             {
                 day: 1,
-                date: "5/22 (五)",
+                date: "5/29 (五)",
                 title: "完美落地與橫斷防吐大作戰",
-                route: "高雄 ✈️ (11:50到) → 熊本機場 🚗 (2.5H) → 大分",
-                hotel: "日光大分 或 GRAND BASE (抉擇中)",
+                route: "高雄 ✈️ (08:45飛/11:50到) → 熊本機場 🚗 (2.5H) → 大分",
+                hotel: "倫勃朗大分酒店 (連泊 1/3)",
                 sections: [
                     {
                         type: "action",
@@ -583,19 +505,19 @@
                     },
                     {
                         type: "sight",
-                        title: "傍晚：入住大分/別府飯店",
-                        content: "抵達飯店 Check-in。若住日光大分，周邊生活機能極佳可直奔商場；若住別府車站旁的 GRAND BASE，可就近尋找別府美食。",
-                        deepTip: "🛌 這兩間都是很棒的選項，記得在 5/20 前做出最終決定並取消不需要的那間。"
+                        title: "傍晚：入住大分飯店",
+                        content: "抵達「倫勃朗奧塔酒店(Rembrandt Hotel Oita)」Check-in。飯店周邊生活機能佳，晚餐可直接在附近找美食或逛商場放鬆。",
+                        deepTip: "🛌 這是一間評價極佳的飯店，連續入住三晚能讓家長與小孩都獲得很好的休息品質。"
                     }
                 ],
                 tips: "今日最大挑戰是「疲勞+山路=幼童崩潰/嘔吐」。一切以穩健為上，海地獄如果來不及去，後面幾天都還有機會安插。"
             },
             {
                 day: 2,
-                date: "5/23 (六)",
+                date: "5/30 (六)",
                 title: "和諧粉彩樂園全天",
                 route: "飯店 🚗 (約40分) → Harmonyland → 飯店",
-                hotel: "日光大分 或 GRAND BASE (抉擇中)",
+                hotel: "倫勃朗大分酒店 (連泊 2/3)",
                 sections: [
                     {
                         type: "play",
@@ -606,18 +528,18 @@
                     {
                         type: "food",
                         title: "🍽️ 午晚餐戰略 (拯救預算)",
-                        content: "午餐：<strong>強制超商/超市野餐！</strong>不吃園區餐廳，省錢還能避免排隊崩潰。<br>晚餐：開車回市區吃迴轉壽司或家庭餐廳。",
+                        content: "午餐：<strong>強制超商/超市野餐！</strong>不吃園區餐廳，省錢還能避免排隊崩潰。<br>晚餐：開車回大分市區吃迴轉壽司或家庭餐廳。",
                         deepTip: "🍣 <strong>藏壽司/壽司郎：</strong>用日本版 App 先抽號碼牌。讓小孩玩扭蛋可以讓他們乖乖坐著吃飯。"
                     }
                 ],
-                tips: "連住飯店的優勢！早上不用收行李，吃完早餐直接出發，心情無比輕鬆。"
+                tips: "連住大分飯店的優勢！早上不用收行李，吃完早餐直接出發，心情無比輕鬆。"
             },
             {
                 day: 3,
-                date: "5/24 (日)",
+                date: "5/31 (日)",
                 title: "由布院療癒與海岸生態",
                 route: "飯店 🚗 (約50分) → 由布院 🚗 (45分) → 海之卵水族館",
-                hotel: "日光大分 或 GRAND BASE (抉擇中)",
+                hotel: "倫勃朗大分酒店 (連泊 3/3)",
                 sections: [
                     {
                         type: "sight",
@@ -636,10 +558,10 @@
             },
             {
                 day: 4,
-                date: "5/25 (一)",
+                date: "6/1 (一)",
                 title: "野生動物園與西進福岡",
-                route: "大分/別府 🚗 (40分) → Safari 🚗 (2H) → 福岡",
-                hotel: "Luigans 或 Ritza博多 (抉擇中)",
+                route: "大分 🚗 (40分) → Safari 🚗 (2H) → 福岡 (The Luigans)",
+                hotel: "The Luigans Spa (連泊 1/2)",
                 sections: [
                     {
                         type: "play",
@@ -655,47 +577,47 @@
                     },
                     {
                         type: "action",
-                        title: "傍晚：入住福岡飯店",
-                        content: "若是選擇 The Luigans，可直接入駐海之中道區域的頂級度假村；若是選擇 Ritza HAKATA，則體驗便利的福岡市區生活。",
-                        deepTip: "🏖️ 記得在 5/22 前決定要住哪一間，並取消另一間的訂單！"
+                        title: "傍晚：入住 The Luigans 度假村",
+                        content: "抵達福岡海之中道區域的頂級度假村 Check-in！飯店擁有極美的海景與大草皮，讓孩子在園區內盡情奔跑，家長享受濃厚的度假氛圍。",
+                        deepTip: "🏖️ 飯店本身就是個景點，晚餐可以考慮在飯店內餐廳享用，或者開車前往附近的商場吃。"
                     }
                 ],
-                tips: "今天是移動日，早上離開飯店時記得確認所有充電線、小玩具都有拔走帶走。"
+                tips: "今天是移動日，早上離開大分飯店時記得確認所有充電線、小玩具都有拔走帶走。"
             },
             {
                 day: 5,
-                date: "5/26 (二)",
+                date: "6/2 (二)",
                 title: "極致順暢的海洋生態放電",
-                route: "飯店 🚶‍♂️/🚗 → 海之中道 → 飯店",
-                hotel: "Luigans 或 Ritza博多 (抉擇中)",
+                route: "飯店 🚶‍♂️/🚗 (極近) → 海之中道 → 飯店",
+                hotel: "The Luigans Spa (連泊 2/2)",
                 sections: [
                     {
                         type: "play",
                         title: "上午：海之中道自行車尋寶",
-                        content: "若住 Luigans 走路就到公園旁邊！若住市區則需開車前往。入園立刻租「附兒童座椅的腳踏車」，騎去動物之森看水豚、巨大彈跳床瘋狂放電。",
+                        content: "住 Luigans 的最大優勢！飯店就在公園旁邊！免去市區塞車之苦。入園立刻租「附兒童座椅的腳踏車」，騎去動物之森看水豚、巨大彈跳床瘋狂放電。",
                         deepTip: "📍 園區極大，沒租到電動腳踏車會變行軍地獄。盡早入園租車。"
                     },
                     {
                         type: "sight",
                         title: "下午：Marine World 水族館",
-                        content: "中午變熱且孩子體力下降時，撤退進水族館吹強冷氣。坐著看海豚秀，靜態觀察大水槽。若住 Luigans 看完後能極速回到飯店房間休息。",
+                        content: "中午變熱且孩子體力下降時，撤退進水族館吹強冷氣。坐著看海豚秀，靜態觀察大水槽。看完後又能極速回到飯店房間休息。",
                         deepTip: "📍 B1 餐廳有座位貼著海豚水槽，若能在 11:30 前吃午餐較有機會搶到位。"
                     },
                     {
                         type: "action",
-                        title: "晚上：大人斷電警告",
-                        content: "玩了一整天，這天大人因為騎車追小孩體力絕對透支。建議晚餐在飯店附近簡單解決，早早休息。",
-                        deepTip: "🛌 保持大人的體力是親子遊的關鍵，別安排太緊湊的夜間逛街行程。"
+                        title: "晚上：渡假村之夜",
+                        content: "玩了一整天，今晚就好好享受 The Luigans 的設施或夜景。這天大人因為騎車追小孩體力透支，距離近的飯店能救你一命。",
+                        deepTip: "🛌 選擇這間飯店在這一天，是這趟行程最明智的決定，完全免除了舟車勞頓。"
                     }
                 ],
-                tips: "海之中道與水族館有套票可買。今天專注享受休閒的親子時光。"
+                tips: "海之中道與水族館有套票可買。今天完全不需擔心長途開車，盡情享受親子時光。"
             },
             {
                 day: 6,
-                date: "5/27 (三)",
+                date: "6/3 (三)",
                 title: "麵包超人與大寶安撫計畫",
                 route: "福岡 🚗 (40分) → 麵包超人 🚗 (1.5-2H) → 熊本",
-                hotel: "KOKO / 日航 / FAV (抉擇中)",
+                hotel: "KOKO HOTEL Premier (連泊 1/2)",
                 sections: [
                     {
                         type: "play",
@@ -711,19 +633,19 @@
                     },
                     {
                         type: "food",
-                        title: "晚餐：抵達熊本與燒肉慶功",
-                        content: "入住熊本飯店 (目前保留 KOKO、日航、FAV 三間選項)。晚餐找平價燒肉吃到飽 (如焼肉きんぐ)，學齡前兒童免費！",
-                        deepTip: "🏢 熊本這三間備選的取消期限分別是 5/24、5/26、5/20，請隨時留意時間點！"
+                        title: "晚餐：入住 KOKO Premier 與燒肉慶功",
+                        content: "抵達熊本入住高級質感商旅 KOKO HOTEL Premier (櫻町商場旁，極度方便！)。晚餐找平價燒肉吃到飽 (如焼肉きんぐ)，學齡前兒童免費！",
+                        deepTip: "🏢 這間飯店樓下就是商場與巴士站，位置無敵，逛街吃飯都超近。"
                     }
                 ],
                 tips: "麵包超人博物館門票採浮動制，可善用當日無限次進出手環，到樓下商場吃午餐再回頭玩。"
             },
             {
                 day: 7,
-                date: "5/28 (四)",
+                date: "6/4 (四)",
                 title: "阿蘇大草原 (體力順暢版)",
                 route: "熊本 🚗 (60分) → 農場樂園 🚗 → 草千里 🚗 → 牛奶牧場 🚗 → 熊本",
-                hotel: "KOKO / 日航 / FAV (抉擇中)",
+                hotel: "KOKO HOTEL Premier (連泊 2/2)",
                 sections: [
                     {
                         type: "play",
@@ -748,25 +670,25 @@
             },
             {
                 day: 8,
-                date: "5/29 (五)",
+                date: "6/5 (五)",
                 title: "熊本城與從容晚班機",
-                route: "熊本 🚗 → 熊本城 🚗 (45分) → 機場還車 → 高雄 ✈️ (19:50起飛)",
+                route: "熊本 🚗 → 熊本城 🚗 (45分) → 機場還車 → 高雄 ✈️ (19:50飛/21:40到)",
                 hotel: "溫暖的家",
                 sections: [
                     {
                         type: "sight",
                         title: "上午：熊本城與城彩苑",
-                        content: "因為是晚上 7:50 的飛機，您擁有一整個完整的白天！早上從容吃完早餐後，散步前往熊本城參觀。",
+                        content: "因為是晚上 7:50 的飛機，您擁有一整個完整的白天！早上從容吃完 KOKO 的早餐後，散步前往熊本城參觀。",
                         deepTip: "📍 推車攻略：修復後規劃了「特別見學通路」，是平緩木棧道，<strong>推車完全無障礙！</strong>"
                     },
                     {
                         type: "action",
                         title: "下午：櫻町商場最後採買與還車",
-                        content: "中午直接在櫻町商場 (Sakura Machi) 吃飯與血拚。預計 16:00 出發前往機場，17:30 點交還車即可。",
+                        content: "中午直接在飯店旁的櫻町商場 (Sakura Machi) 吃飯與最後採買。預計 16:00 出發前往機場，17:30 點交還車即可。",
                         deepTip: "⚠️ <strong>【終極警告】</strong>熊本機場出境前(3F報到大廳)是天堂。出境後(國際線)是沙漠，<strong>完全沒有像樣的熱食餐廳</strong>。絕對要在外面買齊吃飽再過安檢！"
                     }
                 ],
-                tips: "晚班機的好處！別人最後一天都在趕飛機，您還可以悠閒地逛熊本城、在櫻町商場做最後的掃貨。"
+                tips: "晚班機的好處！別人最後一天都在趕飛機，您還可以悠閒地逛熊本城吃午餐。"
             }
         ];
 
