@@ -121,7 +121,6 @@
 </head>
 <body class="text-gray-800 font-sans antialiased pb-24">
 
-    <!-- Header -->
     <header class="bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 sticky top-0 z-40">
         <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
             <div>
@@ -134,12 +133,9 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <main class="max-w-4xl mx-auto px-4 mt-6">
         
-        <!-- Dashboard / Quick Stats -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-4xl mx-auto">
-            <!-- 訂房備忘錄 -->
             <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-4 text-center shadow-sm border-[3px] border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('hotelModal')">
                 <div class="text-2xl mb-1 relative inline-block">
                     🏨
@@ -152,14 +148,12 @@
                 <div class="text-sm font-black text-purple-800">大分二選一 ‧ 其餘確認</div>
             </div>
 
-            <!-- 預算 -->
             <div class="bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('budgetModal')">
                 <div class="text-2xl mb-1">💰</div>
                 <div class="text-xs text-gray-500 font-bold">實際預算結算</div>
                 <div class="text-sm font-black text-kawaii-blue">10.4萬 TWD</div>
             </div>
 
-            <!-- 替換景點 -->
             <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-4 text-center shadow-sm border-[3px] border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('backupModal')">
                 <div class="text-2xl mb-1 animate-pulse drop-shadow">🗺️</div>
                 <div class="text-xs text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block mb-0.5 shadow-sm">全區 60 選 1</div>
@@ -167,28 +161,20 @@
             </div>
         </div>
 
-        <!-- Day Tabs (Horizontal Scroll) -->
         <div class="flex overflow-x-auto hide-scrollbar space-x-3 py-2 mb-4 md:justify-center px-1" id="tabs-container">
-            <!-- Tabs injected by JS -->
-        </div>
+            </div>
 
-        <!-- Utility Bar -->
         <div class="flex justify-end mb-4 pr-2">
             <button onclick="copyDailyItinerary()" class="text-xs bg-gray-800 text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-700 transition flex items-center gap-2">
                 <span>📋</span> 複製今日行程給伴侶
             </button>
         </div>
 
-        <!-- Itinerary Content -->
         <div id="itinerary-content" class="bg-white rounded-[2rem] p-5 md:py-8 md:px-12 lg:px-16 shadow-kawaii border-4 border-white mb-6">
-            <!-- Content injected by JS -->
-        </div>
+            </div>
 
     </main>
 
-    <!-- Modals -->
-
-    <!-- 海之中道 搶神車 Modal -->
     <div id="bikeModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-2xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="bikeModalContent">
             <button onclick="closeModal('bikeModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
@@ -260,7 +246,6 @@
     </div>
 
 
-    <!-- Hotel Dashboard Modal -->
     <div id="hotelModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-2xl rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
             <button onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
@@ -270,13 +255,11 @@
             </p>
 
             <div class="space-y-6">
-                <!-- Stage 1 -->
                 <div class="border-2 border-kawaii-light-blue rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">♨️</div>
                     <h3 class="font-bold text-kawaii-blue mb-3">第一階段 (3晚)：5/29 - 6/1</h3>
                     
                     <div class="space-y-2">
-                        <!-- 首選 -->
                         <div class="p-3 bg-blue-50/70 rounded-xl border-2 border-blue-200 shadow-sm">
                             <div class="flex justify-between items-start mb-1">
                                 <div>
@@ -293,7 +276,6 @@
                             </div>
                         </div>
 
-                        <!-- 備選 1 -->
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition">
                             <div class="flex justify-between items-start mb-1">
                                 <div>
@@ -311,7 +293,6 @@
                         </div>
                     </div>
 
-                    <!-- 比較區塊 -->
                     <div class="mt-4 bg-blue-50/40 rounded-xl p-3 border border-blue-100">
                         <h4 class="text-xs font-black text-blue-800 mb-2 flex items-center gap-1"><span class="text-sm">⚖️</span> 兩間決策 PK 分析</h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -336,13 +317,11 @@
                     </div>
                 </div>
 
-                <!-- Stage 2 -->
                 <div class="border-2 border-kawaii-light-pink rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">🏖️</div>
                     <h3 class="font-bold text-kawaii-pink mb-3">第二階段 (2晚)：6/1 - 6/3</h3>
                     
                     <div class="space-y-2">
-                        <!-- 唯一確認 -->
                         <div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-200 shadow-sm">
                             <div class="flex justify-between items-start mb-1">
                                 <div>
@@ -361,13 +340,11 @@
                     </div>
                 </div>
 
-                <!-- Stage 3 -->
                 <div class="border-2 border-green-200 rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">🐻</div>
                     <h3 class="font-bold text-green-600 mb-3">第三階段 (2晚)：6/3 - 6/5</h3>
                     
                     <div class="space-y-2">
-                        <!-- 首選 -->
                         <div class="p-3 bg-green-50/70 rounded-xl border-2 border-green-200 shadow-sm">
                             <div class="flex justify-between items-start mb-1">
                                 <div>
@@ -391,7 +368,6 @@
     </div>
 
 
-    <!-- Budget Modal -->
     <div id="budgetModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 shadow-2xl relative transform transition-transform scale-95" id="budgetModalContent">
             <button onclick="closeModal('budgetModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
@@ -452,7 +428,6 @@
         </div>
     </div>
 
-    <!-- Ultimate Backup Modal (EXPANDED TO 60 ITEMS) -->
     <div id="backupModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-6xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto" id="backupModalContent">
             <button onclick="closeModal('backupModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-20 text-lg">✕</button>
@@ -467,7 +442,6 @@
             </div>
             
             <div class="space-y-12">
-                <!-- ================= 大分 / 別府 Area ================= -->
                 <section>
                     <div class="flex items-center gap-3 mb-6">
                         <span class="text-4xl">♨️</span>
@@ -475,7 +449,6 @@
                     </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- 景點 -->
                         <div class="bg-blue-50/30 rounded-2xl p-5 border border-blue-100 shadow-sm">
                             <h4 class="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
                             <div class="space-y-3">
@@ -492,7 +465,6 @@
                             </div>
                         </div>
                         
-                        <!-- 美食 -->
                         <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
                             <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
                             <div class="space-y-3">
@@ -511,7 +483,6 @@
                     </div>
                 </section>
 
-                <!-- ================= 福岡 Area ================= -->
                 <section>
                     <div class="flex items-center gap-3 mb-6">
                         <span class="text-4xl">🌸</span>
@@ -519,7 +490,6 @@
                     </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- 景點 -->
                         <div class="bg-pink-50/30 rounded-2xl p-5 border border-pink-100 shadow-sm">
                             <h4 class="text-lg font-bold text-pink-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
                             <div class="space-y-3">
@@ -536,7 +506,6 @@
                             </div>
                         </div>
                         
-                        <!-- 美食 -->
                         <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
                             <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
                             <div class="space-y-3">
@@ -555,7 +524,6 @@
                     </div>
                 </section>
 
-                <!-- ================= 熊本 Area ================= -->
                 <section>
                     <div class="flex items-center gap-3 mb-6">
                         <span class="text-4xl">🐻</span>
@@ -563,7 +531,6 @@
                     </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- 景點 -->
                         <div class="bg-green-50/30 rounded-2xl p-5 border border-green-100 shadow-sm">
                             <h4 class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
                             <div class="space-y-3">
@@ -580,7 +547,6 @@
                             </div>
                         </div>
                         
-                        <!-- 美食 -->
                         <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
                             <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
                             <div class="space-y-3">
@@ -603,7 +569,6 @@
         </div>
     </div>
 
-    <!-- JavaScript Data and Logic -->
     <script>
         const itineraryData = [
             {
@@ -737,15 +702,15 @@
             {
                 day: 6,
                 date: "6/3 (三)",
-                title: "麵包超人與大寶安撫計畫",
-                route: "福岡 🚗 (40分) → 麵包超人 🚗 (1.5-2H) → 熊本",
+                title: "LaLaport 鋼彈朝聖與全能放電",
+                route: "福岡 🚗 (30分) → LaLaport 福岡 🚗 (1.5-2H) → 熊本",
                 hotel: "KOKO HOTEL Premier (連泊 1/2)",
                 sections: [
                     {
                         type: "play",
-                        title: "上午：麵包超人兒童博物館",
-                        content: "100% 室內冷氣房，沙坑與劇場絕對讓 3 歲弟弟瘋狂。停車請找周邊有「單日最大料金」的硬幣停車場。<div class='mt-3 p-3 bg-purple-50 border border-purple-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-purple-800 flex items-center gap-1'><span class='text-base'>🔄</span> 大寶抗拒備案 (LaLaport)：</strong>若 6.5 歲姊姊覺得麵包超人太幼稚，可果斷將早上的行程全組替換為<strong>「LaLaport 福岡」</strong>！門口有 1:1 巨大鋼彈，商場內有超大扭蛋區與遊樂場，弟弟能玩、姊姊覺得酷、大人好逛好買。</div>",
-                        deepTip: "👧 <strong>6.5歲大寶安撫策略：</strong>若照原定計畫去麵包超人，請利用同商場資源，給姊姊買個「專屬禮物」，平衡剝奪感。"
+                        title: "上午：LaLaport 福岡 (巨大鋼彈與遊樂場)",
+                        content: "一站滿足全家需求！門口有震撼的 1:1 巨大鋼彈，商場內有超大型扭蛋區、Namco 遊樂場以及頂樓的戶外遊戲區。弟弟能盡情放電，姊姊覺得酷，大人也超好逛好買。<div class='mt-3 p-3 bg-purple-50 border border-purple-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-purple-800 flex items-center gap-1'><span class='text-base'>🔄</span> 幼童專屬備案 (麵包超人)：</strong>若當天弟弟極度需要專屬安撫，可隨時切換回<strong>「麵包超人兒童博物館」</strong>，100% 室內冷氣房與沙坑絕對讓 3 歲幼童瘋狂。</div>",
+                        deepTip: "📍 <strong>LaLaport 實戰筆記：</strong>商場附設大型停車場，對自駕非常友善！美食街選擇極多(如琥珀神保豬排)，建議中午直接在這裡用餐，吃飽喝足後再南下熊本。"
                     },
                     {
                         type: "drive",
@@ -760,7 +725,7 @@
                         deepTip: "🏢 這間飯店樓下就是商場與巴士站，位置無敵，逛街吃飯都超近。"
                     }
                 ],
-                tips: "麵包超人博物館門票採浮動制，可善用當日無限次進出手環，到樓下商場吃午餐再回頭玩。"
+                tips: "LaLaport 腹地廣大，建議出發前先鎖定好想逛的特定品牌（如阿卡將、大創）或想玩的樓層，避免走到鐵腿。"
             },
             {
                 day: 7,
