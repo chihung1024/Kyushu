@@ -121,6 +121,7 @@
 </head>
 <body class="text-gray-800 font-sans antialiased pb-24">
 
+    <!-- Header -->
     <header class="bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 sticky top-0 z-40">
         <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
             <div>
@@ -133,9 +134,12 @@
         </div>
     </header>
 
+    <!-- Main Container -->
     <main class="max-w-4xl mx-auto px-4 mt-6">
         
+        <!-- Dashboard / Quick Stats -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-4xl mx-auto">
+            <!-- 訂房備忘錄 -->
             <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-4 text-center shadow-sm border-[3px] border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('hotelModal')">
                 <div class="text-2xl mb-1 relative inline-block">
                     🏨
@@ -148,12 +152,14 @@
                 <div class="text-sm font-black text-purple-800">大分二選一 ‧ 其餘確認</div>
             </div>
 
+            <!-- 預算 -->
             <div class="bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('budgetModal')">
                 <div class="text-2xl mb-1">💰</div>
                 <div class="text-xs text-gray-500 font-bold">實際預算結算</div>
                 <div class="text-sm font-black text-kawaii-blue">10.4萬 TWD</div>
             </div>
 
+            <!-- 替換景點 -->
             <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-4 text-center shadow-sm border-[3px] border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('backupModal')">
                 <div class="text-2xl mb-1 animate-pulse drop-shadow">🗺️</div>
                 <div class="text-xs text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block mb-0.5 shadow-sm">全區 60 選 1</div>
@@ -161,20 +167,28 @@
             </div>
         </div>
 
+        <!-- Day Tabs (Horizontal Scroll) -->
         <div class="flex overflow-x-auto hide-scrollbar space-x-3 py-2 mb-4 md:justify-center px-1" id="tabs-container">
-            </div>
+            <!-- Tabs injected by JS -->
+        </div>
 
+        <!-- Utility Bar -->
         <div class="flex justify-end mb-4 pr-2">
             <button onclick="copyDailyItinerary()" class="text-xs bg-gray-800 text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-700 transition flex items-center gap-2">
                 <span>📋</span> 複製今日行程給伴侶
             </button>
         </div>
 
+        <!-- Itinerary Content -->
         <div id="itinerary-content" class="bg-white rounded-[2rem] p-5 md:py-8 md:px-12 lg:px-16 shadow-kawaii border-4 border-white mb-6">
-            </div>
+            <!-- Content injected by JS -->
+        </div>
 
     </main>
 
+    <!-- Modals -->
+
+    <!-- 海之中道 搶神車 Modal -->
     <div id="bikeModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-2xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="bikeModalContent">
             <button onclick="closeModal('bikeModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
@@ -244,8 +258,128 @@
             </div>
         </div>
     </div>
+    
+    <!-- 大分 海之卵 (Umitamago) 展演時刻 Modal -->
+    <div id="umitamagoModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
+        <div class="bg-white w-11/12 max-w-2xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto transform transition-transform scale-95" id="umitamagoModalContent">
+            <button onclick="closeModal('umitamagoModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
+            
+            <div class="mb-6 border-b-2 border-teal-100 pb-4">
+                <h2 class="text-2xl md:text-3xl font-black text-teal-600 flex items-center gap-2"><span>🦭</span> 大分 海之卵 (うみたまご)</h2>
+                <p class="text-sm text-gray-500 mt-2 font-bold bg-teal-50 inline-block px-3 py-1 rounded-md">展演時刻大補帖 (請以現場QR Code為準)</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-teal-200">
+                        <div class="font-bold text-teal-800 flex justify-between items-center mb-2">
+                            <span class="text-lg">🦭 海象互動秀</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-1 rounded inline-block">⏰ 約 10:00 / 13:00 / 15:00</p>
+                        <p class="text-sm text-gray-700 leading-relaxed">全館最高潮！海象會走到觀眾面前表演仰臥起坐。<strong class="text-red-500">⚠️ 前排極易被噴水，記得準備小孩替換衣物！</strong> 秀後還能直接伸手觸摸海象。</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-teal-200">
+                        <div class="font-bold text-teal-800 flex justify-between items-center mb-2">
+                            <span class="text-lg">🐬 海豚表演</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-1 rounded inline-block">⏰ 約 11:00 / 14:00</p>
+                        <p class="text-sm text-gray-700 leading-relaxed">在海景表演池觀賞海豚的躍水與特技，時間約 15 分鐘。</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-teal-200">
+                        <div class="font-bold text-teal-800 flex justify-between items-center mb-2">
+                            <span class="text-lg">🐟 大回遊水槽解說</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-1 rounded inline-block">⏰ 約 12:00</p>
+                        <p class="text-sm text-gray-700 leading-relaxed">潛水員進入大水槽餵食魟魚與各種魚類，並進行生態解說。</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-teal-200">
+                        <div class="font-bold text-teal-800 flex justify-between items-center mb-2">
+                            <span class="text-lg">🐦 鵜鶘散步</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-1 rounded inline-block">⏰ 約 10:30 / 15:30</p>
+                        <p class="text-sm text-gray-700 leading-relaxed">巨大鵜鶘會在遊客面前大搖大擺地散步遊行，非常可愛的隱藏版萌點！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 福岡 Marine World 展演時刻 Modal -->
+    <div id="marineWorldModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
+        <div class="bg-white w-11/12 max-w-4xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto transform transition-transform scale-95" id="marineWorldModalContent">
+            <button onclick="closeModal('marineWorldModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
+            
+            <div class="mb-6 border-b-2 border-indigo-100 pb-4">
+                <h2 class="text-2xl md:text-3xl font-black text-indigo-600 flex items-center gap-2"><span>🐬</span> 福岡 Marine World (海之中道)</h2>
+                <p class="text-sm text-gray-500 mt-2 font-bold bg-indigo-50 inline-block px-3 py-1 rounded-md">展演大補帖 (請以現場QR Code為準)</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- 固定時刻三大主秀 -->
+                <div>
+                    <h4 class="font-black text-indigo-800 mb-3 flex items-center gap-1"><span class="text-xl">🌊</span> 必看三大固定主秀</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-indigo-200">
+                            <div class="font-bold text-indigo-700 mb-1 text-base">🐬 海豚海獅秀</div>
+                            <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-0.5 rounded inline-block">⏰ 約 11:30/13:30/15:30</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">博多灣無敵海景為背景。前排黃色座位為潑水區！</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-indigo-200">
+                            <div class="font-bold text-indigo-700 mb-1 text-base">🐟 沙丁魚風暴</div>
+                            <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-0.5 rounded inline-block">⏰ 約 11:45 / 15:15</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">兩萬條沙丁魚隨著音樂在巨型水槽中群游，視覺震撼。</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-indigo-200">
+                            <div class="font-bold text-indigo-700 mb-1 text-base">🤿 潛水員水中觀察</div>
+                            <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-0.5 rounded inline-block">⏰ 約 12:30</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">潛水員潛入水槽，帶著攝影機與外面遊客即時對話。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 企鵝專區 -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-5 rounded-xl border border-orange-200 shadow-sm">
+                    <h4 class="font-black text-orange-800 mb-3 flex items-center gap-1"><span class="text-xl">🌟</span> 絕不可錯過的「企鵝萌亮點」</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-orange-100">
+                            <div class="font-bold text-orange-700 mb-1 text-base">🐧 企鵝出巡散步</div>
+                            <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-0.5 rounded inline-block">⏰ 參考時刻：約 12:50</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">企鵝們會成群結隊從「企鵝之丘」搖搖晃晃散步到 Island 舞台，超級好拍！</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-orange-100">
+                            <div class="font-bold text-orange-700 mb-1 text-base">🌙 晚安企鵝</div>
+                            <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-0.5 rounded inline-block">⏰ 參考時刻：約 16:30 (閉館前)</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">水族館名物！企鵝們結束一天營業，在飼育員引導下「下班歸巢」走回小屋睡覺，步態呆萌。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 無固定時刻/現場驚喜區 -->
+                <div class="bg-gradient-to-r from-purple-50 to-fuchsia-50 p-5 rounded-xl border border-purple-200 shadow-sm">
+                    <h4 class="font-black text-purple-800 mb-3 flex items-center gap-1"><span class="text-xl">🎲</span> 現場驚喜：不定期療癒互動 <span class="text-xs bg-purple-200 text-purple-800 px-2 py-1 rounded-full ml-2 font-bold">無固定時刻表</span></h4>
+                    <p class="text-sm text-gray-600 mb-4">為保護動物健康與避免人潮擁擠，以下餵食/解說活動「無固定時刻表」，請依現場螢幕或廣播為準：</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="bg-white p-3 rounded-lg shadow-sm border border-purple-100">
+                            <div class="font-bold text-purple-700 mb-1">🦦 海獺餵食秀 (Lilo)</div>
+                            <p class="text-xs text-gray-600 leading-relaxed">全日本極度稀少的高齡海獺！看牠搓揉臉頰、敲貝殼吃飯，絕對要碰碰運氣。</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow-sm border border-purple-100">
+                            <div class="font-bold text-purple-700 mb-1">🦭 海豹互動 (怪獸島)</div>
+                            <p class="text-xs text-gray-600 leading-relaxed">幸運時能看到飼育員引導海豹拍水，也可在現場扭蛋機買飼料體驗親手餵食。</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow-sm border border-purple-100">
+                            <div class="font-bold text-purple-700 mb-1">🐬 江豚解說</div>
+                            <p class="text-xs text-gray-600 leading-relaxed">聽解說時，幸運的話還能看到江豚吐出超可愛的招牌「天使光環」水泡圈喔！</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 
+    <!-- Hotel Dashboard Modal -->
     <div id="hotelModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-2xl rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
             <button onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
@@ -255,11 +389,13 @@
             </p>
 
             <div class="space-y-6">
+                <!-- Stage 1 -->
                 <div class="border-2 border-kawaii-light-blue rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">♨️</div>
                     <h3 class="font-bold text-kawaii-blue mb-3">第一階段 (3晚)：5/29 - 6/1</h3>
                     
                     <div class="space-y-2">
+                        <!-- 首選 -->
                         <div class="p-3 bg-blue-50/70 rounded-xl border-2 border-blue-200 shadow-sm">
                             <div class="flex justify-between items-start mb-1">
                                 <div>
@@ -276,6 +412,7 @@
                             </div>
                         </div>
 
+                        <!-- 備選 1 -->
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition">
                             <div class="flex justify-between items-start mb-1">
                                 <div>
@@ -293,6 +430,7 @@
                         </div>
                     </div>
 
+                    <!-- 比較區塊 -->
                     <div class="mt-4 bg-blue-50/40 rounded-xl p-3 border border-blue-100">
                         <h4 class="text-xs font-black text-blue-800 mb-2 flex items-center gap-1"><span class="text-sm">⚖️</span> 兩間決策 PK 分析</h4>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -317,11 +455,13 @@
                     </div>
                 </div>
 
+                <!-- Stage 2 -->
                 <div class="border-2 border-kawaii-light-pink rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">🏖️</div>
                     <h3 class="font-bold text-kawaii-pink mb-3">第二階段 (2晚)：6/1 - 6/3</h3>
                     
                     <div class="space-y-2">
+                        <!-- 唯一確認 -->
                         <div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-200 shadow-sm">
                             <div class="flex justify-between items-start mb-1">
                                 <div>
@@ -340,11 +480,13 @@
                     </div>
                 </div>
 
+                <!-- Stage 3 -->
                 <div class="border-2 border-green-200 rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">🐻</div>
                     <h3 class="font-bold text-green-600 mb-3">第三階段 (2晚)：6/3 - 6/5</h3>
                     
                     <div class="space-y-2">
+                        <!-- 首選 -->
                         <div class="p-3 bg-green-50/70 rounded-xl border-2 border-green-200 shadow-sm">
                             <div class="flex justify-between items-start mb-1">
                                 <div>
@@ -368,6 +510,7 @@
     </div>
 
 
+    <!-- Budget Modal -->
     <div id="budgetModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 shadow-2xl relative transform transition-transform scale-95" id="budgetModalContent">
             <button onclick="closeModal('budgetModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
@@ -428,6 +571,7 @@
         </div>
     </div>
 
+    <!-- Ultimate Backup Modal (EXPANDED TO 60 ITEMS) -->
     <div id="backupModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-6xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto" id="backupModalContent">
             <button onclick="closeModal('backupModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-20 text-lg">✕</button>
@@ -442,6 +586,7 @@
             </div>
             
             <div class="space-y-12">
+                <!-- ================= 大分 / 別府 Area ================= -->
                 <section>
                     <div class="flex items-center gap-3 mb-6">
                         <span class="text-4xl">♨️</span>
@@ -449,6 +594,7 @@
                     </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- 景點 -->
                         <div class="bg-blue-50/30 rounded-2xl p-5 border border-blue-100 shadow-sm">
                             <h4 class="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
                             <div class="space-y-3">
@@ -465,6 +611,7 @@
                             </div>
                         </div>
                         
+                        <!-- 美食 -->
                         <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
                             <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
                             <div class="space-y-3">
@@ -483,6 +630,7 @@
                     </div>
                 </section>
 
+                <!-- ================= 福岡 Area ================= -->
                 <section>
                     <div class="flex items-center gap-3 mb-6">
                         <span class="text-4xl">🌸</span>
@@ -490,6 +638,7 @@
                     </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- 景點 -->
                         <div class="bg-pink-50/30 rounded-2xl p-5 border border-pink-100 shadow-sm">
                             <h4 class="text-lg font-bold text-pink-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
                             <div class="space-y-3">
@@ -506,6 +655,7 @@
                             </div>
                         </div>
                         
+                        <!-- 美食 -->
                         <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
                             <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
                             <div class="space-y-3">
@@ -524,6 +674,7 @@
                     </div>
                 </section>
 
+                <!-- ================= 熊本 Area ================= -->
                 <section>
                     <div class="flex items-center gap-3 mb-6">
                         <span class="text-4xl">🐻</span>
@@ -531,6 +682,7 @@
                     </div>
                     
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- 景點 -->
                         <div class="bg-green-50/30 rounded-2xl p-5 border border-green-100 shadow-sm">
                             <h4 class="text-lg font-bold text-green-800 mb-4 flex items-center gap-2"><span class="text-xl">📸</span> 精選景點 Top 10</h4>
                             <div class="space-y-3">
@@ -547,6 +699,7 @@
                             </div>
                         </div>
                         
+                        <!-- 美食 -->
                         <div class="bg-orange-50/30 rounded-2xl p-5 border border-orange-100 shadow-sm">
                             <h4 class="text-lg font-bold text-orange-800 mb-4 flex items-center gap-2"><span class="text-xl">🍽️</span> 必吃美食 Top 10</h4>
                             <div class="space-y-3">
@@ -569,6 +722,7 @@
         </div>
     </div>
 
+    <!-- JavaScript Data and Logic -->
     <script>
         const itineraryData = [
             {
@@ -637,7 +791,7 @@
                     {
                         type: "play",
                         title: "下午 (死線：13:30 務必抵達)：海之卵水族館",
-                        content: "九州頂級水族館，核心精神是「沒有距離」！下午有兩場絕對不能錯過的大秀：<br>🐬 <strong>海豚表演</strong> (約14:00，出發前一週務必再確認官網 6 月班表)<br>🦭 <strong>15:00 海象互動秀</strong> (看完可直接觸摸海象，超震撼！)<br>空檔時間就泡在「Asobeach」戶外白沙灘，海豚會游到腳邊！",
+                        content: "九州頂級水族館，核心精神是「沒有距離」！看完海豚秀後，緊接著看全館最高潮的海象互動秀。空檔時間就泡在「Asobeach」戶外白沙灘，海豚會游到腳邊！<br><button onclick=\"showModal('umitamagoModal')\" class=\"mt-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🦭</span> 查看「海之卵」展演時刻大補帖</button>",
                         deepTip: "⏰ <strong>【完美踩點攻略】</strong>：由布院到此需 50 分鐘。若想從容看秀，<strong>由布院最晚 12:30 必須發車，13:30 抵達水族館</strong>。<br>⚠️ 海象互動秀坐前排極易被噴水，記得幫孩子準備一套替換衣物！"
                     }
                 ],
@@ -687,7 +841,7 @@
                     {
                         type: "sight",
                         title: "下午：Marine World 水族館",
-                        content: "中午變熱且孩子體力下降時，撤退進水族館吹強冷氣。坐著看海豚秀，靜態觀察大水槽。看完後又能極速回到飯店房間休息。",
+                        content: "中午變熱且孩子體力下降時，撤退進水族館吹強冷氣。坐著看海豚秀，靜態觀察大水槽。最精彩的隱藏活動「晚安企鵝」千萬別錯過！<br><button onclick=\"showModal('marineWorldModal')\" class=\"mt-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🐬</span> 查看「Marine World」展演時刻大補帖</button>",
                         deepTip: "📍 B1 餐廳有座位貼著海豚水槽，若能在 11:30 前吃午餐較有機會搶到位。"
                     },
                     {
@@ -715,7 +869,7 @@
                     {
                         type: "drive",
                         title: "⚠️ 撤退死線：避開鳥栖系統塞車",
-                        content: "最晚必須在 <strong class='text-red-600 font-black'>14:30 前離開福岡上高速！</strong>下午 4 點後鳥栖 JCT 極易大塞車。提早南下前往熊本，讓孩子在車上睡午覺。",
+                        content: "最晚必須在 <strong class='text-red-600 font-black'>14:30 前離開福岡上高速！</strong>下午 4 點後鳥栖 JCT 極易大塞車。提提早南下前往熊本，讓孩子在車上睡午覺。",
                         deepTip: "🚗 如果不小心晚了，請確保車上備妥零食與安撫影片度過塞車陣痛期。"
                     },
                     {
@@ -978,7 +1132,7 @@
         // Close modals on outside click
         window.onclick = function(event) {
             if (event.target.classList.contains('bg-gray-900/60')) {
-                const modals = ['budgetModal', 'backupModal', 'hotelModal', 'bikeModal'];
+                const modals = ['budgetModal', 'backupModal', 'hotelModal', 'bikeModal', 'umitamagoModal', 'marineWorldModal'];
                 modals.forEach(id => {
                     const el = document.getElementById(id);
                     if(el && !el.classList.contains('hidden')) {
