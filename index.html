@@ -161,7 +161,7 @@
         <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
             <div>
                 <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🏨✨</h1>
-                <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">5/29-6/5 機票與訂房確認版</p>
+                <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">雙家庭(2大2小) 獨立核算版</p>
             </div>
             <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('恭喜機票飯店都已落定！接下來只要期待出發就好囉！')">
                 🐻
@@ -184,14 +184,14 @@
                     </span>
                 </div>
                 <div class="text-xs text-purple-600 font-bold">目前訂房狀態與比較</div>
-                <div class="text-sm font-black text-purple-800">大分三選一 ‧ 其餘確認</div>
+                <div class="text-sm font-black text-purple-800">大分五選一 ‧ 其餘確認</div>
             </div>
 
             <!-- 預算 -->
             <div class="bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('budgetModal')">
                 <div class="text-2xl mb-1">💰</div>
-                <div class="text-xs text-gray-500 font-bold">實際預算結算</div>
-                <div class="text-sm font-black text-kawaii-blue">10.5萬 TWD</div>
+                <div class="text-xs text-gray-500 font-bold">單一家庭實際預算</div>
+                <div class="text-sm font-black text-kawaii-blue">10.7萬 TWD</div>
             </div>
 
             <!-- 替換景點 (UPGRADED) -->
@@ -346,7 +346,7 @@
                         <div class="bg-white p-4 rounded-xl shadow-sm border border-orange-100">
                             <div class="font-bold text-orange-700 mb-1 text-base">🐧 企鵝出巡散步</div>
                             <p class="text-xs text-gray-500 mb-2 font-black bg-gray-100 px-2 py-0.5 rounded inline-block">⏰ 約 12:50</p>
-                            <p class="text-sm text-gray-700 leading-relaxed">企鵝們成群結隊搖搖晃晃散步到 Island 舞台！</p>
+                            <p class="text-sm text-gray-700 leading-relaxed">企鵝們成群結隊搖晃散步到 Island 舞台！</p>
                         </div>
                         <div class="bg-white p-4 rounded-xl shadow-sm border border-orange-100">
                             <div class="font-bold text-orange-700 mb-1 text-base">🌙 晚安企鵝</div>
@@ -380,7 +380,7 @@
 
     <!-- Hotel Dashboard Modal -->
     <div id="hotelModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
-        <div class="bg-white w-11/12 max-w-4xl rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
+        <div class="bg-white w-11/12 max-w-5xl rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
             <button onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10">✕</button>
             <h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2"><span>🏨</span> 飯店訂單資訊與抉擇分析</h2>
             <p class="text-xs text-gray-500 mb-4 bg-purple-50 p-2 rounded-lg border border-purple-100">
@@ -391,78 +391,126 @@
                 <!-- Stage 1 -->
                 <div class="border-2 border-kawaii-light-blue rounded-2xl p-4 shadow-sm bg-white relative">
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">♨️</div>
-                    <h3 class="font-bold text-kawaii-blue mb-3">第一階段 (3晚)：5/29 - 6/1</h3>
+                    <h3 class="font-bold text-kawaii-blue mb-3">第一階段 (3晚)：5/29 - 6/1 <span class="text-xs bg-white text-kawaii-blue px-2 py-0.5 rounded-full border ml-2">雙家庭核算</span></h3>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-                        <div class="p-3 bg-blue-50/70 rounded-xl border-2 border-blue-200 shadow-sm flex flex-col justify-between">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-4">
+                        <!-- 👑 新首選: 龜之井 -->
+                        <div class="p-3 bg-red-50/70 rounded-xl border-2 border-red-300 shadow-md flex flex-col justify-between">
                             <div>
-                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">倫勃朗奧塔酒店 <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認首選</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">1間 標準雙床房 (Booking)</div>
+                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">龜之井酒店 别府 <span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 絕對首選</span></div>
+                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 豪華雙床房 (兩家各1間)</div>
                             </div>
                             <div>
-                                <div class="font-black text-blue-700 text-sm">3晚共 7,776</div>
-                                <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,592</div>
-                                <div class="text-[10px] text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-block">
+                                <div class="font-black text-red-700 text-sm">單家負擔: 約 8,937</div>
+                                <div class="text-[11px] text-orange-600 mt-0.5 font-bold">3晚總價(2間): 17,873</div>
+                                <div class="text-[10px] text-red-600 font-bold mt-2 bg-red-100 p-1.5 rounded-md inline-block">
+                                    ⏰ 取消: 5/22 前
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 備選: AMANEK -->
+                        <div class="p-3 bg-amber-50/50 rounded-xl border border-amber-200 opacity-90 hover:opacity-100 transition flex flex-col justify-between shadow-sm">
+                            <div>
+                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">AMANEK Beppu <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">豪華備選</span></div>
+                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 高級雙床房 (兩家各1間)</div>
+                            </div>
+                            <div>
+                                <div class="font-black text-amber-700 text-sm">單家負擔: 約 13,946</div>
+                                <div class="text-[11px] text-orange-600 mt-0.5 font-bold">3晚總價(2間): 27,891</div>
+                                <div class="text-[10px] text-red-500 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-block">
+                                    ⏰ 取消: 5/22 前
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 備選 3: 石垣泉 -->
+                        <div class="p-3 bg-amber-50/50 rounded-xl border border-amber-200 opacity-90 hover:opacity-100 transition flex flex-col justify-between shadow-sm">
+                            <div>
+                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">別府石垣泉 <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">豪華備選</span></div>
+                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">1間 溫泉家庭房 (兩家包棟平分)</div>
+                            </div>
+                            <div>
+                                <div class="font-black text-amber-700 text-sm">單家平分: 約 11,948</div>
+                                <div class="text-[11px] text-orange-600 mt-0.5 font-bold">3晚包棟總價: 23,895</div>
+                                <div class="text-[10px] text-red-500 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-block">
+                                    ⏰ 取消: 5/21 前
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 備選 1: 倫勃朗 -->
+                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition flex flex-col justify-between">
+                            <div>
+                                <div class="font-bold text-gray-600 text-sm flex flex-wrap items-center gap-1.5 mb-1">倫勃朗奧塔酒店 <span class="bg-gray-400 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">備選</span></div>
+                                <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">單家自行預定 (Booking)</div>
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-600 text-sm">3晚單家共 7,776</div>
+                                <div class="text-[11px] text-gray-500 mt-0.5">單晚單家: 2,592</div>
+                                <div class="text-[10px] text-gray-500 font-bold mt-2 inline-block">
                                     ⏰ 取消: 5/28 前
                                 </div>
                             </div>
                         </div>
 
+                        <!-- 備選 2: Forza -->
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition flex flex-col justify-between">
                             <div>
-                                <div class="font-bold text-gray-600 text-sm flex flex-wrap items-center gap-1.5 mb-1">大分力量飯店 (Forza) <span class="bg-teal-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">備選</span></div>
-                                <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">1間 併床房 (Booking)</div>
+                                <div class="font-bold text-gray-600 text-sm flex flex-wrap items-center gap-1.5 mb-1">大分力量飯店 (Forza) <span class="bg-gray-400 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">備選</span></div>
+                                <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">單家自行預定 (Booking)</div>
                             </div>
                             <div>
-                                <div class="font-bold text-gray-600 text-sm">3晚約 7,530</div>
-                                <div class="text-[11px] text-gray-500 mt-0.5">單晚每房: 2,510</div>
-                                <div class="text-[10px] text-red-400 font-bold mt-2 inline-block">
+                                <div class="font-bold text-gray-600 text-sm">3晚單家約 7,530</div>
+                                <div class="text-[11px] text-gray-500 mt-0.5">單晚單家: 2,510</div>
+                                <div class="text-[10px] text-gray-500 font-bold mt-2 inline-block">
                                     ⏰ 取消: 5/27 前
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-3 bg-amber-50/50 rounded-xl border border-amber-200 opacity-90 hover:opacity-100 transition flex flex-col justify-between shadow-sm">
-                            <div>
-                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">別府石垣泉 <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">豪華備選</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">1間 溫泉家庭房 (Booking)</div>
-                            </div>
-                            <div>
-                                <div class="font-black text-amber-700 text-sm">3晚約 23,895</div>
-                                <div class="text-[11px] text-orange-600 mt-0.5 font-bold">單晚每房: 7,965</div>
-                                <div class="text-[10px] text-red-500 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-block">
-                                    ⏰ 取消: 5/21 前
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-blue-50/40 rounded-xl p-3 border border-blue-100 overflow-x-auto hide-scrollbar">
-                        <h4 class="text-xs font-black text-blue-800 mb-2 flex items-center gap-1"><span class="text-sm">⚖️</span> 大分三選一 PK 分析</h4>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 min-w-[600px] md:min-w-0">
-                            <div class="bg-white p-2.5 rounded-lg shadow-sm border border-blue-100 text-xs">
-                                <div class="font-bold text-blue-700 mb-1.5 border-b border-blue-50 pb-1">👑 倫勃朗 (Rembrandt)</div>
+                        <h4 class="text-xs font-black text-blue-800 mb-2 flex items-center gap-1"><span class="text-sm">⚖️</span> 大分/別府五選一 PK 分析</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 min-w-[900px] lg:min-w-0">
+                            <div class="bg-white p-2.5 rounded-lg shadow-sm border border-red-200 text-xs relative overflow-hidden">
+                                <div class="absolute -right-2 -top-2 text-2xl opacity-10">👑</div>
+                                <div class="font-bold text-red-700 mb-1.5 border-b border-red-50 pb-1">👑 龜之井 (Kamenoi)</div>
                                 <ul class="space-y-1 text-gray-600">
-                                    <li><strong class="text-gray-800">🚗 停車：</strong>附設大型停車場，<span class="text-green-600 font-bold">對自駕與搬行李極度友善</span>。</li>
-                                    <li><strong class="text-gray-800">✨ 特點：</strong>老牌星級大飯店，房間寬敞度較優，住宿品質極穩。</li>
-                                </ul>
-                            </div>
-                            <div class="bg-white p-2.5 rounded-lg shadow-sm border border-teal-100 text-xs">
-                                <div class="font-bold text-teal-700 mb-1.5 border-b border-teal-50 pb-1">💡 大分力量 (Forza)</div>
-                                <ul class="space-y-1 text-gray-600">
-                                    <li><strong class="text-gray-800">🚗 停車：</strong><span class="text-red-500 font-bold">無自有停車場</span>，需停周邊特約再走過來。</li>
-                                    <li><strong class="text-gray-800">🛍️ 機能：</strong>位於中央町商店街內，下樓直接開吃開逛，遇雨免撐傘。</li>
+                                    <li><strong class="text-gray-800">🚗 停車：</strong><span class="text-green-600 font-bold">附設免費私人停車場！</span></li>
+                                    <li><strong class="text-gray-800">✨ 特點：</strong>老字號高CP值溫泉飯店，價格極度親民，兒童友善。</li>
                                 </ul>
                             </div>
                             <div class="bg-white p-2.5 rounded-lg shadow-sm border border-amber-200 text-xs">
-                                <div class="font-bold text-amber-700 mb-1.5 border-b border-amber-50 pb-1">💡 別府石垣泉 (溫泉包棟)</div>
+                                <div class="font-bold text-amber-700 mb-1.5 border-b border-amber-50 pb-1">💡 AMANEK Beppu</div>
                                 <ul class="space-y-1 text-gray-600">
-                                    <li><strong class="text-gray-800">🚗 停車：</strong><span class="text-green-600 font-bold">附設免費私人停車</span>，自駕方便。</li>
-                                    <li><strong class="text-gray-800">✨ 特點：</strong><span class="text-amber-600 font-bold">包棟/源泉100%溫泉+桑拿</span>，有廚房洗衣機。價格較高且取消期限最早。</li>
+                                    <li><strong class="text-gray-800">🚗 停車：</strong>周邊公有/特約(每日¥600)，稍需步行。</li>
+                                    <li><strong class="text-gray-800">✨ 特點：</strong>頂樓無邊際溫泉泳池超美！但單價較高。</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg shadow-sm border border-amber-200 text-xs">
+                                <div class="font-bold text-amber-700 mb-1.5 border-b border-amber-50 pb-1">💡 別府石垣泉 (包棟)</div>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li><strong class="text-gray-800">🚗 停車：</strong><span class="text-green-600 font-bold">附設免費私人停車</span>。</li>
+                                    <li><strong class="text-gray-800">✨ 特點：</strong>兩家平分極便宜！<span class="text-amber-600 font-bold">源泉100%溫泉+桑拿</span>。</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg shadow-sm border border-gray-200 text-xs">
+                                <div class="font-bold text-gray-700 mb-1.5 border-b border-gray-100 pb-1">💡 倫勃朗 (Rembrandt)</div>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li><strong class="text-gray-800">🚗 停車：</strong>附設大型停車場。</li>
+                                    <li><strong class="text-gray-800">✨ 特點：</strong>老牌星級大飯店，房間寬敞度較優，性價比極高。</li>
+                                </ul>
+                            </div>
+                            <div class="bg-white p-2.5 rounded-lg shadow-sm border border-gray-200 text-xs">
+                                <div class="font-bold text-gray-700 mb-1.5 border-b border-gray-100 pb-1">💡 大分力量 (Forza)</div>
+                                <ul class="space-y-1 text-gray-600">
+                                    <li><strong class="text-gray-800">🚗 停車：</strong><span class="text-red-500 font-bold">無自有停車場</span>。</li>
+                                    <li><strong class="text-gray-800">🛍️ 機能：</strong>位於商店街內，下樓直接開吃開逛。</li>
                                 </ul>
                             </div>
                         </div>
-                        <p class="text-[10px] text-gray-500 mt-2 font-bold text-center">結論建議：省錢輕鬆選「倫勃朗」；愛逛街選「Forza」；想享受極致私人溫泉與大空間選「石垣泉」。</p>
+                        <p class="text-[10px] text-gray-500 mt-2 font-bold text-center">結論建議：目前首選為「龜之井」，它完美兼顧了停車方便、家庭友善與超級高CP值！</p>
                     </div>
                 </div>
 
@@ -476,11 +524,11 @@
                             <div class="flex justify-between items-start mb-1">
                                 <div>
                                     <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">The Luigans Spa <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
-                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 巴拉岡凱迪客房 (Booking.com)</div>
+                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">單家自行預定 (Booking.com)</div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="font-black text-pink-600 text-sm">2晚共 5,219</div>
-                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,609</div>
+                                    <div class="font-black text-pink-600 text-sm">2晚單家 5,219</div>
+                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚單家: 2,609</div>
                                 </div>
                             </div>
                             <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
@@ -500,11 +548,11 @@
                             <div class="flex justify-between items-start mb-1">
                                 <div>
                                     <div class="font-bold text-gray-800 text-sm flex items-center gap-1.5">KOKO HOTEL Premier 熊本 <span class="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">已確認</span></div>
-                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">1間 高級雙床房 (Booking.com折扣)</div>
+                                    <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mt-1">單家自行預定 (Booking.com折扣)</div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="font-black text-green-700 text-sm">2晚共 5,465</div>
-                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚每房: 2,732</div>
+                                    <div class="font-black text-green-700 text-sm">2晚單家 5,465</div>
+                                    <div class="text-xs font-bold text-orange-600 mt-0.5">單晚單家: 2,732</div>
                                 </div>
                             </div>
                             <div class="text-xs text-red-600 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-flex items-center gap-1">
@@ -522,48 +570,50 @@
     <div id="budgetModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 shadow-2xl relative transform transition-transform scale-95" id="budgetModalContent">
             <button onclick="closeModal('budgetModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
-            <h2 class="text-2xl font-black text-kawaii-pink mb-5 flex items-center gap-2"><span>📊</span> 實際預算結算表 <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full ml-auto">極致精準</span></h2>
-            <p class="text-xs text-gray-500 mb-4">住宿費依據您的 3 份訂房確認單(1間房)，將各項開銷精確計算得出。</p>
+            <h2 class="text-2xl font-black text-kawaii-pink mb-2 flex items-center gap-2"><span>📊</span> 實際預算結算表 <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full ml-auto">極致精準</span></h2>
+            <p class="text-sm text-gray-500 mb-4 font-bold bg-gray-100 px-3 py-1.5 rounded-lg border border-gray-200">
+                ⚠️ 以下開銷以<span class="text-pink-600">「單一家庭 (2大2小)」</span>為核算單位。
+            </p>
 
             <div class="space-y-4">
                 <div class="bg-gray-50 p-3 rounded-xl border border-gray-100">
                     <div class="flex justify-between items-end mb-1">
-                        <span class="font-bold text-sm text-gray-700">✈️ 虎航機票 (神級買點)</span>
+                        <span class="font-bold text-sm text-gray-700">✈️ 虎航機票 (單家負擔)</span>
                         <span class="font-black text-gray-800">40,000 TWD</span>
                     </div>
-                    <div class="progress-bar-bg bg-gray-200"><div class="progress-bar-fill bg-gray-500 w-[38%]"></div></div>
+                    <div class="progress-bar-bg bg-gray-200"><div class="progress-bar-fill bg-gray-500 w-[36%]"></div></div>
                 </div>
 
                 <div class="bg-kawaii-light-blue/30 p-3 rounded-xl border border-blue-100 shadow-inner relative">
                     <div class="absolute -right-2 -top-2 text-2xl opacity-50 pointer-events-none">🏨</div>
                     <div class="flex justify-between items-end mb-1">
-                        <span class="font-bold text-sm text-blue-800">🏨 住宿 (3間確認預訂單房加總)</span>
-                        <span class="font-black text-kawaii-blue">18,460 TWD</span>
+                        <span class="font-bold text-sm text-blue-800">🏨 住宿預估 (依龜之井計算)</span>
+                        <span class="font-black text-kawaii-blue">19,621 TWD</span>
                     </div>
-                    <p class="text-[10px] text-blue-600 mb-1 leading-tight">7,776(大分) + 5,219(福岡Booking) + 5,465(熊本)</p>
+                    <p class="text-[10px] text-blue-600 mb-1 leading-tight">8,937(龜之井 1間) + 5,219(福岡 1間) + 5,465(熊本 1間)</p>
                     <div class="progress-bar-bg bg-blue-100"><div class="progress-bar-fill bg-kawaii-blue w-[18%]"></div></div>
                 </div>
 
                 <div class="bg-red-50 p-3 rounded-xl border border-red-200">
                     <div class="flex justify-between items-end mb-1">
-                        <span class="font-bold text-sm text-red-800">🚗 租車與周邊交通</span>
+                        <span class="font-bold text-sm text-red-800">🚗 租車與交通 (單家負擔)</span>
                         <span class="font-black text-red-600">20,000 TWD</span>
                     </div>
-                    <p class="text-[10px] text-red-600 mb-1 leading-tight">租車本體、KEP、大環線油資、停車費</p>
-                    <div class="progress-bar-bg bg-red-100"><div class="progress-bar-fill bg-red-400 w-[19%]"></div></div>
+                    <p class="text-[10px] text-red-600 mb-1 leading-tight">單家包一台 7-8 人座、KEP、大環線油資、停車費</p>
+                    <div class="progress-bar-bg bg-red-100"><div class="progress-bar-fill bg-red-400 w-[18%]"></div></div>
                 </div>
 
                 <div class="bg-kawaii-light-pink/30 p-3 rounded-xl border border-pink-100">
                     <div class="flex justify-between items-end mb-1">
-                        <span class="font-bold text-sm text-pink-800">🍔 餐飲與和牛烤肉</span>
+                        <span class="font-bold text-sm text-pink-800">🍔 餐飲與和牛烤肉 (單家負擔)</span>
                         <span class="font-black text-kawaii-pink">15,000 TWD</span>
                     </div>
-                    <div class="progress-bar-bg bg-pink-100"><div class="progress-bar-fill bg-kawaii-pink w-[14%]"></div></div>
+                    <div class="progress-bar-bg bg-pink-100"><div class="progress-bar-fill bg-kawaii-pink w-[13%]"></div></div>
                 </div>
 
                 <div class="bg-yellow-50 p-3 rounded-xl border border-yellow-200">
                     <div class="flex justify-between items-end mb-1">
-                        <span class="font-bold text-sm text-yellow-800">🎟️ 門票活動 (含貓頭鷹之森)</span>
+                        <span class="font-bold text-sm text-yellow-800">🎟️ 門票活動 (單家負擔)</span>
                         <span class="font-black text-yellow-600">12,000 TWD</span>
                     </div>
                     <div class="progress-bar-bg bg-yellow-100"><div class="progress-bar-fill bg-yellow-400 w-[11%]"></div></div>
@@ -572,8 +622,8 @@
                 <div class="border-t-2 border-dashed border-gray-200 my-1"></div>
                 
                 <div class="flex justify-between items-center p-4 bg-slate-800 rounded-xl border-2 border-slate-700 shadow-lg">
-                    <span class="font-black text-white">總計預估</span>
-                    <span class="font-black text-2xl text-white tracking-tight">105,460 <span class="text-sm text-gray-300">TWD</span></span>
+                    <span class="font-black text-white text-sm">單一家庭總計</span>
+                    <span class="font-black text-2xl text-white tracking-tight">106,621 <span class="text-sm text-gray-300">TWD</span></span>
                 </div>
             </div>
         </div>
@@ -629,8 +679,8 @@
                 day: 1,
                 date: "5/29 (五)",
                 title: "完美落地與橫斷防吐大作戰",
-                route: "高雄 ✈️ (08:45飛/11:50到) → 熊本機場 🚗 (2.5H) → 大分",
-                hotel: "倫勃朗大分 或 Forza 或 石垣泉",
+                route: "高雄 ✈️ (08:45飛/11:50到) → 熊本機場 🚗 (2.5H) → 別府",
+                hotel: "龜之井酒店 别府 (首選) 或其他備選",
                 sections: [
                     {
                         type: "action",
@@ -652,9 +702,9 @@
                     },
                     {
                         type: "action",
-                        title: "傍晚：入住大分/別府飯店",
+                        title: "傍晚：入住別府 龜之井",
                         content: "抵達預定飯店 Check-in。晚餐可直接在附近找美食或逛商場放鬆，結束第一天的長途移動。",
-                        deepTip: "🛌 這三間都是很棒的選項，記得在取消期限前做出最終決定並主動取消不需要的訂單。"
+                        deepTip: "🛌 <strong>住宿優勢筆記：</strong>目前首選為「龜之井酒店」，這間老字號溫泉飯店最大優勢是「附設免費私人停車場」且空間大，對兩家自駕出遊的停車與卸行李極度友善！"
                     }
                 ],
                 tips: "今日最大挑戰是「疲勞+山路=幼童崩潰/嘔吐」。加入了 ASO MILK FACTORY 作為緩衝，能大幅降低第一天的舟車勞頓感。"
@@ -664,7 +714,7 @@
                 date: "5/30 (六)",
                 title: "和諧粉彩樂園全天",
                 route: "飯店 🚗 (約40分) → Harmonyland → 飯店",
-                hotel: "倫勃朗大分 或 Forza 或 石垣泉",
+                hotel: "龜之井酒店 别府 (首選) 或其他備選",
                 sections: [
                     {
                         type: "play",
@@ -686,7 +736,7 @@
                 date: "5/31 (日)",
                 title: "由布院療癒與海岸生態",
                 route: "飯店 🚗 (約50分) → 由布院 🚗 (45分) → 海之卵水族館",
-                hotel: "倫勃朗大分酒店 (連泊 3/3)",
+                hotel: "龜之井酒店 别府 (首選) 或其他備選",
                 sections: [
                     {
                         type: "sight",
@@ -707,13 +757,13 @@
                 day: 4,
                 date: "6/1 (一)",
                 title: "野生動物園與鋼彈朝聖雙主打",
-                route: "大分 🚗 (40分) → Safari 🚗 (2H) → 福岡 LaLaport 🚗 → The Luigans",
+                route: "別府 🚗 (40分) → Safari 🚗 (2H) → 福岡 LaLaport 🚗 → The Luigans",
                 hotel: "The Luigans Spa (連泊 1/2)",
                 sections: [
                     {
                         type: "play",
                         title: "上午：African Safari (開車排隊購票)",
-                        content: "完美的平日週一！9:00 前出發，<strong>一家人開車到入口，車輛排隊同時買叢林巴士票！</strong>平日約有 15 班次，以此家庭人數要搶到並不難。午餐一樣強烈建議超市熟食野餐。",
+                        content: "完美的平日週一！9:00 前出發，<strong>兩家車子直接開到入口排隊買叢林巴士票！</strong>平日約有 15 班次，以此家庭人數要搶到並不難。午餐一樣強烈建議超市熟食野餐。",
                         deepTip: "📍 <strong>購票更正：</strong>叢林巴士無法單獨派人徒步搶票，必須全家人開車排隊購買（車でお越しの順番に販売）。請於 9:30 前抵達排隊，輕鬆拿下早晨班次！"
                     },
                     {
