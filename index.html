@@ -161,7 +161,7 @@
 <body class="text-gray-900 font-sans antialiased pb-24">
 
     <!-- Header -->
-    <header class="bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 sticky top-0 z-50">
+    <header class="bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 relative z-30">
         <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
             <div>
                 <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🏨✨</h1>
@@ -176,38 +176,44 @@
     <!-- Main Container -->
     <main class="max-w-4xl mx-auto px-4 mt-6">
 
-        <!-- Dashboard / Quick Stats (Mobile Swipe Optimization) -->
-        <div class="flex flex-row md:grid md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-4xl mx-auto overflow-x-auto hide-scrollbar scroll-snap-x pb-2">
+        <!-- Dashboard / Quick Stats (Compact Version) -->
+        <div class="flex flex-row md:grid md:grid-cols-3 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-0 overflow-x-auto hide-scrollbar scroll-snap-x pb-1">
             <!-- 訂房備忘錄 -->
-            <div class="min-w-[85vw] md:min-w-0 snap-center shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-4 text-center shadow-sm border-[3px] border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('hotelModal')">
-                <div class="text-2xl mb-1 relative inline-block">
+            <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-3 text-left shadow-sm border-2 border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('hotelModal')">
+                <div class="text-3xl relative shrink-0">
                     🏨
-                    <span class="absolute -top-1 -right-2 flex h-3 w-3">
+                    <span class="absolute -top-1 -right-1 flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                     </span>
                 </div>
-                <div class="text-xs text-purple-600 font-bold">目前訂房狀態與比較</div>
-                <div class="text-sm font-black text-purple-800">天神超強機能 ‧ 其餘確認</div>
+                <div>
+                    <div class="text-[10px] text-purple-600 font-bold mb-0.5">目前訂房狀態與比較</div>
+                    <div class="text-xs md:text-sm font-black text-purple-800 leading-tight">天神機能 ‧ 其餘確認</div>
+                </div>
             </div>
 
             <!-- 預算 -->
-            <div class="min-w-[85vw] md:min-w-0 snap-center shrink-0 bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('budgetModal')">
-                <div class="text-2xl mb-1">💰</div>
-                <div class="text-xs text-gray-500 font-bold">單一家庭實際預算</div>
-                <div class="text-sm font-black text-kawaii-blue">10.7萬 TWD</div>
+            <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-white rounded-xl p-3 text-left shadow-sm border-2 border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('budgetModal')">
+                <div class="text-3xl shrink-0">💰</div>
+                <div>
+                    <div class="text-[10px] text-gray-500 font-bold mb-0.5">單一家庭實際預算</div>
+                    <div class="text-xs md:text-sm font-black text-kawaii-blue leading-tight">10.7萬 TWD</div>
+                </div>
             </div>
 
             <!-- 替換景點 -->
-            <div class="min-w-[85vw] md:min-w-0 snap-center shrink-0 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-4 text-center shadow-sm border-[3px] border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('backupModal'); initBackupModal();">
-                <div class="text-2xl mb-1 animate-pulse drop-shadow">🗺️</div>
-                <div class="text-xs text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block mb-0.5 shadow-sm">全九州 180 選</div>
-                <div class="text-sm font-black text-cyan-800">終極備用彈藥庫</div>
+            <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-3 text-left shadow-sm border-2 border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('backupModal'); initBackupModal();">
+                <div class="text-3xl shrink-0 animate-pulse drop-shadow">🗺️</div>
+                <div>
+                    <div class="text-[10px] text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block shadow-sm mb-0.5">全九州 180 選</div>
+                    <div class="text-xs md:text-sm font-black text-cyan-800 leading-tight">終極備用彈藥庫</div>
+                </div>
             </div>
         </div>
 
         <!-- Sticky Day Tabs -->
-        <div class="sticky top-[84px] z-40 bg-kawaii-bg/90 backdrop-blur-sm py-3 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all">
+        <div class="sticky top-0 z-40 bg-kawaii-bg/95 backdrop-blur-md py-3 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all shadow-sm">
             <div class="flex overflow-x-auto hide-scrollbar space-x-3 md:justify-center" id="tabs-container">
                 <!-- Tabs injected by JS -->
             </div>
@@ -1017,10 +1023,10 @@
             currentDay = day;
             renderTabs();
             renderContent();
-            // 手機版切換天數時，將畫面捲回標題處
+            // 手機版切換天數時，將畫面捲回行程內容處
             if(window.innerWidth < 768) {
-                const headerOffset = document.querySelector('header').offsetHeight;
-                window.scrollTo({ top: headerOffset, behavior: 'smooth' });
+                const contentTop = document.getElementById('itinerary-content').offsetTop;
+                window.scrollTo({ top: contentTop - 80, behavior: 'smooth' });
             }
         }
 
