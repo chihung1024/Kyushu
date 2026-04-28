@@ -152,12 +152,16 @@
             font-weight: 700;
             opacity: 0.6;
         }
+
+        /* 手機橫向滾動方塊修正 */
+        .scroll-snap-x { scroll-snap-type: x mandatory; }
+        .snap-center { scroll-snap-align: center; }
     </style>
 </head>
-<body class="text-gray-800 font-sans antialiased pb-24">
+<body class="text-gray-900 font-sans antialiased pb-24">
 
     <!-- Header -->
-    <header class="bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 sticky top-0 z-40">
+    <header class="bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 sticky top-0 z-50">
         <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
             <div>
                 <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🏨✨</h1>
@@ -172,10 +176,10 @@
     <!-- Main Container -->
     <main class="max-w-4xl mx-auto px-4 mt-6">
 
-        <!-- Dashboard / Quick Stats -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-4xl mx-auto">
+        <!-- Dashboard / Quick Stats (Mobile Swipe Optimization) -->
+        <div class="flex flex-row md:grid md:grid-cols-3 gap-3 md:gap-4 mb-6 max-w-4xl mx-auto overflow-x-auto hide-scrollbar scroll-snap-x pb-2">
             <!-- 訂房備忘錄 -->
-            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-4 text-center shadow-sm border-[3px] border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('hotelModal')">
+            <div class="min-w-[85vw] md:min-w-0 snap-center shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-4 text-center shadow-sm border-[3px] border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('hotelModal')">
                 <div class="text-2xl mb-1 relative inline-block">
                     🏨
                     <span class="absolute -top-1 -right-2 flex h-3 w-3">
@@ -188,23 +192,25 @@
             </div>
 
             <!-- 預算 -->
-            <div class="bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('budgetModal')">
+            <div class="min-w-[85vw] md:min-w-0 snap-center shrink-0 bg-white rounded-2xl p-4 text-center shadow-sm border-[3px] border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('budgetModal')">
                 <div class="text-2xl mb-1">💰</div>
                 <div class="text-xs text-gray-500 font-bold">單一家庭實際預算</div>
                 <div class="text-sm font-black text-kawaii-blue">10.7萬 TWD</div>
             </div>
 
-            <!-- 替換景點 (UPGRADED) -->
-            <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-4 text-center shadow-sm border-[3px] border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('backupModal'); initBackupModal();">
+            <!-- 替換景點 -->
+            <div class="min-w-[85vw] md:min-w-0 snap-center shrink-0 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-4 text-center shadow-sm border-[3px] border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md" onclick="showModal('backupModal'); initBackupModal();">
                 <div class="text-2xl mb-1 animate-pulse drop-shadow">🗺️</div>
                 <div class="text-xs text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block mb-0.5 shadow-sm">全九州 180 選</div>
                 <div class="text-sm font-black text-cyan-800">終極備用彈藥庫</div>
             </div>
         </div>
 
-        <!-- Day Tabs (Horizontal Scroll) -->
-        <div class="flex overflow-x-auto hide-scrollbar space-x-3 py-2 mb-4 md:justify-center px-1" id="tabs-container">
-            <!-- Tabs injected by JS -->
+        <!-- Sticky Day Tabs -->
+        <div class="sticky top-[84px] z-40 bg-kawaii-bg/90 backdrop-blur-sm py-3 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all">
+            <div class="flex overflow-x-auto hide-scrollbar space-x-3 md:justify-center" id="tabs-container">
+                <!-- Tabs injected by JS -->
+            </div>
         </div>
 
         <!-- Utility Bar -->
@@ -215,7 +221,7 @@
         </div>
 
         <!-- Itinerary Content -->
-        <div id="itinerary-content" class="bg-white rounded-[2rem] p-5 md:py-8 md:px-12 lg:px-16 shadow-kawaii border-4 border-white mb-6">
+        <div id="itinerary-content" class="bg-white rounded-[2rem] p-4 sm:p-6 md:py-8 md:px-12 lg:px-16 shadow-kawaii border-4 border-white mb-6">
             <!-- Content injected by JS -->
         </div>
 
@@ -554,38 +560,48 @@
 
     <!-- JavaScript Data and Logic -->
     <script>
-        // --- Core Itinerary Data ---
+        // --- Core Itinerary Data (Enhanced with UX & Functionality) ---
         const itineraryData = [
             {
                 day: 1,
                 date: "5/29 (五)",
                 title: "完美落地與橫斷防吐大作戰",
+                weather: "🌤️ 預報 24-28°C",
+                mapLink: "https://www.google.com/maps/dir/熊本機場/ASO+MILK+FACTORY/別府Global+Tower/龜之井酒店別府",
                 route: "高雄 ✈️ (08:45飛/11:50到) → 熊本機場 🚗 (2.5H) → 別府",
                 hotel: "龜之井酒店 别府 (首選) 或其他備選",
+                checklist: ["全家人確實吃好暈車藥", "確認租車 KEP 是否已綁定", "推車與尿布包放置於好拿處"],
                 sections: [
                     {
                         type: "action",
+                        time: "11:50 - 13:00",
+                        mapQuery: "阿蘇熊本機場",
                         title: "機場取車與 KEP 綁定",
                         content: "熊本機場出關極快(實測約40分即可領完行李)，13:00 取車出發是非常安全的保守估計，下午時間充裕！<strong>強烈建議小孩先吞暈車藥</strong>，午餐先吃七八分飽即可！",
-                        deepTip: "📍 <strong>KEP 避坑指南：</strong>預約租車時 ETC 與 KEP 必須「同時勾選預約」，現場無法臨時加購。<br>⚠️ 注意：KEP「不包含」福岡都市高速等市區收費路段，經過時ETC會自動記錄，還車時需補繳幾百塊日圓價差，是正常現象喔！"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>KEP 避坑指南：</strong>預約租車時 ETC 與 KEP 必須「同時勾選預約」，現場無法臨時加購。</li><li><strong>注意事項：</strong>KEP「不包含」福岡都市高速等市區收費路段，經過時ETC會自動記錄，還車時需補繳幾百塊日圓價差，是正常現象喔！</li></ul>"
                     },
                     {
                         type: "sight",
-                        title: "🚗 啟程與順遊放風：ASO MILK FACTORY",
+                        time: "13:40 - 15:00",
+                        mapQuery: "ASO MILK FACTORY",
+                        title: "🚗 啟程與順遊放風：ASO MILK",
                         content: "從機場出發約30-40分鐘，正好在進入蜿蜒山路前抵達！這裡有極美的免費玫瑰庭園、平坦舒適的步道，還能吃到國際三星認證的阿蘇牛奶與濃郁霜淇淋。讓孩子在這裡跑跳放電、上廁所，是非常完美的「簡單走走」中繼站。",
-                        deepTip: "🍦 <strong>防吐與午睡神戰術：</strong>剛上車別開太久，在這裡稍作休息吃個冰淇淋。放完電後重新上車，剛好進入較為蜿蜒的「九州橫斷道路」，配合車子搖晃，高機率能讓幼童直接一路睡到大分！"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>防吐與午睡神戰術：</strong>剛上車別開太久，在這裡稍作休息吃個冰淇淋。</li><li><strong>完美銜接：</strong>放完電後重新上車，剛好進入較為蜿蜒的「九州橫斷道路」，配合車子搖晃，高機率能讓幼童直接一路睡到大分！</li></ul>"
                     },
                     {
                         type: "drive",
+                        time: "15:00 - 17:00",
                         title: "東進大分 (山谷絕景兜風)",
                         content: "繼續沿著國道 57 號與九州橫斷道路前進，此段為九州自駕最經典的絕景路線。若孩子中途醒來，可於最高點的「瀨之本 Rest House」再次短暫下車吹風。",
-                        deepTip: "♨️ 【彈性順遊備註】：若抵達別府時若有空檔，可把『海地獄』與『灶地獄』當作 Bonus 順遊，一切以不增加疲勞為原則。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>彈性順遊備註：</strong>若抵達別府時若有空檔，可把『海地獄』與『灶地獄』當作 Bonus 順遊，一切以不增加疲勞為原則。</li></ul>"
                     },
                     {
                         type: "action",
-                        title: "傍晚：Global Tower 迎賓夜景與入住",
+                        time: "17:30 - 18:30",
+                        mapQuery: "B-Con Plaza",
+                        title: "傍晚：Global Tower 迎賓夜景",
                         content: "抵達別府後，先順路前往「B-Con Plaza」內的 Global Tower！推車可搭電梯直達 100 公尺高的全玻璃觀景台，全家人輕鬆俯瞰別府溫泉鄉「四處冒白煙」的奇特夜景。結束後直接前往龜之井酒店 Check-in 與吃晚餐。",
-                        deepTip: "💡 <strong>景點備註：</strong>Global Tower 距離龜之井酒店開車只要 5 分鐘！若 Day 1 真的太累，也可移到 Day 3 水族館回程時順遊。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>景點備註：</strong>Global Tower 距離龜之井酒店開車只要 5 分鐘！若 Day 1 真的太累，也可移到 Day 3 水族館回程時順遊。</li></ul>"
                     }
                 ],
                 tips: "今日最大挑戰是「疲勞+山路=幼童崩潰/嘔吐」。加入了 ASO MILK FACTORY 作為緩衝，能大幅降低第一天的舟車勞頓感。"
@@ -594,20 +610,27 @@
                 day: 2,
                 date: "5/30 (六)",
                 title: "和諧粉彩樂園全天",
+                weather: "🌤️ 預報 23-27°C",
+                mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/Harmonyland/Youme+Town+別府/龜之井酒店別府",
                 route: "飯店 🚗 (約40分) → Harmonyland → 飯店",
                 hotel: "龜之井酒店 别府 (首選) 或其他備選",
+                checklist: ["出發前確認已買好三麗鷗門票", "自備大塑膠袋與野餐墊", "水壺裝滿水"],
                 sections: [
                     {
                         type: "play",
+                        time: "10:00 - 16:30",
+                        mapQuery: "Harmonyland",
                         title: "大重點：Harmonyland (週六場)",
                         content: "安排在週末是因為樂園消化人潮能力強。<strong class='text-red-500'>購票秘訣：若行程中有路過 AEON 超市，強烈建議在裡面的三麗鷗商店 (Sanrio Gift Gate) 順手買好實體前售票</strong>，當天直接拿實體票入園，完美跳過排隊人龍！(或使用 Asoview 預購)。<br>午餐：<strong>強制超商/超市野餐！</strong>不吃園區餐廳，省錢還能避免排隊崩潰。",
-                        deepTip: "📍 展演時刻提醒：出發前 1-2 週請務必上官網確認最新的 Live Show 與遊行時刻表，以利安排提早 20 分鐘佔位。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>展演時刻提醒：</strong>出發前 1-2 週請務必上官網確認最新的 Live Show 與遊行時刻表，以利安排提早 20 分鐘佔位。</li></ul>"
                     },
                     {
                         type: "food",
-                        title: "傍晚：Youme Town 終極收尾 (首選)",
+                        time: "17:00 - 20:00",
+                        mapQuery: "Youme Town 別府",
+                        title: "傍晚：Youme Town 終極收尾",
                         content: "從樂園離開後直奔<strong>【Youme Town 別府】</strong>！這裡有超巨大免費停車場，美食街能無壓力解決雙家庭晚餐（各自點餐不怕吵）。吃飽後直接去樓下超市把明天的果汁、水族館野餐零食一次買齊！<div class='mt-3 p-3 bg-orange-50 border border-orange-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-orange-800 flex items-center gap-1'><span class='text-base'>🔄</span> 彈性輔助備案：</strong>若大人太累，可直接開回飯店散步去吃天丼(とよ常)；若小孩吵著吃扭蛋壽司，則改去國道旁的壽司郎＋Mega Trial 超市。</div>",
-                        deepTip: "📍 <strong>體力防雷：</strong>樂園後大家體力見底，能「一站式」解決停車、晚餐與採買是保護父母理智線的最高指導原則。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>體力防雷：</strong>樂園後大家體力見底，能「一站式」解決停車、晚餐與採買是保護父母理智線的最高指導原則。</li></ul>"
                     }
                 ],
                 tips: "連住飯店的優勢！早上不用收行李，吃完早餐直接出發，心情無比輕鬆。"
@@ -616,20 +639,27 @@
                 day: 3,
                 date: "5/31 (日)",
                 title: "由布院療癒與海岸生態",
+                weather: "🌤️ 預報 22-26°C",
+                mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/Yufuin+Floral+Village/大分海洋宮殿水族館+海之卵/龜之井酒店別府",
                 route: "飯店 🚗 (約50分) → 由布院 🚗 (45分) → 海之卵水族館",
                 hotel: "龜之井酒店 别府 (首選) 或其他備選",
+                checklist: ["準備好 100円 硬幣買羊飼料", "中午 12:30 前必須離開由布院"],
                 sections: [
                     {
                         type: "sight",
+                        time: "09:30 - 12:00",
+                        mapQuery: "Yufuin Floral Village",
                         title: "上午：由布院「逆向操作」突擊",
                         content: "執行逆向操作！08:30大分發車，09:30空空降【Floral Village童話村】停車場！趁遊覽車還沒來，先買飼料餵小羊(備妥100円)、看貓頭鷹。接著「逆著人流」往車站方向散步吃起司塔與可樂餅。",
-                        deepTip: "📍 <strong>推車地獄破解法：</strong>週日10:30後的由布院非常可怕。我們直接停在尾端反向逛，12:00 直接開車撤退，完美避開下午的人潮與推車大軍！這招能讓這天的疲勞度大幅下降。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>推車地獄破解法：</strong>週日10:30後的由布院非常可怕。我們直接停在尾端反向逛，12:00 直接開車撤退，完美避開下午的人潮與推車大軍！這招能讓這天的疲勞度大幅下降。</li></ul>"
                     },
                     {
                         type: "play",
-                        title: "下午 (死線：13:30 抵達)：海之卵水族館",
+                        time: "13:30 - 16:30",
+                        mapQuery: "大分海洋宮殿水族館 海之卵",
+                        title: "下午 (死線13:30)：海之卵水族館",
                         content: "九州頂級水族館，核心精神是「沒有距離」！13:30 抵達後，展開完美的下午展演連擊：<br><br>👉 <strong>14:00 海豚表演</strong> ➔ <strong>15:00 海象互動秀</strong> (前排必噴水) ➔ <strong>15:30 鵜鶘散步</strong>！<br><br>看完秀的空檔就泡在「Asobeach」戶外白沙灘，海豚會直接游到腳邊！<br><button onclick=\"showModal('umitamagoModal')\" class=\"mt-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🦭</span> 展演時刻大補帖 (補充資訊)</button>",
-                        deepTip: "⏰ <strong>【完美踩點攻略】</strong>：由布院到此需 50 分鐘。為了順利接上 14:00 的海豚秀，<strong>由布院最晚 12:30 必須發車，13:30 抵達水族館</strong>。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美踩點攻略：</strong>由布院到此需 50 分鐘。為了順利接上 14:00 的海豚秀，<strong>由布院最晚 12:30 必須發車，13:30 抵達水族館</strong>。</li></ul>"
                     }
                 ],
                 tips: "午餐建議在由布院買好散步小吃，或在前往水族館的路上找便利商店快速解決。重點是嚴守 13:30 的抵達死線，把下午的時間完整留給水族館的戶外互動區。"
@@ -638,26 +668,35 @@
                 day: 4,
                 date: "6/1 (一)",
                 title: "野生動物園與午後時間決策",
+                weather: "🌤️ 預報 24-28°C",
+                mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/九州自然動物園/博多綠色天神酒店",
                 route: "別府 🚗 (40分) → Safari 🚗 (2H) → 依抵達時間決策 → 飯店",
                 hotel: "博多綠色天神酒店 (首選)",
+                checklist: ["長途車程，準備好車上零食點心", "抵達福岡交流道時注意時間決策"],
                 sections: [
                     {
                         type: "play",
-                        title: "上午：African Safari (現場排隊 / 網路備案)",
+                        time: "09:30 - 14:00",
+                        mapQuery: "九州自然動物園",
+                        title: "上午：African Safari",
                         content: "完美的平日週一！早上 9:00 前出發，<strong>兩家車子直接開到入口排隊買叢林巴士票！</strong>平日早晨約有 15 班次，以此家庭人數要搶到並不難。午餐建議準備超市熟食野餐。",
-                        deepTip: "📍 <strong>備選戰術：</strong>若兩家不想早起排隊，官網目前已開放「平日午後班次」的網路預約，可考慮預約下午場，早上悠哉逛完再入園。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>備選戰術：</strong>若兩家不想早起排隊，官網目前已開放「平日午後班次」的網路預約，可考慮預約下午場，早上悠哉逛完再入園。</li></ul>"
                     },
                     {
                         type: "action",
-                        title: "下午：時間驅動決策模型 (15:30 為界)",
+                        time: "15:30 視情況",
+                        mapQuery: "大濠公園",
+                        title: "下午：時間驅動決策模型",
                         content: "從大分開車回福岡，依據離開動物園的時間與小孩狀態靈活決策：<br><br>👉 <strong>🟢 15:30 前抵達福岡：</strong> 前往【大濠公園】！讓長途搭車的孩子去超大「鯨魚溜滑梯」伸展筋骨，全家踩天鵝船。<br>👉 <strong>🟡 15:30 後抵達 / 遇雨 / 爆睡：</strong> 果斷放棄公園！直接把兩台車開進【博多綠色天神酒店】停妥，提早啟動「天神大名商圈無腦逛街＋晚餐」模式。",
-                        deepTip: "🚗 <strong>減壓戰術：</strong> 把僵化的行程改成「看時間決策」，能讓兩位負責開車的爸爸壓力大幅減輕，不用為了趕景點而疲勞駕駛！"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>減壓戰術：</strong>把僵化的行程改成「看時間決策」，能讓兩位負責開車的爸爸壓力大幅減輕，不用為了趕景點而疲勞駕駛！</li></ul>"
                     },
                     {
                         type: "food",
-                        title: "傍晚：入住天神商圈與夜間覓食",
+                        time: "17:00 - ",
+                        mapQuery: "博多綠色天神酒店",
+                        title: "傍晚：入住天神商圈與覓食",
                         content: "抵達最熱鬧的「大名/天神商圈」入住博多綠色天神酒店。下樓就是滿滿的餐廳、拉麵店（如 Shin-Shin）與唐吉訶德，媽媽們可以開心逛街，爸爸們也能輕鬆買到超棒的宵夜！",
-                        deepTip: "🚗 <strong>停車極度重要防呆：</strong>飯店附設停車場（¥2,500/日）「必須事前預約」！請務必立刻發 Email 或致電飯店，告知有兩台 7-8 人座休旅車，請預留平面或高頂車位！"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>停車極度重要防呆：</strong>飯店附設停車場（¥2,500/日）「必須事前預約」！請務必立刻發 Email 或致電飯店，告知有兩台 7-8 人座休旅車，請預留平面或高頂車位！</li></ul>"
                     }
                 ],
                 tips: "今天是車程最長的一天。透過「時間決策模型」，不硬塞景點，能大幅降低大人疲勞與小孩坐不住的崩潰機率。"
@@ -666,26 +705,35 @@
                 day: 5,
                 date: "6/2 (二)",
                 title: "天神主場優勢與海陸雙拼",
-                route: "飯店 🚶‍♂️(市區商圈) → 福岡塔 🚢(搭船20分) → Marine World 🚢 → 傍晚海濱與 Mark Is → 飯店",
+                weather: "🌤️ 預報 23-28°C",
+                mapLink: "https://www.google.com/maps/dir/博多綠色天神酒店/福岡塔/Marine+World+海之中道/MARK+IS+福岡百道/博多綠色天神酒店",
+                route: "飯店 🚶‍♂️(市區) → 福岡塔 🚢(搭船) → Marine World 🚢 → 傍晚海濱與 Mark Is → 飯店",
                 hotel: "博多綠色天神酒店 (連泊 2/2)",
+                checklist: ["早上查閱 Uminoline 船班是否欠航", "在福岡塔超商先買好墊肚子零食"],
                 sections: [
                     {
                         type: "action",
-                        title: "上午：天神商圈主場優勢 (免移車)",
+                        time: "09:30 - 12:00",
+                        mapQuery: "福岡塔",
+                        title: "上午：天神商圈主場優勢",
                         content: "早上睡到自然醒，免收行李！媽媽們把握空檔步行 3-5 分鐘直攻「岩田屋、福岡三越或 Mina 天神」無壓力採買，戰利品直接放回房間。爸爸們可帶小孩至附近的「警固公園」跑跳。約 11:30 兩家人會合，開車前往福岡塔戶外停車場停妥。",
-                        deepTip: "🍔 <strong>糧食防雷警告：</strong> 水族館下船碼頭「沒有超商」。強烈建議 11:30 在福岡塔旁 Mark Is 內的 HalloDay 超市，先買好飯糰/小麵包帶身上，等船時先給小孩墊肚子！"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>休旅車停車防雷：</strong>福岡塔周邊有廣大的戶外平面停車場，完美解決市區機械車位對大型休旅車限高的問題。</li><li><strong>糧食防雷警告：</strong>水族館下船碼頭「沒有超商」。強烈建議 11:30 在福岡塔旁 Mark Is 內的 HalloDay 超市，先買好飯糰/小麵包帶身上，等船時先給小孩墊肚子！</li></ul>"
                     },
                     {
                         type: "play",
-                        title: "下午：高速船破浪 ＆ Marine World 展演",
-                        content: "12:30 走到福岡塔後方 (Marizon) 搭乘 Uminoline 高速船，20 分鐘破浪直達水族館！下船後無縫接軌看秀：<br>13:00 大水槽潛水員秀 ➔ 13:30 海豚海獅大秀 ➔ 14:30 江豚講座 ➔ 15:00 沙丁魚颱風 ➔ 16:10 晚安企鵝！<br><button onclick=\"showModal('marineWorldModal')\" class=\"mt-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🐬</span> 查看「Marine World」展演時刻大補帖</button>",
-                        deepTip: "📍 <strong>館內熱食救援：</strong>若進水族館後小孩還是喊餓，趁 13:30 海豚秀前，趕快去海豚看台旁的「M-cafe 小賣部」買熱狗堡與炸薯條充飢！"
+                        time: "12:30 - 17:00",
+                        mapQuery: "Marine World 海之中道",
+                        title: "下午：高速船破浪 ＆ Marine World",
+                        content: "12:30 走到福岡塔後方 (Marizon) 搭乘 Uminoline 高速船，20 分鐘破浪直達水族館！下船後無縫接軌看秀：<br>13:00 大水槽潛水員秀 ➔ 13:30 海豚海獅大秀 ➔ 14:30 江豚講座 ➔ 15:00 沙丁魚颱風 ➔ 16:10 晚安企鵝！<br><button onclick=\"showModal('marineWorldModal')\" class=\"mt-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🐬</span> 查看展演時刻大補帖</button>",
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>極度警告：</strong>鎖定 12:30 去程。<strong>回程務必注意 17:00 末班船死線</strong>，錯過將面臨車在福岡塔的交通災難。若停航則無痛切換為開車前往。</li><li><strong>館內熱食救援：</strong>若進水族館後小孩還是喊餓，趁 13:30 海豚秀前，趕快去海豚看台旁的「M-cafe 小賣部」買熱狗堡與炸薯條充飢！</li></ul>"
                     },
                     {
                         type: "food",
+                        time: "17:30 - 20:00",
+                        mapQuery: "MARK IS 福岡百道",
                         title: "傍晚：沙灘夕陽 ＆ Mark Is 晚餐",
                         content: "搭乘約 17:00 的船班回到福岡塔碼頭。傍晚氣溫微涼舒適，讓孩子在「百道海濱公園」的沙灘踏浪看夕陽。隨後走天橋至旁邊的<strong>「Mark Is 福岡百道」</strong>吃晚餐。<br>👉 <strong>親子美食推薦：</strong>3樓有巨大美食街（名島亭老字號拉麵、Ringer Hut 強棒麵），以及獨立餐廳（博多天婦羅 たかお、Pietro 義大利麵）。",
-                        deepTip: "🛍️ <strong>神級避開人潮戰術：</strong> 在 Mark Is 吃飽喝足後，大約晚上 8 點再開車回天神飯店。這完美避開了天神下班塞車潮與居酒屋晚餐人擠人的窘境，小孩也能在車上安穩睡著。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>神級避開人潮戰術：</strong>在 Mark Is 吃飽喝足後，大約晚上 8 點再開車回天神飯店。這完美避開了天神下班塞車潮與居酒屋晚餐人擠人的窘境，小孩也能在車上安穩睡著。</li></ul>"
                     }
                 ],
                 tips: "原本計畫的「直接開車」已升級為「福岡塔搭船海陸雙拼」，請務必在當天早上確認 Uminoline (海之中道線) 的船班是否正常行駛！"
@@ -694,32 +742,43 @@
                 day: 6,
                 date: "6/3 (三)",
                 title: "櫛田神社與太宰府柳川南下",
+                weather: "🌤️ 預報 22-26°C",
+                mapLink: "https://www.google.com/maps/dir/博多綠色天神酒店/櫛田神社/太宰府天滿宮/柳川泛舟/KOKO+HOTEL+Premier+熊本",
                 route: "飯店 🚗 (10分) → 櫛田神社 🚗 (30分) → 太宰府 🚗 (50分) → 柳川 🚗 (1H) → 熊本",
                 hotel: "KOKO HOTEL Premier (連泊 1/2)",
+                checklist: ["飯店行李全數上車確認", "確認雨具是否放置車上備用"],
                 sections: [
                     {
                         type: "sight",
+                        time: "08:30 - 09:30",
+                        mapQuery: "櫛田神社",
                         title: "早晨：櫛田神社 (開路先鋒)",
                         content: "早上從天神飯店退房後，順路開車約 10 分鐘前往櫛田神社拍巨大的裝飾大山笠。利用 09:00 前人潮稀少的黃金時段，喝個著名的不老長壽水後，隨後直上高速公路前往太宰府，動線完美零繞路。",
-                        deepTip: "📍 <strong>完美順路：</strong>從天神去太宰府的路上會經過此處，旁邊有平面停車場，非常適合當作一早出發的暖身景點。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美順路：</strong>從天神去太宰府的路上會經過此處，旁邊有平面停車場，非常適合當作一早出發的暖身景點。</li></ul>"
                     },
                     {
                         type: "sight",
+                        time: "10:00 - 11:30",
+                        mapQuery: "太宰府天滿宮",
                         title: "上午：太宰府天滿宮 & 表參道",
                         content: "抵達太宰府後，推著推車漫步表參道，品嚐剛烤好的「梅枝餅」，參觀隈研吾設計的特色星巴克。建議 10:00 前抵達周邊停車場，預計 11:30 離開前往柳川。<div class='mt-3 p-3 bg-cyan-50 border border-cyan-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-cyan-800 flex items-center gap-1'><span class='text-base'>☔</span> 雨天備案切換：</strong>若遇大雨不便戶外散步，可果斷切換至「福岡市科學館」或是提早南下去柳川搭乘有遮雨棚的遊船。</div>",
-                        deepTip: "📍 <strong>避開人潮戰術：</strong>太宰府越晚遊覽車越多。表參道人潮眾多時推推車需較有耐心，可先買好小點心安撫孩子。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>避開人潮戰術：</strong>太宰府越晚遊覽車越多。表參道人潮眾多時推推車需較有耐心，可先買好小點心安撫孩子。</li></ul>"
                     },
                     {
                         type: "play",
+                        time: "12:30 - 15:00",
+                        mapQuery: "柳川泛舟",
                         title: "下午：柳川水鄉遊船 & 蒸籠鰻魚飯",
                         content: "抵達水鄉柳川！搭乘復古的「どんこ舟」穿梭於柳川運河，聽船伕唱傳統歌謠（約 60-70 分鐘）。下船後務必品嚐柳川名物「本吉屋」或「若松屋」的<strong>蒸籠鰻魚飯（せいろ蒸し）</strong>，香氣撲鼻肉質軟嫩，小孩也超愛！",
-                        deepTip: "🚗 <strong>完美避開塞車死線的神走位：</strong>原先擔心下午 4 點的「鳥栖 JCT 大塞車」，但因為我們中午就先往南開到了柳川，等於提前跨越了塞車熱區！下午從柳川去熊本一路順暢，完美解套！"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美避開塞車死線的神走位：</strong>原先擔心下午 4 點的「鳥栖 JCT 大塞車」，但因為我們中午就先往南開到了柳川，等於提前跨越了塞車熱區！下午從柳川去熊本一路順暢，完美解套！</li></ul>"
                     },
                     {
                         type: "food",
+                        time: "16:30 - ",
+                        mapQuery: "KOKO HOTEL Premier 熊本",
                         title: "晚上：入住 KOKO Premier 與燒肉慶功",
                         content: "約 16:30 抵達熊本，入住高級質感商旅 KOKO HOTEL Premier。晚餐可預約平價燒肉吃到飽 (如焼肉きんぐ)，學齡前兒童免費！",
-                        deepTip: "🏢 飯店樓下就是櫻町商場與巴士站，位置無敵，逛街吃飯都超近。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>無敵機能：</strong>飯店樓下就是櫻町商場與巴士站，位置無敵，逛街吃飯都超近。</li></ul>"
                     }
                 ],
                 tips: "這天的動線非常順暢，中午就離開福岡近郊往南，讓原本擔憂的下午大塞車問題迎刃而解。"
@@ -728,32 +787,41 @@
                 day: 7,
                 date: "6/4 (四)",
                 title: "阿蘇大草原 (五大情境決策版)",
+                weather: "🌤️ 預報 21-25°C",
+                mapLink: "https://www.google.com/maps/dir/KOKO+HOTEL+Premier+熊本/阿蘇農場樂園/草千里之濱/勝烈亭+新市街本店",
                 route: "熊本 🚗 (60分) → 依天氣與火口狀態決策 → 熊本",
                 hotel: "KOKO HOTEL Premier (連泊 2/2)",
+                checklist: ["早餐時務必確認天氣預報", "查閱火口即時影像是否起霧", "草千里嚴禁推車下草地"],
                 sections: [
                     {
                         type: "action",
+                        time: "08:00 - 08:30",
                         title: "早上出發前：確認三大指標",
                         content: "阿蘇山區氣候多變，請在飯店吃早餐時務必確認：<strong>1.火口規制狀況 2.天氣預報 3.山上能見度即時影像</strong>。依據結果套用以下戰術，絕不盲目上山！",
-                        deepTip: "📍 核心原則：草千里是主軸，火口是 Bonus。絕不硬闖起霧或下雨的山區。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>核心原則：</strong>草千里是主軸，火口是 Bonus。絕不硬闖起霧或下雨的山區。</li></ul>"
                     },
                     {
                         type: "sight",
+                        time: "09:30 - 15:00",
+                        mapQuery: "草千里之濱",
                         title: "🟢 情境 A & 🟡 情境 B (晴天必走路線)",
                         content: "<strong>【A. 完美晴天＋火口開放】：</strong>元氣之森(放電) ➔ 米塚(車拍) ➔ 草千里(核心) ➔ 中岳火口 ➔ 往南：上色見熊野座神社(探險)或白川水源(裝水) ➔ 回熊本。<br><strong>【B. 晴天但火口關閉】：</strong>元氣之森(放電) ➔ 米塚(車拍) ➔ 草千里 ➔ 火山博物館 ➔ 往北：<strong>大觀峰(補足絕景)</strong> ➔ <strong>阿蘇神社/門前町(吃烤肉串)</strong> ➔ 回熊本。",
-                        deepTip: "⚠️ <strong>最高警戒：絕對不要把推車拿下車！</strong>草千里草地無法推，牽著走或用背巾。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>最高警戒：</strong>絕對不要把推車拿下車！草千里草地無法推，牽著走或用背巾。</li></ul>"
                     },
                     {
                         type: "rain",
-                        title: "🌫️ 情境 C & 🌧️ 情境 D (起霧與下雨撤退戰術)",
+                        time: "雨天彈性",
+                        title: "🌫️ 情境 C & 🌧️ 情境 D (起霧與下雨戰術)",
                         content: "<strong>【C. 陰天起霧】：</strong>山上毫無能見度，絕不上山！改走平地：元氣之森 ➔ ASO MILK FACTORY ➔ 道之驛阿蘇。<br><strong>【D. 下大雨】：</strong>啟動終極撤退機制！放棄山區，直接改去「AEON Mall 熊本」或鳥栖 Outlet，換取雙家庭最高的舒適度與室內放電空間。",
-                        deepTip: "☔ 雨天時阿蘇牛奶牧場(戶外)不適合，ASO MILK FACTORY(室內餐廳/溫室)才是阿蘇在地最佳避雨補位站。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>避雨防雷：</strong>雨天時阿蘇牛奶牧場(戶外)不適合，ASO MILK FACTORY(室內餐廳/溫室)才是阿蘇在地最佳避雨補位站。</li></ul>"
                     },
                     {
                         type: "food",
+                        time: "18:00 - 19:30",
+                        mapQuery: "勝烈亭 新市街本店",
                         title: "晚上：推車夜遊米其林 (大人犒賞)",
                         content: "從阿蘇回到飯店停好車後，若孩子在推車上熟睡，家長可啟動「米其林犒賞機制」！步行前往熊本最強名店吃厚切豬排。<div class='mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-yellow-800 flex items-center gap-1'><span class='text-base'>✨</span> 晚餐完美安插：</strong>KOKO Premier 地點極佳！步行 3~5 分鐘即可達米其林推薦的<strong>「勝烈亭豬排 (新市街本店)」</strong>。</div>",
-                        deepTip: "📍 雖然是排隊名店，但翻桌率算快。若小孩醒著也沒關係，店內會主動提供畫畫紙與蠟筆，讓家長能好好吃頓飯。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>親子友善：</strong>雖然是排隊名店，但翻桌率算快。若小孩醒著也沒關係，店內會主動提供畫畫紙與蠟筆，讓家長能好好吃頓飯。</li></ul>"
                     }
                 ],
                 tips: "阿蘇這天的行程已完全升級為「控制型行程」，請根據當天天氣靈活切換，確保大人小孩都不受罪。"
@@ -762,26 +830,35 @@
                 day: 8,
                 date: "6/5 (五)",
                 title: "熊本城與部長下午茶 (晚班機)",
+                weather: "🌤️ 預報 24-28°C",
+                mapLink: "https://www.google.com/maps/dir/KOKO+HOTEL+Premier+熊本/櫻之馬場+城彩苑/熊本熊廣場/阿蘇熊本機場",
                 route: "熊本 🚗 → 熊本城 🚗 → 熊本熊廣場 🚗 (45分) → 機場還車",
                 hotel: "溫暖的家",
+                checklist: ["行李做最後打包確認", "確認護照證件在隨身包", "記得機場周邊加油站『滿油還車』"],
                 sections: [
                     {
                         type: "sight",
+                        time: "09:30 - 11:30",
+                        mapQuery: "櫻之馬場 城彩苑",
                         title: "上午：熊本城與城彩苑 (2小時精簡版)",
                         content: "早上退房後，將車停在熊本城周邊（如櫻之馬場 城彩苑停車場）。推著推車漫步平緩的「特別見學通路」參觀熊本城天守閣外觀，隨後在城彩苑吃海膽可樂餅等特色小吃。",
-                        deepTip: "📍 <strong>體力防雷：</strong>帶著幼童切勿進行全區深度導覽！嚴守「天守閣外觀＋城彩苑」2 小時精簡打卡原則，保留體力給下午的活動。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>體力防雷：</strong>帶著幼童切勿進行全區深度導覽！嚴守「天守閣外觀＋城彩苑」2 小時精簡打卡原則，保留體力給下午的活動。</li></ul>"
                     },
                     {
                         type: "play",
+                        time: "14:00 - 14:30 展演",
+                        mapQuery: "熊本熊廣場",
                         title: "下午 (14:00)：熊本熊廣場與唱跳秀",
                         content: "吃完午餐後，將陣地轉移至鶴屋百貨一樓的『熊本熊部長辦公室』。<strong class='text-red-500'>請準時參加 14:00 - 14:30 的平日唱跳秀！</strong> 讓孩子們跟著部長一起瘋狂唱跳，作為旅程最完美的高潮。",
-                        deepTip: "🐻 <strong>時間修正提醒：</strong>部長平日早上通常不在家！已精準鎖定 14:00 場次，請務必於出發前確認當日確切在室時間，提早 30 分鐘去卡位。"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>時間修正提醒：</strong>部長平日早上通常不在家！已精準鎖定 14:00 場次，請務必於出發前確認當日確切在室時間，提早 30 分鐘去卡位。</li></ul>"
                     },
                     {
                         type: "action",
+                        time: "17:00 點交還車",
+                        mapQuery: "阿蘇熊本機場",
                         title: "傍晚 (17:00還車)：最後採買與「機場晚餐」",
                         content: "<strong>15:30 發車離開市區</strong>前往機場，保留時間在機場周邊加油站加滿油，<strong>預計 17:00 準時抵達租車公司點交還車。</strong>接著前往國內線 3 樓全新的「Sora-Yoka Area」美食街吃晚餐，吃飽喝足後再去國際線報到。",
-                        deepTip: "✈️ <strong>機場結界防呆警告：</strong>熊本機場國際線過安檢後「沒有熱食餐廳且跨區需重新安檢」！強烈建議在安檢前（國內線航廈/Sora-Yoka區）吃飽喝足、買完伴手禮，再前往國際線候機室！"
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>機場結界防呆警告：</strong>熊本機場國際線過安檢後「沒有熱食餐廳且跨區需重新安檢」！強烈建議在安檢前（國內線航廈/Sora-Yoka區）吃飽喝足、買完伴手禮，再前往國際線候機室！</li></ul>"
                     }
                 ],
                 tips: "晚班機的好處！別人最後一天都在趕飛機，您還可以悠閒地把熊本市區雙亮點補齊，還車時間軸也刀槍不入。"
@@ -834,22 +911,31 @@
                 let deepTipHtml = '';
                 if (sec.deepTip) {
                     deepTipHtml = `
-                        <div class="mt-4 bg-amber-50/80 border border-amber-200 rounded-xl p-3 text-sm text-amber-900 shadow-sm relative overflow-hidden">
+                        <div class="mt-4 bg-amber-50/80 border border-amber-200 rounded-xl p-4 shadow-sm relative overflow-hidden text-gray-900">
                             <div class="absolute -right-3 -top-3 text-5xl opacity-10 pointer-events-none">💡</div>
-                            <strong class="text-amber-700 flex items-center gap-1.5 mb-1.5"><span class="text-base">💡</span> 實戰筆記：</strong>
-                            <div class="leading-relaxed z-10 relative">${sec.deepTip}</div>
+                            <strong class="text-amber-700 flex items-center gap-1.5 mb-2"><span class="text-lg">💡</span> 實戰筆記：</strong>
+                            <div class="leading-relaxed z-10 relative text-sm sm:text-base">${sec.deepTip}</div>
                         </div>
                     `;
                 }
 
+                const navButton = sec.mapQuery ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sec.mapQuery)}" target="_blank" class="shrink-0 bg-blue-50 text-blue-600 border border-blue-200 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-blue-100 hover:scale-105 transition-all shadow-sm"><span>🗺️</span> 導航</a>` : '';
+                const timeBadge = sec.time ? `<span class="bg-gray-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm inline-block shrink-0">${sec.time}</span>` : '';
+
                 sectionsHtml += `
-                    <div class="relative pl-7 pb-6 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
+                    <div class="relative pl-7 pb-8 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
                         <div class="timeline-dot flex items-center justify-center text-[10px] ${iconBg}">${icons[sec.type] || '📌'}</div>
-                        <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} border-2 rounded-2xl p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                            <h4 class="font-black text-gray-800 flex items-center gap-2 mb-2 text-lg">
-                                ${sec.title}
-                            </h4>
-                            <div class="text-sm text-gray-700 leading-relaxed">${sec.content}</div>
+                        <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
+                            
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                ${timeBadge}
+                                <h4 class="font-black text-gray-900 text-lg sm:text-xl flex-1 min-w-[200px] flex items-center gap-2">
+                                    ${sec.title}
+                                </h4>
+                                ${navButton}
+                            </div>
+                            
+                            <div class="text-sm sm:text-base text-gray-900 leading-relaxed font-medium">${sec.content}</div>
                             ${deepTipHtml}
                         </div>
                     </div>
@@ -861,11 +947,28 @@
                 tipsHtml = `
                     <div class="relative pl-7 pt-6 ml-3">
                         <div class="timeline-warning-dot mt-6">⚠️</div>
-                        <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-4 shadow-sm transition-all duration-300 hover:-translate-y-1">
+                        <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 text-gray-900">
                             <h4 class="font-bold text-red-800 text-sm flex items-center gap-2 mb-1">
                                 行程注意事項
                             </h4>
-                            <div class="text-sm text-red-700 leading-relaxed">${data.tips}</div>
+                            <div class="text-sm font-medium text-red-800 leading-relaxed">${data.tips}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            let checklistHtml = '';
+            if (data.checklist && data.checklist.length > 0) {
+                checklistHtml = `
+                    <div class="bg-white/80 backdrop-blur rounded-2xl p-4 mb-6 border-[3px] border-kawaii-light-pink shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-black text-kawaii-pink mb-3 flex items-center gap-2 text-lg"><span>📝</span> 晨間出發防呆清單</h4>
+                        <div class="space-y-3">
+                            ${data.checklist.map((item, idx) => `
+                                <label class="flex items-start sm:items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="w-5 h-5 mt-0.5 sm:mt-0 rounded border-gray-300 text-kawaii-pink focus:ring-kawaii-pink cursor-pointer shrink-0">
+                                    <span class="text-sm sm:text-base font-bold text-gray-700 group-hover:text-black transition-colors leading-tight">${item}</span>
+                                </label>
+                            `).join('')}
                         </div>
                     </div>
                 `;
@@ -873,30 +976,34 @@
 
             container.innerHTML = `
                 <div class="fade-in" id="content-animator">
-                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-5 gap-3">
-                        <div>
-                            <span class="bg-kawaii-yellow text-yellow-800 text-xs font-bold px-3 py-1 rounded-full inline-block shadow-sm">${data.date}</span>
-                            <h2 class="text-2xl md:text-3xl font-black text-gray-800 mt-2 tracking-tight">${data.title}</h2>
+                    <div class="flex flex-col mb-5">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="bg-kawaii-yellow text-yellow-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${data.date}</span>
+                            ${data.weather ? `<span class="bg-white border border-gray-200 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">${data.weather}</span>` : ''}
+                            ${data.mapLink ? `<a href="${data.mapLink}" target="_blank" class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 hover:bg-emerald-100 transition hover:scale-105 active:scale-95"><span>📍</span> 本日路線總覽</a>` : ''}
                         </div>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mt-1 tracking-tight drop-shadow-sm">${data.title}</h2>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-                        <div class="flex items-center gap-3 text-sm text-gray-700 bg-gray-50 p-3.5 rounded-xl border border-gray-200 shadow-sm">
-                            <span class="text-xl">🗺️</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                        <div class="flex items-center gap-3 text-sm text-gray-900 bg-gray-50 p-4 rounded-xl border-2 border-gray-200 shadow-sm">
+                            <span class="text-2xl shrink-0">🗺️</span>
                             <div>
-                                <div class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">今日動線</div>
-                                <div class="font-bold leading-tight">${data.route}</div>
+                                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-0.5">今日動線</div>
+                                <div class="font-bold leading-tight text-base">${data.route}</div>
                             </div>
                         </div>
 
-                        <div class="flex items-center gap-3 text-sm text-kawaii-blue bg-kawaii-light-blue/20 p-3.5 rounded-xl border border-blue-200 shadow-sm">
-                            <span class="text-xl">🏨</span>
+                        <div class="flex items-center gap-3 text-sm text-kawaii-blue bg-kawaii-light-blue/20 p-4 rounded-xl border-2 border-blue-200 shadow-sm">
+                            <span class="text-2xl shrink-0">🏨</span>
                             <div>
-                                <div class="text-[10px] text-blue-400 font-bold uppercase tracking-wider">夜宿點</div>
-                                <div class="font-black leading-tight">${data.hotel}</div>
+                                <div class="text-[10px] text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div>
+                                <div class="font-black text-blue-900 leading-tight text-base">${data.hotel}</div>
                             </div>
                         </div>
                     </div>
+                    
+                    ${checklistHtml}
 
                     <div class="mt-4 pt-2">
                         ${sectionsHtml}
@@ -910,6 +1017,11 @@
             currentDay = day;
             renderTabs();
             renderContent();
+            // 手機版切換天數時，將畫面捲回標題處
+            if(window.innerWidth < 768) {
+                const headerOffset = document.querySelector('header').offsetHeight;
+                window.scrollTo({ top: headerOffset, behavior: 'smooth' });
+            }
         }
 
         function showModal(id) {
@@ -1068,7 +1180,7 @@
                     "大砲拉麵|久留米豚骨拉麵發源地。本店座位寬敞，提供道地濃郁滋味。",
                     "牧之烏龍麵 (Maki no Udon)|特色是麵條會不斷吸湯！桌上有湯壺可以補，平價又飽足的在地選擇。",
                     "伊都菜彩 (熟食便當)|農產品直銷站內的便當、鮮奶霜淇淋與炸雞非常美味，推薦戶外野餐。",
-                    "星野茶村 (八女市)|帶小孩體驗磨茶。附設餐廳的茶蕎麥麵與抹茶霜淇淋品質極佳。"
+                    "星野茶村 (八八女市)|帶小孩體驗磨茶。附設餐廳的茶蕎麥麵與抹茶霜淇淋品質極佳。"
                 ],
                 shop: [
                     "LaLaport 福岡|福岡親子購物第一名！有等身大鋼彈、兒童職業體驗城及超大玩具美術館。",
@@ -1265,7 +1377,7 @@
             textToCopy += `🏨 住宿：${data.hotel}\n\n`;
 
             data.sections.forEach(sec => {
-                textToCopy += `【${sec.title.replace(/<[^>]*>?/gm, '')}】\n`;
+                textToCopy += `【${sec.title.replace(/<[^>]*>?/gm, '')}】${sec.time ? ` (${sec.time})` : ''}\n`;
                 textToCopy += `${sec.content.replace(/<[^>]*>?/gm, '').replace(/<br>/g, '\n')}\n`;
                 if(sec.deepTip) {
                     textToCopy += `💡 筆記：${sec.deepTip.replace(/<[^>]*>?/gm, '').replace(/<br>/g, ' / ')}\n`;
