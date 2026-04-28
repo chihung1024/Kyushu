@@ -177,7 +177,7 @@
     <main class="max-w-4xl mx-auto px-4 mt-6">
 
         <!-- Dashboard / Quick Stats (Compact Version) -->
-        <div class="flex flex-row md:grid md:grid-cols-3 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-0 overflow-x-auto hide-scrollbar scroll-snap-x pb-1">
+        <div class="flex flex-row md:grid md:grid-cols-3 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-1 overflow-x-auto md:overflow-visible hide-scrollbar scroll-snap-x py-2">
             <!-- 訂房備忘錄 -->
             <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-3 text-left shadow-sm border-2 border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('hotelModal')">
                 <div class="text-3xl relative shrink-0">
@@ -213,8 +213,8 @@
         </div>
 
         <!-- Sticky Day Tabs -->
-        <div class="sticky top-0 z-40 bg-kawaii-bg/95 backdrop-blur-md py-3 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all shadow-sm">
-            <div class="flex overflow-x-auto hide-scrollbar space-x-3 md:justify-center" id="tabs-container">
+        <div class="sticky top-0 z-40 bg-kawaii-bg/95 backdrop-blur-md pt-1 pb-2 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all shadow-sm">
+            <div class="flex overflow-x-auto md:overflow-visible hide-scrollbar space-x-3 md:justify-center py-3 px-2" id="tabs-container">
                 <!-- Tabs injected by JS -->
             </div>
         </div>
@@ -415,7 +415,7 @@
                             </div>
                         </div>
 
-                        <!-- 🏖️ 備選: The Luigans -->
+                        <!-- 🏖️ 備選: The Luigans Spa -->
                         <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition flex flex-col justify-between">
                             <div>
                                 <div class="font-bold text-gray-600 text-sm flex flex-wrap items-center gap-1.5 mb-1">The Luigans Spa <span class="bg-blue-400 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">🏖️ 海島備選</span></div>
