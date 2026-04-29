@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>九州親子大冒險 🚗💨 (機票飯店確認版)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts 預先連線 (加速字體載入效能) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -233,10 +238,10 @@
 
     </main>
 
-    <!-- Modals -->
+    <!-- Modals (加上了 modal-overlay class) -->
 
     <!-- 大分 海之卵 展演時刻 Modal -->
-    <div id="umitamagoModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
+    <div id="umitamagoModal" class="modal-overlay fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-2xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="umitamagoModalContent">
             <button onclick="closeModal('umitamagoModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
 
@@ -273,7 +278,7 @@
     </div>
 
     <!-- 福岡 Marine World 展演時刻 Modal -->
-    <div id="marineWorldModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
+    <div id="marineWorldModal" class="modal-overlay fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-4xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto transform transition-transform scale-95" id="marineWorldModalContent">
             <button onclick="closeModal('marineWorldModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
 
@@ -283,7 +288,6 @@
             </div>
 
             <div class="space-y-6">
-
                 <div>
                     <h4 class="font-black text-indigo-800 mb-3 flex items-center gap-1"><span class="text-xl">🌊</span> 必看三大固定主秀</h4>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -320,13 +324,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
     <!-- Hotel Dashboard Modal -->
-    <div id="hotelModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
+    <div id="hotelModal" class="modal-overlay fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-5xl rounded-[2rem] p-6 shadow-2xl relative max-h-[85vh] overflow-y-auto transform transition-transform scale-95" id="hotelModalContent">
             <button onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10">✕</button>
             <h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2"><span>🏨</span> 飯店訂單資訊與抉擇分析</h2>
@@ -460,7 +463,7 @@
     </div>
 
 
-    <div id="budgetModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
+    <div id="budgetModal" class="modal-overlay fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 shadow-2xl relative transform transition-transform scale-95" id="budgetModalContent">
             <button onclick="closeModal('budgetModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-8 h-8 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition">✕</button>
             <h2 class="text-2xl font-black text-kawaii-pink mb-5 flex items-center gap-2"><span>📊</span> 實際預算結算表 <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full ml-auto">極致精準</span></h2>
@@ -522,7 +525,7 @@
         </div>
     </div>
 
-    <div id="backupModal" class="fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
+    <div id="backupModal" class="modal-overlay fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
         <div class="bg-white w-11/12 max-w-[90vw] lg:max-w-4xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] flex flex-col" id="backupModalContent">
             <button onclick="closeModal('backupModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-20 text-lg">✕</button>
 
@@ -566,7 +569,357 @@
 
     <!-- JavaScript Data and Logic -->
     <script>
-        // --- Core Itinerary Data (Enhanced with UX & Functionality) ---
+        // ==========================================
+        // 1. State Variables & Configuration
+        // ==========================================
+        let currentDay = 1;
+        let currentBackupRegion = 'oita';
+        let currentBackupCategory = 'sight';
+
+        const icons = {
+            play: '🎡',
+            food: '🍽️',
+            sight: '📸',
+            drive: '🚗',
+            action: '✅',
+            rain: '☔'
+        };
+
+        const bgColors = {
+            play: 'bg-pink-50 border-pink-200',
+            food: 'bg-yellow-50 border-yellow-200',
+            sight: 'bg-blue-50 border-blue-200',
+            drive: 'bg-slate-50 border-slate-300',
+            action: 'bg-purple-50 border-purple-200',
+            rain: 'bg-cyan-50 border-cyan-200'
+        };
+
+        // ==========================================
+        // 2. Core Logic Functions
+        // ==========================================
+        function renderTabs() {
+            const container = document.getElementById('tabs-container');
+            container.innerHTML = '';
+            itineraryData.forEach((data) => {
+                const isActive = data.day === currentDay;
+                const btn = document.createElement('button');
+                btn.className = `flex-shrink-0 px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${isActive ? 'tab-active' : 'tab-inactive hover:bg-kawaii-light-pink hover:text-white hover:border-kawaii-light-pink'}`;
+                btn.innerHTML = `Day ${data.day}`;
+                btn.onclick = () => selectDay(data.day);
+                container.appendChild(btn);
+            });
+        }
+
+        function renderContent() {
+            const container = document.getElementById('itinerary-content');
+            const data = itineraryData.find(d => d.day === currentDay);
+
+            if(!data) return;
+
+            let sectionsHtml = '';
+            data.sections.forEach(sec => {
+                const iconBg = sec.type === 'rain' ? 'bg-cyan-100 text-cyan-600' : 'bg-white';
+
+                let deepTipHtml = '';
+                if (sec.deepTip) {
+                    deepTipHtml = `
+                        <div class="mt-4 bg-amber-50/80 border border-amber-200 rounded-xl p-4 shadow-sm relative overflow-hidden text-gray-900">
+                            <div class="absolute -right-3 -top-3 text-5xl opacity-10 pointer-events-none">💡</div>
+                            <strong class="text-amber-700 flex items-center gap-1.5 mb-2"><span class="text-lg">💡</span> 實戰筆記：</strong>
+                            <div class="leading-relaxed z-10 relative text-sm sm:text-base">${sec.deepTip}</div>
+                        </div>
+                    `;
+                }
+
+                const navButton = sec.mapQuery ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sec.mapQuery)}" target="_blank" class="shrink-0 bg-blue-50 text-blue-600 border border-blue-200 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-blue-100 hover:scale-105 transition-all shadow-sm"><span>🗺️</span> 導航</a>` : '';
+                const timeBadge = sec.time ? `<span class="bg-gray-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm inline-block shrink-0">${sec.time}</span>` : '';
+
+                sectionsHtml += `
+                    <div class="relative pl-7 pb-8 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
+                        <div class="timeline-dot flex items-center justify-center text-[10px] ${iconBg}">${icons[sec.type] || '📌'}</div>
+                        <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
+                            
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                ${timeBadge}
+                                <h4 class="font-black text-gray-900 text-lg sm:text-xl flex-1 min-w-[200px] flex items-center gap-2">
+                                    ${sec.title}
+                                </h4>
+                                ${navButton}
+                            </div>
+                            
+                            <div class="text-sm sm:text-base text-gray-900 leading-relaxed font-medium">${sec.content}</div>
+                            ${deepTipHtml}
+                        </div>
+                    </div>
+                `;
+            });
+
+            let tipsHtml = '';
+            if (data.tips) {
+                tipsHtml = `
+                    <div class="relative pl-7 pt-6 ml-3">
+                        <div class="timeline-warning-dot mt-6">⚠️</div>
+                        <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 text-gray-900">
+                            <h4 class="font-bold text-red-800 text-sm flex items-center gap-2 mb-1">
+                                行程注意事項
+                            </h4>
+                            <div class="text-sm font-medium text-red-800 leading-relaxed">${data.tips}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            let checklistHtml = '';
+            if (data.checklist && data.checklist.length > 0) {
+                checklistHtml = `
+                    <div class="bg-white/80 backdrop-blur rounded-2xl p-4 mb-6 border-[3px] border-kawaii-light-pink shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-black text-kawaii-pink mb-3 flex items-center gap-2 text-lg"><span>📝</span> 晨間出發防呆清單</h4>
+                        <div class="space-y-3">
+                            ${data.checklist.map((item, idx) => `
+                                <label class="flex items-start sm:items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" class="w-5 h-5 mt-0.5 sm:mt-0 rounded border-gray-300 text-kawaii-pink focus:ring-kawaii-pink cursor-pointer shrink-0">
+                                    <span class="text-sm sm:text-base font-bold text-gray-700 group-hover:text-black transition-colors leading-tight">${item}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            container.innerHTML = `
+                <div class="fade-in" id="content-animator">
+                    <div class="flex flex-col mb-5">
+                        <div class="flex flex-wrap gap-2 mb-3">
+                            <span class="bg-kawaii-yellow text-yellow-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${data.date}</span>
+                            ${data.weather ? `<span class="bg-white border border-gray-200 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">${data.weather}</span>` : ''}
+                            ${data.mapLink ? `<a href="${data.mapLink}" target="_blank" class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 hover:bg-emerald-100 transition hover:scale-105 active:scale-95"><span>📍</span> 本日路線總覽</a>` : ''}
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mt-1 tracking-tight drop-shadow-sm">${data.title}</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                        <div class="flex items-center gap-3 text-sm text-gray-900 bg-gray-50 p-4 rounded-xl border-2 border-gray-200 shadow-sm">
+                            <span class="text-2xl shrink-0">🗺️</span>
+                            <div>
+                                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-0.5">今日動線</div>
+                                <div class="font-bold leading-tight text-base">${data.route}</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-3 text-sm text-kawaii-blue bg-kawaii-light-blue/20 p-4 rounded-xl border-2 border-blue-200 shadow-sm">
+                            <span class="text-2xl shrink-0">🏨</span>
+                            <div>
+                                <div class="text-[10px] text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div>
+                                <div class="font-black text-blue-900 leading-tight text-base">${data.hotel}</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ${checklistHtml}
+
+                    <div class="mt-4 pt-2">
+                        ${sectionsHtml}
+                        ${tipsHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectDay(day) {
+            currentDay = day;
+            renderTabs();
+            renderContent();
+            if(window.innerWidth < 768) {
+                const contentTop = document.getElementById('itinerary-content').offsetTop;
+                window.scrollTo({ top: contentTop - 80, behavior: 'smooth' });
+            }
+        }
+
+        function showModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return; 
+            const content = document.getElementById(id + 'Content');
+            modal.classList.remove('hidden');
+            void modal.offsetWidth; 
+            modal.classList.remove('opacity-0');
+            modal.classList.add('opacity-100');
+            if(content) {
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return; 
+            const content = document.getElementById(id + 'Content');
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0');
+            if(content) {
+                content.classList.remove('scale-100');
+                content.classList.add('scale-95');
+            }
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function initBackupModal() {
+            setBackupRegion('oita');
+        }
+
+        function setBackupRegion(region) {
+            currentBackupRegion = region;
+            ['oita', 'fukuoka', 'kumamoto'].forEach(r => {
+                const btn = document.getElementById(`btn-region-${r}`);
+                if (r === region) {
+                    btn.classList.remove('region-btn-inactive', 'border-transparent');
+                    btn.classList.add('region-btn-active');
+                } else {
+                    btn.classList.remove('region-btn-active');
+                    btn.classList.add('region-btn-inactive', 'border-transparent');
+                }
+            });
+            renderBackupList();
+        }
+
+        function setBackupCategory(category) {
+            currentBackupCategory = category;
+            ['sight', 'food', 'shop'].forEach(c => {
+                const btn = document.getElementById(`btn-cat-${c}`);
+                if (c === category) {
+                    btn.classList.remove('category-btn-inactive');
+                    btn.classList.add('category-btn-active', 'text-cyan-600');
+                } else {
+                    btn.classList.remove('category-btn-active', 'text-cyan-600');
+                    btn.classList.add('category-btn-inactive');
+                }
+            });
+            renderBackupList();
+        }
+
+        function renderBackupList() {
+            const container = document.getElementById('backup-list-container');
+            const dataList = backupDB[currentBackupRegion][currentBackupCategory];
+            
+            const styles = {
+                sight: { bg: 'bg-blue-50/30', border: 'border-blue-100', title: 'text-blue-800' },
+                food:  { bg: 'bg-orange-50/30', border: 'border-orange-100', title: 'text-orange-800' },
+                shop:  { bg: 'bg-purple-50/30', border: 'border-purple-100', title: 'text-purple-800' }
+            };
+            const s = styles[currentBackupCategory];
+
+            let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 animate-[fadeIn_0.3s_ease-out]">`;
+            
+            dataList.forEach((item, index) => {
+                const [title, desc] = item.split('|');
+                const isStarred = title.includes('⭐');
+                const cleanTitle = title.replace('⭐', '').trim();
+                const cardHighlightClass = isStarred ? 'border-yellow-400 bg-yellow-50/50 shadow-md ring-2 ring-yellow-400/50' : s.border;
+                const starIcon = isStarred ? '<span class="text-yellow-500 mr-1 animate-pulse">⭐</span>' : '';
+                
+                let badgeClass = 'rank-other';
+                if (index === 0) badgeClass = 'rank-1';
+                else if (index === 1) badgeClass = 'rank-2';
+                else if (index === 2) badgeClass = 'rank-3';
+
+                html += `
+                    <div class="bg-white p-4 rounded-xl border ${cardHighlightClass} shadow-sm hover:shadow-md transition-all flex items-start gap-3">
+                        <span class="rank-badge ${badgeClass} text-[10px] w-6 h-6 flex-shrink-0">${index + 1}</span>
+                        <div>
+                            <h5 class="font-bold text-gray-800 text-sm leading-tight">${starIcon}${cleanTitle}</h5>
+                            <p class="text-[11px] md:text-xs text-gray-600 mt-1.5 leading-relaxed">${desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            html += `</div>`;
+            container.innerHTML = html;
+        }
+
+        async function copyDailyItinerary() {
+            const data = itineraryData.find(d => d.day === currentDay);
+            if(!data) return;
+
+            let textToCopy = `🚗 九州大冒險 - Day ${data.day} (${data.date})\n`;
+            textToCopy += `📌 主題：${data.title}\n`;
+            textToCopy += `🗺️ 動線：${data.route.replace(/<[^>]*>?/gm, '')}\n`;
+            textToCopy += `🏨 住宿：${data.hotel}\n\n`;
+
+            data.sections.forEach(sec => {
+                textToCopy += `【${sec.title.replace(/<[^>]*>?/gm, '')}】${sec.time ? ` (${sec.time})` : ''}\n`;
+                textToCopy += `${sec.content.replace(/<[^>]*>?/gm, '').replace(/<br>/g, '\n')}\n`;
+                if(sec.deepTip) {
+                    textToCopy += `💡 筆記：${sec.deepTip.replace(/<[^>]*>?/gm, '').replace(/<br>/g, ' / ')}\n`;
+                }
+                textToCopy += `\n`;
+            });
+
+            if(data.tips) {
+                textToCopy += `⚠️ 注意事項：${data.tips}\n\n`;
+            }
+
+            // 混合雙打：優先使用現代 Clipboard API，被 iFrame 阻擋時無縫降級
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(textToCopy);
+                    alert(`✅ Day ${data.day} 行程與實戰攻略已複製！`);
+                } else {
+                    throw new Error('Clipboard API restricted or not available');
+                }
+            } catch (err) {
+                console.warn('Clipboard API failed, executing graceful degradation...', err);
+                const textArea = document.createElement("textarea");
+                textArea.value = textToCopy;
+                textArea.style.position = "fixed"; 
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    alert(`✅ Day ${data.day} 行程與實戰攻略已複製！`);
+                } catch (fallbackErr) {
+                    console.error('Fallback copy failed', fallbackErr);
+                    alert('❌ 複製失敗，請手動選取複製。');
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // ==========================================
+        // 3. Event Listeners
+        // ==========================================
+        window.onclick = function(event) {
+            // 安全解耦：改用特定的 modal-overlay class 判斷
+            if (event.target.classList.contains('modal-overlay')) {
+                const modals = ['budgetModal', 'backupModal', 'hotelModal', 'umitamagoModal', 'marineWorldModal'];
+                modals.forEach(id => {
+                    const el = document.getElementById(id);
+                    if(el && !el.classList.contains('hidden')) {
+                        closeModal(id);
+                    }
+                });
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            // 無障礙體驗：按下 Escape 鍵關閉所有開啟的 Modal
+            if (event.key === 'Escape') {
+                const modals = ['budgetModal', 'backupModal', 'hotelModal', 'umitamagoModal', 'marineWorldModal'];
+                modals.forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el && !el.classList.contains('hidden')) {
+                        closeModal(id);
+                    }
+                });
+            }
+        });
+
+        // ==========================================
+        // 4. Data (Massive Objects)
+        // ==========================================
         const itineraryData = [
             {
                 day: 1,
@@ -871,195 +1224,6 @@
             }
         ];
 
-        let currentDay = 1;
-
-        const icons = {
-            play: '🎡',
-            food: '🍽️',
-            sight: '📸',
-            drive: '🚗',
-            action: '✅',
-            rain: '☔'
-        };
-
-        const bgColors = {
-            play: 'bg-pink-50 border-pink-200',
-            food: 'bg-yellow-50 border-yellow-200',
-            sight: 'bg-blue-50 border-blue-200',
-            drive: 'bg-slate-50 border-slate-300',
-            action: 'bg-purple-50 border-purple-200',
-            rain: 'bg-cyan-50 border-cyan-200'
-        };
-
-        function renderTabs() {
-            const container = document.getElementById('tabs-container');
-            container.innerHTML = '';
-            itineraryData.forEach((data) => {
-                const isActive = data.day === currentDay;
-                const btn = document.createElement('button');
-                btn.className = `flex-shrink-0 px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${isActive ? 'tab-active' : 'tab-inactive hover:bg-kawaii-light-pink hover:text-white hover:border-kawaii-light-pink'}`;
-                btn.innerHTML = `Day ${data.day}`;
-                btn.onclick = () => selectDay(data.day);
-                container.appendChild(btn);
-            });
-        }
-
-        function renderContent() {
-            const container = document.getElementById('itinerary-content');
-            const data = itineraryData.find(d => d.day === currentDay);
-
-            if(!data) return;
-
-            let sectionsHtml = '';
-            data.sections.forEach(sec => {
-                const iconBg = sec.type === 'rain' ? 'bg-cyan-100 text-cyan-600' : 'bg-white';
-
-                let deepTipHtml = '';
-                if (sec.deepTip) {
-                    deepTipHtml = `
-                        <div class="mt-4 bg-amber-50/80 border border-amber-200 rounded-xl p-4 shadow-sm relative overflow-hidden text-gray-900">
-                            <div class="absolute -right-3 -top-3 text-5xl opacity-10 pointer-events-none">💡</div>
-                            <strong class="text-amber-700 flex items-center gap-1.5 mb-2"><span class="text-lg">💡</span> 實戰筆記：</strong>
-                            <div class="leading-relaxed z-10 relative text-sm sm:text-base">${sec.deepTip}</div>
-                        </div>
-                    `;
-                }
-
-                const navButton = sec.mapQuery ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sec.mapQuery)}" target="_blank" class="shrink-0 bg-blue-50 text-blue-600 border border-blue-200 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-blue-100 hover:scale-105 transition-all shadow-sm"><span>🗺️</span> 導航</a>` : '';
-                const timeBadge = sec.time ? `<span class="bg-gray-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm inline-block shrink-0">${sec.time}</span>` : '';
-
-                sectionsHtml += `
-                    <div class="relative pl-7 pb-8 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
-                        <div class="timeline-dot flex items-center justify-center text-[10px] ${iconBg}">${icons[sec.type] || '📌'}</div>
-                        <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
-                            
-                            <div class="flex flex-wrap items-center gap-2 mb-3">
-                                ${timeBadge}
-                                <h4 class="font-black text-gray-900 text-lg sm:text-xl flex-1 min-w-[200px] flex items-center gap-2">
-                                    ${sec.title}
-                                </h4>
-                                ${navButton}
-                            </div>
-                            
-                            <div class="text-sm sm:text-base text-gray-900 leading-relaxed font-medium">${sec.content}</div>
-                            ${deepTipHtml}
-                        </div>
-                    </div>
-                `;
-            });
-
-            let tipsHtml = '';
-            if (data.tips) {
-                tipsHtml = `
-                    <div class="relative pl-7 pt-6 ml-3">
-                        <div class="timeline-warning-dot mt-6">⚠️</div>
-                        <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-4 shadow-sm transition-all duration-300 hover:-translate-y-1 text-gray-900">
-                            <h4 class="font-bold text-red-800 text-sm flex items-center gap-2 mb-1">
-                                行程注意事項
-                            </h4>
-                            <div class="text-sm font-medium text-red-800 leading-relaxed">${data.tips}</div>
-                        </div>
-                    </div>
-                `;
-            }
-
-            let checklistHtml = '';
-            if (data.checklist && data.checklist.length > 0) {
-                checklistHtml = `
-                    <div class="bg-white/80 backdrop-blur rounded-2xl p-4 mb-6 border-[3px] border-kawaii-light-pink shadow-sm hover:shadow-md transition-shadow">
-                        <h4 class="font-black text-kawaii-pink mb-3 flex items-center gap-2 text-lg"><span>📝</span> 晨間出發防呆清單</h4>
-                        <div class="space-y-3">
-                            ${data.checklist.map((item, idx) => `
-                                <label class="flex items-start sm:items-center gap-3 cursor-pointer group">
-                                    <input type="checkbox" class="w-5 h-5 mt-0.5 sm:mt-0 rounded border-gray-300 text-kawaii-pink focus:ring-kawaii-pink cursor-pointer shrink-0">
-                                    <span class="text-sm sm:text-base font-bold text-gray-700 group-hover:text-black transition-colors leading-tight">${item}</span>
-                                </label>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-
-            container.innerHTML = `
-                <div class="fade-in" id="content-animator">
-                    <div class="flex flex-col mb-5">
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="bg-kawaii-yellow text-yellow-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${data.date}</span>
-                            ${data.weather ? `<span class="bg-white border border-gray-200 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">${data.weather}</span>` : ''}
-                            ${data.mapLink ? `<a href="${data.mapLink}" target="_blank" class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 hover:bg-emerald-100 transition hover:scale-105 active:scale-95"><span>📍</span> 本日路線總覽</a>` : ''}
-                        </div>
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mt-1 tracking-tight drop-shadow-sm">${data.title}</h2>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                        <div class="flex items-center gap-3 text-sm text-gray-900 bg-gray-50 p-4 rounded-xl border-2 border-gray-200 shadow-sm">
-                            <span class="text-2xl shrink-0">🗺️</span>
-                            <div>
-                                <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-0.5">今日動線</div>
-                                <div class="font-bold leading-tight text-base">${data.route}</div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-3 text-sm text-kawaii-blue bg-kawaii-light-blue/20 p-4 rounded-xl border-2 border-blue-200 shadow-sm">
-                            <span class="text-2xl shrink-0">🏨</span>
-                            <div>
-                                <div class="text-[10px] text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div>
-                                <div class="font-black text-blue-900 leading-tight text-base">${data.hotel}</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    ${checklistHtml}
-
-                    <div class="mt-4 pt-2">
-                        ${sectionsHtml}
-                        ${tipsHtml}
-                    </div>
-                </div>
-            `;
-        }
-
-        function selectDay(day) {
-            currentDay = day;
-            renderTabs();
-            renderContent();
-            // 手機版切換天數時，將畫面捲回行程內容處
-            if(window.innerWidth < 768) {
-                const contentTop = document.getElementById('itinerary-content').offsetTop;
-                window.scrollTo({ top: contentTop - 80, behavior: 'smooth' });
-            }
-        }
-
-        function showModal(id) {
-            const modal = document.getElementById(id);
-            if (!modal) return; // 防呆機制
-            const content = document.getElementById(id + 'Content');
-            modal.classList.remove('hidden');
-            void modal.offsetWidth; // Trigger reflow
-            modal.classList.remove('opacity-0');
-            modal.classList.add('opacity-100');
-            if(content) {
-                content.classList.remove('scale-95');
-                content.classList.add('scale-100');
-            }
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            if (!modal) return; // 防呆機制
-            const content = document.getElementById(id + 'Content');
-            modal.classList.remove('opacity-100');
-            modal.classList.add('opacity-0');
-            if(content) {
-                content.classList.remove('scale-100');
-                content.classList.add('scale-95');
-            }
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        // --- 180 Backup Arsenal Database ---
         const backupDB = {
             oita: {
                 sight: [
@@ -1152,7 +1316,7 @@
                     "LaLaport 福岡 (巨大鋼彈)|1:1真實比例鋼彈超震撼！頂樓有戶外免費跑道與兒童遊戲區，吃喝玩樂一站滿足。",
                     "麵包超人兒童博物館|3歲幼童的絕對領域。100%全室內冷氣房，室內沙坑與劇場秀完美救援雨天或酷暑。",
                     "福岡市動植物園|位於市區，停車場完善，新裝修的玻璃屋式動物觀察窗非常適合小孩。",
-                    "福岡市科學館|高水準的科學互動設施，對6.5歲大寶極具啟發性。門票便宜且全室內，激推的備案。",
+                    "福岡市科學館|高水準的科學互動設施，對6.5歲大寶極具啟發性。門票便宜且全室內，激激的備案。",
                     "Boss E・ZO FUKUOKA|PayPay巨蛋旁的娛樂城。內有絕美的 teamLab Forest 光影森林，好玩又好拍。",
                     "Mark Is 福岡百道 (ASOBLE)|商場二樓隱藏著超巨大的免費室內攀爬網樂園 (ASOBLE)，父母可輪流逛街顧小孩。",
                     "KidZania Fukuoka (LaLaport內)|超人氣兒童職業體驗城！讓孩子穿上制服體驗警察、空服員等職業，大寶會愛死。",
@@ -1297,143 +1461,11 @@
             }
         };
 
-        let currentBackupRegion = 'oita';
-        let currentBackupCategory = 'sight';
-
-        function initBackupModal() {
-            setBackupRegion('oita');
-        }
-
-        function setBackupRegion(region) {
-            currentBackupRegion = region;
-            
-            // Update Region Buttons styling
-            ['oita', 'fukuoka', 'kumamoto'].forEach(r => {
-                const btn = document.getElementById(`btn-region-${r}`);
-                if (r === region) {
-                    btn.classList.remove('region-btn-inactive', 'border-transparent');
-                    btn.classList.add('region-btn-active');
-                } else {
-                    btn.classList.remove('region-btn-active');
-                    btn.classList.add('region-btn-inactive', 'border-transparent');
-                }
-            });
-
-            renderBackupList();
-        }
-
-        function setBackupCategory(category) {
-            currentBackupCategory = category;
-
-            // Update Category Buttons styling
-            ['sight', 'food', 'shop'].forEach(c => {
-                const btn = document.getElementById(`btn-cat-${c}`);
-                if (c === category) {
-                    btn.classList.remove('category-btn-inactive');
-                    btn.classList.add('category-btn-active', 'text-cyan-600');
-                } else {
-                    btn.classList.remove('category-btn-active', 'text-cyan-600');
-                    btn.classList.add('category-btn-inactive');
-                }
-            });
-
-            renderBackupList();
-        }
-
-        function renderBackupList() {
-            const container = document.getElementById('backup-list-container');
-            const dataList = backupDB[currentBackupRegion][currentBackupCategory];
-            
-            // Icons styling mapping
-            const styles = {
-                sight: { bg: 'bg-blue-50/30', border: 'border-blue-100', title: 'text-blue-800' },
-                food:  { bg: 'bg-orange-50/30', border: 'border-orange-100', title: 'text-orange-800' },
-                shop:  { bg: 'bg-purple-50/30', border: 'border-purple-100', title: 'text-purple-800' }
-            };
-            const s = styles[currentBackupCategory];
-
-            let html = `<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-2 animate-[fadeIn_0.3s_ease-out]">`;
-            
-            dataList.forEach((item, index) => {
-                const [title, desc] = item.split('|');
-                
-                // Highlight Starred items
-                const isStarred = title.includes('⭐');
-                const cleanTitle = title.replace('⭐', '').trim();
-                const cardHighlightClass = isStarred ? 'border-yellow-400 bg-yellow-50/50 shadow-md ring-2 ring-yellow-400/50' : s.border;
-                const starIcon = isStarred ? '<span class="text-yellow-500 mr-1 animate-pulse">⭐</span>' : '';
-                
-                // Keep the top 3 logic for visual hierarchy if needed, but styling takes precedence
-                let badgeClass = 'rank-other';
-                if (index === 0) badgeClass = 'rank-1';
-                else if (index === 1) badgeClass = 'rank-2';
-                else if (index === 2) badgeClass = 'rank-3';
-
-                html += `
-                    <div class="bg-white p-4 rounded-xl border ${cardHighlightClass} shadow-sm hover:shadow-md transition-all flex items-start gap-3">
-                        <span class="rank-badge ${badgeClass} text-[10px] w-6 h-6 flex-shrink-0">${index + 1}</span>
-                        <div>
-                            <h5 class="font-bold text-gray-800 text-sm leading-tight">${starIcon}${cleanTitle}</h5>
-                            <p class="text-[11px] md:text-xs text-gray-600 mt-1.5 leading-relaxed">${desc}</p>
-                        </div>
-                    </div>
-                `;
-            });
-            html += `</div>`;
-            container.innerHTML = html;
-        }
-
-        function copyDailyItinerary() {
-            const data = itineraryData.find(d => d.day === currentDay);
-            if(!data) return;
-
-            let textToCopy = `🚗 九州大冒險 - Day ${data.day} (${data.date})\n`;
-            textToCopy += `📌 主題：${data.title}\n`;
-            textToCopy += `🗺️ 動線：${data.route.replace(/<[^>]*>?/gm, '')}\n`;
-            textToCopy += `🏨 住宿：${data.hotel}\n\n`;
-
-            data.sections.forEach(sec => {
-                textToCopy += `【${sec.title.replace(/<[^>]*>?/gm, '')}】${sec.time ? ` (${sec.time})` : ''}\n`;
-                textToCopy += `${sec.content.replace(/<[^>]*>?/gm, '').replace(/<br>/g, '\n')}\n`;
-                if(sec.deepTip) {
-                    textToCopy += `💡 筆記：${sec.deepTip.replace(/<[^>]*>?/gm, '').replace(/<br>/g, ' / ')}\n`;
-                }
-                textToCopy += `\n`;
-            });
-
-            if(data.tips) {
-                textToCopy += `⚠️ 注意事項：${data.tips}\n\n`;
-            }
-
-            const textArea = document.createElement("textarea");
-            textArea.value = textToCopy;
-            document.body.appendChild(textArea);
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                alert(`✅ Day ${data.day} 行程與實戰攻略已複製！`);
-            } catch (err) {
-                alert('❌ 複製失敗，請手動選取複製。');
-            }
-            document.body.removeChild(textArea);
-        }
-
-        // --- Event Listeners and Init ---
+        // ==========================================
+        // 5. Initialization (Must run after data is declared)
+        // ==========================================
         renderTabs();
         renderContent();
-
-
-        window.onclick = function(event) {
-            if (event.target.classList.contains('bg-gray-900/60')) {
-                const modals = ['budgetModal', 'backupModal', 'hotelModal', 'bikeModal', 'umitamagoModal', 'marineWorldModal'];
-                modals.forEach(id => {
-                    const el = document.getElementById(id);
-                    if(el && !el.classList.contains('hidden')) {
-                        closeModal(id);
-                    }
-                });
-            }
-        }
     </script>
 </body>
 </html>
