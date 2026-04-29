@@ -288,6 +288,7 @@
             </div>
 
             <div class="space-y-6">
+
                 <div>
                     <h4 class="font-black text-indigo-800 mb-3 flex items-center gap-1"><span class="text-xl">🌊</span> 必看三大固定主秀</h4>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -324,6 +325,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -535,7 +537,7 @@
                     <span class="text-3xl">🗺️</span> 九州 180 選 彈藥庫
                 </h2>
                 <p class="text-xs md:text-sm text-gray-500 mt-2 font-bold ml-10">
-                    地圖精選景點已標示 <span class="text-yellow-500">⭐</span> 並置頂！隨時抽出神級備案。
+                    標題均可直接點擊導航，並已將 <span class="text-yellow-500">⭐</span> 神級備案置頂！
                 </p>
                 
                 <!-- Region Tabs -->
@@ -631,7 +633,11 @@
                     `;
                 }
 
-                const navButton = sec.mapQuery ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sec.mapQuery)}" target="_blank" class="shrink-0 bg-blue-50 text-blue-600 border border-blue-200 text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 hover:bg-blue-100 hover:scale-105 transition-all shadow-sm"><span>🗺️</span> 導航</a>` : '';
+                // 移除顯眼的導航按鈕，將標題本身改為帶有低調底線的導航超連結
+                const titleHtml = sec.mapQuery 
+                    ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sec.mapQuery)}" target="_blank" class="text-gray-900 hover:text-blue-600 underline decoration-gray-300 underline-offset-4 transition-colors cursor-pointer">${sec.title}</a>`
+                    : `<span class="text-gray-900">${sec.title}</span>`;
+                
                 const timeBadge = sec.time ? `<span class="bg-gray-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm inline-block shrink-0">${sec.time}</span>` : '';
 
                 sectionsHtml += `
@@ -641,10 +647,9 @@
                             
                             <div class="flex flex-wrap items-center gap-2 mb-3">
                                 ${timeBadge}
-                                <h4 class="font-black text-gray-900 text-lg sm:text-xl flex-1 min-w-[200px] flex items-center gap-2">
-                                    ${sec.title}
+                                <h4 class="font-black text-lg sm:text-xl flex-1 min-w-[200px] flex items-center gap-2">
+                                    ${titleHtml}
                                 </h4>
-                                ${navButton}
                             </div>
                             
                             <div class="text-sm sm:text-base text-gray-900 leading-relaxed font-medium">${sec.content}</div>
@@ -823,11 +828,18 @@
                 else if (index === 1) badgeClass = 'rank-2';
                 else if (index === 2) badgeClass = 'rank-3';
 
+                // 產生 Google Maps 搜尋連結
+                const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanTitle)}`;
+
                 html += `
                     <div class="bg-white p-4 rounded-xl border ${cardHighlightClass} shadow-sm hover:shadow-md transition-all flex items-start gap-3">
                         <span class="rank-badge ${badgeClass} text-[10px] w-6 h-6 flex-shrink-0">${index + 1}</span>
                         <div>
-                            <h5 class="font-bold text-gray-800 text-sm leading-tight">${starIcon}${cleanTitle}</h5>
+                            <h5 class="font-bold text-sm leading-tight">
+                                ${starIcon}
+                                <!-- 將標題變成低調的導航超連結 -->
+                                <a href="${mapUrl}" target="_blank" class="text-gray-800 hover:text-cyan-600 underline decoration-gray-400/50 underline-offset-2 transition-colors cursor-pointer">${cleanTitle}</a>
+                            </h5>
                             <p class="text-[11px] md:text-xs text-gray-600 mt-1.5 leading-relaxed">${desc}</p>
                         </div>
                     </div>
@@ -951,15 +963,15 @@
                         type: "drive",
                         time: "15:00 - 17:00",
                         title: "東進大分 (山谷絕景兜風)",
-                        content: "繼續沿著國道 57 號與九州橫斷道路前進，此段為九州自駕最經典的絕景路線。若孩子中途醒來，可於最高點的「瀨之本 Rest House」再次短暫下車吹風。",
-                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>彈性順遊備註：</strong>若抵達別府時若有空檔，可把『海地獄』與『灶地獄』當作 Bonus 順遊，一切以不增加疲勞為原則。</li></ul>"
+                        content: "繼續沿著國道 57 號與九州橫斷道路前進，此段為九州自駕最經典的絕景路線。若孩子中途醒來，可於最高點的「<a href='https://www.google.com/maps/search/?api=1&query=瀨之本+Rest+House' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>瀨之本 Rest House</a>」再次短暫下車吹風。",
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>彈性順遊備註：</strong>若抵達別府時若有空檔，可把『<a href='https://www.google.com/maps/search/?api=1&query=海地獄' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>海地獄</a>』與『<a href='https://www.google.com/maps/search/?api=1&query=灶地獄' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>灶地獄</a>』當作 Bonus 順遊，一切以不增加疲勞為原則。</li></ul>"
                     },
                     {
                         type: "action",
                         time: "17:30 - 18:30",
                         mapQuery: "B-Con Plaza",
                         title: "傍晚：Global Tower 迎賓夜景",
-                        content: "抵達別府後，先順路前往「B-Con Plaza」內的 Global Tower！推車可搭電梯直達 100 公尺高的全玻璃觀景台，全家人輕鬆俯瞰別府溫泉鄉「四處冒白煙」的奇特夜景。結束後直接前往龜之井酒店 Check-in 與吃晚餐。",
+                        content: "抵達別府後，先順路前往「B-Con Plaza」內的 Global Tower！推車可搭電梯直達 100 公尺高的全玻璃觀景台，全家人輕鬆俯瞰別府溫泉鄉「四處冒白煙」的奇特夜景。結束後直接前往<a href='https://www.google.com/maps/search/?api=1&query=龜之井酒店+別府' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>龜之井酒店</a> Check-in 與吃晚餐。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>景點備註：</strong>Global Tower 距離龜之井酒店開車只要 5 分鐘！若 Day 1 真的太累，也可移到 Day 3 水族館回程時順遊。</li></ul>"
                     }
                 ],
@@ -980,7 +992,7 @@
                         time: "10:00 - 16:30",
                         mapQuery: "Harmonyland",
                         title: "大重點：Harmonyland (週六場)",
-                        content: "安排在週末是因為樂園消化人潮能力強。<strong class='text-red-500'>購票秘訣：若行程中有路過 AEON 超市，強烈建議在裡面的三麗鷗商店 (Sanrio Gift Gate) 順手買好實體前售票</strong>，當天直接拿實體票入園，完美跳過排隊人龍！(或使用 Asoview 預購)。<br>午餐：<strong>強制超商/超市野餐！</strong>不吃園區餐廳，省錢還能避免排隊崩潰。",
+                        content: "安排在週末是因為樂園消化人潮能力強。<strong class='text-red-500'>購票秘訣：若行程中有路過 AEON 超市，強烈建議在裡面的<a href='https://www.google.com/maps/search/?api=1&query=Sanrio+Gift+Gate' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>三麗鷗商店 (Sanrio Gift Gate)</a> 順手買好實體前售票</strong>，當天直接拿實體票入園，完美跳過排隊人龍！(或使用 Asoview 預購)。<br>午餐：<strong>強制超商/超市野餐！</strong>不吃園區餐廳，省錢還能避免排隊崩潰。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>展演時刻提醒：</strong>出發前 1-2 週請務必上官網確認最新的 Live Show 與遊行時刻表，以利安排提早 20 分鐘佔位。</li></ul>"
                     },
                     {
@@ -988,7 +1000,7 @@
                         time: "17:00 - 20:00",
                         mapQuery: "Youme Town 別府",
                         title: "傍晚：Youme Town 終極收尾",
-                        content: "從樂園離開後直奔<strong>【Youme Town 別府】</strong>！這裡有超巨大免費停車場，美食街能無壓力解決雙家庭晚餐（各自點餐不怕吵）。吃飽後直接去樓下超市把明天的果汁、水族館野餐零食一次買齊！<div class='mt-3 p-3 bg-orange-50 border border-orange-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-orange-800 flex items-center gap-1'><span class='text-base'>🔄</span> 彈性輔助備案：</strong>若大人太累，可直接開回飯店散步去吃天丼(とよ常)；若小孩吵著吃扭蛋壽司，則改去國道旁的壽司郎＋Mega Trial 超市。</div>",
+                        content: "從樂園離開後直奔<strong>【Youme Town 別府】</strong>！這裡有超巨大免費停車場，美食街能無壓力解決雙家庭晚餐（各自點餐不怕吵）。吃飽後直接去樓下超市把明天的果汁、水族館野餐零食一次買齊！<div class='mt-3 p-3 bg-orange-50 border border-orange-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-orange-800 flex items-center gap-1'><span class='text-base'>🔄</span> 彈性輔助備案：</strong>若大人太累，可直接開回飯店散步去吃天丼(<a href='https://www.google.com/maps/search/?api=1&query=とよ常+別府' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>とよ常</a>)；若小孩吵著吃扭蛋壽司，則改去國道旁的<a href='https://www.google.com/maps/search/?api=1&query=壽司郎+別府' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>壽司郎</a>＋<a href='https://www.google.com/maps/search/?api=1&query=Mega+Trial+別府' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Mega Trial 超市</a>。</div>",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>體力防雷：</strong>樂園後大家體力見底，能「一站式」解決停車、晚餐與採買是保護父母理智線的最高指導原則。</li></ul>"
                     }
                 ],
@@ -1009,7 +1021,7 @@
                         time: "09:30 - 12:00",
                         mapQuery: "Yufuin Floral Village",
                         title: "上午：由布院「逆向操作」突擊",
-                        content: "執行逆向操作！08:30大分發車，09:30空空降【Floral Village童話村】停車場！趁遊覽車還沒來，先買飼料餵小羊(備妥100円)、看貓頭鷹。接著「逆著人流」往車站方向散步吃起司塔與可樂餅。",
+                        content: "執行逆向操作！08:30大分發車，09:30空空降【Floral Village童話村】停車場！趁遊覽車還沒來，先買飼料餵小羊(備妥100円)、看貓頭鷹。接著「逆著人流」往<a href='https://www.google.com/maps/search/?api=1&query=由布院車站' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>車站方向</a>散步吃起司塔與可樂餅。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>推車地獄破解法：</strong>週日10:30後的由布院非常可怕。我們直接停在尾端反向逛，12:00 直接開車撤退，完美避開下午的人潮與推車大軍！這招能讓這天的疲勞度大幅下降。</li></ul>"
                     },
                     {
@@ -1046,7 +1058,7 @@
                         time: "15:30 視情況",
                         mapQuery: "大濠公園",
                         title: "下午：時間驅動決策模型",
-                        content: "從大分開車回福岡，依據離開動物園的時間與小孩狀態靈活決策：<br><br>👉 <strong>🟢 15:30 前抵達福岡：</strong> 前往【大濠公園】！讓長途搭車的孩子去超大「鯨魚溜滑梯」伸展筋骨，全家踩天鵝船。<br>👉 <strong>🟡 15:30 後抵達 / 遇雨 / 爆睡：</strong> 果斷放棄公園！直接把兩台車開進【博多綠色天神酒店】停妥，提提早啟動「天神大名商圈無腦逛街＋晚餐」模式。",
+                        content: "從大分開車回福岡，依據離開動物園的時間與小孩狀態靈活決策：<br><br>👉 <strong>🟢 15:30 前抵達福岡：</strong> 前往【<a href='https://www.google.com/maps/search/?api=1&query=大濠公園' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>大濠公園</a>】！讓長途搭車的孩子去超大「鯨魚溜滑梯」伸展筋骨，全家踩天鵝船。<br>👉 <strong>🟡 15:30 後抵達 / 遇雨 / 爆睡：</strong> 果斷放棄公園！直接把兩台車開進【<a href='https://www.google.com/maps/search/?api=1&query=博多綠色天神酒店' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>博多綠色天神酒店</a>】停妥，提提早啟動「天神大名商圈無腦逛街＋晚餐」模式。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>減壓戰術：</strong>把僵化的行程改成「看時間決策」，能讓兩位負責開車的爸爸壓力大幅減輕，不用為了趕景點而疲勞駕駛！</li></ul>"
                     },
                     {
@@ -1054,7 +1066,7 @@
                         time: "17:00 - ",
                         mapQuery: "博多綠色天神酒店",
                         title: "傍晚：入住天神商圈與覓食",
-                        content: "抵達最熱鬧的「大名/天神商圈」入住博多綠色天神酒店。下樓就是滿滿的餐廳、拉麵店（如 Shin-Shin）與唐吉訶德，媽媽們可以開心逛街，爸爸們也能輕鬆買到超棒的宵夜！",
+                        content: "抵達最熱鬧的「大名/天神商圈」入住博多綠色天神酒店。下樓就是滿滿的餐廳、拉麵店（如 <a href='https://www.google.com/maps/search/?api=1&query=Shin-Shin+拉麵+天神' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Shin-Shin</a>）與<a href='https://www.google.com/maps/search/?api=1&query=唐吉訶德+天神' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>唐吉訶德</a>，媽媽們可以開心逛街，爸爸們也能輕鬆買到超棒的宵夜！",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>停車極度重要防呆：</strong>飯店附設停車場（¥2,500/日）「必須事前預約」！請務必立刻發 Email 或致電飯店，告知有兩台 7-8 人座休旅車，請預留平面或高頂車位！</li></ul>"
                     }
                 ],
@@ -1075,15 +1087,15 @@
                         time: "09:30 - 12:00",
                         mapQuery: "福岡塔",
                         title: "上午：天神商圈主場優勢",
-                        content: "早上睡到自然醒，免收行李！媽媽們把握空檔步行 3-5 分鐘直攻「岩田屋、福岡三越或 Mina 天神」無壓力採買，戰利品直接放回房間。爸爸們可帶小孩至附近的「警固公園」跑跳。約 11:30 兩家人會合，開車前往福岡塔戶外停車場停妥。",
-                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>休旅車停車防雷：</strong>福岡塔周邊有廣大的戶外平面停車場，完美解決市區機械車位對大型休旅車限高的問題。</li><li><strong>糧食防雷警告：</strong>水族館下船碼頭「沒有超商」。強烈建議 11:30 在福岡塔旁 Mark Is 內的 HalloDay 超市，先買好飯糰/小麵包帶身上，等船時先給小孩墊肚子！</li></ul>"
+                        content: "早上睡到自然醒，免收行李！媽媽們把握空檔步行 3-5 分鐘直攻「<a href='https://www.google.com/maps/search/?api=1&query=岩田屋+福岡' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>岩田屋</a>、<a href='https://www.google.com/maps/search/?api=1&query=福岡三越' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>福岡三越</a>或 <a href='https://www.google.com/maps/search/?api=1&query=Mina+天神' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Mina 天神</a>」無壓力採買，戰利品直接放回房間。爸爸們可帶小孩至附近的「<a href='https://www.google.com/maps/search/?api=1&query=警固公園' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>警固公園</a>」跑跳。約 11:30 兩家人會合，開車前往福岡塔戶外停車場停妥。",
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>休旅車停車防雷：</strong>福岡塔周邊有廣大的戶外平面停車場，完美解決市區機械車位對大型休旅車限高的問題。</li><li><strong>糧食防雷警告：</strong>水族館下船碼頭「沒有超商」。強烈建議 11:30 在福岡塔旁 Mark Is 內的 <a href='https://www.google.com/maps/search/?api=1&query=HalloDay+Mark+Is+福岡百道' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>HalloDay 超市</a>，先買好飯糰/小麵包帶身上，等船時先給小孩墊肚子！</li></ul>"
                     },
                     {
                         type: "play",
                         time: "12:30 - 17:00",
                         mapQuery: "Marine World 海之中道",
                         title: "下午：高速船破浪 ＆ Marine World",
-                        content: "12:30 走到福岡塔後方 (Marizon) 搭乘 Uminoline 高速船，20 分鐘破浪直達水族館！下船後無縫接軌看秀：<br>13:00 大水槽潛水員秀 ➔ 13:30 海豚海獅大秀 ➔ 14:30 江豚講座 ➔ 15:00 沙丁魚颱風 ➔ 16:10 晚安企鵝！<br><button onclick=\"showModal('marineWorldModal')\" class=\"mt-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🐬</span> 查看展演時刻大補帖</button>",
+                        content: "12:30 走到福岡塔後方 (<a href='https://www.google.com/maps/search/?api=1&query=Marizon+福岡' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Marizon</a>) 搭乘 Uminoline 高速船，20 分鐘破浪直達水族館！下船後無縫接軌看秀：<br>13:00 大水槽潛水員秀 ➔ 13:30 海豚海獅大秀 ➔ 14:30 江豚講座 ➔ 15:00 沙丁魚颱風 ➔ 16:10 晚安企鵝！<br><button onclick=\"showModal('marineWorldModal')\" class=\"mt-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs font-bold px-4 py-2 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🐬</span> 查看展演時刻大補帖</button>",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>極度警告：</strong>鎖定 12:30 去程。<strong>回程務必注意 17:00 末班船死線</strong>，錯過將面臨車在福岡塔的交通災難。若停航則無痛切換為開車前往。</li><li><strong>館內熱食救援：</strong>若進水族館後小孩還是喊餓，趁 13:30 海豚秀前，趕快去海豚看台旁的「M-cafe 小賣部」買熱狗堡與炸薯條充飢！</li></ul>"
                     },
                     {
@@ -1091,7 +1103,7 @@
                         time: "17:30 - 20:00",
                         mapQuery: "MARK IS 福岡百道",
                         title: "傍晚：沙灘夕陽 ＆ Mark Is 晚餐",
-                        content: "搭乘約 17:00 的船班回到福岡塔碼頭。傍晚氣溫微涼舒適，讓孩子在「百道海濱公園」的沙灘踏浪看夕陽。隨後走天橋至旁邊的<strong>「Mark Is 福岡百道」</strong>吃晚餐。<br>👉 <strong>親子美食推薦：</strong>3樓有巨大美食街（名島亭老字號拉麵、Ringer Hut 強棒麵），以及獨立餐廳（博多天婦羅 たかお、Pietro 義大利麵）。",
+                        content: "搭乘約 17:00 的船班回到福岡塔碼頭。傍晚氣溫微涼舒適，讓孩子在「<a href='https://www.google.com/maps/search/?api=1&query=百道海濱公園' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>百道海濱公園</a>」的沙灘踏浪看夕陽。隨後走天橋至旁邊的<strong>「Mark Is 福岡百道」</strong>吃晚餐。<br>👉 <strong>親子美食推薦：</strong>3樓有巨大美食街（<a href='https://www.google.com/maps/search/?api=1&query=名島亭+Mark+Is' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>名島亭老字號拉麵</a>、<a href='https://www.google.com/maps/search/?api=1&query=Ringer+Hut+Mark+Is' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Ringer Hut 強棒麵</a>），以及獨立餐廳（<a href='https://www.google.com/maps/search/?api=1&query=博多天婦羅+たかお+Mark+Is' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>博多天婦羅 たかお</a>、<a href='https://www.google.com/maps/search/?api=1&query=Pietro+Mark+Is' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Pietro 義大利麵</a>）。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>神級避開人潮戰術：</strong>在 Mark Is 吃飽喝足後，大約晚上 8 點再開車回天神飯店。這完美避開了天神下班塞車潮與居酒屋晚餐人擠人的窘境，小孩也能在車上安穩睡著。</li></ul>"
                     }
                 ],
@@ -1120,7 +1132,7 @@
                         time: "10:00 - 11:30",
                         mapQuery: "太宰府天滿宮",
                         title: "上午：太宰府天滿宮 & 表參道",
-                        content: "抵達太宰府後，推著推車漫步表參道，品嚐剛烤好的「梅枝餅」，參觀隈研吾設計的特色星巴克。建議 10:00 前抵達周邊停車場，預計 11:30 離開前往柳川。<div class='mt-3 p-3 bg-cyan-50 border border-cyan-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-cyan-800 flex items-center gap-1'><span class='text-base'>☔</span> 雨天備案切換：</strong>若遇大雨不便戶外散步，可果斷切換至「福岡市科學館」或是提早南下去柳川搭乘有遮雨棚的遊船。</div>",
+                        content: "抵達太宰府後，推著推車漫步表參道，品嚐剛烤好的「梅枝餅」，參觀隈研吾設計的<a href='https://www.google.com/maps/search/?api=1&query=太宰府+星巴克' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>特色星巴克</a>。建議 10:00 前抵達周邊停車場，預計 11:30 離開前往柳川。<div class='mt-3 p-3 bg-cyan-50 border border-cyan-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-cyan-800 flex items-center gap-1'><span class='text-base'>☔</span> 雨天備案切換：</strong>若遇大雨不便戶外散步，可果斷切換至「<a href='https://www.google.com/maps/search/?api=1&query=福岡市科學館' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>福岡市科學館</a>」或是提早南下去柳川搭乘有遮雨棚的遊船。</div>",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>避開人潮戰術：</strong>太宰府越晚遊覽車越多。表參道人潮眾多時推推車需較有耐心，可先買好小點心安撫孩子。</li></ul>"
                     },
                     {
@@ -1128,7 +1140,7 @@
                         time: "12:30 - 15:00",
                         mapQuery: "柳川泛舟",
                         title: "下午：柳川水鄉遊船 & 蒸籠鰻魚飯",
-                        content: "抵達水鄉柳川！搭乘復古的「どんこ舟」穿梭於柳川運河，聽船伕唱傳統歌謠（約 60-70 分鐘）。下船後務必品嚐柳川名物「本吉屋」或「若松屋」的<strong>蒸籠鰻魚飯（せいろ蒸し）</strong>，香氣撲鼻肉質軟嫩，小孩也超愛！",
+                        content: "抵達水鄉柳川！搭乘復古的「どんこ舟」穿梭於柳川運河，聽船伕唱傳統歌謠（約 60-70 分鐘）。下船後務必品嚐柳川名物「<a href='https://www.google.com/maps/search/?api=1&query=本吉屋+柳川' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>本吉屋</a>」或「<a href='https://www.google.com/maps/search/?api=1&query=若松屋+柳川' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>若松屋</a>」的<strong>蒸籠鰻魚飯（せいろ蒸し）</strong>，香氣撲鼻肉質軟嫩，小孩也超愛！",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美避開塞車死線的神走位：</strong>原先擔心下午 4 點的「鳥栖 JCT 大塞車」，但因為我們中午就先往南開到了柳川，等於提前跨越了塞車熱區！下午從柳川去熊本一路順暢，完美解套！</li></ul>"
                     },
                     {
@@ -1136,8 +1148,8 @@
                         time: "16:30 - ",
                         mapQuery: "KOKO HOTEL Premier 熊本",
                         title: "晚上：入住 KOKO Premier 與燒肉慶功",
-                        content: "約 16:30 抵達熊本，入住高級質感商旅 KOKO HOTEL Premier。晚餐可預約平價燒肉吃到飽 (如焼肉きんぐ)，學齡前兒童免費！",
-                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>無敵機能：</strong>飯店樓下就是櫻町商場與巴士站，位置無敵，逛街吃飯都超近。</li></ul>"
+                        content: "約 16:30 抵達熊本，入住高級質感商旅 KOKO HOTEL Premier。晚餐可預約平價燒肉吃到飽 (如<a href='https://www.google.com/maps/search/?api=1&query=焼肉きんぐ+熊本' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>焼肉きんぐ</a>)，學齡前兒童免費！",
+                        deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>無敵機能：</strong>飯店樓下就是<a href='https://www.google.com/maps/search/?api=1&query=櫻町商場+熊本' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>櫻町商場</a>與巴士站，位置無敵，逛街吃飯都超近。</li></ul>"
                     }
                 ],
                 tips: "這天的動線非常順暢，中午就離開福岡近郊往南，讓原本擔憂的下午大塞車問題迎刃而解。"
@@ -1164,14 +1176,14 @@
                         time: "09:30 - 15:00",
                         mapQuery: "草千里之濱",
                         title: "🟢 情境 A & 🟡 情境 B (晴天必走路線)",
-                        content: "<strong>【A. 完美晴天＋火口開放】：</strong>元氣之森(放電) ➔ 米塚(車拍) ➔ 草千里(核心) ➔ 中岳火口 ➔ 往南：上色見熊野座神社(探險)或白川水源(裝水) ➔ 回熊本。<br><strong>【B. 晴天但火口關閉】：</strong>元氣之森(放電) ➔ 米塚(車拍) ➔ 草千里 ➔ 火山博物館 ➔ 往北：<strong>大觀峰(補足絕景)</strong> ➔ <strong>阿蘇神社/門前町(吃烤肉串)</strong> ➔ 回熊本。",
+                        content: "<strong>【A. 完美晴天＋火口開放】：</strong><a href='https://www.google.com/maps/search/?api=1&query=阿蘇農場樂園+元氣之森' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>元氣之森</a>(放電) ➔ <a href='https://www.google.com/maps/search/?api=1&query=米塚' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>米塚</a>(車拍) ➔ 草千里(核心) ➔ <a href='https://www.google.com/maps/search/?api=1&query=阿蘇中岳火口' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>中岳火口</a> ➔ 往南：<a href='https://www.google.com/maps/search/?api=1&query=上色見熊野座神社' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>上色見熊野座神社</a>(探險)或<a href='https://www.google.com/maps/search/?api=1&query=白川水源' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>白川水源</a>(裝水) ➔ 回熊本。<br><strong>【B. 晴天但火口關閉】：</strong>元氣之森(放電) ➔ 米塚(車拍) ➔ 草千里 ➔ <a href='https://www.google.com/maps/search/?api=1&query=阿蘇火山博物館' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>火山博物館</a> ➔ 往北：<strong><a href='https://www.google.com/maps/search/?api=1&query=大觀峰' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>大觀峰</a>(補足絕景)</strong> ➔ <strong><a href='https://www.google.com/maps/search/?api=1&query=阿蘇神社' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>阿蘇神社</a>/<a href='https://www.google.com/maps/search/?api=1&query=阿蘇門前町商店街' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>門前町</a>(吃烤肉串)</strong> ➔ 回熊本。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>最高警戒：</strong>絕對不要把推車拿下車！草千里草地無法推，牽著走或用背巾。</li></ul>"
                     },
                     {
                         type: "rain",
                         time: "雨天彈性",
                         title: "🌫️ 情境 C & 🌧️ 情境 D (起霧與下雨戰術)",
-                        content: "<strong>【C. 陰天起霧】：</strong>山上毫無能見度，絕不上山！改走平地：元氣之森 ➔ ASO MILK FACTORY ➔ 道之驛阿蘇。<br><strong>【D. 下大雨】：</strong>啟動終極撤退機制！放棄山區，直接改去「AEON Mall 熊本」或鳥栖 Outlet，換取雙家庭最高的舒適度與室內放電空間。",
+                        content: "<strong>【C. 陰天起霧】：</strong>山上毫無能見度，絕不上山！改走平地：元氣之森 ➔ <a href='https://www.google.com/maps/search/?api=1&query=ASO+MILK+FACTORY' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>ASO MILK FACTORY</a> ➔ <a href='https://www.google.com/maps/search/?api=1&query=道之驛阿蘇' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>道之驛阿蘇</a>。<br><strong>【D. 下大雨】：</strong>啟動終極撤退機制！放棄山區，直接改去「<a href='https://www.google.com/maps/search/?api=1&query=AEON+Mall+熊本' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>AEON Mall 熊本</a>」或<a href='https://www.google.com/maps/search/?api=1&query=鳥栖+Premium+Outlets' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>鳥栖 Outlet</a>，換取雙家庭最高的舒適度與室內放電空間。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>避雨防雷：</strong>雨天時阿蘇牛奶牧場(戶外)不適合，ASO MILK FACTORY(室內餐廳/溫室)才是阿蘇在地最佳避雨補位站。</li></ul>"
                     },
                     {
@@ -1179,7 +1191,7 @@
                         time: "18:00 - 19:30",
                         mapQuery: "勝烈亭 新市街本店",
                         title: "晚上：推車夜遊米其林 (大人犒賞)",
-                        content: "從阿蘇回到飯店停好車後，若孩子在推車上熟睡，家長可啟動「米其林犒賞機制」！步行前往熊本最強名店吃厚切豬排。<div class='mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-yellow-800 flex items-center gap-1'><span class='text-base'>✨</span> 晚餐完美安插：</strong>KOKO Premier 地點極佳！步行 3~5 分鐘即可達米其林推薦的<strong>「勝烈亭豬排 (新市街本店)」</strong>。</div>",
+                        content: "從阿蘇回到飯店停好車後，若孩子在推車上熟睡，家長可啟動「米其林犒賞機制」！步行前往熊本最強名店吃厚切豬排。<div class='mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-yellow-800 flex items-center gap-1'><span class='text-base'>✨</span> 晚餐完美安插：</strong>KOKO Premier 地點極佳！步行 3~5 分鐘即可達米其林推薦的<strong>「<a href='https://www.google.com/maps/search/?api=1&query=勝烈亭+新市街本店' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>勝烈亭豬排 (新市街本店)</a>」</strong>。</div>",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>親子友善：</strong>雖然是排隊名店，但翻桌率算快。若小孩醒著也沒關係，店內會主動提供畫畫紙與蠟筆，讓家長能好好吃頓飯。</li></ul>"
                     }
                 ],
@@ -1200,7 +1212,7 @@
                         time: "09:30 - 11:30",
                         mapQuery: "櫻之馬場 城彩苑",
                         title: "上午：熊本城與城彩苑 (2小時精簡版)",
-                        content: "早上退房後，將車停在熊本城周邊（如櫻之馬場 城彩苑停車場）。推著推車漫步平緩的「特別見學通路」參觀熊本城天守閣外觀，隨後在城彩苑吃海膽可樂餅等特色小吃。",
+                        content: "早上退房後，將車停在熊本城周邊（如<a href='https://www.google.com/maps/search/?api=1&query=櫻之馬場+城彩苑停車場' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>櫻之馬場 城彩苑停車場</a>）。推著推車漫步平緩的「特別見學通路」參觀<a href='https://www.google.com/maps/search/?api=1&query=熊本城天守閣' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>熊本城天守閣</a>外觀，隨後在城彩苑吃海膽可樂餅等特色小吃。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>體力防雷：</strong>帶著幼童切勿進行全區深度導覽！嚴守「天守閣外觀＋城彩苑」2 小時精簡打卡原則，保留體力給下午的活動。</li></ul>"
                     },
                     {
@@ -1208,7 +1220,7 @@
                         time: "14:00 - 14:30 展演",
                         mapQuery: "熊本熊廣場",
                         title: "下午 (14:00)：熊本熊廣場與唱跳秀",
-                        content: "吃完午餐後，將陣地轉移至鶴屋百貨一樓的『熊本熊部長辦公室』。<strong class='text-red-500'>請準時參加 14:00 - 14:30 的平日唱跳秀！</strong> 讓孩子們跟著部長一起瘋狂唱跳，作為旅程最完美的高潮。",
+                        content: "吃完午餐後，將陣地轉移至<a href='https://www.google.com/maps/search/?api=1&query=鶴屋百貨店+熊本' target='_blank' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>鶴屋百貨</a>一樓的『熊本熊部長辦公室』。<strong class='text-red-500'>請準時參加 14:00 - 14:30 的平日唱跳秀！</strong> 讓孩子們跟著部長一起瘋狂唱跳，作為旅程最完美的高潮。",
                         deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>時間修正提醒：</strong>部長平日早上通常不在家！已精準鎖定 14:00 場次，請務必於出發前確認當日確切在室時間，提早 30 分鐘去卡位。</li></ul>"
                     },
                     {
@@ -1345,7 +1357,7 @@
                     "濱勝炸豬排 (Hamakatsu)|九州連鎖。有超棒兒童套餐，米飯、高麗菜絲、味噌湯均可續加。",
                     "Chikae 稚加榮 (博多本店)|高級活魚料亭。午餐CP值極高，巨大的室內魚池絕對會吸引小孩目光。",
                     "Joyfull 餐廳|九州平價家庭餐廳。到處有分店且附停車場，菜單豐富解決挑食煩惱。",
-                    "Sushiro 壽司郎|自駕族好夥伴。路面店停車位多，用平板點餐對家庭客來說非常轻松。",
+                    "Sushiro 壽司郎|自駕族好夥伴。路面店停車位多，用平板點餐對家庭客来说非常轻松。",
                     "Bikkuri Donkey 驚訝驢子|專賣漢堡排的家庭餐廳。木盤裝盛的漢堡排配沙拉，是日本小孩心頭好。",
                     "Bills 福岡|號稱世界第一早餐。水上公園店環境優雅但對小孩友善，鬆餅綿密必點。",
                     "Ivorish 鬆餅專賣店|提供各式鹹甜法式吐司，口味多變，非常適合親子下午茶。",
