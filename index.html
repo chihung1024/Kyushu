@@ -220,7 +220,7 @@
         <!-- Sticky Day Tabs -->
         <div class="sticky top-0 z-40 bg-kawaii-bg/95 backdrop-blur-md pt-1 pb-2 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all shadow-sm">
             <div class="flex overflow-x-auto md:overflow-visible hide-scrollbar space-x-3 md:justify-center py-3 px-2" id="tabs-container">
-                <!-- Tabs injected by JS -->
+                <!-- Tabs injected by JS initTabs() -->
             </div>
         </div>
 
@@ -233,12 +233,12 @@
 
         <!-- Itinerary Content -->
         <div id="itinerary-content" class="bg-white rounded-[2rem] p-4 sm:p-6 md:py-8 md:px-12 lg:px-16 shadow-kawaii border-4 border-white mb-6">
-            <!-- Content injected by JS -->
+            <!-- Content injected by JS renderContent() -->
         </div>
 
     </main>
 
-    <!-- Modals (加上了 modal-overlay class) -->
+    <!-- Modals (加上了 modal-overlay class 進行解耦) -->
 
     <!-- 大分 海之卵 展演時刻 Modal -->
     <div id="umitamagoModal" class="modal-overlay fixed inset-0 bg-gray-900/60 z-[100] hidden flex items-center justify-center backdrop-blur-sm transition-opacity opacity-0" style="transition: opacity 0.3s ease;">
@@ -572,11 +572,12 @@
     <!-- JavaScript Data and Logic -->
     <script>
         // ==========================================
-        // 1. State Variables & Configuration
+        // 1. State Variables & Configuration (置頂)
         // ==========================================
         let currentDay = 1;
         let currentBackupRegion = 'oita';
         let currentBackupCategory = 'sight';
+        let modalTimeout; // 用於解決 Modal 關閉的 Race Condition
 
         const icons = {
             play: '🎡',
@@ -596,19 +597,34 @@
             rain: 'bg-cyan-50 border-cyan-200'
         };
 
+        // UI Design Tokens (DRY 原則)
+        const BACKUP_CARD_BASE_CLASS = "bg-white p-4 rounded-xl border shadow-sm hover:shadow-md transition-all flex items-start gap-3";
+
         // ==========================================
         // 2. Core Logic Functions
         // ==========================================
-        function renderTabs() {
+        
+        // 消除 DOM Thrashing：初始化時建立 DOM
+        function initTabs() {
             const container = document.getElementById('tabs-container');
             container.innerHTML = '';
             itineraryData.forEach((data) => {
-                const isActive = data.day === currentDay;
                 const btn = document.createElement('button');
-                btn.className = `flex-shrink-0 px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${isActive ? 'tab-active' : 'tab-inactive hover:bg-kawaii-light-pink hover:text-white hover:border-kawaii-light-pink'}`;
+                btn.id = `tab-btn-${data.day}`;
                 btn.innerHTML = `Day ${data.day}`;
                 btn.onclick = () => selectDay(data.day);
                 container.appendChild(btn);
+            });
+            updateTabsUI();
+        }
+
+        // 點擊時僅切換狀態 Class，不觸發 HTML 重繪
+        function updateTabsUI() {
+            itineraryData.forEach((data) => {
+                const btn = document.getElementById(`tab-btn-${data.day}`);
+                if (!btn) return;
+                const isActive = data.day === currentDay;
+                btn.className = `flex-shrink-0 px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${isActive ? 'tab-active' : 'tab-inactive hover:bg-kawaii-light-pink hover:text-white hover:border-kawaii-light-pink'}`;
             });
         }
 
@@ -633,7 +649,6 @@
                     `;
                 }
 
-                // 移除顯眼的導航按鈕，將標題本身改為帶有低調底線的導航超連結
                 const titleHtml = sec.mapQuery 
                     ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sec.mapQuery)}" target="_blank" class="text-gray-900 hover:text-blue-600 underline decoration-gray-300 underline-offset-4 transition-colors cursor-pointer">${sec.title}</a>`
                     : `<span class="text-gray-900">${sec.title}</span>`;
@@ -732,7 +747,7 @@
 
         function selectDay(day) {
             currentDay = day;
-            renderTabs();
+            updateTabsUI();
             renderContent();
             if(window.innerWidth < 768) {
                 const contentTop = document.getElementById('itinerary-content').offsetTop;
@@ -744,29 +759,49 @@
             const modal = document.getElementById(id);
             if (!modal) return; 
             const content = document.getElementById(id + 'Content');
+            
+            clearTimeout(modalTimeout); // 防止殘留的關閉計時器干擾
+            
             modal.classList.remove('hidden');
             void modal.offsetWidth; 
             modal.classList.remove('opacity-0');
             modal.classList.add('opacity-100');
+            
             if(content) {
                 content.classList.remove('scale-95');
                 content.classList.add('scale-100');
             }
+
+            // 無障礙黑科技：inert 焦點陷阱，徹底隔離背景互動
+            const mainEl = document.querySelector('main');
+            const headerEl = document.querySelector('header');
+            if(mainEl) mainEl.inert = true;
+            if(headerEl) headerEl.inert = true;
         }
 
         function closeModal(id) {
             const modal = document.getElementById(id);
             if (!modal) return; 
             const content = document.getElementById(id + 'Content');
+            
+            clearTimeout(modalTimeout); // 確保每次點擊都是獨立的計時
+            
             modal.classList.remove('opacity-100');
             modal.classList.add('opacity-0');
             if(content) {
                 content.classList.remove('scale-100');
                 content.classList.add('scale-95');
             }
-            setTimeout(() => {
+            
+            modalTimeout = setTimeout(() => {
                 modal.classList.add('hidden');
             }, 300);
+
+            // 解除無障礙隔離
+            const mainEl = document.querySelector('main');
+            const headerEl = document.querySelector('header');
+            if(mainEl) mainEl.inert = false;
+            if(headerEl) headerEl.inert = false;
         }
 
         function initBackupModal() {
@@ -808,9 +843,9 @@
             const dataList = backupDB[currentBackupRegion][currentBackupCategory];
             
             const styles = {
-                sight: { bg: 'bg-blue-50/30', border: 'border-blue-100', title: 'text-blue-800' },
-                food:  { bg: 'bg-orange-50/30', border: 'border-orange-100', title: 'text-orange-800' },
-                shop:  { bg: 'bg-purple-50/30', border: 'border-purple-100', title: 'text-purple-800' }
+                sight: { border: 'border-blue-100' },
+                food:  { border: 'border-orange-100' },
+                shop:  { border: 'border-purple-100' }
             };
             const s = styles[currentBackupCategory];
 
@@ -820,7 +855,9 @@
                 const [title, desc] = item.split('|');
                 const isStarred = title.includes('⭐');
                 const cleanTitle = title.replace('⭐', '').trim();
-                const cardHighlightClass = isStarred ? 'border-yellow-400 bg-yellow-50/50 shadow-md ring-2 ring-yellow-400/50' : s.border;
+                
+                // 套用 DRY 原則抽出共用的 CSS
+                const cardHighlightClass = isStarred ? 'border-yellow-400 bg-yellow-50/50 ring-2 ring-yellow-400/50' : s.border;
                 const starIcon = isStarred ? '<span class="text-yellow-500 mr-1 animate-pulse">⭐</span>' : '';
                 
                 let badgeClass = 'rank-other';
@@ -828,16 +865,14 @@
                 else if (index === 1) badgeClass = 'rank-2';
                 else if (index === 2) badgeClass = 'rank-3';
 
-                // 產生 Google Maps 搜尋連結
                 const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(cleanTitle)}`;
 
                 html += `
-                    <div class="bg-white p-4 rounded-xl border ${cardHighlightClass} shadow-sm hover:shadow-md transition-all flex items-start gap-3">
+                    <div class="${BACKUP_CARD_BASE_CLASS} ${cardHighlightClass}">
                         <span class="rank-badge ${badgeClass} text-[10px] w-6 h-6 flex-shrink-0">${index + 1}</span>
                         <div>
                             <h5 class="font-bold text-sm leading-tight">
                                 ${starIcon}
-                                <!-- 將標題變成低調的導航超連結 -->
                                 <a href="${mapUrl}" target="_blank" class="text-gray-800 hover:text-cyan-600 underline decoration-gray-400/50 underline-offset-2 transition-colors cursor-pointer">${cleanTitle}</a>
                             </h5>
                             <p class="text-[11px] md:text-xs text-gray-600 mt-1.5 leading-relaxed">${desc}</p>
@@ -871,7 +906,7 @@
                 textToCopy += `⚠️ 注意事項：${data.tips}\n\n`;
             }
 
-            // 混合雙打：優先使用現代 Clipboard API，被 iFrame 阻擋時無縫降級
+            // 混合雙打：優先使用現代 Clipboard API，遇到 iFrame 阻擋時無縫降級
             try {
                 if (navigator.clipboard && window.isSecureContext) {
                     await navigator.clipboard.writeText(textToCopy);
@@ -901,7 +936,7 @@
         }
 
         // ==========================================
-        // 3. Event Listeners
+        // 3. Event Listeners 
         // ==========================================
         window.onclick = function(event) {
             // 安全解耦：改用特定的 modal-overlay class 判斷
@@ -930,7 +965,7 @@
         });
 
         // ==========================================
-        // 4. Data (Massive Objects)
+        // 4. Data (Massive Objects 流放到最底端)
         // ==========================================
         const itineraryData = [
             {
@@ -1476,7 +1511,7 @@
         // ==========================================
         // 5. Initialization (Must run after data is declared)
         // ==========================================
-        renderTabs();
+        initTabs();
         renderContent();
     </script>
 </body>
