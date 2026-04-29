@@ -162,19 +162,19 @@
         .scroll-snap-x { scroll-snap-type: x mandatory; }
         .snap-center { scroll-snap-align: center; }
 
-        /* 🖨️ 究極離線列印專屬樣式 */
+        /* 🖨️ 究極離線列印專屬樣式 2.0版 */
         @media print {
-            @page { margin: 1.2cm; }
+            @page { margin: 1cm 1.2cm; } /* 縮小上下邊界留給瀏覽器資訊 */
             body { 
                 background-color: white !important; 
                 background-image: none !important; 
+                color: black !important;
             }
-            #print-container a { 
-                text-decoration: none !important; 
-                color: #111827 !important; 
-                pointer-events: none;
+            /* 隱藏網頁超連結小尾巴 */
+            #print-container a[href]:after { 
+                content: none !important; 
             }
-            /* 強制列印背景色（如注意事項的背景框） */
+            /* 強制列印背景色（確保筆記框的底色能出來） */
             * {
                 -webkit-print-color-adjust: exact !important; 
                 print-color-adjust: exact !important; 
@@ -776,7 +776,7 @@
             `;
         }
 
-        // 🖨️ 產生專屬列印用的 HTML 結構 (確保紙本上排版不跑斷)
+        // 🖨️ 產生專屬列印用的 HTML 結構 (優化排版、防止大片空白)
         function initPrintView() {
             const container = document.getElementById('print-container');
             let html = `
@@ -789,27 +789,34 @@
             itineraryData.forEach(data => {
                 let sectionsHtml = '';
                 data.sections.forEach(sec => {
+                    // 1. 移除紙本上無法互動的 button 標籤
+                    // 2. 移除 a 標籤的超連結屬性，但保留純文字 (防止瀏覽器印出長串網址)
+                    const cleanContent = sec.content.replace(/<button[^>]*>.*?<\/button>/gi, '').replace(/<\/?a[^>]*>/g, '');
+                    const cleanTitle = sec.title.replace(/<\/?a[^>]*>/g, '');
+                    const cleanTip = sec.deepTip ? sec.deepTip.replace(/<\/?a[^>]*>/g, '').replace(/💡 實戰筆記：/g, '') : '';
+                    
                     sectionsHtml += `
-                        <div class="mb-4 pl-4 border-l-2 border-gray-400 break-inside-avoid">
-                            <h4 class="font-bold text-lg mb-1">${sec.time ? `[${sec.time}] ` : ''}${sec.title}</h4>
-                            <div class="text-gray-800 leading-relaxed text-sm mb-2">${sec.content}</div>
-                            ${sec.deepTip ? `<div class="text-sm text-gray-700 bg-gray-100 border border-gray-200 p-2 rounded">${sec.deepTip}</div>` : ''}
+                        <div class="mb-4 pl-3 border-l-4 border-gray-300 break-inside-avoid">
+                            <h4 class="font-bold text-base mb-1">${sec.time ? `<span class="bg-gray-800 text-white px-1.5 py-0.5 rounded text-xs mr-1">${sec.time}</span>` : ''}${cleanTitle}</h4>
+                            <div class="text-gray-800 leading-relaxed text-sm mb-1.5">${cleanContent}</div>
+                            ${cleanTip ? `<div class="text-sm text-gray-700 bg-gray-50 border border-gray-200 p-2 rounded-lg flex items-start gap-1"><span class="shrink-0">💡</span> <div>${cleanTip}</div></div>` : ''}
                         </div>
                     `;
                 });
 
+                // 解除整天的 break-inside-avoid，改用語意化排版，讓內容自然跨頁不留大片空白
                 html += `
-                    <div class="mb-8 break-inside-avoid">
-                        <div class="flex items-end gap-3 mb-3 border-b-2 border-gray-300 pb-1">
+                    <div class="mb-8 pt-4">
+                        <div class="flex items-baseline gap-3 mb-2 border-b-2 border-gray-800 pb-1" style="page-break-after: avoid;">
                             <h2 class="text-2xl font-black">Day ${data.day}</h2>
-                            <span class="text-lg font-bold text-gray-700">${data.date} - ${data.title}</span>
+                            <span class="text-base font-bold text-gray-700">${data.date} - ${data.title}</span>
                         </div>
-                        <div class="grid grid-cols-2 gap-4 mb-4 text-sm font-bold bg-gray-100 border border-gray-200 p-2 rounded">
-                            <div>🗺️ 動線：${data.route}</div>
+                        <div class="flex flex-col gap-1 mb-4 text-sm font-bold text-gray-700 bg-gray-50 p-2 rounded-lg border border-gray-200">
+                            <div>🚗 動線：${data.route.replace(/<[^>]*>?/gm, '')}</div>
                             <div>🏨 住宿：${data.hotel}</div>
                         </div>
                         ${sectionsHtml}
-                        ${data.tips ? `<div class="mt-2 p-2 border border-gray-400 bg-gray-50 text-gray-800 font-bold text-sm rounded">⚠️ 注意事項：${data.tips}</div>` : ''}
+                        ${data.tips ? `<div class="mt-2 p-2 border-l-4 border-red-500 bg-red-50 text-red-800 font-bold text-sm rounded">⚠️ 備註：${data.tips}</div>` : ''}
                     </div>
                 `;
             });
