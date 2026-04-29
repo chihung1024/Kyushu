@@ -162,22 +162,35 @@
         .scroll-snap-x { scroll-snap-type: x mandatory; }
         .snap-center { scroll-snap-align: center; }
 
-        /* 🖨️ 究極離線列印專屬樣式 2.0版 */
+        /* 🖨️ 究極離線列印專屬樣式 3.0版 (完美 A4 解決方案) */
         @media print {
-            @page { margin: 1cm 1.2cm; } /* 縮小上下邊界留給瀏覽器資訊 */
+            @page { 
+                margin: 0; /* 徹底封殺瀏覽器預設的日期、網址與頁碼 */
+            }
             body { 
+                padding: 1.5cm; /* 用 body padding 取代 page margin 來留白 */
                 background-color: white !important; 
                 background-image: none !important; 
                 color: black !important;
+                font-size: 11pt; /* 設定紙本舒適閱讀字級 */
             }
             /* 隱藏網頁超連結小尾巴 */
             #print-container a[href]:after { 
                 content: none !important; 
             }
-            /* 強制列印背景色（確保筆記框的底色能出來） */
+            /* 強制列印背景色與邊框 */
             * {
                 -webkit-print-color-adjust: exact !important; 
                 print-color-adjust: exact !important; 
+            }
+            /* 防止大標題和內容被斷開在兩頁 */
+            .break-after-avoid {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+            .break-inside-avoid {
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
         }
     </style>
@@ -776,12 +789,12 @@
             `;
         }
 
-        // 🖨️ 產生專屬列印用的 HTML 結構 (優化排版、防止大片空白)
+        // 🖨️ 產生專屬列印用的 HTML 結構 (優化排版、防止大片空白、加入 Checklist)
         function initPrintView() {
             const container = document.getElementById('print-container');
             let html = `
-                <div class="text-center mb-6 border-b-4 border-gray-800 pb-4">
-                    <h1 class="text-3xl font-black mb-1">九州親子大冒險 實戰攻略本</h1>
+                <div class="text-center mb-8 border-b-4 border-gray-800 pb-4 mt-4">
+                    <h1 class="text-3xl font-black mb-2">九州親子大冒險 實戰攻略本</h1>
                     <p class="text-gray-600 font-bold">雙家庭 (2大2小) ｜ 離線紙本保命用</p>
                 </div>
             `;
@@ -795,28 +808,58 @@
                     const cleanTitle = sec.title.replace(/<\/?a[^>]*>/g, '');
                     const cleanTip = sec.deepTip ? sec.deepTip.replace(/<\/?a[^>]*>/g, '').replace(/💡 實戰筆記：/g, '') : '';
                     
+                    // 改用邊框設計的 Time Badge，確保黑白列印依然清晰不會糊成一團
+                    const timeBadge = sec.time ? `<span class="border-2 border-gray-600 px-1.5 py-0.5 rounded text-xs mr-2 font-bold inline-block align-middle">${sec.time}</span>` : '';
+
                     sectionsHtml += `
-                        <div class="mb-4 pl-3 border-l-4 border-gray-300 break-inside-avoid">
-                            <h4 class="font-bold text-base mb-1">${sec.time ? `<span class="bg-gray-800 text-white px-1.5 py-0.5 rounded text-xs mr-1">${sec.time}</span>` : ''}${cleanTitle}</h4>
-                            <div class="text-gray-800 leading-relaxed text-sm mb-1.5">${cleanContent}</div>
-                            ${cleanTip ? `<div class="text-sm text-gray-700 bg-gray-50 border border-gray-200 p-2 rounded-lg flex items-start gap-1"><span class="shrink-0">💡</span> <div>${cleanTip}</div></div>` : ''}
+                        <div class="mb-5 pl-4 border-l-2 border-gray-300 break-inside-avoid">
+                            <h4 class="font-bold text-lg mb-1.5 flex items-center leading-tight">${timeBadge}${cleanTitle}</h4>
+                            <div class="text-gray-800 leading-relaxed text-sm mb-2">${cleanContent}</div>
+                            ${cleanTip ? `<div class="text-sm text-gray-700 bg-gray-50 border border-gray-300 p-2.5 rounded-lg flex items-start gap-2 mt-2"><span class="shrink-0">💡</span> <div>${cleanTip}</div></div>` : ''}
                         </div>
                     `;
                 });
 
+                // 補回被遺漏的紙本 Checklist！(真的可以拿筆打勾)
+                let checklistHtml = '';
+                if (data.checklist && data.checklist.length > 0) {
+                    checklistHtml = `
+                        <div class="mb-4 text-sm font-bold text-gray-800">
+                            <div class="mb-1 flex items-center gap-1"><span class="text-base">📝</span> 出發防呆確認：</div>
+                            <div class="flex flex-col gap-1.5 pl-6">
+                                ${data.checklist.map(item => `
+                                    <div class="flex items-start gap-2">
+                                        <div class="w-4 h-4 border-2 border-gray-400 rounded-sm shrink-0 mt-0.5"></div>
+                                        <span>${item}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
                 // 解除整天的 break-inside-avoid，改用語意化排版，讓內容自然跨頁不留大片空白
                 html += `
-                    <div class="mb-8 pt-4">
-                        <div class="flex items-baseline gap-3 mb-2 border-b-2 border-gray-800 pb-1" style="page-break-after: avoid;">
-                            <h2 class="text-2xl font-black">Day ${data.day}</h2>
-                            <span class="text-base font-bold text-gray-700">${data.date} - ${data.title}</span>
+                    <div class="mb-10 pt-4">
+                        <!-- Day Header (不允許與內容斷開) -->
+                        <div class="break-after-avoid">
+                            <div class="flex items-baseline gap-3 mb-2 border-b-2 border-gray-800 pb-2">
+                                <h2 class="text-2xl font-black">Day ${data.day}</h2>
+                                <span class="text-lg font-bold text-gray-800">${data.date} - ${data.title}</span>
+                            </div>
+                            <div class="flex flex-col gap-1.5 mb-4 text-sm font-bold text-gray-800 bg-gray-100 p-3 rounded-lg border border-gray-300">
+                                <div>🚗 動線：${data.route.replace(/<[^>]*>?/gm, '')}</div>
+                                <div>🏨 住宿：${data.hotel}</div>
+                            </div>
+                            ${checklistHtml}
                         </div>
-                        <div class="flex flex-col gap-1 mb-4 text-sm font-bold text-gray-700 bg-gray-50 p-2 rounded-lg border border-gray-200">
-                            <div>🚗 動線：${data.route.replace(/<[^>]*>?/gm, '')}</div>
-                            <div>🏨 住宿：${data.hotel}</div>
+                        
+                        <!-- Sections -->
+                        <div class="mt-4">
+                            ${sectionsHtml}
                         </div>
-                        ${sectionsHtml}
-                        ${data.tips ? `<div class="mt-2 p-2 border-l-4 border-red-500 bg-red-50 text-red-800 font-bold text-sm rounded">⚠️ 備註：${data.tips}</div>` : ''}
+                        
+                        ${data.tips ? `<div class="mt-4 p-3 border-2 border-red-400 bg-red-50 text-red-800 font-bold text-sm rounded-lg break-inside-avoid">⚠️ 注意事項：${data.tips}</div>` : ''}
                     </div>
                 `;
             });
@@ -1396,7 +1439,7 @@
                     "Miffy 森之廚房|米飛兔主題烘焙坊。買兔兔造型麵包帶車上，自駕防餓最佳點心。",
                     "Milch 起司塔|金賞半熟起司蛋糕。有分冷熱，小小一個適合拿手上吃，口感濃郁。",
                     "B-Speak 瑞士捲|由布院排隊甜點。蛋糕體極度膨鬆柔軟，非常適合給小小孩當下午茶。",
-                    "金賞可樂餅|湯之坪必吃小吃。牛肉馬鈴薯香氣四溢，現炸熱騰ِمض，最佳解饞零食。",
+                    "金賞可樂餅|湯之坪必吃小吃。牛肉馬鈴薯香氣四溢，現炸熱騰騰，最佳解饞零食。",
                     "Cafe La Ruche|金鱗湖畔景觀咖啡廳。戶外露台座位吃可頌看湖面發呆，氣氛極佳。",
                     "Yufuin Burger House|在地食材手工漢堡。肉排多汁，適合吃膩日式料理時換換口味。",
                     "鞠智 cucuchi|販售高級和菓子與現烤銅鑼燒。店鋪有質感，提供舒適座位區休息。",
