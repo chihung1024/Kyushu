@@ -27,7 +27,7 @@
         input[type="checkbox"] { margin: 0; }
 
         /* --- 2. 排版與顯示 (Display & Layout) --- */
-        .hidden { display: none !important; } /* 加入 !important 防止被彈性佈局覆蓋 */
+        .hidden { display: none !important; }
         .block { display: block; }
         .inline-block { display: inline-block; }
         .flex { display: flex; }
@@ -326,8 +326,8 @@
 
         /* 原生 Dialog 樣式增強 */
         dialog::backdrop {
-            background-color: rgba(17, 24, 39, 0.6); /* Tailwind bg-gray-900/60 */
-            backdrop-filter: blur(4px); /* Tailwind backdrop-blur-sm */
+            background-color: rgba(17, 24, 39, 0.6); 
+            backdrop-filter: blur(4px); 
         }
         dialog[open] {
             animation: dialogFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
@@ -402,7 +402,7 @@
                     <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🏨✨</h1>
                     <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">雙家庭(2大2小) 獨立核算版</p>
                 </div>
-                <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('恭喜機票飯店都已落定！這是一份排除所有地雷的實戰完美攻略表！')">
+                <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('實戰攻略已準備就緒，預祝旅途愉快！')">
                     🐻
                 </div>
             </div>
@@ -411,7 +411,7 @@
         <!-- Main Container -->
         <main class="max-w-4xl mx-auto px-4 mt-6">
 
-            <!-- Dashboard / Quick Stats (增強點擊範圍) -->
+            <!-- Dashboard / Quick Stats -->
             <div class="flex flex-row md:grid md:grid-cols-3 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-1 overflow-x-auto md:overflow-visible hide-scrollbar scroll-snap-x py-2">
                 
                 <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 text-left shadow-sm border-2 border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('hotelModal')">
@@ -424,7 +424,7 @@
                     </div>
                     <div>
                         <div class="text-[10px] text-purple-600 font-bold mb-0.5">目前訂房狀態與比較</div>
-                        <div class="text-xs md:text-sm font-black text-purple-800 leading-tight">天神機能 ‧ 其餘確認</div>
+                        <div class="text-xs md:text-sm font-black text-purple-800 leading-tight">全線確認落定</div>
                     </div>
                 </div>
 
@@ -432,7 +432,7 @@
                     <div class="text-3xl shrink-0">💰</div>
                     <div>
                         <div class="text-[10px] text-gray-500 font-bold mb-0.5">單一家庭實際預算</div>
-                        <div class="text-xs md:text-sm font-black text-kawaii-blue leading-tight">10.7萬 TWD</div>
+                        <div class="text-xs md:text-sm font-black text-kawaii-blue leading-tight">約 9.8 萬 TWD</div>
                     </div>
                 </div>
 
@@ -470,7 +470,7 @@
         </main>
 
         <!-- =========================================================================
-             📱 原生 <dialog> 彈出視窗區塊 (完全移除舊有控制層與 js setTimeout)
+             📱 原生 <dialog> 彈出視窗區塊 
              ========================================================================= -->
 
         <!-- 大分 海之卵 展演時刻 Dialog -->
@@ -559,7 +559,7 @@
             <button aria-label="關閉視窗" onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg">✕</button>
             <h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2 pr-8"><span>🏨</span> 飯店訂單資訊與抉擇分析</h2>
             <p class="text-xs md:text-sm text-gray-500 mb-4 bg-purple-50 p-2 md:p-3 rounded-lg border border-purple-100 leading-relaxed">
-                目前福岡與熊本皆已確認！僅剩大分區需在取消期限前選擇其一，並記得主動取消不要的訂單。
+                全線飯店皆已預訂確認完畢！以下為各階段的訂單成本與備註。
             </p>
 
             <div class="space-y-6 pb-2">
@@ -570,35 +570,13 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                         <div class="p-3 bg-red-50/70 rounded-xl border-2 border-red-300 shadow-md flex flex-col justify-between">
                             <div>
-                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">龜之井酒店 别府 <span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 絕對首選</span></div>
+                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">龜之井酒店 别府 <span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 已確認首選</span></div>
                                 <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 豪華雙床房 (兩家各1間)</div>
                             </div>
                             <div>
                                 <div class="font-black text-red-700 text-sm">單家負擔: 約 8,937</div>
                                 <div class="text-[11px] text-orange-600 mt-0.5 font-bold">3晚總價(2間): 17,873</div>
-                                <div class="text-[10px] text-red-600 font-bold mt-2 bg-red-100 p-1.5 rounded-md inline-block">⏰ 取消: 5/22 前</div>
-                            </div>
-                        </div>
-                        <div class="p-3 bg-amber-50/50 rounded-xl border border-amber-200 opacity-90 hover:opacity-100 transition flex flex-col justify-between shadow-sm">
-                            <div>
-                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">AMANEK Beppu <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">豪華備選</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 高級雙床房 (兩家各1間)</div>
-                            </div>
-                            <div>
-                                <div class="font-black text-amber-700 text-sm">單家負擔: 約 13,946</div>
-                                <div class="text-[11px] text-orange-600 mt-0.5 font-bold">3晚總價(2間): 27,891</div>
-                                <div class="text-[10px] text-red-500 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-block">⏰ 取消: 5/22 前</div>
-                            </div>
-                        </div>
-                        <div class="p-3 bg-amber-50/50 rounded-xl border border-amber-200 opacity-90 hover:opacity-100 transition flex flex-col justify-between shadow-sm">
-                            <div>
-                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">別府石垣泉 <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">豪華備選</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">1間 溫泉家庭房 (兩家包棟平分)</div>
-                            </div>
-                            <div>
-                                <div class="font-black text-amber-700 text-sm">單家平分: 約 11,948</div>
-                                <div class="text-[11px] text-orange-600 mt-0.5 font-bold">3晚包棟總價: 23,895</div>
-                                <div class="text-[10px] text-red-500 font-bold mt-2 bg-red-50 p-1.5 rounded-md inline-block">⏰ 取消: 5/21 前</div>
+                                <div class="text-[10px] text-red-600 font-bold mt-2 bg-red-100 p-1.5 rounded-md inline-block">⏰ 免費取消: 5/22 前</div>
                             </div>
                         </div>
                     </div>
@@ -611,9 +589,9 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-300 shadow-md flex flex-col justify-between">
                             <div>
-                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">博多綠色天神酒店 <span class="bg-pink-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 福岡首選</span></div>
+                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">博多綠色天神酒店 <span class="bg-pink-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 已確認首選</span></div>
                                 <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 好萊塢雙床房 (兩家各1間)</div>
-                                <div class="text-[10px] text-pink-700 font-bold mt-1">✨ 天神大名精華區！下樓直達 Shin-Shin 拉麵與唐吉訶德</div>
+                                <div class="text-[10px] text-pink-700 font-bold mt-1 leading-tight">✨ 天神大名精華區！下樓直達 Shin-Shin 且 2024/04起新增免費早餐！</div>
                             </div>
                             <div class="mt-2 border-t border-pink-200 pt-2 flex justify-between items-end">
                                 <div>
@@ -621,20 +599,8 @@
                                     <div class="text-[10px] text-gray-500 font-bold block">⏰ 取消: 5/25 前</div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="font-black text-pink-700 text-sm">單家負擔: 約 5,951</div>
-                                    <div class="text-[11px] text-orange-600 mt-0.5 font-bold">2晚總價(2間): 11,903</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="p-3 bg-gray-50 rounded-xl border border-gray-200 opacity-80 hover:opacity-100 transition flex flex-col justify-between">
-                            <div>
-                                <div class="font-bold text-gray-600 text-sm flex flex-wrap items-center gap-1.5 mb-1">The Luigans Spa <span class="bg-blue-400 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">🏖️ 海島備選</span></div>
-                                <div class="text-[10px] text-gray-400 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">單家自行預定 (Booking.com)</div>
-                            </div>
-                            <div class="mt-2 border-t border-gray-200 pt-2 flex justify-between items-end">
-                                <div class="text-[10px] text-gray-500 font-bold">⏰ 取消: 5/30 前</div>
-                                <div class="text-right">
-                                    <div class="font-black text-gray-600 text-sm">2晚單家 5,219</div>
+                                    <div class="font-black text-pink-700 text-sm">單家負擔: 約 5,380</div>
+                                    <div class="text-[11px] text-orange-600 mt-0.5 font-bold">2晚總價: 10,761 (¥54,545)</div>
                                 </div>
                             </div>
                         </div>
@@ -685,18 +651,18 @@
                     <div class="absolute -right-2 -top-2 text-2xl opacity-50 pointer-events-none">🏨</div>
                     <div class="flex justify-between items-end mb-1">
                         <span class="font-bold text-sm text-blue-800">🏨 住宿預估 (以市區首選計算)</span>
-                        <span class="font-black text-kawaii-blue">20,353 TWD</span>
+                        <span class="font-black text-kawaii-blue">19,782 TWD</span>
                     </div>
-                    <p class="text-[10px] text-blue-600 mb-1 leading-tight">8,937(龜之井) + 5,951(綠色天神) + 5,465(熊本)</p>
+                    <p class="text-[10px] text-blue-600 mb-1 leading-tight">8,937(龜之井) + 5,380(綠色天神) + 5,465(熊本)</p>
                     <div class="progress-bar-bg bg-blue-100"><div class="progress-bar-fill bg-kawaii-blue w-[19%]"></div></div>
                 </div>
 
                 <div class="bg-red-50 p-3 rounded-xl border border-red-200">
                     <div class="flex justify-between items-end mb-1">
                         <span class="font-bold text-sm text-red-800">🚗 租車與交通 (單家負擔)</span>
-                        <span class="font-black text-red-600">20,000 TWD</span>
+                        <span class="font-black text-red-600">11,000 TWD</span>
                     </div>
-                    <p class="text-[10px] text-red-600 mb-1 leading-tight">單家包一台 7-8 人座、KEP、大環線油資、停車費</p>
+                    <p class="text-[10px] text-red-600 mb-1 leading-tight">租車、油資與停車。放棄 KEP 改實支實付狂省一萬日幣！</p>
                     <div class="progress-bar-bg bg-red-100"><div class="progress-bar-fill bg-red-400 w-[18%]"></div></div>
                 </div>
 
@@ -719,8 +685,8 @@
                 <div class="border-t-2 border-dashed border-gray-200 my-1"></div>
                 
                 <div class="flex justify-between items-center p-4 bg-slate-800 rounded-xl border-2 border-slate-700 shadow-lg">
-                    <span class="font-black text-white text-sm">單一家庭總計</span>
-                    <span class="font-black text-2xl text-white tracking-tight">107,353 <span class="text-sm text-gray-300">TWD</span></span>
+                    <span class="font-black text-white text-sm">單家總計預估</span>
+                    <span class="font-black text-2xl text-white tracking-tight">97,782 <span class="text-sm text-gray-300">TWD</span></span>
                 </div>
             </div>
         </dialog>
@@ -780,30 +746,30 @@
         // 已全面加入 rel='noopener noreferrer' 強化外部連結安全性
         const itineraryData = [
             {
-                day: 1, date: "5/29 (五)", title: "完美落地與橫斷防吐大作戰", weather: "🌤️ 預報 24-28°C", mapLink: "https://www.google.com/maps/dir/熊本機場/ASO+MILK+FACTORY/別府Global+Tower/龜之井酒店別府", route: "高雄 ✈️ (08:45飛/11:50到) → 熊本機場 🚗 (2.5H) → 別府", hotel: "龜之井酒店 别府 (首選) 或其他備選", checklist: ["全家人確實吃好暈車藥", "確認租車 KEP 是否已綁定", "推車與尿布包放置於好拿處"],
+                day: 1, date: "5/29 (五)", title: "完美落地與橫斷兜風大作戰", weather: "🌤️ 預報 24-28°C", mapLink: "https://www.google.com/maps/dir/熊本機場/ASO+MILK+FACTORY/別府Global+Tower/龜之井酒店別府", route: "高雄 ✈️ (08:45飛/11:50到) → 熊本機場 🚗 (2.5H) → 別府", hotel: "龜之井酒店 别府 (首選) 或其他備選", checklist: ["確認租車公司的 ETC 卡是否已準備好", "推車與尿布包放置於車內好拿處", "準備好車上安撫音樂與防呆導航設定"],
                 sections: [
-                    { type: "action", time: "11:50 - 13:00", mapQuery: "阿蘇熊本機場", title: "機場取車與 KEP 綁定", content: "熊本機場出關極快(實測約40分即可領完行李)，13:00 取車出發是非常安全的保守估計，下午時間充裕！<strong>強烈建議小孩先吞暈車藥</strong>，午餐先吃七八分飽即可！", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>KEP 避坑指南：</strong>預約租車時 ETC 與 KEP 必須「同時勾選預約」，現場無法臨時加購。</li><li><strong>注意事項：</strong>KEP「不包含」福岡都市高速等市區收費路段，經過時ETC會自動記錄，還車時需補繳幾百塊日圓價差，是正常現象喔！</li></ul>" },
-                    { type: "sight", time: "13:40 - 15:00", mapQuery: "ASO MILK FACTORY", title: "🚗 啟程與順遊放風：ASO MILK", content: "從機場出發約30-40分鐘，正好在進入蜿蜒山路前抵達！這裡有極美的免費玫瑰庭園、平坦舒適的步道，還能吃到國際三星認證的阿蘇牛奶與濃郁霜淇淋。讓孩子在這裡跑跳放電、上廁所，是非常完美的「簡單走走」中繼站。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>防吐與午睡神戰術：</strong>剛上車別開太久，在這裡稍作休息吃個冰淇淋。</li><li><strong>完美銜接：</strong>放完電後重新上車，剛好進入較為蜿蜒的「九州橫斷道路」，配合車子搖晃，高機率能讓幼童直接一路睡到大分！</li></ul>" },
+                    { type: "action", time: "11:50 - 13:00", mapQuery: "阿蘇熊本機場", title: "機場取車與設定", content: "熊本機場出關極快(實測約40分即可領完行李)，13:00 取車出發是非常安全的保守估計，下午時間充裕！午餐先吃七八分飽即可！", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>ETC 與 KEP 避坑指南：</strong>本次已確認放棄購買 KEP，直接使用預約好的 ETC 卡實支實付，單家狂省近萬日圓！現場不需另外花時間開通。</li></ul>" },
+                    { type: "sight", time: "13:40 - 15:00", mapQuery: "ASO MILK FACTORY", title: "🚗 啟程與順遊放風：ASO MILK", content: "從機場出發約30-40分鐘，正好在進入蜿蜒山路前抵達！這裡有極美的免費玫瑰庭園、平坦舒適的步道，還能吃到國際三星認證的阿蘇牛奶與濃郁霜淇淋。讓孩子在這裡跑跳放電、上廁所，是非常完美的「簡單走走」中繼站。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美銜接：</strong>放完電後重新上車，剛好進入較為蜿蜒的「九州橫斷道路」，配合車子搖晃，高機率能讓幼童直接一路睡到大分！</li></ul>" },
                     { type: "drive", time: "15:00 - 17:00", title: "東進大分 (山谷絕景兜風)", content: "繼續沿著國道 57 號與九州橫斷道路前進，此段為九州自駕最經典的絕景路線。若孩子中途醒來，可於最高點的「<a href='https://www.google.com/maps/search/?api=1&query=瀨之本+Rest+House' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>瀨之本 Rest House</a>」再次短暫下車吹風。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>彈性順遊備註：</strong>若抵達別府時若有空檔，可把『<a href='https://www.google.com/maps/search/?api=1&query=海地獄' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>海地獄</a>』與『<a href='https://www.google.com/maps/search/?api=1&query=灶地獄' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>灶地獄</a>』當作 Bonus 順遊，一切以不增加疲勞為原則。</li></ul>" },
                     { type: "action", time: "17:30 - 18:30", mapQuery: "B-Con Plaza", title: "傍晚：Global Tower 迎賓夜景", content: "抵達別府後，先順路前往「B-Con Plaza」內的 Global Tower！推車可搭電梯直達 100 公尺高的全玻璃觀景台，全家人輕鬆俯瞰別府溫泉鄉「四處冒白煙」的奇特夜景。結束後直接前往<a href='https://www.google.com/maps/search/?api=1&query=龜之井酒店+別府' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>龜之井酒店</a> Check-in 與吃晚餐。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>景點備註：</strong>Global Tower 距離龜之井酒店開車只要 5 分鐘！若 Day 1 真的太累，也可移到 Day 3 水族館回程時順遊。</li></ul>" }
                 ],
-                tips: "今日最大挑戰是「疲勞+山路=幼童崩潰/嘔吐」。加入了 ASO MILK FACTORY 作為緩衝，能大幅降低第一天的舟車勞頓感。"
+                tips: "今日重點是輕鬆適應右駕與享受阿蘇火山的絕美山路兜風。加入了 ASO MILK FACTORY 作為緩衝，讓孩子跑跳放電，能大幅降低第一天的舟車勞頓感。"
             },
             {
-                day: 2, date: "5/30 (六)", title: "和諧粉彩樂園全天", weather: "🌤️ 預報 23-27°C", mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/Harmonyland/Youme+Town+別府/龜之井酒店別府", route: "飯店 🚗 (約40分) → Harmonyland → 飯店", hotel: "龜之井酒店 别府 (首選) 或其他備選", checklist: ["出發前確認已買好三麗鷗門票", "自備大塑膠袋與野餐墊", "水壺裝滿水"],
+                day: 2, date: "5/30 (六)", title: "和諧粉彩樂園全天", weather: "🌤️ 預報 23-27°C", mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/Harmonyland/Youme+Town+別府/龜之井酒店別府", route: "飯店 🚗 (約40分) → Harmonyland → Youme Town → 飯店", hotel: "龜之井酒店 别府", checklist: ["出發前確認已買好 QR Code 電子門票", "自備大塑膠袋與野餐墊", "水壺裝滿水"],
                 sections: [
-                    { type: "play", time: "10:00 - 16:30", mapQuery: "Harmonyland", title: "大重點：Harmonyland (週六場)", content: "安排在週末是因為樂園消化人潮能力強。<strong class='text-red-500'>購票秘訣：若行程中有路過 AEON 超市，強烈建議在裡面的<a href='https://www.google.com/maps/search/?api=1&query=Sanrio+Gift+Gate' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>三麗鷗商店 (Sanrio Gift Gate)</a> 順手買好實體前售票</strong>，當天直接拿實體票入園，完美跳過排隊人龍！(或使用 Asoview 預購)。<br>午餐：<strong>強制超商/超市野餐！</strong>不吃園區餐廳，省錢還能避免排隊崩潰。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>展演時刻提醒：</strong>出發前 1-2 週請務必上官網確認最新的 Live Show 與遊行時刻表，以利安排提早 20 分鐘佔位。</li></ul>" },
-                    { type: "food", time: "17:00 - 20:00", mapQuery: "Youme Town 別府", title: "傍晚：Youme Town 終極收尾", content: "從樂園離開後直奔<strong>【Youme Town 別府】</strong>！這裡有超巨大免費停車場，美食街能無壓力解決雙家庭晚餐（各自點餐不怕吵）。吃飽後直接去樓下超市把明天的果汁、水族館野餐零食一次買齊！<div class='mt-3 p-3 bg-orange-50 border border-orange-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-orange-800 flex items-center gap-1'><span class='text-base'>🔄</span> 彈性輔助備案：</strong>若大人太累，可直接開回飯店散步去吃天丼(<a href='https://www.google.com/maps/search/?api=1&query=とよ常+別府' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>とよ常</a>)；若小孩吵著吃扭蛋壽司，則改去國道旁的<a href='https://www.google.com/maps/search/?api=1&query=壽司郎+別府' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>壽司郎</a>＋<a href='https://www.google.com/maps/search/?api=1&query=Mega+Trial+別府' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Mega Trial 超市</a>。</div>", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>體力防雷：</strong>樂園後大家體力見底，能「一站式」解決停車、晚餐與採買是保護父母理智線的最高指導原則。</li></ul>" }
+                    { type: "play", time: "10:00 - 16:30", mapQuery: "Harmonyland", title: "大重點：Harmonyland (週六場)", content: "安排在週末是因為樂園消化人潮能力強。<strong class='text-red-500'>⚠️ 購票終極秘訣：千萬別在現場排隊！</strong> 強烈建議出發前直接用 Klook / KKday 買好電子票 (約85折)，當天直接刷 QR Code 秒速入園！(若想收集實體票卡，可於 AEON 內的 Sanrio Gift Gate 預購)。<br>🎯 展演必看時刻：10:30 (35週年迎賓)、12:30 (帕拉列爾大遊行)、15:30 (春季花卉秀)。<br>午餐：強制超商野餐！不吃園區餐廳，省錢還能避免排隊崩潰。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>展演時刻提醒：</strong>以上為 2026/05 預估之春夏季大秀時刻，提早 20 分鐘佔位準沒錯。</li></ul>" },
+                    { type: "food", time: "17:00 - 20:00", mapQuery: "Youme Town 別府", title: "傍晚：Youme Town 終極收尾", content: "從樂園離開後直奔【Youme Town 別府】！這裡有一站式神級機能：<br>🛍️ 掃貨：UNIQLO, GU, DAISO, KALDI, 扭蛋店 gashacoco。<br>🍜 美食街：味噌乃家, 花丸烏龍麵, Ringer Hut, 31冰淇淋... 兩家各自點餐免排隊！吃飽後直接去樓下超市把明天的果汁、水族館野餐零食一次買齊！", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>體力防雷：</strong>樂園後大家體力見底，能「一站式」解決停車、晚餐與採買是保護父母理智線的最高指導原則。</li></ul>" }
                 ],
                 tips: "連住飯店的優勢！早上不用收行李，吃完早餐直接出發，心情無比輕鬆。"
             },
             {
-                day: 3, date: "5/31 (日)", title: "由布院療癒與海岸生態", weather: "🌤️ 預報 22-26°C", mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/Yufuin+Floral+Village/大分海洋宮殿水族館+海之卵/龜之井酒店別府", route: "飯店 🚗 (約50分) → 由布院 🚗 (45分) → 海之卵水族館", hotel: "龜之井酒店 别府 (首選) 或其他備選", checklist: ["準備好 100円 硬幣買羊飼料", "中午 12:30 前必須離開由布院"],
+                day: 3, date: "5/31 (日)", title: "由布院療癒與海岸生態", weather: "🌤️ 預報 22-26°C", mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/Yufuin+Floral+Village/大分海洋宮殿水族館+海之卵/龜之井酒店別府", route: "飯店 🚗 (約50分) → 由布院 🚗 (45分) → 海之卵水族館", hotel: "龜之井酒店 别府", checklist: ["隨身攜帶大毛巾與一套幼童備用衣物 (水族館踏浪用)", "準備好 100円 硬幣買羊飼料", "中午 12:30 前必須離開由布院"],
                 sections: [
-                    { type: "sight", time: "09:30 - 12:00", mapQuery: "Yufuin Floral Village", title: "上午：由布院「逆向操作」突擊", content: "執行逆向操作！08:30大分發車，09:30空空降【Floral Village童話村】停車場！趁遊覽車還沒來，先買飼料餵小羊(備妥100円)、看貓頭鷹。接著「逆著人流」往<a href='https://www.google.com/maps/search/?api=1&query=由布院車站' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>車站方向</a>散步吃起司塔與可樂餅。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>推車地獄破解法：</strong>週日10:30後的由布院非常可怕。我們直接停在尾端反向逛，12:00 直接開車撤退，完美避開下午的人潮與推車大軍！這招能讓這天的疲勞度大幅下降。</li></ul>" },
-                    { type: "play", time: "13:30 - 16:30", mapQuery: "大分海洋宮殿水族館 海之卵", title: "下午 (死線13:30)：海之卵水族館", content: "九州頂級水族館，核心精神是「沒有距離」！13:30 抵達後，展開完美的下午展演連擊：<br><br>👉 <strong>14:00 海豚表演</strong> ➔ <strong>15:00 海象互動秀</strong> (前排必噴水) ➔ <strong>15:30 鵜鶘散步</strong>！<br><br>看完秀的空檔就泡在「Asobeach」戶外白沙灘，海豚會直接游到腳邊！<br><button onclick=\"showModal('umitamagoModal')\" class=\"mt-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🦭</span> 展演時刻大補帖 (補充資訊)</button>", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美踩點攻略：</strong>由布院到此需 50 分鐘。為了順利接上 14:00 的海豚秀，<strong>由布院最晚 12:30 必須發車，13:30 抵達水族館</strong>。</li></ul>" }
+                    { type: "sight", time: "09:30 - 12:00", mapQuery: "Yufuin Floral Village", title: "上午：由布院「逆向操作」突擊", content: "執行逆向操作！休旅車請先導航至『タイムズ湯布院第２』等大型停車場。09:30趁遊覽車還沒來，先買飼料餵小羊(備妥100円)、看貓頭鷹。接著「逆著人流」往<a href='https://www.google.com/maps/search/?api=1&query=由布院車站' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>車站方向</a>散步吃起司塔與可樂餅。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>推車地獄與停車破解法：</strong>週日由布院極塞！大型休旅車務必事先找好外圍停車場。逛 Floral Village 內部時，強烈建議把推車暫放在入口處，避免卡死。12:00 直接開車撤退，完美避開下午的人潮！</li></ul>" },
+                    { type: "play", time: "13:30 - 16:30", mapQuery: "大分海洋宮殿水族館 海之卵", title: "下午 (死線13:30)：海之卵水族館", content: "九州頂級水族館，核心精神是「沒有距離」！13:30 抵達後，展開完美的下午展演連擊：<br><br>👉 <strong>14:00 海豚表演</strong> ➔ <strong>15:00 海象互動秀</strong> (前排必噴水) ➔ <strong>15:30 鵜鶘散步</strong>！<br><br>看完秀的空檔就泡在「Asobeach」戶外白沙灘，放手讓小孩去踏浪，海豚會游到腳邊！<br><button onclick=\"showModal('umitamagoModal')\" class=\"mt-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🦭</span> 展演時刻大補帖 (補充資訊)</button>", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>午餐與野餐戰術：</strong>千萬別讓幼童餓肚子！建議在由布院或前往大分途中的超市買好便當，13:15 到水族館二樓戶外海景區野餐，14:00 無縫接軌看海豚秀。</li></ul>" }
                 ],
-                tips: "午餐建議在由布院買好散步小吃，或在前往水族館的路上找便利商店快速解決。重點是嚴守 13:30 的抵達死線，把下午的時間完整留給水族館的戶外互動區。"
+                tips: "這天重點是嚴守 13:30 的抵達死線，把下午的時間完整留給水族館的戶外互動區。"
             },
             {
                 day: 4, date: "6/1 (一)", title: "野生動物園與午後時間決策", weather: "🌤️ 預報 24-28°C", mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/九州自然動物園/博多綠色天神酒店", route: "別府 🚗 (40分) → Safari 🚗 (2H) → 依抵達時間決策 → 飯店", hotel: "博多綠色天神酒店 (首選)", checklist: ["長途車程，準備好車上零食點心", "抵達福岡交流道時注意時間決策"],
@@ -815,16 +781,16 @@
                 tips: "今天是車程最長的一天。透過「時間決策模型」，不硬塞景點，能大幅降低大人疲勞與小孩坐不住的崩潰機率。"
             },
             {
-                day: 5, date: "6/2 (二)", title: "天神主場優勢與海陸雙拼", weather: "🌤️ 預報 23-28°C", mapLink: "https://www.google.com/maps/dir/博多綠色天神酒店/福岡塔/Marine+World+海之中道/MARK+IS+福岡百道/博多綠色天神酒店", route: "飯店 🚶‍♂️(市區) → 福岡塔 🚢(搭船) → Marine World 🚢 → 傍晚海濱與 Mark Is → 飯店", hotel: "博多綠色天神酒店 (連泊 2/2)", checklist: ["早上查閱 Uminoline 船班是否欠航", "在福岡塔超商先買好墊肚子零食"],
+                day: 5, date: "6/2 (二)", title: "天神主場優勢與海陸雙拼", weather: "🌤️ 預報 23-28°C", mapLink: "https://www.google.com/maps/dir/博多綠色天神酒店/福岡塔/Marine+World+海之中道/MARK+IS+福岡百道/博多綠色天神酒店", route: "飯店 🚶‍♂️(市區) → 福岡塔 🚢(搭船) → Marine World 🚢 → 傍晚海濱與 Mark Is → 飯店", hotel: "博多綠色天神酒店 (連泊 2/2)", checklist: ["早上記得去櫃檯領取免費輕量早餐券", "查閱 Uminoline 船班是否欠航", "在福岡塔超商先買好墊肚子零食"],
                 sections: [
-                    { type: "action", time: "09:30 - 12:00", mapQuery: "福岡塔", title: "上午：天神商圈主場優勢", content: "早上睡到自然醒，免收行李！媽媽們把握空檔步行 3-5 分鐘直攻「<a href='https://www.google.com/maps/search/?api=1&query=岩田屋+福岡' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>岩田屋</a>、<a href='https://www.google.com/maps/search/?api=1&query=福岡三越' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>福岡三越</a>或 <a href='https://www.google.com/maps/search/?api=1&query=Mina+天神' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Mina 天神</a>」無壓力採買，戰利品直接放回房間。爸爸們可帶小孩至附近的「<a href='https://www.google.com/maps/search/?api=1&query=警固公園' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>警固公園</a>」跑跳。約 11:30 兩家人會合，開車前往福岡塔戶外停車場停妥。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>休旅車停車防雷：</strong>福岡塔周邊有廣大的戶外平面停車場，完美解決市區機械車位對大型休旅車限高的問題。</li><li><strong>糧食防雷警告：</strong>水族館下船碼頭「沒有超商」。強烈建議 11:30 在福岡塔旁 Mark Is 內的 <a href='https://www.google.com/maps/search/?api=1&query=HalloDay+Mark+Is+福岡百道' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>HalloDay 超市</a>，先買好飯糰/小麵包帶身上，等船時先給小孩墊肚子！</li></ul>" },
+                    { type: "action", time: "09:30 - 12:00", mapQuery: "福岡塔", title: "上午：天神商圈主場優勢", content: "早上享用飯店免費早餐，免收行李！媽媽們把握空檔步行 3-5 分鐘直攻「<a href='https://www.google.com/maps/search/?api=1&query=岩田屋+福岡' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>岩田屋</a>、<a href='https://www.google.com/maps/search/?api=1&query=福岡三越' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>福岡三越</a>或 <a href='https://www.google.com/maps/search/?api=1&query=Mina+天神' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Mina 天神</a>」無壓力採買，戰利品直接放回房間。爸爸們可帶小孩至附近的「<a href='https://www.google.com/maps/search/?api=1&query=警固公園' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>警固公園</a>」跑跳。約 11:30 兩家人會合，開車前往福岡塔戶外停車場停妥。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>休旅車停車防雷：</strong>福岡塔周邊有廣大的戶外平面停車場，完美解決市區機械車位對大型休旅車限高的問題。</li><li><strong>糧食防雷警告：</strong>水族館下船碼頭「沒有超商」。強烈建議 11:30 在福岡塔旁 Mark Is 內的 <a href='https://www.google.com/maps/search/?api=1&query=HalloDay+Mark+Is+福岡百道' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>HalloDay 超市</a>，先買好飯糰/小麵包帶身上，等船時先給小孩墊肚子！</li></ul>" },
                     { type: "play", time: "12:30 - 17:00", mapQuery: "Marine World 海之中道", title: "下午：高速船破浪 ＆ Marine World", content: "12:30 走到福岡塔後方 (<a href='https://www.google.com/maps/search/?api=1&query=Marizon+福岡' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Marizon</a>) 搭乘 Uminoline 高速船，20 分鐘破浪直達水族館！下船後無縫接軌看秀：<br>13:00 大水槽潛水員秀 ➔ 13:30 海豚海獅大秀 ➔ 14:30 江豚講座 ➔ 15:00 沙丁魚颱風 ➔ 16:10 晚安企鵝！<br><button onclick=\"showModal('marineWorldModal')\" class=\"mt-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-md hover:scale-105 transition flex items-center gap-2\"><span>🐬</span> 查看展演時刻大補帖</button>", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>極度警告：</strong>鎖定 12:30 去程。<strong>回程務必注意 17:00 末班船死線</strong>，錯過將面臨車在福岡塔的交通災難。若停航則無痛切換為開車前往。</li><li><strong>館內熱食救援：</strong>若進水族館後小孩還是喊餓，趁 13:30 海豚秀前，趕快去海豚看台旁的「M-cafe 小賣部」買熱狗堡與炸薯條充飢！</li></ul>" },
                     { type: "food", time: "17:30 - 20:00", mapQuery: "MARK IS 福岡百道", title: "傍晚：沙灘夕陽 ＆ Mark Is 晚餐", content: "搭乘約 17:00 的船班回到福岡塔碼頭。傍晚氣溫微涼舒適，讓孩子在「<a href='https://www.google.com/maps/search/?api=1&query=百道海濱公園' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>百道海濱公園</a>」的沙灘踏浪看夕陽。隨後走天橋至旁邊的<strong>「Mark Is 福岡百道」</strong>吃晚餐。<br>👉 <strong>親子美食推薦：</strong>3樓有巨大美食街（<a href='https://www.google.com/maps/search/?api=1&query=名島亭+Mark+Is' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>名島亭老字號拉麵</a>、<a href='https://www.google.com/maps/search/?api=1&query=Ringer+Hut+Mark+Is' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Ringer Hut 強棒麵</a>），以及獨立餐廳（<a href='https://www.google.com/maps/search/?api=1&query=博多天婦羅+たかお+Mark+Is' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>博多天婦羅 たかお</a>、<a href='https://www.google.com/maps/search/?api=1&query=Pietro+Mark+Is' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Pietro 義大利麵</a>）。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>神級避開人潮戰術：</strong>在 Mark Is 吃飽喝足後，大約晚上 8 點再開車回天神飯店。這完美避開了天神下班塞車潮與居酒屋晚餐人擠人的窘境，小孩也能在車上安穩睡著。</li></ul>" }
                 ],
                 tips: "原本計畫的「直接開車」已升級為「福岡塔搭船海陸雙拼」，請務必在當天早上確認 Uminoline (海之中道線) 的船班是否正常行駛！"
             },
             {
-                day: 6, date: "6/3 (三)", title: "櫛田神社與太宰府柳川南下", weather: "🌤️ 預報 22-26°C", mapLink: "https://www.google.com/maps/dir/博多綠色天神酒店/櫛田神社/太宰府天滿宮/柳川泛舟/KOKO+HOTEL+Premier+熊本", route: "飯店 🚗 (10分) → 櫛田神社 🚗 (30分) → 太宰府 🚗 (50分) → 柳川 🚗 (1H) → 熊本", hotel: "KOKO HOTEL Premier (連泊 1/2)", checklist: ["飯店行李全數上車確認", "確認雨具是否放置車上備用"],
+                day: 6, date: "6/3 (三)", title: "櫛田神社與太宰府柳川南下", weather: "🌤️ 預報 22-26°C", mapLink: "https://www.google.com/maps/dir/博多綠色天神酒店/櫛田神社/太宰府天滿宮/柳川泛舟/KOKO+HOTEL+Premier+熊本", route: "飯店 🚗 (10分) → 櫛田神社 🚗 (30分) → 太宰府 🚗 (50分) → 柳川 🚗 (1H) → 熊本", hotel: "KOKO HOTEL Premier (連泊 1/2)", checklist: ["享用飯店免費輕量早餐後退房", "飯店行李全數上車確認", "確認雨具是否放置車上備用"],
                 sections: [
                     { type: "sight", time: "08:30 - 09:30", mapQuery: "櫛田神社", title: "早晨：櫛田神社 (開路先鋒)", content: "早上從天神飯店退房後，順路開車約 10 分鐘前往櫛田神社拍巨大的裝飾大山笠。利用 09:00 前人潮稀少的黃金時段，喝個著名的不老長壽水後，隨後直上高速公路前往太宰府，動線完美零繞路。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美順路：</strong>從天神去太宰府的路上會經過此處，旁邊有平面停車場，非常適合當作一早出發的暖身景點。</li></ul>" },
                     { type: "sight", time: "10:00 - 11:30", mapQuery: "太宰府天滿宮", title: "上午：太宰府天滿宮 & 表參道", content: "抵達太宰府後，推著推車漫步表參道，品嚐剛烤好的「梅枝餅」，參觀隈研吾設計的<a href='https://www.google.com/maps/search/?api=1&query=太宰府+星巴克' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>特色星巴克</a>。建議 10:00 前抵達周邊停車場，預計 11:30 離開前往柳川。<div class='mt-3 p-3 bg-cyan-50 border border-cyan-200 rounded-lg shadow-sm text-sm text-gray-700 leading-relaxed'><strong class='text-cyan-800 flex items-center gap-1'><span class='text-base'>☔</span> 雨天備案切換：</strong>若遇大雨不便戶外散步，可果斷切換至「<a href='https://www.google.com/maps/search/?api=1&query=福岡市科學館' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>福岡市科學館</a>」或是提早南下去柳川搭乘有遮雨棚的遊船。</div>", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>避開人潮戰術：</strong>太宰府越晚遊覽車越多。表參道人潮眾多時推推車需較有耐心，可先買好小點心安撫孩子。</li></ul>" },
@@ -873,7 +839,7 @@
         };
         /* #endregion */
 
-        /* #region ⚙️ 2. 核心邏輯區 (Logic) - 變數封裝，避免污染全域環境 */
+        /* #region ⚙️ 2. 核心邏輯區 (Logic) - Hash Routing 與 DOM Pre-rendering */
         (() => {
             let currentDay = 1;
             let currentBackupRegion = 'oita';
@@ -1182,7 +1148,7 @@
 
             // 初始化啟動
             initTabs();
-            buildAllContent(); // 原本的 renderContent 改為一次性建構
+            buildAllContent(); // 一次性預先渲染所有天數，徹底保留狀態
             initPrintView();
         })();
         /* #endregion */
