@@ -124,6 +124,7 @@
         .ml-2 { margin-left: 0.5rem; } .ml-3 { margin-left: 0.75rem; } .ml-10 { margin-left: 2.5rem; } .ml-auto { margin-left: auto; }
         .mr-1 { margin-right: 0.25rem; } .mr-2 { margin-right: 0.5rem; }
 
+        /* --- 6. 字體與排版 (Typography) --- */
         .text-\[10px\] { font-size: 10px; } .text-\[11px\] { font-size: 11px; }
         .text-xs { font-size: 0.75rem; line-height: 1rem; } .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
         .text-base { font-size: 1rem; line-height: 1.5rem; } .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
@@ -140,6 +141,7 @@
         .decoration-gray-300 { text-decoration-color: #d1d5db; } .decoration-gray-400\/50 { text-decoration-color: rgba(156, 163, 175, 0.5); } .decoration-cyan-300 { text-decoration-color: #67e8f9; }
         .antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
+        /* --- 7. 顏色系統 (Colors) --- */
         .text-white { color: #ffffff; } .text-black { color: #000000; }
         .text-gray-300 { color: #d1d5db; } .text-gray-400 { color: #9ca3af; } .text-gray-500 { color: #6b7280; } .text-gray-600 { color: #4b5563; } .text-gray-700 { color: #374151; } .text-gray-800 { color: #1f2937; } .text-gray-900 { color: #111827; }
         .text-red-500 { color: #ef4444; } .text-red-600 { color: #dc2626; } .text-red-700 { color: #b91c1c; } .text-red-800 { color: #991b1b; }
@@ -412,7 +414,7 @@
                     </div>
                     <div>
                         <div class="text-[10px] text-purple-600 font-bold mb-0.5">目前訂房狀態與比較</div>
-                        <div class="text-xs md:text-sm font-black text-purple-800 leading-tight">別府 4晚 ‧ 熊本 3晚</div>
+                        <div class="text-xs md:text-sm font-black text-purple-800 leading-tight">全線 7 晚確認落定</div>
                     </div>
                 </div>
 
@@ -420,7 +422,7 @@
                     <div class="text-3xl shrink-0">💰</div>
                     <div>
                         <div class="text-[10px] text-gray-500 font-bold mb-0.5">單一家庭實際預算</div>
-                        <div class="text-xs md:text-sm font-black text-kawaii-blue leading-tight">重新精算中</div>
+                        <div class="text-xs md:text-sm font-black text-kawaii-blue leading-tight">約 10.5 萬 TWD</div>
                     </div>
                 </div>
 
@@ -527,7 +529,7 @@
             <button aria-label="關閉視窗" onclick="closeModal('hotelModal')" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg">✕</button>
             <h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2 pr-8"><span>🏨</span> 飯店訂單資訊與抉擇分析</h2>
             <p class="text-xs md:text-sm text-gray-500 mb-4 bg-purple-50 p-2 md:p-3 rounded-lg border border-purple-100 leading-relaxed">
-                全線已升級為「大分/別府 4晚 ＋ 熊本 3晚」極致深度方案！免去跨區打包的壓力。
+                全線 7 晚已升級為「大分/別府 4晚 ＋ 熊本 3晚」極致深度方案！免去跨區打包的壓力。
             </p>
 
             <div class="space-y-6 pb-2">
@@ -536,15 +538,16 @@
                     <div class="absolute -right-2 -top-2 text-3xl opacity-20">♨️</div>
                     <h3 class="font-bold text-kawaii-blue mb-3 text-lg">第一階段 (4晚)：5/29 - 6/2 <span class="text-xs bg-white text-kawaii-blue px-2 py-0.5 rounded-full border ml-2">大分連泊基地</span></h3>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
                         <div class="p-3 bg-red-50/70 rounded-xl border-2 border-red-300 shadow-md flex flex-col justify-between">
                             <div>
-                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">龜之井酒店 别府 <span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 確認連泊</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 豪華雙床房 (兩家各1間)</div>
-                                <div class="text-[10px] text-red-700 font-bold mt-1">需與飯店確認是否可直接加訂/展延 1 晚至 6/2 退房。</div>
+                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">龜之井酒店 别府 <span class="bg-red-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 4晚連泊確認</span></div>
+                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 豪華雙床房 (禁菸)</div>
+                                <div class="text-[10px] text-red-700 font-bold mt-1">分兩筆訂單：前3晚 ¥90,318 ＋ 第4晚 ¥18,010。含不佔床幼童，不含早餐與溫泉稅。</div>
                             </div>
                             <div class="mt-2 text-right border-t border-red-200 pt-2">
-                                <div class="font-black text-red-700 text-sm">單家負擔: 重新精算中</div>
+                                <div class="font-black text-red-700 text-sm">單家負擔: 約 11,374 TWD <span class="text-[10px]">(¥54,164)</span></div>
+                                <div class="text-[11px] text-orange-600 mt-0.5 font-bold">4晚雙家總價: ¥108,328</div>
                             </div>
                         </div>
                     </div>
@@ -557,12 +560,13 @@
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
                         <div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-300 shadow-md flex flex-col justify-between">
                             <div>
-                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">熊本新市街光芒飯店 <span class="bg-pink-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 暫定首選</span></div>
-                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">Candeo Hotels Kumamoto Shinshigai</div>
-                                <div class="text-[10px] text-pink-700 font-bold mt-1">✨ 頂樓無敵星空溫泉 SkySpa！下樓即是商店街與勝烈亭豬排。</div>
+                                <div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">熊本新市街光芒飯店 <span class="bg-pink-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 3晚連泊確認</span></div>
+                                <div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 好萊塢雙床房 (Room Only)</div>
+                                <div class="text-[10px] text-pink-700 font-bold mt-1">✨ 頂樓無敵星空溫泉 SkySpa！已備註兩間房相鄰 (close together)。</div>
                             </div>
                             <div class="mt-2 text-right border-t border-pink-200 pt-2">
-                                <div class="font-black text-pink-700 text-sm">單家負擔: 重新預定精算中</div>
+                                <div class="font-black text-pink-700 text-sm">單家負擔: 約 9,348 TWD <span class="text-[10px]">(¥44,514)</span></div>
+                                <div class="text-[11px] text-orange-600 mt-0.5 font-bold">3晚雙家總價: ¥89,028</div>
                             </div>
                         </div>
                     </div>
@@ -590,10 +594,10 @@
                 <div class="bg-kawaii-light-blue/30 p-3 rounded-xl border border-blue-100 shadow-inner relative">
                     <div class="absolute -right-2 -top-2 text-2xl opacity-50 pointer-events-none">🏨</div>
                     <div class="flex justify-between items-end mb-1">
-                        <span class="font-bold text-sm text-blue-800">🏨 住宿預估 (以市區首選計算)</span>
-                        <span class="font-black text-kawaii-blue">~21,000 TWD</span>
+                        <span class="font-bold text-sm text-blue-800">🏨 住宿預估 (7晚確認)</span>
+                        <span class="font-black text-kawaii-blue">~20,722 TWD</span>
                     </div>
-                    <p class="text-[10px] text-blue-600 mb-1 leading-tight">別府 4 晚 + 熊本 3 晚 (配合天數異動重新精算中)</p>
+                    <p class="text-[10px] text-blue-600 mb-1 leading-tight">11,374(龜之井4晚) + 9,348(熊本光芒3晚)</p>
                     <div class="progress-bar-bg bg-blue-100"><div class="progress-bar-fill bg-kawaii-blue w-[19%]"></div></div>
                 </div>
 
@@ -602,7 +606,7 @@
                         <span class="font-bold text-sm text-red-800">🚗 租車與交通 (單家負擔)</span>
                         <span class="font-black text-red-600">20,000 TWD</span>
                     </div>
-                    <p class="text-[10px] text-red-600 mb-1 leading-tight">單家包一台 7-8 人座、ETC實支實付、油資、停車費</p>
+                    <p class="text-[10px] text-red-600 mb-1 leading-tight">租車總計 ¥80,619 (含增高墊/保險) ＋ 實支實付過路費與油資</p>
                     <div class="progress-bar-bg bg-red-100"><div class="progress-bar-fill bg-red-400 w-[18%]"></div></div>
                 </div>
 
@@ -627,7 +631,7 @@
                 
                 <div class="flex justify-between items-center p-4 bg-slate-800 rounded-xl border-2 border-slate-700 shadow-lg">
                     <span class="font-black text-white text-sm">單一家庭總計估算</span>
-                    <span class="font-black text-2xl text-white tracking-tight">~106,000 <span class="text-sm text-gray-300">TWD</span></span>
+                    <span class="font-black text-2xl text-white tracking-tight">~105,722 <span class="text-sm text-gray-300">TWD</span></span>
                 </div>
             </div>
         </dialog>
@@ -689,10 +693,10 @@
                 mapLink: "https://www.google.com/maps/dir/阿蘇熊本機場/俵山交流館萌の里/高森駅/龜之井酒店別府",
                 route: "熊本機場 🚗 → 萌之里 → 南阿蘇 → 別府",
                 hotel: "龜之井酒店 别府 (連住 4 晚)",
-                checklist: ["確認租車公司的 ETC 卡是否已準備好", "推車與尿布包放置於車內好拿處", "準備好車上安撫音樂與防呆導航設定"],
+                checklist: ["🎟️ Budget 租車單 (00010400657)、護照、台灣駕照正本與日文譯本", "💺 確認 2 個增高座椅與 ETC 卡是否皆已備妥"],
                 highlights: ["🍊 娜美彩蛋 (萌之里)", "🤖 佛朗基彩蛋 (高森站)", "🥩 在地便宜便當/鮮奶"],
                 sections: [
-                    { type: "action", time: "11:50 - 13:00", mapQuery: "阿蘇熊本機場", title: "機場取車與設定", content: "降落<a href='https://www.google.com/maps/search/?api=1&query=阿蘇熊本機場' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>熊本機場</a>，出關領取預約好的 7-8 人座休旅車（直接使用 ETC 卡實支實付）。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>ETC 與 KEP 避坑指南：</strong>本次已確認放棄購買 KEP，直接使用預約好的 ETC 卡實支實付，單家狂省近萬日圓！</li></ul>" },
+                    { type: "action", time: "11:50 - 13:00", mapQuery: "阿蘇熊本機場", title: "機場取車與設定", content: "降落<a href='https://www.google.com/maps/search/?api=1&query=阿蘇熊本機場' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>熊本機場</a>，出 D 航廈前往 Sora-Yoka 遊客中心櫃檯領號碼牌，搭接駁車至 <strong>Budget 租車熊本機場店</strong> 領取預約好的 7-8 人座休旅車。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>ETC 與 KEP 避坑指南：</strong>本次已確認放棄購買 KEP，直接使用預約好的 ETC 卡實支實付，單家狂省近萬日圓！</li></ul>" },
                     { type: "sight", time: "13:20 - 14:15", mapQuery: "俵山交流館 萌之里", title: "第一站放電 (娜美彩蛋)", content: "👉 <strong>【海賊王彩蛋：🍊 娜美】</strong>。離開機場約 15 分鐘，抵達「<a href='https://www.google.com/maps/search/?api=1&query=俵山交流館+萌の里' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>俵山交流館 萌之里</a>」。這是一個超棒的農產直賣所，有廣闊草地可以讓小孩狂奔，大人可買些在地小零食墊肚子。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美銜接：</strong>剛下飛機讓小孩伸展筋骨，順便在直賣所買便宜的在地便當或牛奶當輕食。</li></ul>" },
                     { type: "sight", time: "14:30 - 15:30", mapQuery: "高森駅", title: "南阿蘇微探險 (佛朗基彩蛋)", content: "視體力與時間，前往「<a href='https://www.google.com/maps/search/?api=1&query=白川水源' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>白川水源</a>」踏踏水，或是去<a href='https://www.google.com/maps/search/?api=1&query=高森駅' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>高森車站</a>找 👉 <strong>【海賊王彩蛋：🤖 佛朗基】</strong> 拍照。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>彈性備註：</strong>若小孩已顯疲態，此站可直接跳過，提早拉車前往別府。</li></ul>" },
                     { type: "drive", time: "16:00 - 18:30", mapQuery: "龜之井酒店 別府", title: "長途拉車與抵達", content: "小孩上車睡傍晚覺，經由國道 57 號或 442 號直奔大分縣。抵達<a href='https://www.google.com/maps/search/?api=1&query=龜之井酒店+別府' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>龜之井酒店</a> Check-in。晚餐就近在飯店周邊或前往附近的 <a href='https://www.google.com/maps/search/?api=1&query=Mega+Trial+別府' target='_blank' rel='noopener noreferrer' class='text-cyan-700 hover:text-cyan-500 font-bold underline decoration-cyan-300 underline-offset-2 transition-colors'>Mega Trial 巨型超市</a> 解決，並順便搬妥這幾天的鮮奶與果汁。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>超市救援：</strong>晚上 8 點後日本超市熟食與便當會打半折，買回飯店當宵夜或隔天的野餐糧食，CP 值突破天際。</li></ul>" }
@@ -754,7 +758,7 @@
                 weather: "🌤️ 預報 23-28°C",
                 mapLink: "https://www.google.com/maps/dir/龜之井酒店別府/大觀峰/阿蘇車站/草千里之濱/大津中央公園/熊本新市街",
                 route: "別府退房 🚗 → 大觀峰 → 阿蘇車站 → 草千里 → 熊本",
-                hotel: "Candeo Kumamoto Shinshigai (暫定首選)",
+                hotel: "Candeo Kumamoto Shinshigai",
                 checklist: ["確認所有行李與隨身物品已上車", "阿蘇山區氣候多變，早餐時務必確認天氣與火口預報", "草千里嚴禁推車下草地，請備妥嬰兒揹巾"],
                 highlights: ["⛰️ 大觀峰絕景", "🤥 騙人布彩蛋 (阿蘇站)", "🥛 阿蘇限定優酪乳", "🐎 草千里之濱", "⚔️ 索隆彩蛋 (大津公園)", "🥩 勝烈亭豬排"],
                 sections: [
@@ -811,7 +815,7 @@
                 sections: [
                     { type: "shop", time: "09:30 - 12:30", mapQuery: "下通商店街", title: "最後廝殺與退房", content: "發揮飯店地點優勢。媽媽們趁最後 1.5 小時在「<a href='https://www.google.com/maps/search/?api=1&query=下通商店街' target='_blank' rel='noopener noreferrer' class='text-cyan-700 font-bold underline'>上下通商店街</a>」做免稅品大掃貨；爸爸們在房間陪小孩、封箱打包行李。11:00 準時退房，市區午餐後驅車離開。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>完美走位：</strong>今天的動線是「市區 ➔ 動物園 ➔ 縣廳 ➔ 機場」完美的向東直線，把零碎時間壓榨到極致且不走回頭路！</li></ul>" },
                     { type: "play", time: "13:00 - 14:30", mapQuery: "熊本市動植物園", title: "市動植物園 (喬巴彩蛋)", content: "車程約 20 分鐘（往機場順路）。抵達「<a href='https://www.google.com/maps/search/?api=1&query=熊本市動植物園' target='_blank' rel='noopener noreferrer' class='text-cyan-700 font-bold underline'>熊本市動植物園</a>」正門口，立刻解鎖 👉 <strong>【海賊王彩蛋：🦌 喬巴】</strong>！進園看看大象、長頸鹿，抓 1.5 小時讓小孩在戶外消耗最後體力。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>彈性備註：</strong>若時間緊迫，可只在門口與喬巴合照，不買票入園。</li></ul>" },
-                    { type: "action", time: "14:45 - 17:00", mapQuery: "熊本縣廳", title: "縣廳 (魯夫彩蛋) 與滿油還車", content: "從動物園往東開 10 分鐘，抵達「<a href='https://www.google.com/maps/search/?api=1&query=熊本縣廳' target='_blank' rel='noopener noreferrer' class='text-cyan-700 font-bold underline'>熊本縣廳</a>」。將車停在訪客停車場，步行至銀杏大道尋找 👉 <strong>【海賊王彩蛋：👒 魯夫】</strong>！<br>15:30 前往機場，16:30 於周邊加滿油，<strong>17:00 準時將車輛點交給租車公司</strong>。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>機場結界前晚餐 (極度重要)：</strong>國際線過安檢後沒有熱食餐廳！務必在國內線 3 樓全新的「Sora-Yoka Area」美食街吃飽喝足、買完機場限定伴手禮（如福砂屋），再去國際線安檢報到。</li></ul>" }
+                    { type: "action", time: "14:45 - 17:00", mapQuery: "熊本縣廳", title: "縣廳 (魯夫彩蛋) 與滿油還車", content: "從動物園往東開 10 分鐘，抵達「<a href='https://www.google.com/maps/search/?api=1&query=熊本縣廳' target='_blank' rel='noopener noreferrer' class='text-cyan-700 font-bold underline'>熊本縣廳</a>」。將車停在訪客停車場，步行至銀杏大道尋找 👉 <strong>【海賊王彩蛋：👒 魯夫】</strong>！<br>15:30 前往機場，16:30 於周邊加滿油，<strong>17:00 準時將車輛點交給 Budget 租車公司</strong>，並搭接駁車回航廈。", deepTip: "<ul class='list-disc pl-4 space-y-1'><li><strong>機場結界前晚餐 (極度重要)：</strong>國際線過安檢後沒有熱食餐廳！務必在國內線 3 樓全新的「Sora-Yoka Area」美食街吃飽喝足、買完機場限定伴手禮（如福砂屋），再去國際線安檢報到。</li></ul>" }
                 ],
                 tips: "晚班機的極致運用！別人都在趕飛機，您們用海賊王尋寶與大象完美收尾。"
             }
