@@ -226,14 +226,17 @@ import { icons, bgColors, BACKUP_CARD_BASE_CLASS, itineraryData, backupDB } from
 
     window.setBackupRegion = function(region) {
         currentBackupRegion = region;
-        ['oita', 'fukuoka', 'kumamoto'].forEach(r => {
+        // 已移除 Fukuoka
+        ['oita', 'kumamoto'].forEach(r => {
             const btn = document.getElementById(`btn-region-${r}`);
-            if (r === region) {
-                btn.classList.remove('region-btn-inactive', 'border-transparent');
-                btn.classList.add('region-btn-active');
-            } else {
-                btn.classList.remove('region-btn-active');
-                btn.classList.add('region-btn-inactive', 'border-transparent');
+            if (btn) {
+                if (r === region) {
+                    btn.classList.remove('region-btn-inactive', 'border-transparent');
+                    btn.classList.add('region-btn-active');
+                } else {
+                    btn.classList.remove('region-btn-active');
+                    btn.classList.add('region-btn-inactive', 'border-transparent');
+                }
             }
         });
         renderBackupList();
@@ -301,3 +304,4 @@ import { icons, bgColors, BACKUP_CARD_BASE_CLASS, itineraryData, backupDB } from
     initTabs();
     buildAllContent();
     initPrintView();
+/* #endregion */
