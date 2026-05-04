@@ -5,38 +5,38 @@ export const bgColors = { play: 'bg-pink-50 border-pink-200', food: 'bg-yellow-5
 export const BACKUP_CARD_BASE_CLASS = "bg-white p-4 md:p-5 rounded-xl border shadow-sm hover:shadow-md transition-all flex items-start gap-3";
 
 export const itineraryData = [
-  { day:1,date:"5/29 (五)",title:"南阿蘇落地適應日（娜美彩蛋）",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/熊本空港/俵山交流館萌の里/別府",route:"熊本空港→萌之里→(白川水源或高森站)→別府",hotel:"龜之井酒店 別府",checklist:["ETC卡與租車文件","幼童車上午睡用品","下午點心與飲水"],sections:[
-    {type:"action",time:"11:50-13:20",mapQuery:"阿蘇熊本空港",title:"落地取車",content:"國際線落地後取車，優先確認兒童座椅與 ETC 卡。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>空港→萌之里(娜美)→別府。</li><li><strong>停車提示：</strong>建議導航 <a href='https://www.google.com/maps/search/?api=1&query=俵山交流館+萌の里' target='_blank' rel='noopener noreferrer'>俵山交流館 萌之里停車場</a>，優先停靠近廁所區。</li><li><strong>B計畫：</strong>只留一個南阿蘇點（白川水源或高森站）。</li><li><strong>撤退線：</strong>16:00 前必須離開南阿蘇北上。</li></ul>"},
+  { day:1,date:"5/29 (五)",title:"🌋 南阿蘇落地適應日（娜美彩蛋）",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/熊本空港/俵山交流館萌の里/別府",route:"熊本空港→萌之里→(白川水源或高森站)→別府",hotel:"龜之井酒店 別府",checklist:["ETC卡與租車文件","幼童車上午睡用品","下午點心與飲水"],sections:[
+    {type:"action",time:"11:50-13:20",mapQuery:"阿蘇熊本空港",title:"落地取車",content:"國際線落地後先完成取車與行李上車，優先確認 <strong>兒童座椅固定</strong>、<strong>ETC 卡啟用</strong>、導航目的地。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>空港→萌之里(娜美)→別府。</li><li><strong>停車提示：</strong>建議導航 <a href='https://www.google.com/maps/search/?api=1&query=俵山交流館+萌の里' target='_blank' rel='noopener noreferrer'>俵山交流館 萌之里停車場</a>，優先停靠近廁所區。</li><li><strong>B計畫：</strong>只留一個南阿蘇點（白川水源或高森站）。</li><li><strong>撤退線：</strong>16:00 前必須離開南阿蘇北上。</li></ul>"},
     {type:"sight",time:"13:20-14:30",mapQuery:"俵山交流館 萌之里",title:"海賊王彩蛋：娜美",content:"先到萌之里放電與補給，作為長途前的緩衝站。"}
-  ],tips:"Day1 只求穩定落地，不追求踩點數量。"},
-  { day:2,date:"5/30 (六)",title:"Harmonyland 主戰日",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/別府/Harmonyland/Youme+Town+別府/別府",route:"別府↔Harmonyland↔Youme Town",hotel:"龜之井酒店 別府",checklist:["電子票QR碼","野餐糧食","兒童換洗衣物"],sections:[
-    {type:"play",time:"10:00-16:30",mapQuery:"Harmonyland",title:"樂園三大秀",content:"演出時間以當月官網為準（⚠️ 出發前7天務必再確認），提早20分鐘卡位。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>迎賓秀→核心遊行→季節秀。</li><li><strong>B計畫：</strong>若晚到先守中午後場次。</li><li><strong>撤退線：</strong>17:00 準時離園去 Youme Town。</li></ul>"},
+  ],tips:"Day1 重點是「安全落地 + 右駕適應 + 小孩補眠」，不追求踩點數量。"},
+  { day:2,date:"5/30 (六)",title:"🎀 Harmonyland 主戰日",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/別府/Harmonyland/Youme+Town+別府/別府",route:"別府↔Harmonyland↔Youme Town",hotel:"龜之井酒店 別府",checklist:["電子票QR碼","野餐糧食","兒童換洗衣物"],sections:[
+    {type:"play",time:"10:00-16:30",mapQuery:"Harmonyland",title:"樂園三大秀",content:"建議死守三段核心演出（以官網最終時刻為準）：迎賓秀 ➜ 主遊行 ➜ 季節秀。<strong class='text-red-500'>⚠️ 出發前7天務必再確認時刻</strong>，每場提早20分鐘卡位。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>迎賓秀→核心遊行→季節秀。</li><li><strong>B計畫：</strong>若晚到先守中午後場次。</li><li><strong>撤退線：</strong>17:00 準時離園去 Youme Town。</li></ul>"},
     {type:"food",time:"17:00-20:00",mapQuery:"Youme Town 別府",title:"一站式晚餐與補給",content:"美食街分流點餐，補齊隔日飲水與零食。"}
-  ],tips:"全行程高耗能日，晚間務必提早回飯店休息。"},
-  { day:3,date:"5/31 (日)",title:"地獄微踩點＋海之卵",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/別府/海地獄/灶地獄/大分海洋宮殿水族館+海之卵/別府",route:"別府→地獄區(彈性)→海之卵→別府",hotel:"龜之井酒店 別府",checklist:["大毛巾","幼童備用衣物","防水拖鞋"],sections:[
-    {type:"sight",time:"10:00前後",mapQuery:"海地獄",title:"雙模式早晨",content:"10:00前可海地獄+灶地獄；11:00後僅灶地獄。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>10:00出發走海地獄+灶地獄。</li><li><strong>B計畫：</strong>11:00後只留灶地獄與散步小吃。</li><li><strong>撤退線：</strong>12:50 必須上車前往海之卵。</li></ul>"},
+  ],tips:"全行程高耗能日，晚間務必提早回飯店，隔天才有續航力。"},
+  { day:3,date:"5/31 (日)",title:"♨️ 地獄微踩點＋🦭 海之卵",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/別府/海地獄/灶地獄/大分海洋宮殿水族館+海之卵/別府",route:"別府→地獄區(彈性)→海之卵→別府",hotel:"龜之井酒店 別府",checklist:["大毛巾","幼童備用衣物","防水拖鞋"],sections:[
+    {type:"sight",time:"10:00前後",mapQuery:"海地獄",title:"雙模式早晨",content:"上午採雙模式：<strong>10:00前出門</strong>可海地獄＋灶地獄；若拖到 11:00，果斷改成僅灶地獄＋散步小吃。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>10:00出發走海地獄+灶地獄。</li><li><strong>B計畫：</strong>11:00後只留灶地獄與散步小吃。</li><li><strong>撤退線：</strong>12:50 必須上車前往海之卵。</li></ul>"},
     {type:"play",time:"13:30-16:30",mapQuery:"大分海洋宮殿水族館 海之卵",title:"海之卵連擊",content:"14:00海豚→15:00海象→15:30鵜鶘（⚠️ 出發前7天與當日皆需二次確認）。"}
-  ],tips:"13:30 抵達水族館為硬死線。"},
-  { day:4,date:"6/1 (一)",title:"African Safari＋由布院精華",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/別府/九州自然動物公園アフリカンサファリ/由布院/別府",route:"別府→Safari→由布院→別府",hotel:"龜之井酒店 別府",checklist:["Jungle Bus/A自駕雙軌","12:30撤退鬧鐘","車上午餐"],sections:[
-    {type:"play",time:"09:00-12:30",mapQuery:"九州自然動物公園アフリカンサファリ",title:"Safari 早起攻堅",content:"Jungle Bus 若班次不理想立即切自駕 Safari（⚠️ 出發前7天先查班次/售票規則）。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>早到搶 Jungle Bus。</li><li><strong>B計畫：</strong>滿班即改自駕Safari確保節奏。</li><li><strong>撤退線：</strong>12:30 全員離場，不可延後。</li></ul>"},
+  ],tips:"13:30 抵達水族館為硬死線，任何上午延誤都要果斷砍行程。"},
+  { day:4,date:"6/1 (一)",title:"🦁 African Safari＋🌸 由布院精華",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/別府/九州自然動物公園アフリカンサファリ/由布院/別府",route:"別府→Safari→由布院→別府",hotel:"龜之井酒店 別府",checklist:["Jungle Bus/A自駕雙軌","12:30撤退鬧鐘","車上午餐"],sections:[
+    {type:"play",time:"09:00-12:30",mapQuery:"九州自然動物公園アフリカンサファリ",title:"Safari 早起攻堅",content:"以 Jungle Bus 為優先體驗；若班次或排隊不理想，立刻切換自駕 Safari 保住節奏。<strong class='text-red-500'>⚠️ 出發前7天先查班次與售票規則</strong>。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>早到搶 Jungle Bus。</li><li><strong>B計畫：</strong>滿班即改自駕Safari確保節奏。</li><li><strong>撤退線：</strong>12:30 全員離場，不可延後。</li></ul>"},
     {type:"sight",time:"13:30-16:00",mapQuery:"由布院 湯の坪街道",title:"由布院2小時精華",content:"湯之坪→Floral Village→金鱗湖快閃，16:00撤退。"}
-  ],tips:"動物園是時間黑洞，12:30 必撤。"},
-  { day:5,date:"6/2 (二)",title:"別府→阿蘇核心→熊本換基地",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/別府/大観峰/阿蘇駅/草千里ヶ浜/大津中央公園/熊本市",route:"別府退房→北阿蘇→中阿蘇→熊本",hotel:"Candeo Hotels Kumamoto Shinshigai",checklist:["退房前行李盤點","火口規制查詢","晚餐預約"],sections:[
+  ],tips:"動物園是時間黑洞，12:30 必撤，否則下午由布院會連環爆。"},
+  { day:5,date:"6/2 (二)",title:"🌋 別府→阿蘇核心→熊本換基地",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/別府/大観峰/阿蘇駅/草千里ヶ浜/大津中央公園/熊本市",route:"別府退房→北阿蘇→中阿蘇→熊本",hotel:"Candeo Hotels Kumamoto Shinshigai",checklist:["退房前行李盤點","火口規制查詢","晚餐預約"],sections:[
     {type:"sight",time:"11:30",mapQuery:"大観峰",title:"北阿蘇絕景",content:"先上大觀峰看阿蘇外輪山全景。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>大觀峰→阿蘇站(騙人布)→草千里→大津(索隆)。</li><li><strong>停車提示：</strong>可先停 <a href='https://www.google.com/maps/search/?api=1&query=阿蘇駅+駐車場' target='_blank' rel='noopener noreferrer'>阿蘇站前停車場</a>，索隆像建議停 <a href='https://www.google.com/maps/search/?api=1&query=大津中央公園+駐車場' target='_blank' rel='noopener noreferrer'>大津中央公園停車場</a>。</li><li><strong>B計畫：</strong>天候差時取消火口，保留草千里。</li><li><strong>撤退線：</strong>16:30 必須下山往熊本市區。</li></ul>"},
     {type:"sight",time:"13:00-16:30",mapQuery:"阿蘇駅",title:"騙人布→草千里→索隆",content:"阿蘇站(騙人布)後轉草千里，途經大津中央公園收索隆像。"}
-  ],tips:"火口視為 bonus，草千里才是核心主線。"},
-  { day:6,date:"6/3 (三)",title:"熊本市區無車修復日",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/熊本市/桜の馬場+城彩苑/熊本城/鶴屋百貨店/SAKURA+MACHI+Kumamoto",route:"步行/路面電車市區巡航",hotel:"Candeo Hotels Kumamoto Shinshigai",checklist:["輕裝出門","百貨表演時刻確認","室內備案"],sections:[
+  ],tips:"火口視為 bonus，草千里才是核心主線，天候不佳也能成功收官。"},
+  { day:6,date:"6/3 (三)",title:"🐻 熊本市區無車修復日",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/熊本市/桜の馬場+城彩苑/熊本城/鶴屋百貨店/SAKURA+MACHI+Kumamoto",route:"步行/路面電車市區巡航",hotel:"Candeo Hotels Kumamoto Shinshigai",checklist:["輕裝出門","百貨表演時刻確認","室內備案"],sections:[
     {type:"food",time:"11:00",mapQuery:"桜の馬場 城彩苑",title:"城彩苑早午餐",content:"以城彩苑小吃作為輕量早午餐。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>城彩苑→熊本城外觀→鶴屋熊本熊→櫻町。</li><li><strong>B計畫：</strong>下雨時縮短戶外、拉長百貨室內。</li><li><strong>撤退線：</strong>16:00 前回到商場區休息。</li></ul>"},
     {type:"sight",time:"13:00-16:00",mapQuery:"熊本城",title:"熊本城外觀＋熊本熊秀",content:"城外平緩路線為主，14:30目標鶴屋熊本熊演出。"}
-  ],tips:"讓連續駕駛後的家長完整回血。"},
-  { day:7,date:"6/4 (四)",title:"御船恐龍＋AEON 室內保險日",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/熊本市/御船町恐竜博物館/イオンモール熊本/熊本市",route:"熊本市↔御船↔AEON熊本",hotel:"Candeo Hotels Kumamoto Shinshigai",checklist:["博物館休館日確認","童裝採買清單","傍晚返程避塞車"],sections:[
+  ],tips:"這天是全家回血日：爸爸休駕、媽媽好逛、小孩好放電。"},
+  { day:7,date:"6/4 (四)",title:"🦕 御船恐龍＋AEON 室內保險日",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/熊本市/御船町恐竜博物館/イオンモール熊本/熊本市",route:"熊本市↔御船↔AEON熊本",hotel:"Candeo Hotels Kumamoto Shinshigai",checklist:["博物館休館日確認","童裝採買清單","傍晚返程避塞車"],sections:[
     {type:"sight",time:"12:00-14:00",mapQuery:"御船町恐竜博物館",title:"恐龍館＋布魯克彩蛋",content:"先收布魯克像，再進館看骨架展。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>恐龍館→AEON 全室內放電。</li><li><strong>停車提示：</strong>恐龍館建議停 <a href='https://www.google.com/maps/search/?api=1&query=御船町恐竜博物館+駐車場' target='_blank' rel='noopener noreferrer'>館方停車場</a>，AEON 停 <a href='https://www.google.com/maps/search/?api=1&query=イオンモール熊本+駐車場' target='_blank' rel='noopener noreferrer'>P區近入口</a>。</li><li><strong>B計畫：</strong>若館內人多，提早轉 AEON 遊戲區。</li><li><strong>撤退線：</strong>18:30 前離開 AEON 回飯店。</li></ul>"},
     {type:"action",time:"14:30-18:30",mapQuery:"イオンモール熊本",title:"AEON放電與晚餐",content:"分組採買與放電，晚餐直接在館內解決。"}
-  ],tips:"高溫/大雨都能執行的穩定日。"},
-  { day:8,date:"6/5 (五)",title:"熊本收官＋喬巴魯夫補考→返程",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/熊本市/熊本市動植物園/熊本県庁/阿蘇くまもと空港",route:"飯店→動植物園(喬巴)→縣廳(魯夫)→機場",hotel:"返程",checklist:["11:00準時退房","15:30前往機場","安檢前用餐"],sections:[
+  ],tips:"高溫/大雨都能執行的穩定日，是全行程的保險槓。"},
+  { day:8,date:"6/5 (五)",title:"✈️ 熊本收官＋喬巴魯夫補考→返程",weather:"依出發前7天更新",mapLink:"https://www.google.com/maps/dir/熊本市/熊本市動植物園/熊本県庁/阿蘇くまもと空港",route:"飯店→動植物園(喬巴)→縣廳(魯夫)→機場",hotel:"返程",checklist:["11:00準時退房","15:30前往機場","安檢前用餐"],sections:[
     {type:"play",time:"13:00-14:30",mapQuery:"熊本市動植物園",title:"喬巴像＋最後放電",content:"正門解鎖<a href='https://www.google.com/maps/search/?api=1&query=熊本市動植物園+チョッパー像' target='_blank' rel='noopener noreferrer'>喬巴像</a>，抓1.5小時戶外活動。",deepTip:"<ul class='list-disc pl-4 space-y-1'><li><strong>主線：</strong>市區補貨→動植物園(喬巴)→縣廳(魯夫)→機場。</li><li><strong>停車提示：</strong>建議停 <a href='https://www.google.com/maps/search/?api=1&query=熊本県庁+来庁者駐車場' target='_blank' rel='noopener noreferrer'>縣廳來訪者停車場</a>，步行銀杏大道找魯夫像最省時。</li><li><strong>B計畫：</strong>若市區延誤，縮短動植物園停留。</li><li><strong>撤退線：</strong>15:30 前上高速往機場，17:00 還車。</li></ul>"},
     {type:"action",time:"14:45-17:00",mapQuery:"熊本県庁",title:"魯夫補考與還車",content:"縣廳收魯夫像後直奔機場，加油還車，安檢前先在國內線商業區用餐（⚠️ 國際線安檢後熱食選擇有限）。"}
-  ],tips:"最後一天最怕超時，務必守住還車時點。"}
+  ],tips:"最後一天最怕超時，務必守住 15:30 出發與 17:00 還車時點。"}
 ];
 
 export const backupDB = {
