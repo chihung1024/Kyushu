@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九州親子大冒險 🚗💨 (O型環線・實戰調整版)</title>
+    <title>九州親子大冒險 🚗💨 (O型環線・每日作戰版)</title>
     
     <!-- Google Fonts 預先連線 -->
-    <script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1777993782248&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_000000005fd47206b08523ad7be0a5f3%26ts%3D493888%26p%3Dfs%26cid%3D1%26sig%3Dcf995757957312b6242dae0f1a12867458903fcd397a001859de27770145fda7%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1777993782248&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><link rel="preconnect" href="https://fonts.googleapis.com">
+    <script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1777997652485&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000a56472069ad8522968f0efcf%26ts%3D493888%26p%3Dfs%26cid%3D1%26sig%3D0d076c822f8952fa49ab1065295599130e50f1ab080ca94ba6dcdb8bc6326c7f%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1777997652485&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -389,7 +389,7 @@
         <header class="bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 relative z-30">
             <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
                 <div>
-                    <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🏨✨</h1>
+                    <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🧭✨</h1>
                     <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">雙家庭(2大2小) 全導航實戰版</p>
                 </div>
                 <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('實戰攻略已準備就緒，預祝旅途愉快！')">
@@ -1158,6 +1158,74 @@
     }
 };
 
+
+        const dayFocusDB = {
+            1: {
+                mission: "安全完成右駕啟動，順手撿南阿蘇兩座銅像，天黑前穩穩進別府。",
+                win: "成功不是跑完所有點，而是 17:00 前離開南阿蘇、孩子沒崩潰、駕駛還有精神開到別府。",
+                hardCut: "16:15 尚未抵達上色見，神社直接取消；17:00 後不再停景點，直奔別府。",
+                priority: ["必守：取車檢查、兩車通訊、抵達別府", "想撿：娜美、佛朗基", "可砍：白川水源、上色見熊野座"],
+                decision: "每一站下車前先問：廁所、點心、水、下一段車程。孩子若上車秒睡，下一站就取消，不叫醒硬拍。",
+                risk: "第一天最大的敵人是右駕疲勞與山路壓力，不是景點不足。"
+            },
+            2: {
+                mission: "把 Harmonyland 當成完整主菜日，不排第二個大景點，讓小孩一次玩滿。",
+                win: "看完主遊行、買到三麗鷗限定商品、傍晚還有力氣吃飯採買，就是滿分。",
+                hardCut: "15:30 後不再排大型設施；16:30 前離園，避免晚餐與回程崩盤。",
+                priority: ["必守：主遊行/角色氛圍", "想衝：早場迎賓秀、限定商品", "可砍：午後最後一輪表演或設施"],
+                decision: "入園後先確認當日秀表，鎖定一場主遊行即可；其他都當加分，不把樂園日變成趕場日。",
+                risk: "戶外樂園怕曬、怕雨、怕排隊；防曬、雨具、推車/抱抱策略比多玩兩項設施重要。"
+            },
+            3: {
+                mission: "上午用別府地獄短打，下午照官方時刻表吃滿海之卵三場核心展演。",
+                win: "只要灶地獄或海地獄二選一成功，加上海豚、海象、大回遊水槽三連發，就很扎實。",
+                hardCut: "12:45 前必須離開鐵輪/午餐區；13:30 前抵達海之卵，否則 14:00 海豚秀容易錯過。",
+                priority: ["必守：14:00 海豚、15:00 海象、15:30 大水槽", "想加：Asobeach 放電", "可砍：地獄多點收集"],
+                decision: "地獄區不要貪，選互動性高的點；海之卵停車後先看秀場位置，再逛展區。",
+                risk: "這天不是地獄巡禮日，是水族館展演日；地獄只服務於上午暖身。"
+            },
+            4: {
+                mission: "早到 African Safari 搶叢林巴士，中午前完成主菜，午後由布院只當輕散步。",
+                win: "買到中午前巴士票或完成自駕 Safari，12:30 準時離園，下午不爆炸。",
+                hardCut: "叢林巴士若只剩 12:30 後，直接放棄；12:30 無論玩到哪裡都離園。",
+                priority: ["必守：早到買票、Safari 主體驗", "想加：小動物接觸區", "可砍：由布院深逛、金鱗湖完整環湖"],
+                decision: "買到早班就先小動物區；買到接近中午就先自駕；買不到就自駕＋接觸區，不讓巴士拖垮整天。",
+                risk: "這天的危險不是車程，而是等待巴士時失去時間感；請把 12:30 當鬧鐘。"
+            },
+            5: {
+                mission: "別府轉熊本的移動日，用大觀峰、阿蘇站、草千里完成阿蘇精華，不賭火口。",
+                win: "天氣好看到阿蘇外輪山，順手撿騙人布，傍晚安全入住熊本，就是成功。",
+                hardCut: "14:00 後若還在阿蘇站/阿蘇神社，草千里縮短；15:30 前開始往熊本下山。",
+                priority: ["必守：大觀峰、阿蘇站補給、熊本入住", "想加：阿蘇神社、草千里", "備案：火山口只查開放，不預設會去"],
+                decision: "阿蘇神社是友人討論點：兩車都有精神才去；若孩子午睡，直接上草千里或下山。",
+                risk: "阿蘇火口變數高，氣體、天候、道路管制都可能影響；不要讓備案反客為主。"
+            },
+            6: {
+                mission: "長途後修復日：上午恐龍與布魯克，下午熊本熊，晚上購物，節奏要鬆。",
+                win: "小孩上午有主題、大人下午能回市區休息、晚上買到 Workman/童裝補給。",
+                hardCut: "11:45 前離開御船；熊本熊活動若時間不合，不等待超過 45 分鐘。",
+                priority: ["必守：御船恐龍＋布魯克", "想加：熊本熊部長活動", "可砍：鶴屋/上下通延伸逛街"],
+                decision: "熊本熊場次以官方月曆為準；若剛好錯過，就把下午改成商場/飯店休息，不追下一場追到孩子累。",
+                risk: "這天叫修復日，不是補洞日；不要把前幾天沒去成的點全部塞回來。"
+            },
+            7: {
+                mission: "上天草輕遠征：海床路看潮汐、甚平順手撿、Sea Donut 當主菜，不深入深天草。",
+                win: "完成天草五橋兜風、Sea Donut、午餐與一個海床路機會，晚上平安回熊本吃喝。",
+                hardCut: "15:30 前離開上天草回程；若孩子暈車或下雨，長部田只拍照不等待。",
+                priority: ["必守：Sea Donut/上天草主線", "想加：長部田海床路退潮、甚平像", "不排：崎津、大江、牛深、倉岳深追"],
+                decision: "長部田採回程判斷：潮汐漂亮且孩子狀態 OK 才停；否則早上或回程快閃拍照即可。",
+                risk: "天草不是距離問題，是回程疲勞問題；今天最重要的是 17:30 前回到熊本市區圈。"
+            },
+            8: {
+                mission: "返台不爆炸：銅像收尾、可入園可不入園，所有安排都服務於準時還車登機。",
+                win: "拍到魯夫/喬巴其中一到兩座、吃完午餐、滿油還車、機場伴手禮完成。",
+                hardCut: "依班機時間回推，還車前 3 小時停止所有市區行程；迷路或下雨就直接去機場。",
+                priority: ["必守：退房、加油、還車、登機", "想加：魯夫、喬巴、動植物園", "可砍：市區購物與入園"],
+                decision: "A 案戶外、B 案室內都可以；當天早上只看天氣與孩子精神，不再討論硬排第三案。",
+                risk: "最後一天最怕『再去一下』；任何額外點都必須能在 30 分鐘內撤退。"
+            }
+        };
+
         /* #region ⚙️ 2. 核心邏輯區 (Logic) - Hash Routing 與 DOM Pre-rendering */
         (() => {
             let currentDay = 1;
@@ -1238,6 +1306,48 @@
                             </div>
                         </div>` : '';
 
+                    const focus = dayFocusDB[data.day] || null;
+                    let focusHtml = '';
+                    if (focus) {
+                        focusHtml = `
+                        <div class="mb-6 bg-gradient-to-br from-slate-50 to-white border-[3px] border-gray-800 rounded-[2rem] p-4 sm:p-5 shadow-lg relative overflow-hidden">
+                            <div class="absolute -right-4 -top-4 text-7xl opacity-10 pointer-events-none">🧭</div>
+                            <div class="flex flex-col gap-3 relative z-10">
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="bg-gray-900 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-sm">今日作戰重點</span>
+                                    <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-black px-3 py-1.5 rounded-full shadow-sm">不要貪心版</span>
+                                </div>
+                                <div class="text-xl sm:text-2xl font-black text-gray-900 leading-tight">${focus.mission}</div>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-1">
+                                    <div class="bg-green-50 border-2 border-green-200 rounded-2xl p-3">
+                                        <div class="text-[11px] font-black text-green-700 mb-1">✅ 今天怎樣算成功</div>
+                                        <div class="text-sm font-bold text-green-900 leading-relaxed">${focus.win}</div>
+                                    </div>
+                                    <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-3">
+                                        <div class="text-[11px] font-black text-red-700 mb-1">⏱️ 硬切時間</div>
+                                        <div class="text-sm font-bold text-red-900 leading-relaxed">${focus.hardCut}</div>
+                                    </div>
+                                    <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-3">
+                                        <div class="text-[11px] font-black text-blue-700 mb-1">🧩 現場判斷句</div>
+                                        <div class="text-sm font-bold text-blue-900 leading-relaxed">${focus.decision}</div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
+                                    <div class="bg-white border-2 border-amber-200 rounded-2xl p-3">
+                                        <div class="text-[11px] font-black text-amber-700 mb-2">🎯 取捨優先序</div>
+                                        <div class="flex flex-wrap gap-2">
+                                            ${(focus.priority || []).map(item => `<span class="bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-lg text-xs font-black">${item}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                    <div class="bg-white border-2 border-gray-300 rounded-2xl p-3">
+                                        <div class="text-[11px] font-black text-gray-700 mb-1">⚠️ 真正風險</div>
+                                        <div class="text-sm font-bold text-gray-900 leading-relaxed">${focus.risk}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                    }
+
                     let checklistAndHighlightsHtml = '';
                     const hasChecklist = data.checklist && data.checklist.length > 0;
                     const hasHighlights = data.highlights && data.highlights.length > 0;
@@ -1289,6 +1399,7 @@
                                 <div><div class="text-[10px] text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div><div class="font-black text-blue-900 leading-tight text-base">${data.hotel}</div></div>
                             </div>
                         </div>
+                        ${focusHtml}
                         ${checklistAndHighlightsHtml}
                         <div class="mt-4 pt-2">${sectionsHtml}${tipsHtml}</div>
                     `;
