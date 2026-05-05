@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>九州親子大冒險 🚗💨 (O型環線・每日作戰版)</title>
+    <title>九州親子大冒險 🚗💨 (O型環線・視覺優化版)</title>
     
     <!-- Google Fonts 預先連線 -->
-    <script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1777997652485&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_000000004e9472069365ac31970f5904%26ts%3D493888%26p%3Dfs%26cid%3D1%26sig%3De7709741dbf1a2936b3aa1ada86667933ae5f9a3b0969a94dd2b46356aeb9fe9%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1777997652485&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><link rel="preconnect" href="https://fonts.googleapis.com">
+    <script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1777997652485&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_0000000063f472068f5bcba1cf2924a8%26ts%3D493888%26p%3Dfs%26cid%3D1%26sig%3D592680e0830694724585bb46c352de0fd2ec1da47a8f14761ea913b00cc7086e%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1777997652485&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
 
@@ -379,6 +379,205 @@
         }
         /* #endregion */
     </style>
+
+
+    <style id="visual-polish-v3">
+        /* ==========================================================
+           視覺一致化 v3：降低忽大忽小、過度粗體與過多色塊的落差
+           ========================================================== */
+        :root {
+            --ink-900: #1f2937;
+            --ink-800: #374151;
+            --ink-700: #4b5563;
+            --soft-line: #e5e7eb;
+            --card-radius: 1.35rem;
+            --card-shadow: 0 10px 24px rgba(31, 41, 55, 0.08);
+            --card-shadow-soft: 0 4px 14px rgba(31, 41, 55, 0.06);
+        }
+
+        body { color: var(--ink-900); font-size: 16px; letter-spacing: 0.005em; }
+        h1, h2, h3, h4 { letter-spacing: -0.015em; }
+
+        /* 全頁型按鈕與晶片：字級、粗細、圓角統一 */
+        button, a.inline-flex, .tab-active, .tab-inactive {
+            font-weight: 800;
+        }
+
+        /* 主行程區的字級階層：避免標題/內文忽大忽小 */
+        #itinerary-content { color: var(--ink-900); }
+        #itinerary-content .font-black { font-weight: 800; }
+        #itinerary-content .font-bold { font-weight: 700; }
+        #itinerary-content .text-\[10px\] { font-size: 11px; line-height: 1.35; }
+        #itinerary-content .text-\[11px\] { font-size: 11.5px; line-height: 1.4; }
+        #itinerary-content .text-xs { font-size: 12px; line-height: 1.45; }
+        #itinerary-content .text-sm { font-size: 14px; line-height: 1.65; }
+        #itinerary-content .text-base { font-size: 15.5px; line-height: 1.7; }
+        #itinerary-content .text-lg { font-size: 17px; line-height: 1.45; }
+        #itinerary-content .text-xl { font-size: 20px; line-height: 1.35; }
+        #itinerary-content .text-2xl { font-size: 24px; line-height: 1.25; }
+        #itinerary-content .text-3xl { font-size: 28px; line-height: 1.22; }
+        #itinerary-content .text-4xl { font-size: 30px; line-height: 1.18; }
+
+        /* 卡片：邊框不要太厚重，陰影統一柔和 */
+        #itinerary-content .border-\[3px\] { border-width: 2px; }
+        #itinerary-content .border-4 { border-width: 3px; }
+        #itinerary-content .rounded-\[2rem\] { border-radius: var(--card-radius); }
+        #itinerary-content .rounded-2xl { border-radius: 1rem; }
+        #itinerary-content .shadow-lg,
+        #itinerary-content .shadow-kawaii,
+        #itinerary-content .shadow-md { box-shadow: var(--card-shadow-soft); }
+        #itinerary-content .shadow-sm { box-shadow: 0 2px 8px rgba(31, 41, 55, 0.04); }
+
+        /* 今日作戰重點：統一成沉穩資訊卡，不再像海報標題 */
+        .daily-focus-panel {
+            border: 2px solid #d1d5db !important;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: var(--card-shadow) !important;
+        }
+        .daily-focus-panel .focus-chip {
+            font-size: 12px;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+        }
+        .daily-focus-panel .focus-mission {
+            font-size: clamp(20px, 2.2vw, 25px) !important;
+            line-height: 1.35 !important;
+            font-weight: 800 !important;
+            color: #111827;
+        }
+        .focus-info-card {
+            border-width: 1.5px !important;
+            background-color: rgba(255,255,255,0.82) !important;
+            min-height: 128px;
+        }
+        .focus-info-title {
+            font-size: 12px !important;
+            line-height: 1.35 !important;
+            font-weight: 800 !important;
+            margin-bottom: 0.35rem;
+        }
+        .focus-info-body {
+            font-size: 14.5px !important;
+            line-height: 1.7 !important;
+            font-weight: 700 !important;
+        }
+        .priority-pill {
+            font-size: 12.5px !important;
+            line-height: 1.35 !important;
+            font-weight: 800 !important;
+            background: #fffbeb !important;
+            border-color: #fde68a !important;
+        }
+
+        /* 出發防呆清單：提高可讀性，但避免每列太厚重 */
+        .departure-checklist-card {
+            border-color: #fbcfe8 !important;
+            background: rgba(255,255,255,0.94) !important;
+        }
+        .departure-checklist-card h4 {
+            font-size: 20px !important;
+            line-height: 1.35 !important;
+            color: #db2777 !important;
+        }
+        .departure-checklist-item {
+            border-color: #fce7f3 !important;
+            background-color: #fff !important;
+            padding: 0.85rem 0.95rem !important;
+        }
+        .departure-checklist-item span:last-child {
+            font-size: 15px !important;
+            line-height: 1.65 !important;
+            font-weight: 700 !important;
+            color: #374151 !important;
+        }
+        .departure-checklist-item:hover { background-color: #fdf2f8 !important; }
+
+        /* 每日摘要小卡：兩張卡使用同一節奏 */
+        .day-summary-card {
+            min-height: 92px;
+            background: #f9fafb !important;
+            border: 1.5px solid #e5e7eb !important;
+            box-shadow: 0 3px 10px rgba(31,41,55,0.04) !important;
+        }
+        .day-summary-label { font-size: 11px !important; letter-spacing: 0.06em; }
+        .day-summary-value { font-size: 15.5px !important; line-height: 1.55 !important; font-weight: 800 !important; }
+
+        /* 時間軸卡片：標題不要過大，內容維持旅行手冊感 */
+        .timeline-section-card {
+            border-width: 1.5px !important;
+            box-shadow: 0 4px 14px rgba(31,41,55,0.05) !important;
+        }
+        .timeline-section-title {
+            font-size: 18px !important;
+            line-height: 1.45 !important;
+            font-weight: 800 !important;
+        }
+        .timeline-section-content {
+            font-size: 15px !important;
+            line-height: 1.75 !important;
+            font-weight: 600 !important;
+            color: #374151 !important;
+        }
+        .timeline-section-content strong {
+            font-weight: 800;
+            color: #111827;
+        }
+        .timeline-section-content a,
+        dialog a:not(.inline-flex) {
+            color: #0e7490;
+            text-decoration-line: underline;
+            text-decoration-thickness: 1.5px;
+            text-underline-offset: 3px;
+            font-weight: 800;
+        }
+        .timeline-section-content a:hover { color: #0891b2; }
+
+        /* 膠囊式導航/官方連結：外型已足夠表示可點擊，不再加底線，避免視覺雜訊 */
+        .timeline-section-content a.rounded-full,
+        .timeline-section-content a.inline-flex,
+        .timeline-section-content a[class*="rounded-full"],
+        dialog a.rounded-full,
+        dialog a.inline-flex,
+        dialog a[class*="rounded-full"] {
+            text-decoration: none !important;
+            text-decoration-line: none !important;
+            font-weight: 750 !important;
+        }
+        .timeline-section-content a.rounded-full:hover,
+        .timeline-section-content a.inline-flex:hover,
+        .timeline-section-content a[class*="rounded-full"]:hover,
+        dialog a.rounded-full:hover,
+        dialog a.inline-flex:hover,
+        dialog a[class*="rounded-full"]:hover {
+            text-decoration: none !important;
+        }
+
+
+        /* 彈窗也收斂字級與粗體，不讓內容像不同網站拼貼 */
+        dialog .font-black { font-weight: 800; }
+        dialog .text-\[10px\] { font-size: 11px; line-height: 1.35; }
+        dialog .text-xs { font-size: 12px; line-height: 1.45; }
+        dialog .text-sm { font-size: 14px; line-height: 1.65; }
+        dialog .text-lg { font-size: 17px; line-height: 1.45; }
+        dialog h2.text-2xl, dialog .text-2xl { font-size: 24px; line-height: 1.25; }
+        dialog h2.md\:text-3xl { font-size: 26px; line-height: 1.25; }
+
+        /* 手機版：字級更穩，卡片留白更緊湊 */
+        @media (max-width: 640px) {
+            body { font-size: 15px; }
+            header h1 { font-size: 22px !important; line-height: 1.25 !important; }
+            #itinerary-content { padding-left: 1rem !important; padding-right: 1rem !important; }
+            #itinerary-content .text-2xl { font-size: 22px; }
+            #itinerary-content .text-3xl, #itinerary-content .text-4xl { font-size: 24px; }
+            .daily-focus-panel { padding: 1rem !important; border-radius: 1.25rem !important; }
+            .daily-focus-panel .focus-mission { font-size: 20px !important; }
+            .focus-info-card { min-height: auto; }
+            .timeline-section-title { font-size: 17px !important; }
+            .timeline-section-content { font-size: 14.5px !important; }
+            .departure-checklist-card h4 { font-size: 18px !important; }
+        }
+    </style>
+
 </head>
 <body class="text-gray-900 font-sans antialiased pb-24 print:pb-0 print:bg-white">
 
@@ -390,9 +589,9 @@
             <div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
                 <div>
                     <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🧭✨</h1>
-                    <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">雙家庭(2大2小) 全導航實戰版</p>
+                    <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">雙家庭(2大2小) 每日作戰・視覺優化版</p>
                 </div>
-                <div class="text-4xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('實戰攻略已準備就緒，預祝旅途愉快！')">
+                <div class="text-3xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('實戰攻略已準備就緒，預祝旅途愉快！')">
                     🐻
                 </div>
             </div>
@@ -405,7 +604,7 @@
             <div class="flex flex-row md:grid md:grid-cols-3 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-1 overflow-x-auto md:overflow-visible hide-scrollbar scroll-snap-x py-2">
                 
                 <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 text-left shadow-sm border-2 border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('hotelModal')">
-                    <div class="text-3xl relative shrink-0">
+                    <div class="text-2xl relative shrink-0">
                         🏨
                         <span class="absolute -top-1 -right-1 flex h-3 w-3">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -419,7 +618,7 @@
                 </div>
 
                 <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-white rounded-xl p-4 text-left shadow-sm border-2 border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('budgetModal')">
-                    <div class="text-3xl shrink-0">💰</div>
+                    <div class="text-2xl shrink-0">💰</div>
                     <div>
                         <div class="text-[10px] text-gray-500 font-bold mb-0.5">單一家庭實際預算</div>
                         <div class="text-xs md:text-sm font-black text-kawaii-blue leading-tight">約 10.5 萬 TWD</div>
@@ -427,7 +626,7 @@
                 </div>
 
                 <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-cyan-50 to-blue-50 rounded-xl p-4 text-left shadow-sm border-2 border-cyan-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('backupModal'); initBackupModal();">
-                    <div class="text-3xl shrink-0 animate-pulse drop-shadow">🗺️</div>
+                    <div class="text-2xl shrink-0 animate-pulse drop-shadow">🗺️</div>
                     <div>
                         <div class="text-[10px] text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block shadow-sm mb-0.5">全九州 180 選</div>
                         <div class="text-xs md:text-sm font-black text-cyan-800 leading-tight">終極備用彈藥庫</div>
@@ -1300,12 +1499,12 @@
                         sectionsHtml += `
                             <div class="relative pl-7 pb-8 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
                                 <div class="timeline-dot flex items-center justify-center text-[10px] ${iconBg}">${icons[sec.type] || '📌'}</div>
-                                <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
+                                <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} timeline-section-card border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
                                     <div class="flex flex-wrap items-center gap-2 mb-3">
                                         ${timeBadge}
-                                        <h4 class="font-black text-lg sm:text-xl flex-1 min-w-[200px] flex items-center gap-2">${titleHtml}</h4>
+                                        <h4 class="timeline-section-title flex-1 min-w-[200px] flex items-center gap-2">${titleHtml}</h4>
                                     </div>
-                                    <div class="text-sm sm:text-base text-gray-900 leading-relaxed font-medium">${sec.content}</div>
+                                    <div class="timeline-section-content">${sec.content}</div>
                                     ${deepTipHtml}
                                 </div>
                             </div>`;
@@ -1324,38 +1523,38 @@
                     let focusHtml = '';
                     if (focus) {
                         focusHtml = `
-                        <div class="mb-6 bg-gradient-to-br from-slate-50 to-white border-[3px] border-gray-800 rounded-[2rem] p-4 sm:p-5 shadow-lg relative overflow-hidden">
+                        <div class="mb-6 daily-focus-panel rounded-[2rem] p-4 sm:p-5 relative overflow-hidden">
                             <div class="absolute -right-4 -top-4 text-7xl opacity-10 pointer-events-none">🧭</div>
                             <div class="flex flex-col gap-3 relative z-10">
                                 <div class="flex flex-wrap items-center gap-2">
-                                    <span class="bg-gray-900 text-white text-xs font-black px-3 py-1.5 rounded-full shadow-sm">今日作戰重點</span>
-                                    <span class="bg-amber-100 text-amber-800 border border-amber-200 text-xs font-black px-3 py-1.5 rounded-full shadow-sm">不要貪心版</span>
+                                    <span class="focus-chip bg-gray-900 text-white px-3 py-1.5 rounded-full shadow-sm">今日作戰重點</span>
+                                    <span class="focus-chip bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1.5 rounded-full shadow-sm">不要貪心版</span>
                                 </div>
-                                <div class="text-xl sm:text-2xl font-black text-gray-900 leading-tight">${focus.mission}</div>
+                                <div class="focus-mission">${focus.mission}</div>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-1">
-                                    <div class="bg-green-50 border-2 border-green-200 rounded-2xl p-3">
-                                        <div class="text-[11px] font-black text-green-700 mb-1">✅ 今天怎樣算成功</div>
-                                        <div class="text-sm font-bold text-green-900 leading-relaxed">${focus.win}</div>
+                                    <div class="focus-info-card bg-green-50 border-2 border-green-200 rounded-2xl p-3">
+                                        <div class="focus-info-title text-green-700">✅ 今天怎樣算成功</div>
+                                        <div class="focus-info-body text-green-900">${focus.win}</div>
                                     </div>
-                                    <div class="bg-red-50 border-2 border-red-200 rounded-2xl p-3">
-                                        <div class="text-[11px] font-black text-red-700 mb-1">⏱️ 硬切時間</div>
-                                        <div class="text-sm font-bold text-red-900 leading-relaxed">${focus.hardCut}</div>
+                                    <div class="focus-info-card bg-red-50 border-2 border-red-200 rounded-2xl p-3">
+                                        <div class="focus-info-title text-red-700">⏱️ 硬切時間</div>
+                                        <div class="focus-info-body text-red-900">${focus.hardCut}</div>
                                     </div>
-                                    <div class="bg-blue-50 border-2 border-blue-200 rounded-2xl p-3">
-                                        <div class="text-[11px] font-black text-blue-700 mb-1">🧩 現場判斷句</div>
-                                        <div class="text-sm font-bold text-blue-900 leading-relaxed">${focus.decision}</div>
+                                    <div class="focus-info-card bg-blue-50 border-2 border-blue-200 rounded-2xl p-3">
+                                        <div class="focus-info-title text-blue-700">🧩 現場判斷句</div>
+                                        <div class="focus-info-body text-blue-900">${focus.decision}</div>
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-1">
                                     <div class="bg-white border-2 border-amber-200 rounded-2xl p-3">
                                         <div class="text-[11px] font-black text-amber-700 mb-2">🎯 取捨優先序</div>
                                         <div class="flex flex-wrap gap-2">
-                                            ${(focus.priority || []).map(item => `<span class="bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-lg text-xs font-black">${item}</span>`).join('')}
+                                            ${(focus.priority || []).map(item => `<span class="priority-pill text-amber-900 border px-2.5 py-1 rounded-lg">${item}</span>`).join('')}
                                         </div>
                                     </div>
                                     <div class="bg-white border-2 border-gray-300 rounded-2xl p-3">
                                         <div class="text-[11px] font-black text-gray-700 mb-1">⚠️ 真正風險</div>
-                                        <div class="text-sm font-bold text-gray-900 leading-relaxed">${focus.risk}</div>
+                                        <div class="focus-info-body text-gray-900">${focus.risk}</div>
                                     </div>
                                 </div>
                             </div>
@@ -1368,16 +1567,16 @@
                     if (hasChecklist) {
                         checklistAndHighlightsHtml = `
                         <div class="mb-6">
-                            <div class="bg-white/90 backdrop-blur rounded-[2rem] p-4 sm:p-5 border-[3px] border-kawaii-light-pink shadow-sm">
+                            <div class="departure-checklist-card bg-white/90 backdrop-blur rounded-[2rem] p-4 sm:p-5 border-[3px] border-kawaii-light-pink shadow-sm">
                                 <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                                    <h4 class="font-black text-kawaii-pink flex items-center gap-2 text-xl"><span>📝</span> 出發前 5 分鐘防呆清單</h4>
+                                    <h4 class="font-black flex items-center gap-2"><span>📝</span> 出發前 5 分鐘防呆清單</h4>
                                     <span class="bg-pink-50 text-pink-700 border border-pink-200 text-[11px] font-black px-3 py-1 rounded-full">勾完再上車</span>
                                 </div>
                                 <div class="grid grid-cols-1 gap-2 mt-3">
                                     ${data.checklist.map((item) => `
-                                        <label class="flex items-start gap-3 cursor-pointer group p-3 rounded-xl border border-pink-100 bg-white hover:bg-pink-50/60 transition-colors">
+                                        <label class="departure-checklist-item flex items-start gap-3 cursor-pointer group rounded-xl border transition-colors">
                                             <input type="checkbox" class="w-6 h-6 mt-0.5 rounded border-gray-300 text-kawaii-pink focus:ring-kawaii-pink cursor-pointer shrink-0">
-                                            <span class="text-sm sm:text-base font-bold text-gray-800 group-hover:text-black transition-colors leading-relaxed">${item.replace(/<[^>]*>?/gm, '')}</span>
+                                            <span class="group-hover:text-black transition-colors">${item.replace(/<[^>]*>?/gm, '')}</span>
                                         </label>`).join('')}
                                 </div>
                             </div>
@@ -1395,16 +1594,16 @@
                                 ${data.weather ? `<span class="bg-white border border-gray-200 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">${data.weather}</span>` : ''}
                                 ${data.mapLink ? `<a href="${data.mapLink}" target="_blank" rel="noopener noreferrer" class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 hover:bg-emerald-100 transition hover:scale-105 active:scale-95"><span>📍</span> 本日路線總覽</a>` : ''}
                             </div>
-                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mt-1 tracking-tight drop-shadow-sm">${data.title}</h2>
+                            <h2 class="text-2xl sm:text-3xl font-black text-gray-900 mt-1 tracking-tight">${data.title}</h2>
                         </div>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-                            <div class="flex items-center gap-3 text-sm text-gray-900 bg-gray-50 p-4 rounded-xl border-2 border-gray-200 shadow-sm">
+                            <div class="day-summary-card flex items-center gap-3 text-sm text-gray-900 p-4 rounded-xl border-2 shadow-sm">
                                 <span class="text-2xl shrink-0">🗺️</span>
-                                <div><div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-0.5">今日動線</div><div class="font-bold leading-tight text-base">${data.route}</div></div>
+                                <div><div class="day-summary-label text-gray-500 font-bold uppercase tracking-wider mb-0.5">今日動線</div><div class="day-summary-value leading-tight">${data.route}</div></div>
                             </div>
-                            <div class="flex items-center gap-3 text-sm text-kawaii-blue bg-kawaii-light-blue/20 p-4 rounded-xl border-2 border-blue-200 shadow-sm">
+                            <div class="day-summary-card flex items-center gap-3 text-sm text-kawaii-blue p-4 rounded-xl border-2 shadow-sm">
                                 <span class="text-2xl shrink-0">🏨</span>
-                                <div><div class="text-[10px] text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div><div class="font-black text-blue-900 leading-tight text-base">${data.hotel}</div></div>
+                                <div><div class="day-summary-label text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div><div class="day-summary-value text-blue-900 leading-tight">${data.hotel}</div></div>
                             </div>
                         </div>
                         ${focusHtml}
