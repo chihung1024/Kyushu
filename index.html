@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>九州親子大冒險 🚗💨 (O型環線・每日路線與備選方案)</title>
 <!-- Google Fonts 預先連線 -->
-<script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778302700036&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000162c720b99c8348a4a18574e%26ts%3D493972%26p%3Dfs%26cid%3D1%26sig%3D52a453d007da68e4a5ea475e465ee8d4801b8168b6016d5bb7f144865d74f542%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778302700036&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778054582738&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000eef4720b85df79d74e5b4c24%26ts%3D493904%26p%3Dfs%26cid%3D1%26sig%3D7a86589afdfdd735dea5dd5a614e2a95e5395e5ed9c98f46859758269497e110%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778054582738&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778302700036&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_000000003588720987d9306a13bec539%26ts%3D493973%26p%3Dfs%26cid%3D1%26sig%3Dedc0d0dc51ad488a3b6f3a0798638781fe3072183579be4a0ded77a2a9e8d704%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778302700036&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778054582738&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000eef4720b85df79d74e5b4c24%26ts%3D493904%26p%3Dfs%26cid%3D1%26sig%3D7a86589afdfdd735dea5dd5a614e2a95e5395e5ed9c98f46859758269497e110%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778054582738&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&amp;family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
 <style id="tailwind-inline-compiled">
@@ -688,6 +688,448 @@
             }
         }
     </style>
+
+<style id="traveler-ux-polish-v6">
+        /* ==========================================================
+           同行友人瀏覽優化 v6：把頁面從「編輯中的行程稿」整理成
+           第一次打開也能快速判讀的旅行工具。此區覆蓋前方樣式。
+           ========================================================== */
+        :root {
+            --ux-bg: #fff8ea;
+            --ux-bg-2: #fffdf7;
+            --ux-surface: rgba(255, 255, 255, 0.94);
+            --ux-surface-solid: #ffffff;
+            --ux-ink: #172033;
+            --ux-ink-soft: #334155;
+            --ux-muted: #64748b;
+            --ux-line: #e2e8f0;
+            --ux-line-strong: #cbd5e1;
+            --ux-primary: #0f172a;
+            --ux-accent: #f58ca0;
+            --ux-accent-soft: #fff1f4;
+            --ux-blue: #0e7490;
+            --ux-blue-soft: #ecfeff;
+            --ux-warn-soft: #fffbeb;
+            --ux-radius-lg: 18px;
+            --ux-radius-xl: 24px;
+            --ux-shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);
+            --ux-shadow-soft: 0 6px 18px rgba(15, 23, 42, 0.06);
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            color: var(--ux-ink);
+            background:
+                radial-gradient(circle at 12px 12px, rgba(245, 140, 160, 0.16) 1.2px, transparent 1.2px),
+                linear-gradient(180deg, #fff4e6 0%, #fffdf7 32%, #fff8ea 100%) !important;
+            background-size: 24px 24px, 100% 100% !important;
+            letter-spacing: 0.01em;
+        }
+
+        header {
+            background: linear-gradient(135deg, #f58ca0 0%, #f7a3ae 52%, #f6b2a3 100%) !important;
+            border-radius: 0 0 28px 28px !important;
+            box-shadow: 0 16px 40px rgba(245, 140, 160, 0.26) !important;
+        }
+        header h1 { letter-spacing: 0.01em !important; }
+        header p { background: rgba(255,255,255,0.22) !important; border: 1px solid rgba(255,255,255,0.26); }
+        header .animate-bounce { animation: none !important; }
+
+        main.max-w-4xl { max-width: 1120px !important; }
+        main { padding-bottom: 2rem; }
+
+        /* 上方資訊卡：降低玩具感，讓三張卡像導航入口 */
+        main > div:first-of-type > div {
+            border-width: 1px !important;
+            border-color: rgba(226, 232, 240, 0.95) !important;
+            box-shadow: var(--ux-shadow-soft) !important;
+            background: var(--ux-surface) !important;
+            border-radius: 20px !important;
+        }
+        main > div:first-of-type > div:hover { transform: translateY(-2px) !important; }
+
+        /* Day tabs：更像手機 App 的分頁，減少粉紅框的壓迫 */
+        .sticky.top-0 {
+            top: 0 !important;
+            background: rgba(255, 253, 247, 0.92) !important;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.95) !important;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.05) !important;
+        }
+        #tabs-container { gap: 0.7rem !important; }
+        #tabs-container button {
+            min-width: 86px;
+            min-height: 42px;
+            border-radius: 18px !important;
+            font-weight: 900 !important;
+            box-shadow: 0 3px 10px rgba(15,23,42,0.04);
+        }
+        .tab-active {
+            background: var(--ux-primary) !important;
+            color: #fff !important;
+            border-color: var(--ux-primary) !important;
+            box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18) !important;
+            transform: none !important;
+        }
+        .tab-inactive {
+            background: rgba(255,255,255,0.9) !important;
+            color: var(--ux-muted) !important;
+            border-color: var(--ux-line) !important;
+        }
+        .tab-inactive:hover { color: var(--ux-primary) !important; border-color: var(--ux-line-strong) !important; background: #fff !important; }
+
+        /* 工具列：手機上不搶主視線 */
+        main > .flex.justify-end { align-items: center; }
+        main > .flex.justify-end button {
+            border-radius: 14px !important;
+            min-height: 42px;
+            box-shadow: var(--ux-shadow-soft) !important;
+        }
+
+        #itinerary-content {
+            background: rgba(255,255,255,0.88) !important;
+            border: 1px solid rgba(226,232,240,0.95) !important;
+            border-radius: 28px !important;
+            box-shadow: var(--ux-shadow-card) !important;
+        }
+
+        .day-header {
+            padding: 0.25rem 0 0.25rem;
+            border-bottom: 1px solid rgba(226,232,240,0.82);
+        }
+        .day-header h2 {
+            font-weight: 900 !important;
+            color: var(--ux-ink) !important;
+            line-height: 1.28 !important;
+        }
+        .day-header .rounded-full,
+        .day-summary-card .rounded-full { border-radius: 999px !important; }
+
+        .day-summary-card {
+            background: #ffffff !important;
+            border: 1px solid var(--ux-line) !important;
+            border-radius: 20px !important;
+            box-shadow: var(--ux-shadow-soft) !important;
+            min-height: 88px !important;
+        }
+        .day-summary-label { color: var(--ux-muted) !important; }
+        .day-summary-value { color: var(--ux-ink) !important; font-weight: 850 !important; }
+
+        /* 每日輔助資訊：改成明確的輔助入口，不像主要行程卡 */
+        .day-tools-panel {
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+            border: 1px solid var(--ux-line) !important;
+            border-radius: 20px !important;
+            box-shadow: var(--ux-shadow-soft) !important;
+        }
+        .day-tools-heading {
+            color: var(--ux-muted) !important;
+            letter-spacing: 0.08em !important;
+        }
+        .day-tool-btn {
+            border-radius: 15px !important;
+            min-height: 42px;
+            padding: 0.65rem 1rem !important;
+            box-shadow: none !important;
+            transform: none !important;
+            white-space: nowrap;
+        }
+        .day-tool-focus { background: var(--ux-primary) !important; }
+        .day-tool-check { background: var(--ux-accent-soft) !important; border-color: #fbcfe8 !important; color: #be185d !important; }
+        .day-tool-flex { background: var(--ux-blue-soft) !important; border-color: #a5f3fc !important; color: #0e7490 !important; }
+        .day-tool-btn:hover { transform: translateY(-1px) !important; }
+
+        /* 時間軸：更清楚的閱讀節奏 */
+        .timeline-item {
+            border-color: rgba(161, 196, 253, 0.56) !important;
+            padding-bottom: 1.65rem !important;
+        }
+        .timeline-dot {
+            width: 18px !important;
+            height: 18px !important;
+            left: -10px !important;
+            top: 26px !important;
+            border-width: 3px !important;
+            background: #ffffff !important;
+            box-shadow: 0 3px 10px rgba(15, 23, 42, 0.12) !important;
+        }
+        .timeline-card {
+            background: #ffffff !important;
+            border: 1px solid var(--ux-line) !important;
+            border-radius: 22px !important;
+            padding: 1.15rem 1.25rem !important;
+            box-shadow: var(--ux-shadow-soft) !important;
+        }
+        .timeline-card:hover { transform: none !important; box-shadow: 0 10px 24px rgba(15,23,42,0.08) !important; }
+        .timeline-card > .flex:first-child { align-items: flex-start !important; gap: 0.7rem !important; }
+        .time-badge {
+            background: var(--ux-primary) !important;
+            color: #fff !important;
+            border-radius: 11px !important;
+            font-size: 0.78rem !important;
+            line-height: 1 !important;
+            padding: 0.48rem 0.62rem !important;
+            letter-spacing: 0.02em !important;
+        }
+        .timeline-section-title {
+            font-size: 1.08rem !important;
+            line-height: 1.48 !important;
+            letter-spacing: 0.005em !important;
+            color: var(--ux-ink) !important;
+        }
+        .timeline-section-title a {
+            text-decoration: none !important;
+            color: var(--ux-ink) !important;
+        }
+        .timeline-section-title a:hover { color: var(--ux-blue) !important; }
+        .timeline-section-content {
+            color: var(--ux-ink-soft) !important;
+            font-size: 0.98rem !important;
+            line-height: 1.86 !important;
+            font-weight: 650 !important;
+        }
+        .timeline-section-content strong { color: var(--ux-ink) !important; font-weight: 900 !important; }
+
+        /* 行程中的按鈕與導航連結 */
+        .timeline-section-content .flex.flex-wrap.gap-2,
+        .timeline-card > .mt-3.flex.flex-wrap.gap-2,
+        .detail-note .flex.flex-wrap.gap-2,
+        #dayInfoModalBody .flex.flex-wrap.gap-2 {
+            gap: 0.5rem !important;
+        }
+        a.inline-flex,
+        button.inline-flex {
+            min-height: 40px;
+            border-radius: 14px !important;
+            line-height: 1.35 !important;
+        }
+        .nav-pill,
+        .timeline-section-content a.inline-flex,
+        .timeline-card > .mt-3 a.inline-flex {
+            background: #ffffff !important;
+            border-width: 1px !important;
+            border-color: #bfdbfe !important;
+            color: #0e7490 !important;
+            box-shadow: none !important;
+        }
+        .parking-nav-pill {
+            color: #1d4ed8 !important;
+            border-color: #bfdbfe !important;
+            background: #eff6ff !important;
+        }
+        .timeline-section-content a.inline-flex:hover,
+        .nav-pill:hover { transform: translateY(-1px) !important; box-shadow: 0 6px 14px rgba(14,116,144,0.08) !important; }
+
+        /* 補充資訊：不佔主視覺，展開時清楚可讀 */
+        .detail-note {
+            background: var(--ux-warn-soft) !important;
+            border-color: #fde68a !important;
+            border-radius: 16px !important;
+        }
+        .detail-note summary {
+            min-height: 42px;
+            list-style: none;
+            color: #92400e !important;
+        }
+        .detail-note summary::-webkit-details-marker { display: none; }
+        .detail-note summary::after {
+            content: "展開";
+            margin-left: auto;
+            font-size: 11px;
+            color: #b45309;
+            background: #fff;
+            border: 1px solid #fde68a;
+            padding: 0.15rem 0.5rem;
+            border-radius: 999px;
+        }
+        .detail-note[open] summary::after { content: "收合"; }
+        .detail-note > div { color: #4b5563 !important; font-weight: 650; }
+        .detail-note:empty { display: none !important; }
+
+        /* Dialog：桌機像文件面板，手機像穩定的閱讀抽屜 */
+        dialog {
+            border-radius: 26px !important;
+            border: 1px solid rgba(226,232,240,0.9) !important;
+            box-shadow: 0 28px 80px rgba(15, 23, 42, 0.26) !important;
+        }
+        dialog::backdrop { background: rgba(15, 23, 42, 0.52) !important; backdrop-filter: blur(6px) !important; }
+        #dayInfoModalBody > div {
+            box-shadow: none !important;
+        }
+        #dayInfoModalBody .rounded-2xl {
+            border-width: 1px !important;
+        }
+
+        @media (min-width: 768px) {
+            main.max-w-4xl { max-width: 1080px !important; }
+            #itinerary-content { padding: 2rem 2.4rem !important; }
+            .day-summary-grid { grid-template-columns: 1.05fr 0.95fr !important; }
+            .timeline-section-content .flex.flex-wrap.gap-2,
+            .timeline-card > .mt-3.flex.flex-wrap.gap-2 {
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                font-size: 15px !important;
+                background-size: 28px 28px, 100% 100% !important;
+            }
+            header {
+                padding: 1.05rem 1rem !important;
+                border-radius: 0 0 22px 22px !important;
+            }
+            header h1 { font-size: 1.25rem !important; line-height: 1.25 !important; }
+            header p { font-size: 0.72rem !important; }
+            main.max-w-4xl { padding-left: 0.8rem !important; padding-right: 0.8rem !important; margin-top: 1rem !important; }
+            main > div:first-of-type {
+                margin-left: -0.8rem !important;
+                margin-right: -0.8rem !important;
+                padding-left: 0.8rem !important;
+                padding-right: 0.8rem !important;
+            }
+            main > div:first-of-type > div {
+                width: 78vw !important;
+                padding: 0.85rem !important;
+            }
+            .sticky.top-0 {
+                margin-left: -0.8rem !important;
+                margin-right: -0.8rem !important;
+                padding-left: 0.8rem !important;
+                padding-right: 0.8rem !important;
+                padding-top: 0.35rem !important;
+                padding-bottom: 0.45rem !important;
+            }
+            #tabs-container { padding-top: 0.35rem !important; padding-bottom: 0.35rem !important; }
+            #tabs-container button {
+                min-width: 82px;
+                min-height: 42px;
+                padding: 0.65rem 1rem !important;
+                font-size: 0.9rem !important;
+            }
+            main > .flex.justify-end {
+                justify-content: stretch !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.5rem !important;
+                padding-right: 0 !important;
+            }
+            main > .flex.justify-end button {
+                justify-content: center;
+                padding-left: 0.7rem !important;
+                padding-right: 0.7rem !important;
+                font-size: 0.78rem !important;
+            }
+            #itinerary-content {
+                padding: 1rem 0.85rem 1.2rem !important;
+                border-radius: 22px !important;
+            }
+            .day-header { margin-bottom: 1rem !important; }
+            .day-header h2 { font-size: 1.38rem !important; line-height: 1.32 !important; }
+            .day-summary-grid { gap: 0.7rem !important; margin-bottom: 1rem !important; }
+            .day-summary-card {
+                min-height: 76px !important;
+                padding: 0.85rem !important;
+                border-radius: 18px !important;
+            }
+            .day-summary-card span.text-2xl { font-size: 1.4rem !important; }
+            .day-summary-value { font-size: 0.93rem !important; line-height: 1.55 !important; }
+            .day-tools-panel {
+                padding: 0.85rem !important;
+                border-radius: 18px !important;
+                margin-bottom: 1.1rem !important;
+            }
+            .day-tools-grid {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                gap: 0.55rem !important;
+            }
+            .day-tool-btn {
+                justify-content: center;
+                width: 100%;
+                min-height: 44px;
+                font-size: 0.92rem !important;
+            }
+            .timeline-item {
+                margin-left: 0.58rem !important;
+                padding-left: 1.25rem !important;
+                padding-bottom: 1.25rem !important;
+            }
+            .timeline-dot {
+                left: -9px !important;
+                top: 24px !important;
+                width: 17px !important;
+                height: 17px !important;
+            }
+            .timeline-card {
+                padding: 1rem !important;
+                border-radius: 20px !important;
+            }
+            .timeline-card > .flex:first-child {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                gap: 0.55rem !important;
+                margin-bottom: 0.65rem !important;
+            }
+            .time-badge {
+                width: max-content;
+                font-size: 0.82rem !important;
+                padding: 0.5rem 0.7rem !important;
+            }
+            .timeline-section-title {
+                min-width: 0 !important;
+                font-size: 1.08rem !important;
+                line-height: 1.45 !important;
+            }
+            .timeline-section-content {
+                font-size: 0.98rem !important;
+                line-height: 1.9 !important;
+            }
+            .timeline-section-content .flex.flex-wrap.gap-2,
+            .timeline-card > .mt-3.flex.flex-wrap.gap-2,
+            #dayInfoModalBody .flex.flex-wrap.gap-2 {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                gap: 0.5rem !important;
+            }
+            .timeline-section-content a.inline-flex,
+            .timeline-card > .mt-3 a.inline-flex,
+            #dayInfoModalBody a.inline-flex {
+                width: 100%;
+                justify-content: center;
+                white-space: normal;
+                text-align: center;
+                min-height: 42px;
+                padding: 0.65rem 0.85rem !important;
+                font-size: 0.88rem !important;
+            }
+            .detail-note summary { padding: 0.65rem 0.8rem !important; font-size: 0.9rem !important; }
+            .detail-note > div { padding-left: 0.85rem !important; padding-right: 0.85rem !important; font-size: 0.92rem !important; }
+
+            dialog[open] {
+                top: max(8px, env(safe-area-inset-top)) !important;
+                right: 8px !important;
+                left: 8px !important;
+                width: calc(100vw - 16px) !important;
+                max-width: calc(100vw - 16px) !important;
+                border-radius: 22px !important;
+                padding: 0.95rem !important;
+            }
+            #dayInfoModal > .border-b,
+            #backupModal .flex-shrink-0 {
+                background: rgba(255,255,255,0.98) !important;
+                border-bottom: 1px solid var(--ux-line) !important;
+            }
+            #dayInfoModalTitle { font-size: 1.15rem !important; }
+            #dayInfoModalBody { gap: 0.75rem !important; }
+            #dayInfoModalBody .text-lg { font-size: 1rem !important; }
+        }
+
+        @media (max-width: 380px) {
+            #tabs-container button { min-width: 76px; padding-left: 0.85rem !important; padding-right: 0.85rem !important; }
+            .timeline-section-content { font-size: 0.94rem !important; }
+        }
+    </style>
+
 </head>
 <body class="text-gray-900 font-sans antialiased pb-24 print:pb-0 print:bg-white">
 <!-- 🌐 全局 UI 容器 -->
@@ -1105,7 +1547,7 @@
         function parkingButtonHtml(query, label = null) {
             if (!query) return '';
             const buttonLabel = label || getParkingButtonLabel(query);
-            return `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition"><span>🅿️</span> ${buttonLabel}</a>`;
+            return `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener noreferrer" class="nav-pill parking-nav-pill inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition"><span>🅿️</span> ${buttonLabel}</a>`;
         }
 
         function renderParkingButtons(parkingInfo) {
@@ -1788,8 +2230,9 @@
                     data.sections.forEach(sec => {
                         if (sec.type === 'rain' || sec.time === '彈性方案') return;
                         const iconBg = sec.type === 'rain' ? 'bg-cyan-100 text-cyan-600' : 'bg-white';
-                        let deepTipHtml = sec.deepTip ? `
-                            <details class="mt-3 bg-amber-50/70 border border-amber-200 rounded-xl shadow-sm text-gray-900 overflow-hidden">
+                        const deepTipText = String(sec.deepTip || '').replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ').trim();
+                        let deepTipHtml = deepTipText ? `
+                            <details class="detail-note mt-3 bg-amber-50/70 border border-amber-200 rounded-xl shadow-sm text-gray-900 overflow-hidden">
                                 <summary class="cursor-pointer select-none px-4 py-3 text-amber-800 font-black flex items-center gap-2"><span>💡</span> 補充資訊</summary>
                                 <div class="px-4 pb-4 pt-1 leading-relaxed text-sm sm:text-base">${sec.deepTip}</div>
                             </details>` : '';
@@ -1798,14 +2241,14 @@
                             ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sec.mapQuery)}" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-blue-600 underline decoration-gray-300 underline-offset-4 transition-colors cursor-pointer p-1 -m-1">${sec.title}</a>`
                             : `<span class="text-gray-900">${sec.title}</span>`;
                         
-                        const timeBadge = sec.time ? `<span class="bg-gray-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm inline-block shrink-0">${sec.time}</span>` : '';
+                        const timeBadge = sec.time ? `<span class="time-badge bg-gray-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm inline-block shrink-0">${sec.time}</span>` : '';
                         const parkingQuery = sec.parkingQuery || parkingLookup[sec.mapQuery] || null;
                         const parkingLinkHtml = parkingQuery ? `<div class="mt-3 flex flex-wrap gap-2">${renderParkingButtons(parkingQuery)}</div>` : '';
 
                         sectionsHtml += `
-                            <div class="relative pl-7 pb-8 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
+                            <div class="timeline-item relative pl-7 pb-8 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
                                 <div class="timeline-dot flex items-center justify-center text-[10px] ${iconBg}">${icons[sec.type] || '📌'}</div>
-                                <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} timeline-section-card border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
+                                <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} timeline-section-card timeline-card border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
                                     <div class="flex flex-wrap items-center gap-2 mb-3">
                                         ${timeBadge}
                                         <h4 class="timeline-section-title flex-1 min-w-[200px] flex items-center gap-2">${titleHtml}</h4>
@@ -1892,12 +2335,12 @@
 
                     const flexibleCount = (data.sections || []).filter(sec => sec.type === 'rain' || sec.time === '彈性方案').length;
                     const dayToolsHtml = `
-                        <div class="mb-5 bg-white/85 border-2 border-gray-200 rounded-2xl p-3 shadow-sm">
-                            <div class="text-[11px] font-black text-gray-500 tracking-wider mb-2">每日輔助資訊</div>
-                            <div class="flex flex-wrap gap-2">
-                                ${focus ? `<button onclick="openDayInfo(${data.day}, 'focus')" class="inline-flex items-center gap-2 bg-gray-900 text-white text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🧭</span> 今日行程重點</button>` : ''}
-                                ${hasChecklist ? `<button onclick="openDayInfo(${data.day}, 'checklist')" class="inline-flex items-center gap-2 bg-pink-50 text-pink-700 border-2 border-pink-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>📝</span> 防呆清單</button>` : ''}
-                                ${flexibleCount ? `<button onclick="openDayInfo(${data.day}, 'flex')" class="inline-flex items-center gap-2 bg-cyan-50 text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🔀</span> 彈性方案</button>` : ''}
+                        <div class="day-tools-panel mb-5 bg-white/85 border-2 border-gray-200 rounded-2xl p-3 shadow-sm">
+                            <div class="day-tools-heading text-[11px] font-black text-gray-500 tracking-wider mb-2">每日輔助資訊</div>
+                            <div class="day-tools-grid flex flex-wrap gap-2">
+                                ${focus ? `<button onclick="openDayInfo(${data.day}, 'focus')" class="day-tool-btn day-tool-focus inline-flex items-center gap-2 bg-gray-900 text-white text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🧭</span> 今日行程重點</button>` : ''}
+                                ${hasChecklist ? `<button onclick="openDayInfo(${data.day}, 'checklist')" class="day-tool-btn day-tool-check inline-flex items-center gap-2 bg-pink-50 text-pink-700 border-2 border-pink-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>📝</span> 防呆清單</button>` : ''}
+                                ${flexibleCount ? `<button onclick="openDayInfo(${data.day}, 'flex')" class="day-tool-btn day-tool-flex inline-flex items-center gap-2 bg-cyan-50 text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🔀</span> 彈性方案</button>` : ''}
                             </div>
                         </div>`;
 
@@ -1906,7 +2349,7 @@
                     dayDiv.className = `fade-in ${data.day === currentDay ? 'block' : 'hidden'}`;
                     
                     dayDiv.innerHTML = `
-                        <div class="flex flex-col mb-5">
+                        <div class="day-header flex flex-col mb-5">
                             <div class="flex flex-wrap gap-2 mb-3">
                                 <span class="bg-kawaii-yellow text-yellow-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${data.date}</span>
                                 ${data.weather ? `<span class="bg-white border border-gray-200 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">${data.weather}</span>` : ''}
@@ -1914,7 +2357,7 @@
                             </div>
                             <h2 class="text-2xl sm:text-3xl font-black text-gray-900 mt-1 tracking-tight">${data.title}</h2>
                         </div>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                        <div class="day-summary-grid grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                             <div class="day-summary-card flex items-center gap-3 text-sm text-gray-900 p-4 rounded-xl border-2 shadow-sm">
                                 <span class="text-2xl shrink-0">🗺️</span>
                                 <div><div class="day-summary-label text-gray-500 font-bold uppercase tracking-wider mb-0.5">今日動線</div><div class="day-summary-value leading-tight">${data.route}</div></div>
