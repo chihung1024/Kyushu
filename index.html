@@ -6,7 +6,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>九州親子大冒險 🚗💨 (O型環線・每日路線與備選方案)</title>
 <!-- Google Fonts 預先連線 -->
-<script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778292317132&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000aefc72099ab742ec66e79269%26ts%3D493971%26p%3Dfs%26cid%3D1%26sig%3D671e1a790589ab6b7a6d999ea7ce04222e6cd4e6830cba7de48799aa80da3d65%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778292317132&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778054582738&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000eef4720b85df79d74e5b4c24%26ts%3D493904%26p%3Dfs%26cid%3D1%26sig%3D7a86589afdfdd735dea5dd5a614e2a95e5395e5ed9c98f46859758269497e110%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778054582738&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><link href="https://fonts.googleapis.com" rel="preconnect"/>
+<script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778292317132&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000d4a8720b89c4119c54088c77%26ts%3D493971%26p%3Dfs%26cid%3D1%26sig%3Df08c395e7cb7fdd471a35c3e27786e71bb919e1581e5a6864f9553a1a42f518e%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778292317132&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778054582738&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_00000000eef4720b85df79d74e5b4c24%26ts%3D493904%26p%3Dfs%26cid%3D1%26sig%3D7a86589afdfdd735dea5dd5a614e2a95e5395e5ed9c98f46859758269497e110%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="c1950476a86b493e804c5d8cd90" src="//local.adguard.org?ts=1778054582738&amp;name=AdGuard%20Assistant%20%28Beta%29&amp;name=AdGuard%20Extra%20%28Beta%29&amp;name=AdGuard%20Popup%20Blocker%20%28Beta%29&amp;name=Web%20of%20Trust%20%28Beta%29&amp;type=user-script"></script><link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&amp;family=Noto+Sans+TC:wght@400;700;900&amp;display=swap" rel="stylesheet"/>
 <style id="tailwind-inline-compiled">
@@ -844,6 +844,17 @@
 </div>
 </div>
 </dialog>
+
+<!-- Daily Info Dialog -->
+<dialog class="bg-white w-11/12 max-w-4xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[88vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="dayInfoModal">
+<button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg" onclick="closeModal('dayInfoModal')">✕</button>
+<div class="pr-10 border-b border-gray-100 pb-4 mb-4">
+<h2 class="text-2xl md:text-3xl font-black text-gray-900 flex items-center gap-3" id="dayInfoModalTitle">每日資訊</h2>
+<p class="text-sm text-gray-500 font-bold mt-2" id="dayInfoModalSubtitle">行程輔助資訊</p>
+</div>
+<div id="dayInfoModalBody" class="space-y-4 text-gray-900 leading-relaxed"></div>
+</dialog>
+
 <!-- Backup List Dialog -->
 <dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-4xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] flex-col outline-none border-0 custom-scrollbar m-auto" id="backupModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-12 h-12 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-20 text-xl flex items-center justify-center" onclick="closeModal('backupModal')">✕</button>
@@ -884,6 +895,50 @@
         const icons = { play: '🎡', food: '🍽️', sight: '📸', drive: '🚗', action: '✅', rain: '☔', shop: '🛍️' };
         const bgColors = { play: 'bg-pink-50 border-pink-200', food: 'bg-yellow-50 border-yellow-200', sight: 'bg-blue-50 border-blue-200', drive: 'bg-slate-50 border-slate-300', action: 'bg-purple-50 border-purple-200', rain: 'bg-cyan-50 border-cyan-200', shop: 'bg-emerald-50 border-emerald-200' };
         const BACKUP_CARD_BASE_CLASS = "bg-white p-4 md:p-5 rounded-xl border shadow-sm hover:shadow-md transition-all flex items-start gap-3";
+
+        const parkingLookup = {
+            "阿蘇熊本空港": "阿蘇くまもと空港 駐車場",
+            "阿蘇くまもと空港": "阿蘇くまもと空港 駐車場",
+            "俵山交流館 萌の里": "俵山交流館 萌の里 駐車場",
+            "白川水源": "白川水源 駐車場",
+            "高森駅": "高森駅 駐車場",
+            "上色見熊野座神社": "上色見熊野座神社 駐車場",
+            "Hotel New Tsuruta Beppu": "ザ・パーク 別府北浜 ホテルニューツルタ 駐車場",
+            "ゆめタウン別府": "ゆめタウン別府 駐車場",
+            "ハーモニーランド": "ハーモニーランド 駐車場",
+            "大分県立美術館 OPAM": "大分県立美術館 OPAM 駐車場",
+            "かまど地獄": "かまど地獄 駐車場",
+            "大分マリーンパレス水族館 うみたまご": "うみたまご 駐車場",
+            "別府タワー": "別府タワー 近隣 駐車場",
+            "アフリカンサファリ": "九州自然動物公園アフリカンサファリ 駐車場",
+            "湯の坪街道": "湯の坪街道 駐車場",
+            "別府 焼肉 韓国苑": "焼肉韓国苑 別府店 駐車場",
+            "ゆふいんフローラルヴィレッジ": "湯布院フローラルヴィレッジ 駐車場",
+            "大観峰": "大観峰 駐車場",
+            "道の駅阿蘇": "道の駅 阿蘇 駐車場",
+            "道の駅 阿蘇": "道の駅 阿蘇 駐車場",
+            "阿蘇神社": "阿蘇神社 駐車場",
+            "草千里ヶ浜": "草千里駐車場",
+            "CANDEO HOTELS 熊本新市街": "TERRACE87 駐車場 熊本市中央区新市街8-7",
+            "御船町恐竜博物館": "御船町恐竜博物館 駐車場",
+            "熊本 新市街 ランチ": "辛島公園地下駐車場",
+            "くまモンスクエア": "鶴屋パーキング 熊本 駐車場",
+            "ゆめタウン光の森": "ゆめタウン光の森 駐車場",
+            "SAKURA MACHI Kumamoto": "サクラマチ クマモト 駐車場",
+            "長部田海床路": "長部田海床路 駐車場",
+            "L’isola Terrace Amakusa": "リゾラテラス天草 駐車場",
+            "海中水族館シードーナツ": "海中水族館シードーナツ 駐車場",
+            "mio camino AMAKUSA": "mio camino AMAKUSA 駐車場",
+            "イオンモール熊本": "イオンモール熊本 駐車場",
+            "熊本県庁 ルフィ像": "熊本県庁 来庁者駐車場 ルフィ像",
+            "熊本市動植物園": "熊本市動植物園 駐車場"
+        };
+
+        function parkingButtonHtml(query, label = '停車場導航') {
+            if (!query) return '';
+            return `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition"><span>🅿️</span> ${label}</a>`;
+        }
+
 
         const itineraryData = [
             {
@@ -955,8 +1010,8 @@
                                                 "time": "17:00 - 19:15",
                                                 "mapQuery": "Hotel New Tsuruta Beppu",
                                                 "title": "進入別府：飯店 Check-in＋超市補給",
-                                                "content": "從南阿蘇往 <strong class='text-slate-800'>別府溫泉 新鶴田飯店</strong> 拉車，抵達後先 Check-in。新鶴田位於北濱海邊，日式房空間較大，抵達後先確認停車、鋪床方式與入浴稅。<strong class='text-red-700'>停車備註：</strong>新鶴田官方停車為飯店旁指定投幣停車場，住客優待入庫後 21 小時最大 ¥700，但先到先停，滿車時須改周邊停車場；優待僅適用指定第一/第二停車場。若入住完成順利，晚餐可步行或短程開車採買，不追餐廳，優先到 <strong class='text-slate-800'>Youme Town 別府</strong>、<strong class='text-slate-800'>Tokiwa 別府店</strong> 或 <strong class='text-slate-800'>MEGA Trial 別府店</strong> 補晚餐、鮮奶、水與隔天樂園零食。<div class='flex flex-wrap gap-2 mt-3'><a href='https://www.google.com/maps/search/?api=1&query=Hotel+New+Tsuruta+Beppu' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 新鶴田飯店導航</a><a href='https://www.google.com/maps/search/?api=1&query=ザ・パーク 別府北浜 ホテルニューツルタ 駐車場' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>🅿️</span> 新鶴田指定停車場導航</a><a href='https://www.newtsuruta.com/access/' target='_blank' rel='noopener noreferrer' class='bg-white text-indigo-700 border-2 border-indigo-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>🏨</span> 新鶴田官方停車</a><a href='https://www.google.com/maps/search/?api=1&query=ゆめタウン別府' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> Youme Town 別府導航</a><a href='https://www.google.com/maps/search/?api=1&query=トキハ別府店' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> Tokiwa 別府店導航</a><a href='https://www.google.com/maps/search/?api=1&query=MEGAセンタートライアル 別府店' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> MEGA Trial 導航</a></div>",
-                                                "deepTip": "<ul class='list-disc pl-4 space-y-1'><li><strong>今日終點：</strong>成功抵達飯店、車停好、孩子洗澡睡覺，就是 Day1 完美結束。</li></ul>"
+                                                "content": "從南阿蘇往 <strong class='text-slate-800'>別府溫泉 新鶴田飯店</strong> 拉車，抵達後先 Check-in。新鶴田位於北濱海邊，日式房空間較大，先確認房間、鋪床方式與入浴稅。若入住完成順利，晚餐可步行或短程開車補給，以 <strong class='text-slate-800'>Youme Town 別府</strong>、<strong class='text-slate-800'>Tokiwa 別府店</strong> 或 <strong class='text-slate-800'>MEGA Trial 別府店</strong> 為主。<div class='flex flex-wrap gap-2 mt-3'><a href='https://www.google.com/maps/search/?api=1&query=Hotel+New+Tsuruta+Beppu' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 新鶴田飯店導航</a><a href='https://www.google.com/maps/search/?api=1&query=ゆめタウン別府' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> Youme Town 別府</a><a href='https://www.google.com/maps/search/?api=1&query=トキハ別府店' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> Tokiwa 別府</a><a href='https://www.google.com/maps/search/?api=1&query=MEGAセンタートライアル 別府店' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> MEGA Trial</a></div>",
+                                                "deepTip": "<ul class='list-disc pl-4 space-y-1'><li><strong>今日終點：</strong>成功抵達飯店、車停好、孩子洗澡睡覺，就是 Day1 完美結束。</li><li><strong>飯店停車：</strong>新鶴田官方停車為飯店旁指定投幣停車場，住客優待入庫後 21 小時最大 ¥700；先到先停，滿車時改用周邊停車場。優待僅適用指定第一/第二停車場。<a href='https://www.newtsuruta.com/access/' target='_blank' rel='noopener noreferrer'>官方停車說明</a></li></ul>"
                                     },
                                     {
                                                 "type": "rain",
@@ -1189,8 +1244,8 @@
                                                 "time": "15:30 - 18:00",
                                                 "mapQuery": "CANDEO HOTELS 熊本新市街",
                                                 "title": "下山進熊本：Check-in＋新市街晚餐",
-                                                "content": "從草千里下山往 <strong class='text-slate-800'>Candeo Hotels 熊本新市街</strong>。<strong class='text-red-700'>停車備註：</strong>Candeo 官方說明飯店無專用停車場，導航目的地請設提攜停車場；飯店鄰近商店街與單行道，車輛不宜在飯店前上下客或臨停。晚餐以飯店周邊步行為主：<strong class='text-slate-800'>下通商店街</strong>、<strong class='text-slate-800'>新市街</strong>、<strong class='text-slate-800'>勝烈亭</strong>、<strong class='text-slate-800'>黑亭下通店</strong> 都是步行候選。<div class='flex flex-wrap gap-2 mt-3'><a href='https://www.google.com/maps/search/?api=1&query=CANDEO HOTELS 熊本新市街' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 飯店位置參考</a><a href='https://www.google.com/maps/search/?api=1&query=TERRACE87 駐車場 熊本市中央区新市街8-7' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>🅿️</span> TERRACE87 停車場導航</a><a href='https://www.candeohotels.com/ja/kumamoto-shinshigai/access/' target='_blank' rel='noopener noreferrer' class='bg-white text-indigo-700 border-2 border-indigo-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>🏨</span> Candeo 官方停車</a><a href='https://www.google.com/maps/search/?api=1&query=熊本 下通商店街' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 下通導航</a><a href='https://www.google.com/maps/search/?api=1&query=勝烈亭 新市街本店' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 勝烈亭導航</a><a href='https://www.google.com/maps/search/?api=1&query=黒亭 下通店' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 黑亭下通店導航</a></div>",
-                                                "deepTip": "<ul class='list-disc pl-4 space-y-1'><li><strong>今晚不要再開車：</strong>停好車後以步行吃喝為主，讓駕駛休息。</li></ul>"
+                                                "content": "從草千里下山往 <strong class='text-slate-800'>Candeo Hotels 熊本新市街</strong>。抵達後先停車、Check-in，再以飯店周邊步行晚餐為主：<strong class='text-slate-800'>下通商店街</strong>、<strong class='text-slate-800'>新市街</strong>、<strong class='text-slate-800'>勝烈亭</strong>、<strong class='text-slate-800'>黑亭下通店</strong> 都是步行候選。<div class='flex flex-wrap gap-2 mt-3'><a href='https://www.google.com/maps/search/?api=1&query=CANDEO HOTELS 熊本新市街' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 飯店位置參考</a><a href='https://www.google.com/maps/search/?api=1&query=熊本 下通商店街' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 下通導航</a><a href='https://www.google.com/maps/search/?api=1&query=勝烈亭 新市街本店' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 勝烈亭導航</a><a href='https://www.google.com/maps/search/?api=1&query=黒亭 下通店' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 黑亭下通店導航</a></div>",
+                                                "deepTip": "<ul class='list-disc pl-4 space-y-1'><li><strong>今晚不要再開車：</strong>停好車後以步行吃喝為主，讓駕駛休息。</li><li><strong>Candeo 停車：</strong>飯店無專用停車場，導航目的地請設提攜停車場，例如 TERRACE87；飯店鄰近商店街與單行道，建議避免在飯店前臨停上下客。<a href='https://www.candeohotels.com/ja/kumamoto-shinshigai/access/' target='_blank' rel='noopener noreferrer'>官方停車說明</a></li></ul>"
                                     },
                                     {
                                                 "type": "rain",
@@ -1380,8 +1435,8 @@
                                                 "time": "09:30 - 10:30",
                                                 "mapQuery": "CANDEO HOTELS 熊本新市街",
                                                 "title": "退房與裝車：不製造最後一天風險",
-                                                "content": "從 <strong class='text-slate-800'>Candeo 熊本新市街</strong> 退房裝車。Candeo 無專用停車場，退房時仍以提攜停車場出庫規則為準；若需要最後補買，僅限 <strong class='text-slate-800'>下通</strong>、<strong class='text-slate-800'>SAKURA MACHI</strong>、<strong class='text-slate-800'>唐吉訶德熊本中央店</strong> 快閃，不再開遠。<div class='flex flex-wrap gap-2 mt-3'><a href='https://www.google.com/maps/search/?api=1&query=CANDEO HOTELS 熊本新市街' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 飯店位置參考</a><a href='https://www.google.com/maps/search/?api=1&query=TERRACE87 駐車場 熊本市中央区新市街8-7' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>🅿️</span> TERRACE87 停車場導航</a><a href='https://www.candeohotels.com/ja/kumamoto-shinshigai/access/' target='_blank' rel='noopener noreferrer' class='bg-white text-indigo-700 border-2 border-indigo-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>🏨</span> Candeo 官方停車</a><a href='https://www.google.com/maps/search/?api=1&query=サクラマチ クマモト' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> SAKURA MACHI 導航</a></div>",
-                                                "deepTip": "<ul class='list-disc pl-4 space-y-1'><li><strong>今天原則：</strong>任何行程都保留 15 分鐘內切換到機場路線的餘裕。</li></ul>"
+                                                "content": "從 <strong class='text-slate-800'>Candeo 熊本新市街</strong> 退房裝車。若需要最後補買，以 <strong class='text-slate-800'>下通</strong>、<strong class='text-slate-800'>SAKURA MACHI</strong>、<strong class='text-slate-800'>唐吉訶德熊本中央店</strong> 等近距離快閃為主，節奏以順路、短停、好撤退為原則。<div class='flex flex-wrap gap-2 mt-3'><a href='https://www.google.com/maps/search/?api=1&query=CANDEO HOTELS 熊本新市街' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> 飯店位置參考</a><a href='https://www.google.com/maps/search/?api=1&query=サクラマチ クマモト' target='_blank' rel='noopener noreferrer' class='bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm hover:scale-105 transition flex items-center gap-2'><span>📍</span> SAKURA MACHI 導航</a></div>",
+                                                "deepTip": "<ul class='list-disc pl-4 space-y-1'><li><strong>今天原則：</strong>任何行程都保留 15 分鐘內切換到機場路線的餘裕。</li><li><strong>退房停車：</strong>Candeo 無專用停車場，退房與裝車仍以提攜停車場出庫規則為準；若使用 TERRACE87，先確認車輛出庫與行李搬運動線。</li></ul>"
                                     },
                                     {
                                                 "type": "sight",
@@ -1473,7 +1528,7 @@
                 hardCut: "由布院想完整走貓頭鷹＋湯之坪＋金鱗湖，Safari 建議 12:30 左右收束；若金鱗湖改短拍或略過，13:00 前後離園仍可接受。",
                 priority: ["必守：自駕 Safari 至少 1 圈、早到現場排早班巴士", "優先：叢林巴士、小動物接觸區、貓頭鷹之森", "視情況調整：金鱗湖完整環湖、由布院深逛"],
                 decision: "買到早班就先小動物區或先搭巴士；買到接近中午就先自駕；買不到就自駕＋接觸區，下午時間留給由布院。",
-                risk: "這天的變數是等待巴士與由布院人潮。做法是保留時間窗，而不是把某個點硬塞到底。"
+                risk: "這天的變數是等待巴士與由布院人潮。做法是保留時間窗，而不是把某個點過度壓縮到底。"
             },
             5: {
                 mission: "別府轉熊本的移動日，用大觀峰、阿蘇站、草千里完成阿蘇精華，不賭火口。",
@@ -1552,19 +1607,21 @@
                 itineraryData.forEach((data) => {
                     let sectionsHtml = '';
                     data.sections.forEach(sec => {
+                        if (sec.type === 'rain' || sec.time === '彈性方案') return;
                         const iconBg = sec.type === 'rain' ? 'bg-cyan-100 text-cyan-600' : 'bg-white';
                         let deepTipHtml = sec.deepTip ? `
-                            <div class="mt-4 bg-amber-50/80 border border-amber-200 rounded-xl p-4 shadow-sm relative overflow-hidden text-gray-900">
-                                <div class="absolute -right-3 -top-3 text-5xl opacity-10 pointer-events-none">💡</div>
-                                <strong class="text-amber-700 flex items-center gap-1.5 mb-2"><span class="text-lg">💡</span> 補充資訊：</strong>
-                                <div class="leading-relaxed z-10 relative text-sm sm:text-base">${sec.deepTip}</div>
-                            </div>` : '';
+                            <details class="mt-3 bg-amber-50/70 border border-amber-200 rounded-xl shadow-sm text-gray-900 overflow-hidden">
+                                <summary class="cursor-pointer select-none px-4 py-3 text-amber-800 font-black flex items-center gap-2"><span>💡</span> 補充資訊</summary>
+                                <div class="px-4 pb-4 pt-1 leading-relaxed text-sm sm:text-base">${sec.deepTip}</div>
+                            </details>` : '';
 
                         const titleHtml = sec.mapQuery 
                             ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sec.mapQuery)}" target="_blank" rel="noopener noreferrer" class="text-gray-900 hover:text-blue-600 underline decoration-gray-300 underline-offset-4 transition-colors cursor-pointer p-1 -m-1">${sec.title}</a>`
                             : `<span class="text-gray-900">${sec.title}</span>`;
                         
                         const timeBadge = sec.time ? `<span class="bg-gray-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm inline-block shrink-0">${sec.time}</span>` : '';
+                        const parkingQuery = sec.parkingQuery || parkingLookup[sec.mapQuery] || null;
+                        const parkingLinkHtml = parkingQuery ? `<div class="mt-3 flex flex-wrap gap-2">${parkingButtonHtml(parkingQuery)}</div>` : '';
 
                         sectionsHtml += `
                             <div class="relative pl-7 pb-8 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
@@ -1575,6 +1632,7 @@
                                         <h4 class="timeline-section-title flex-1 min-w-[200px] flex items-center gap-2">${titleHtml}</h4>
                                     </div>
                                     <div class="timeline-section-content">${sec.content}</div>
+                                    ${parkingLinkHtml}
                                     ${deepTipHtml}
                                 </div>
                             </div>`;
@@ -1653,6 +1711,17 @@
                         </div>`;
                     }
 
+                    const flexibleCount = (data.sections || []).filter(sec => sec.type === 'rain' || sec.time === '彈性方案').length;
+                    const dayToolsHtml = `
+                        <div class="mb-5 bg-white/85 border-2 border-gray-200 rounded-2xl p-3 shadow-sm">
+                            <div class="text-[11px] font-black text-gray-500 tracking-wider mb-2">每日輔助資訊</div>
+                            <div class="flex flex-wrap gap-2">
+                                ${focus ? `<button onclick="openDayInfo(${data.day}, 'focus')" class="inline-flex items-center gap-2 bg-gray-900 text-white text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🧭</span> 今日行程重點</button>` : ''}
+                                ${hasChecklist ? `<button onclick="openDayInfo(${data.day}, 'checklist')" class="inline-flex items-center gap-2 bg-pink-50 text-pink-700 border-2 border-pink-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>📝</span> 防呆清單</button>` : ''}
+                                ${flexibleCount ? `<button onclick="openDayInfo(${data.day}, 'flex')" class="inline-flex items-center gap-2 bg-cyan-50 text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🔀</span> 彈性方案</button>` : ''}
+                            </div>
+                        </div>`;
+
                     const dayDiv = document.createElement('div');
                     dayDiv.id = `day-content-${data.day}`;
                     dayDiv.className = `fade-in ${data.day === currentDay ? 'block' : 'hidden'}`;
@@ -1676,8 +1745,7 @@
                                 <div><div class="day-summary-label text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div><div class="day-summary-value text-blue-900 leading-tight">${data.hotel}</div></div>
                             </div>
                         </div>
-                        ${focusHtml}
-                        ${checklistAndHighlightsHtml}
+                        ${dayToolsHtml}
                         <div class="mt-4 pt-2">${sectionsHtml}${tipsHtml}</div>
                     `;
 
@@ -1786,6 +1854,79 @@
                 updateTabsUI();
                 switchDayContent(day);
             });
+
+
+            function stripTags(html) {
+                return String(html || '').replace(/<[^>]*>?/gm, '');
+            }
+
+            window.openDayInfo = function(day, mode) {
+                const data = itineraryData.find(d => d.day === day);
+                if (!data) return;
+                const modal = document.getElementById('dayInfoModal');
+                const titleEl = document.getElementById('dayInfoModalTitle');
+                const subEl = document.getElementById('dayInfoModalSubtitle');
+                const bodyEl = document.getElementById('dayInfoModalBody');
+                const focus = dayFocusDB[day] || null;
+                const flexibleSections = (data.sections || []).filter(sec => sec.type === 'rain' || sec.time === '彈性方案');
+
+                const card = (label, content, cls = 'border-gray-200 bg-gray-50') => `
+                    <div class="${cls} border-2 rounded-2xl p-4">
+                        <div class="text-[11px] font-black uppercase tracking-wider text-gray-500 mb-1.5">${label}</div>
+                        <div class="text-sm md:text-base font-bold leading-relaxed text-gray-900">${content || ''}</div>
+                    </div>`;
+
+                let body = '';
+                if (mode === 'focus') {
+                    titleEl.innerHTML = `<span>🧭</span> Day ${day} 今日行程重點`;
+                    subEl.textContent = `${data.date}｜${stripTags(data.title)}`;
+                    if (focus) {
+                        body = `
+                            <div class="bg-gray-900 text-white rounded-2xl p-4 md:p-5 font-black text-lg md:text-xl leading-relaxed">${focus.mission}</div>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                ${card('今天怎樣算成功', focus.win, 'border-green-200 bg-green-50')}
+                                ${card('彈性時間窗', focus.hardCut, 'border-amber-200 bg-amber-50')}
+                                ${card('現場判斷', focus.decision, 'border-blue-200 bg-blue-50')}
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <div class="border-2 border-amber-200 bg-white rounded-2xl p-4">
+                                    <div class="text-[11px] font-black text-amber-700 mb-2">🎯 現場優先序</div>
+                                    <div class="flex flex-wrap gap-2">${(focus.priority || []).map(item => `<span class="priority-pill text-amber-900 border px-2.5 py-1 rounded-lg">${item}</span>`).join('')}</div>
+                                </div>
+                                ${card('主要風險', focus.risk, 'border-gray-300 bg-gray-50')}
+                            </div>
+                            ${data.tips ? card('行程提醒', data.tips, 'border-red-200 bg-red-50') : ''}`;
+                    }
+                } else if (mode === 'checklist') {
+                    titleEl.innerHTML = `<span>📝</span> Day ${day} 防呆清單`;
+                    subEl.textContent = `${data.date}｜出發前快速確認`;
+                    body = `<div class="grid grid-cols-1 gap-2">
+                        ${(data.checklist || []).map(item => `
+                            <label class="flex items-start gap-3 cursor-pointer rounded-xl border border-pink-100 bg-white p-3 hover:bg-pink-50 transition">
+                                <input type="checkbox" class="w-6 h-6 mt-0.5 rounded border-gray-300 text-kawaii-pink focus:ring-kawaii-pink cursor-pointer shrink-0">
+                                <span class="font-bold text-gray-800 leading-relaxed">${stripTags(item)}</span>
+                            </label>`).join('')}
+                    </div>`;
+                } else {
+                    titleEl.innerHTML = `<span>🔀</span> Day ${day} 彈性方案`;
+                    subEl.textContent = `${data.date}｜依時間、天氣與體力選擇路線`;
+                    body = flexibleSections.length ? flexibleSections.map(sec => {
+                        const parkingQuery = sec.parkingQuery || parkingLookup[sec.mapQuery] || null;
+                        return `<div class="border-2 border-cyan-200 bg-cyan-50 rounded-2xl p-4 md:p-5 shadow-sm">
+                            <div class="flex flex-wrap items-center gap-2 mb-3">
+                                ${sec.time ? `<span class="bg-cyan-700 text-white text-[11px] font-black px-2.5 py-1 rounded-full">${sec.time}</span>` : ''}
+                                <div class="font-black text-cyan-900 text-lg">${sec.title}</div>
+                            </div>
+                            <div class="text-sm md:text-base font-bold text-gray-800 leading-relaxed">${sec.content}</div>
+                            ${parkingQuery ? `<div class="mt-3 flex flex-wrap gap-2">${parkingButtonHtml(parkingQuery)}</div>` : ''}
+                            ${sec.deepTip ? `<details class="mt-3 bg-white/80 border border-cyan-200 rounded-xl overflow-hidden"><summary class="cursor-pointer select-none px-3 py-2 font-black text-cyan-800">💡 補充資訊</summary><div class="px-3 pb-3 pt-1 text-sm font-bold text-gray-700 leading-relaxed">${sec.deepTip}</div></details>` : ''}
+                        </div>`;
+                    }).join('') : `<div class="bg-gray-50 border-2 border-gray-200 rounded-2xl p-4 font-bold text-gray-700">本日沒有額外彈性方案。</div>`;
+                }
+
+                bodyEl.innerHTML = body;
+                if (modal) modal.showModal();
+            };
 
             window.showModal = function(id) {
                 const dialog = document.getElementById(id);
