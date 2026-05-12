@@ -186,6 +186,9 @@ async function runAppRenderSmokeTest() {
   if (!firstDay.innerHTML.includes('今日動線') || !firstDay.innerHTML.includes('Day 1')) {
     throw new Error('app render failed: first day content is incomplete');
   }
+  if (!firstDay.innerHTML.includes('今日快速檢查')) {
+    throw new Error('app render failed: day diagnostics panel is missing');
+  }
 }
 
 async function runDataAndComponentSmokeTest() {
