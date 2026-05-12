@@ -16,6 +16,7 @@
 
             function initTabs() {
                 const container = document.getElementById('tabs-container');
+                if (!container) return;
                 container.innerHTML = '';
                 itineraryData.forEach((data) => {
                     const btn = document.createElement('button');
@@ -35,7 +36,6 @@
                     btn.className = `flex-shrink-0 px-5 py-3 md:py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${isActive ? 'tab-active' : 'tab-inactive hover:bg-kawaii-light-pink hover:text-white hover:border-kawaii-light-pink'}`;
                 });
             }
-
             function buildDayContent(data) {
                     let sectionsHtml = '';
                     data.sections.forEach(sec => {
