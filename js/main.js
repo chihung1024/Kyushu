@@ -43,6 +43,7 @@
                     btn.setAttribute('tabindex', isActive ? '0' : '-1');
                 });
             }
+
             function buildDayContent(data) {
                     let sectionsHtml = '';
                     data.sections.forEach(sec => {
@@ -151,8 +152,7 @@
                         </div>`;
                     }
 
-                    const flexibleCount = getDayDiagnostics(data).flexibleStops;
-                    const dayDiagnosticsHtml = renderDayDiagnostics(data, focus);
+                    const flexibleCount = (data.sections || []).filter(sec => sec.type === 'rain' || sec.time === '彈性方案').length;
                     const dayToolsHtml = `
                         <div class="day-tools-panel mb-5 bg-white/85 border-2 border-gray-200 rounded-2xl p-3 shadow-sm">
                             <div class="day-tools-heading text-[11px] font-black text-gray-500 tracking-wider mb-2">每日輔助資訊</div>
@@ -189,7 +189,6 @@
                                 <div><div class="day-summary-label text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div><div class="day-summary-value text-blue-900 leading-tight">${data.hotel}</div></div>
                             </div>
                         </div>
-                        ${dayDiagnosticsHtml}
                         ${dayToolsHtml}
                         <div class="mt-4 pt-2">${sectionsHtml}${tipsHtml}</div>
                     `;
