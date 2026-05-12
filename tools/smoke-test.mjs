@@ -142,7 +142,7 @@ async function assertContains(file, pattern, description) {
 }
 
 
-async function runAppRenderSmokeTest() {
+async function runAppRenderSmokeTest(files = [...sourceFiles, 'js/main.js']) {
   const document = new FakeDocument();
   const window = {
     location: { hash: '' },
@@ -167,9 +167,10 @@ async function runAppRenderSmokeTest() {
     setTimeout,
     requestAnimationFrame: callback => callback(),
     alert() {},
+    console,
   });
 
-  for (const file of [...sourceFiles, 'js/main.js']) {
+  for (const file of files) {
     const code = await readFile(resolveRepoPath(file), 'utf8');
     new vm.Script(code, { filename: file }).runInContext(context);
   }
@@ -220,5 +221,11 @@ if (/<script\s+src="js\//.test(dist) || /<link\s+href="css\/style\.css"/.test(di
 }
 await runDataAndComponentSmokeTest();
 await runAppRenderSmokeTest();
+await runAppRenderSmokeTest([
+  'js/data/constants.js',
+  'js/data/parking.js',
+  'js/data/itinerary.js',
+  'js/main.js',
+]);
 
 console.log('Smoke checks passed');

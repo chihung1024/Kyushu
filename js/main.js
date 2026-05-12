@@ -43,11 +43,37 @@
                     btn.setAttribute('tabindex', isActive ? '0' : '-1');
                 });
             }
+
+
+            function getParkingQueryForSection(sec) {
+                const lookup = typeof parkingLookup === 'undefined' ? {} : parkingLookup;
+                return sec.parkingQuery || lookup[sec.mapQuery] || null;
+            }
+
+            function renderParkingButtonsSafe(parkingInfo) {
+                if (!parkingInfo || typeof renderParkingButtons !== 'function') return '';
+                return renderParkingButtons(parkingInfo);
+            }
+
+            function getDayFocus(day) {
+                return typeof dayFocusDB === 'undefined' ? null : dayFocusDB[day] || null;
+            }
+
+            function hasDayGourmet(day) {
+                return typeof dayGourmetDB !== 'undefined' && Boolean(dayGourmetDB[day]);
+            }
+
+            function renderDailyGourmetSafe(day) {
+                return typeof renderDailyGourmet === 'function' ? renderDailyGourmet(day) : '';
+            }
+
             function buildDayContent(data) {
                     let sectionsHtml = '';
                     data.sections.forEach(sec => {
                         if (sec.type === 'rain' || sec.time === '彈性方案') return;
                         const iconBg = sec.type === 'rain' ? 'bg-cyan-100 text-cyan-600' : 'bg-white';
+                        const typeIcons = typeof icons === 'undefined' ? {} : icons;
+                        const typeBgColors = typeof bgColors === 'undefined' ? {} : bgColors;
                         const deepTipText = String(sec.deepTip || '').replace(/<[^>]*>?/gm, '').replace(/&nbsp;/g, ' ').trim();
                         let deepTipHtml = deepTipText ? `
                             <details class="detail-note mt-3 bg-amber-50/70 border border-amber-200 rounded-xl shadow-sm text-gray-900 overflow-hidden">
@@ -60,13 +86,13 @@
                             : `<span class="text-gray-900">${sec.title}</span>`;
                         
                         const timeBadge = sec.time ? `<span class="time-badge bg-gray-800 text-white text-[11px] font-bold px-2.5 py-1 rounded shadow-sm inline-block shrink-0">${sec.time}</span>` : '';
-                        const parkingQuery = sec.parkingQuery || parkingLookup[sec.mapQuery] || null;
-                        const parkingLinkHtml = parkingQuery ? `<div class="mt-3 flex flex-wrap gap-2">${renderParkingButtons(parkingQuery)}</div>` : '';
+                        const parkingQuery = getParkingQueryForSection(sec);
+                        const parkingLinkHtml = parkingQuery ? `<div class="mt-3 flex flex-wrap gap-2">${renderParkingButtonsSafe(parkingQuery)}</div>` : '';
 
                         sectionsHtml += `
                             <div class="timeline-item relative pl-7 pb-8 border-l-2 border-kawaii-blue border-dashed ml-3 last:border-transparent last:pb-0">
-                                <div class="timeline-dot flex items-center justify-center text-[10px] ${iconBg}">${icons[sec.type] || '📌'}</div>
-                                <div class="${bgColors[sec.type] || 'bg-gray-50 border-gray-200'} timeline-section-card timeline-card border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
+                                <div class="timeline-dot flex items-center justify-center text-[10px] ${iconBg}">${typeIcons[sec.type] || '📌'}</div>
+                                <div class="${typeBgColors[sec.type] || 'bg-gray-50 border-gray-200'} timeline-section-card timeline-card border-2 rounded-2xl p-4 sm:p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md text-gray-800">
                                     <div class="flex flex-wrap items-center gap-2 mb-3">
                                         ${timeBadge}
                                         <h4 class="timeline-section-title flex-1 min-w-[200px] flex items-center gap-2">${titleHtml}</h4>
@@ -87,7 +113,7 @@
                             </div>
                         </div>` : '';
 
-                    const focus = dayFocusDB[data.day] || null;
+                    const focus = getDayFocus(data.day);
                     let focusHtml = '';
                     if (focus) {
                         focusHtml = `
@@ -160,7 +186,7 @@
                                 ${focus ? `<button onclick="openDayInfo(${data.day}, 'focus')" class="day-tool-btn day-tool-focus inline-flex items-center gap-2 bg-gray-900 text-white text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🧭</span> 今日行程重點</button>` : ''}
                                 ${hasChecklist ? `<button onclick="openDayInfo(${data.day}, 'checklist')" class="day-tool-btn day-tool-check inline-flex items-center gap-2 bg-pink-50 text-pink-700 border-2 border-pink-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>📝</span> 防呆清單</button>` : ''}
                                 ${flexibleCount ? `<button onclick="openDayInfo(${data.day}, 'flex')" class="day-tool-btn day-tool-flex inline-flex items-center gap-2 bg-cyan-50 text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🔀</span> 彈性方案</button>` : ''}
-                                ${dayGourmetDB[data.day] ? `<button onclick="openDayInfo(${data.day}, 'gourmet')" class="day-tool-btn day-tool-food inline-flex items-center gap-2 bg-orange-50 text-orange-700 border-2 border-orange-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🍽️</span> 今日美食候選</button>` : ''}
+                                ${hasDayGourmet(data.day) ? `<button onclick="openDayInfo(${data.day}, 'gourmet')" class="day-tool-btn day-tool-food inline-flex items-center gap-2 bg-orange-50 text-orange-700 border-2 border-orange-200 text-xs md:text-sm font-black px-4 py-2.5 rounded-full shadow-sm hover:scale-105 active:scale-95 transition"><span>🍽️</span> 今日美食候選</button>` : ''}
                             </div>
                         </div>`;
                     const dayDiv = document.createElement('div');
@@ -198,13 +224,31 @@
 
             }
 
+            function renderDayErrorContent(day, error) {
+                const el = document.createElement('div');
+                el.id = `day-content-${day}`;
+                el.className = 'fade-in block';
+                el.innerHTML = `
+                    <div class="border-2 border-red-200 bg-red-50 rounded-2xl p-4 sm:p-5 text-red-900 font-bold leading-relaxed">
+                        <div class="text-lg font-black mb-2">⚠️ Day ${day} 內容載入異常</div>
+                        <div class="text-sm">部分輔助模組未載入，但頁面不應保持空白。請重新整理，或改用 dist/kyushu-trip-final.html 單檔版。</div>
+                        <pre class="mt-3 text-xs whitespace-pre-wrap text-red-700">${String(error && error.message ? error.message : error)}</pre>
+                    </div>`;
+                return el;
+            }
+
             function ensureDayContent(day) {
                 const container = document.getElementById('itinerary-content');
                 let el = document.getElementById(`day-content-${day}`);
                 if (!el) {
                     const data = itineraryData.find(d => d.day === day);
                     if (!data || !container) return null;
-                    el = buildDayContent(data);
+                    try {
+                        el = buildDayContent(data);
+                    } catch (error) {
+                        console.error('Failed to render day content', error);
+                        el = renderDayErrorContent(day, error);
+                    }
                     container.appendChild(el);
                 }
                 return el;
@@ -398,7 +442,7 @@
                 const titleEl = document.getElementById('dayInfoModalTitle');
                 const subEl = document.getElementById('dayInfoModalSubtitle');
                 const bodyEl = document.getElementById('dayInfoModalBody');
-                const focus = dayFocusDB[day] || null;
+                const focus = getDayFocus(day);
                 const flexibleSections = (data.sections || []).filter(sec => sec.type === 'rain' || sec.time === '彈性方案');
 
                 const card = (label, content, cls = 'border-gray-200 bg-gray-50') => `
@@ -441,19 +485,19 @@
                 } else if (mode === 'gourmet') {
                     titleEl.innerHTML = `<span>🍽️</span> Day ${day} 今日美食候選`;
                     subEl.textContent = `${data.date}｜依當天動線分類；各類別預設收合，點開再挑`;
-                    body = renderDailyGourmet(day) || `<div class="bg-gray-50 border-2 border-gray-200 rounded-2xl p-4 font-bold text-gray-700">本日沒有美食候選資料。</div>`;
+                    body = renderDailyGourmetSafe(day) || `<div class="bg-gray-50 border-2 border-gray-200 rounded-2xl p-4 font-bold text-gray-700">本日沒有美食候選資料。</div>`;
                 } else {
                     titleEl.innerHTML = `<span>🔀</span> Day ${day} 彈性方案`;
                     subEl.textContent = `${data.date}｜依時間、天氣與體力選擇路線`;
                     body = flexibleSections.length ? flexibleSections.map(sec => {
-                        const parkingQuery = sec.parkingQuery || parkingLookup[sec.mapQuery] || null;
+                        const parkingQuery = getParkingQueryForSection(sec);
                         return `<div class="border-2 border-cyan-200 bg-cyan-50 rounded-2xl p-4 md:p-5 shadow-sm">
                             <div class="flex flex-wrap items-center gap-2 mb-3">
                                 ${sec.time ? `<span class="bg-cyan-700 text-white text-[11px] font-black px-2.5 py-1 rounded-full">${sec.time}</span>` : ''}
                                 <div class="font-black text-cyan-900 text-lg">${sec.title}</div>
                             </div>
                             <div class="text-sm md:text-base font-bold text-gray-800 leading-relaxed">${sec.content}</div>
-                            ${parkingQuery ? `<div class="mt-3 flex flex-wrap gap-2">${renderParkingButtons(parkingQuery)}</div>` : ''}
+                            ${parkingQuery ? `<div class="mt-3 flex flex-wrap gap-2">${renderParkingButtonsSafe(parkingQuery)}</div>` : ''}
                             ${sec.deepTip ? `<details class="mt-3 bg-white/80 border border-cyan-200 rounded-xl overflow-hidden"><summary class="cursor-pointer select-none px-3 py-2 font-black text-cyan-800">💡 補充資訊</summary><div class="px-3 pb-3 pt-1 text-sm font-bold text-gray-700 leading-relaxed">${sec.deepTip}</div></details>` : ''}
                         </div>`;
                     }).join('') : `<div class="bg-gray-50 border-2 border-gray-200 rounded-2xl p-4 font-bold text-gray-700">本日沒有額外彈性方案。</div>`;
