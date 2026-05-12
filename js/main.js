@@ -43,32 +43,6 @@
                     btn.setAttribute('tabindex', isActive ? '0' : '-1');
                 });
             }
-
-            function getDayDiagnostics(data) {
-                const sections = data.sections || [];
-                const mainStops = sections.filter(sec => sec.type !== 'rain' && sec.time !== '彈性方案').length;
-                const flexibleStops = sections.length - mainStops;
-                const checklistCount = (data.checklist || []).length;
-                const hasMap = Boolean(data.mapLink);
-                return { mainStops, flexibleStops, checklistCount, hasMap };
-            }
-
-            function renderDayDiagnostics(data, focus) {
-                const diagnostics = getDayDiagnostics(data);
-                const chips = [
-                    `<span class="day-diagnostic-chip must"><span>主線</span><strong>${diagnostics.mainStops}</strong>站</span>`,
-                    `<span class="day-diagnostic-chip flex"><span>彈性</span><strong>${diagnostics.flexibleStops}</strong>案</span>`,
-                    `<span class="day-diagnostic-chip check"><span>防呆</span><strong>${diagnostics.checklistCount}</strong>項</span>`,
-                    diagnostics.hasMap ? `<span class="day-diagnostic-chip map"><span>路線</span><strong>已備</strong></span>` : `<span class="day-diagnostic-chip muted"><span>路線</span><strong>未填</strong></span>`,
-                ].join('');
-                const hardCut = focus && focus.hardCut ? `<div class="day-diagnostic-cut"><span>⏱️ 今日硬切點</span><strong>${focus.hardCut}</strong></div>` : '';
-                return `<section class="day-diagnostics-panel" aria-label="Day ${data.day} 行程健檢">
-                    <div class="day-diagnostic-title"><span>🩺</span><span>今日行程健檢</span></div>
-                    <div class="day-diagnostic-chips">${chips}</div>
-                    ${hardCut}
-                </section>`;
-            }
-
             function buildDayContent(data) {
                     let sectionsHtml = '';
                     data.sections.forEach(sec => {
