@@ -43,6 +43,46 @@
                     btn.setAttribute('tabindex', isActive ? '0' : '-1');
                 });
             }
+
+            function getDayDiagnostics(data) {
+                const sections = data.sections || [];
+                const mainStops = sections.filter(sec => sec.type !== 'rain' && sec.time !== '彈性方案').length;
+                const flexibleStops = sections.filter(sec => sec.type === 'rain' || sec.time === '彈性方案').length;
+                const checklistItems = (data.checklist || []).length;
+                const mapLinks = sections.filter(sec => sec.mapQuery || sec.parkingQuery).length + (data.mapLink ? 1 : 0);
+
+                return {
+                    mainStops,
+                    flexibleStops,
+                    checklistItems,
+                    mapLinks,
+                };
+            }
+
+            function renderDayDiagnostics(data, focus) {
+                const diagnostics = getDayDiagnostics(data);
+                const hardCut = focus && focus.hardCut ? String(focus.hardCut).trim() : '';
+                const chips = [
+                    { cls: 'must', label: '主要停靠', value: diagnostics.mainStops },
+                    { cls: 'flex', label: '彈性方案', value: diagnostics.flexibleStops },
+                    { cls: 'check', label: '防呆清單', value: diagnostics.checklistItems },
+                    { cls: 'map', label: '導航連結', value: diagnostics.mapLinks },
+                ];
+
+                return `
+                    <div class="day-diagnostics-panel" aria-label="Day ${data.day} 行程概覽">
+                        <div class="day-diagnostic-title"><span>🔎</span> 今日快速檢查</div>
+                        <div class="day-diagnostic-chips">
+                            ${chips.map(chip => `
+                                <div class="day-diagnostic-chip ${chip.cls}">
+                                    <span>${chip.label}</span>
+                                    <strong>${chip.value}</strong>
+                                </div>`).join('')}
+                        </div>
+                        ${hardCut ? `<div class="day-diagnostic-cut"><span>時間窗提醒</span><strong>${hardCut}</strong></div>` : ''}
+                    </div>`;
+            }
+
             function buildDayContent(data) {
                     let sectionsHtml = '';
                     data.sections.forEach(sec => {
