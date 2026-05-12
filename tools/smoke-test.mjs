@@ -201,6 +201,32 @@ async function runAppRenderSmokeTest() {
   }
 }
 
+
+async function assertPrintContainerOutsidePrintHidden(file) {
+  const html = await readFile(resolveRepoPath(file), 'utf8');
+  const printIndex = html.indexOf('id="print-container"');
+  if (printIndex === -1) {
+    throw new Error(`${file} missing #print-container`);
+  }
+
+  const stack = [];
+  const tagPattern = /<\/?div\b[^>]*>/gi;
+  let match;
+  while ((match = tagPattern.exec(html)) && match.index < printIndex) {
+    const tag = match[0];
+    if (/^<\/div/i.test(tag)) {
+      stack.pop();
+    } else if (!/\/\s*>$/.test(tag)) {
+      stack.push(tag);
+    }
+  }
+
+  const hiddenAncestor = stack.find(tag => /class=["'][^"']*\bprint:hidden\b[^"']*["']/i.test(tag));
+  if (hiddenAncestor) {
+    throw new Error(`${file} places #print-container inside a print:hidden ancestor, causing blank print output`);
+  }
+}
+
 async function runDataAndComponentSmokeTest() {
   const context = vm.createContext({ encodeURIComponent, String, Array, Object });
 
@@ -236,7 +262,9 @@ await assertMissing('js/components.js');
 await assertContains('index.html', /js\/utils\/html\.js/, 'shared HTML helpers');
 await assertContains('index.html', /js\/data\/constants\.js/, 'modular data scripts');
 await assertContains('index.html', /js\/components\/parking-buttons\.js/, 'modular component scripts');
+await assertPrintContainerOutsidePrintHidden('index.html');
 const dist = await assertContains('dist/kyushu-trip-final.html', /kyushu-inline-styles/, 'inlined CSS marker');
+await assertPrintContainerOutsidePrintHidden('dist/kyushu-trip-final.html');
 if (/\[object Promise\]/.test(dist)) {
   throw new Error('dist/kyushu-trip-final.html contains an unresolved Promise marker');
 }
