@@ -16,11 +16,17 @@
 
             function initTabs() {
                 const container = document.getElementById('tabs-container');
+                if (!container) return;
                 container.innerHTML = '';
+                container.setAttribute('role', 'tablist');
+                container.setAttribute('aria-label', '每日行程切換');
                 itineraryData.forEach((data) => {
                     const btn = document.createElement('button');
                     btn.id = `tab-btn-${data.day}`;
-                    btn.innerHTML = `Day ${data.day}`;
+                    btn.type = 'button';
+                    btn.setAttribute('role', 'tab');
+                    btn.setAttribute('aria-controls', `day-content-${data.day}`);
+                    btn.textContent = `Day ${data.day}`;
                     btn.onclick = () => window.selectDay(data.day);
                     container.appendChild(btn);
                 });
@@ -33,9 +39,10 @@
                     if (!btn) return;
                     const isActive = data.day === currentDay;
                     btn.className = `flex-shrink-0 px-5 py-3 md:py-2.5 rounded-full font-bold text-sm transition-all duration-300 ${isActive ? 'tab-active' : 'tab-inactive hover:bg-kawaii-light-pink hover:text-white hover:border-kawaii-light-pink'}`;
+                    btn.setAttribute('aria-selected', String(isActive));
+                    btn.setAttribute('tabindex', isActive ? '0' : '-1');
                 });
             }
-
             function buildDayContent(data) {
                     let sectionsHtml = '';
                     data.sections.forEach(sec => {
@@ -158,6 +165,9 @@
                     const dayDiv = document.createElement('div');
                     dayDiv.id = `day-content-${data.day}`;
                     dayDiv.className = `fade-in ${data.day === currentDay ? 'block' : 'hidden'}`;
+                    dayDiv.setAttribute('role', 'tabpanel');
+                    dayDiv.setAttribute('aria-labelledby', `tab-btn-${data.day}`);
+                    dayDiv.setAttribute('aria-hidden', String(data.day !== currentDay));
                     
                     dayDiv.innerHTML = `
                         <div class="day-header flex flex-col mb-5">
@@ -213,9 +223,11 @@
                         if (data.day === day) {
                             el.classList.remove('hidden');
                             el.classList.add('block', 'fade-in');
+                            el.setAttribute('aria-hidden', 'false');
                         } else {
                             el.classList.add('hidden');
                             el.classList.remove('block', 'fade-in');
+                            el.setAttribute('aria-hidden', 'true');
                         }
                     }
                 });
