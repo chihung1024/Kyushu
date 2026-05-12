@@ -208,11 +208,11 @@
 
 
 /* === css/print.css === */
-/* print-paper-guide-v3: readable paper guide, not screen cards compressed onto paper. */
+/* print-paper-guide-v4: professional paper-first layout. */
 @media print {
   @page {
     size: A4 portrait;
-    margin: 10mm 11mm 11mm;
+    margin: 9mm 10mm 10mm;
   }
 
   html,
@@ -228,8 +228,8 @@
     background-image: none !important;
     color: #111827 !important;
     font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'PingFang TC', sans-serif !important;
-    font-size: 10.2pt !important;
-    line-height: 1.52 !important;
+    font-size: 9.6pt !important;
+    line-height: 1.48 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
@@ -266,52 +266,52 @@
   }
 
   #print-container .print-cover {
-    margin: 0 0 5mm !important;
-    break-after: auto !important;
-    page-break-after: auto !important;
+    min-height: 260mm !important;
+    padding: 2mm 0 0 !important;
+    break-after: page !important;
+    page-break-after: always !important;
   }
 
   #print-container .print-cover-title {
-    padding: 0 0 3.5mm !important;
-    margin: 0 0 3.5mm !important;
-    border-bottom: 2.5px solid #111827 !important;
+    padding-bottom: 5mm !important;
+    margin-bottom: 5mm !important;
+    border-bottom: 3px solid #111827 !important;
     text-align: center !important;
   }
 
   #print-container .print-cover-title h1 {
-    font-size: 21pt !important;
-    line-height: 1.15 !important;
-    font-weight: 900 !important;
+    font-size: 24pt !important;
+    line-height: 1.12 !important;
+    font-weight: 950 !important;
     letter-spacing: 0.02em !important;
   }
 
   #print-container .print-cover-title p {
-    margin-top: 1.5mm !important;
+    margin-top: 1.8mm !important;
     color: #475569 !important;
     font-size: 10pt !important;
-    font-weight: 800 !important;
+    font-weight: 850 !important;
   }
 
   #print-container .print-cover-grid {
     display: grid !important;
-    grid-template-columns: 1.1fr 0.9fr !important;
-    gap: 3mm !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4mm !important;
     align-items: start !important;
   }
 
   #print-container .print-card,
-  #print-container .print-checklist-block,
-  #print-container .print-focus,
-  #print-container .print-flex-block,
+  #print-container .print-block,
   #print-container .print-warning,
-  #print-container .print-meta-grid > div {
+  #print-container .print-meta-grid > div,
+  #print-container .print-focus-card {
     border: 1px solid #cbd5e1 !important;
-    border-radius: 3.2mm !important;
+    border-radius: 2.6mm !important;
     background: #fff !important;
   }
 
   #print-container .print-card {
-    padding: 3mm !important;
+    padding: 3.5mm !important;
   }
 
   #print-container .print-card-primary {
@@ -319,42 +319,52 @@
   }
 
   #print-container .print-card h2,
-  #print-container .print-checklist-block h3,
-  #print-container .print-timeline h3,
+  #print-container .print-block h3,
   #print-container .print-flex-block h3 {
     margin: 0 0 2mm !important;
     color: #0f172a !important;
-    font-size: 11.3pt !important;
+    font-size: 11.4pt !important;
     line-height: 1.25 !important;
-    font-weight: 900 !important;
+    font-weight: 950 !important;
   }
 
   #print-container .print-index-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 1.25mm !important;
+    gap: 1.2mm !important;
   }
 
   #print-container .print-index-item {
     display: grid !important;
     grid-template-columns: 14mm 1fr !important;
     gap: 2mm !important;
-    padding: 1.2mm 0 !important;
+    padding: 1.4mm 0 !important;
     border-bottom: 1px dashed #e2e8f0 !important;
-    font-size: 8.7pt !important;
+    font-size: 8.8pt !important;
     line-height: 1.35 !important;
   }
 
   #print-container .print-index-item strong {
     color: #0f172a !important;
-    font-weight: 900 !important;
+    font-weight: 950 !important;
+  }
+
+  #print-container .print-cover-note {
+    margin-top: 5mm !important;
+    padding: 2.5mm 3mm !important;
+    border-left: 4px solid #334155 !important;
+    background: #f8fafc !important;
+    color: #334155 !important;
+    font-size: 9pt !important;
+    line-height: 1.55 !important;
+    font-weight: 750 !important;
   }
 
   #print-container .print-check-grid {
     display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    column-gap: 3mm !important;
-    row-gap: 1.1mm !important;
+    column-gap: 4mm !important;
+    row-gap: 1mm !important;
   }
 
   #print-container .print-check-row {
@@ -363,7 +373,7 @@
     gap: 1.4mm !important;
     align-items: start !important;
     color: #1f2937 !important;
-    font-size: 8.5pt !important;
+    font-size: 8.3pt !important;
     line-height: 1.42 !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
@@ -371,43 +381,47 @@
 
   #print-container .print-box {
     color: #111827 !important;
-    font-weight: 800 !important;
+    font-weight: 900 !important;
   }
 
   #print-container .print-day {
-    margin: 5mm 0 0 !important;
     padding: 0 !important;
-    break-before: auto !important;
-    page-break-before: auto !important;
+    margin: 0 !important;
+    break-before: page !important;
+    page-break-before: always !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
   }
 
-  #print-container .print-day + .print-day {
-    margin-top: 7mm !important;
-    padding-top: 4mm !important;
-    border-top: 2px solid #111827 !important;
-  }
-
   #print-container .print-day-header {
     margin: 0 0 3mm !important;
+    padding: 0 0 2.6mm !important;
+    border-bottom: 2.5px solid #111827 !important;
     break-after: avoid !important;
     page-break-after: avoid !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  #print-container .print-day-kicker {
+    margin-bottom: 1.2mm !important;
+    color: #64748b !important;
+    font-size: 8.6pt !important;
+    font-weight: 900 !important;
+    letter-spacing: 0.04em !important;
   }
 
   #print-container .print-day-title-row {
     display: grid !important;
-    grid-template-columns: 23mm 1fr !important;
+    grid-template-columns: 22mm 1fr !important;
     gap: 3mm !important;
-    align-items: center !important;
+    align-items: baseline !important;
     margin-bottom: 2mm !important;
-    padding-bottom: 2mm !important;
-    border-bottom: 2px solid #111827 !important;
   }
 
   #print-container .print-day-title-row h2 {
     color: #0f172a !important;
-    font-size: 17pt !important;
+    font-size: 18pt !important;
     line-height: 1 !important;
     font-weight: 950 !important;
     white-space: nowrap !important;
@@ -416,17 +430,9 @@
   #print-container .print-day-title-row strong {
     display: block !important;
     color: #111827 !important;
-    font-size: 12.4pt !important;
-    line-height: 1.28 !important;
-    font-weight: 900 !important;
-  }
-
-  #print-container .print-day-title-row span {
-    display: block !important;
-    margin-top: 0.6mm !important;
-    color: #64748b !important;
-    font-size: 8.7pt !important;
-    font-weight: 800 !important;
+    font-size: 14pt !important;
+    line-height: 1.22 !important;
+    font-weight: 950 !important;
   }
 
   #print-container .print-meta-grid {
@@ -442,11 +448,11 @@
     color: #1f2937 !important;
     font-size: 8.7pt !important;
     line-height: 1.35 !important;
-    font-weight: 750 !important;
+    font-weight: 800 !important;
   }
 
   #print-container .print-meta-grid span,
-  #print-container .print-focus span,
+  #print-container .print-focus-card span,
   #print-container .print-tip span,
   #print-container .print-warning strong {
     display: block !important;
@@ -454,65 +460,62 @@
     color: #64748b !important;
     font-size: 7.2pt !important;
     font-weight: 950 !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.06em !important;
   }
 
-  #print-container .print-focus {
+  #print-container .print-focus-grid {
     display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 0 !important;
-    overflow: hidden !important;
-    margin-bottom: 2.3mm !important;
-    background: #f8fafc !important;
+    grid-template-columns: 1.15fr 0.95fr !important;
+    gap: 2mm !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
 
-  #print-container .print-focus > div {
-    padding: 2mm 2.4mm !important;
-    border-right: 1px solid #e2e8f0 !important;
-    border-bottom: 1px solid #e2e8f0 !important;
+  #print-container .print-focus-card {
+    padding: 1.8mm 2.2mm !important;
+    background: #fff !important;
   }
 
-  #print-container .print-focus > div:nth-child(2n) {
-    border-right: 0 !important;
+  #print-container .print-focus-card.primary {
+    border-color: #334155 !important;
+    background: #f8fafc !important;
   }
 
-  #print-container .print-focus > div:nth-last-child(-n+2) {
-    border-bottom: 0 !important;
-  }
-
-  #print-container .print-focus strong {
+  #print-container .print-focus-card strong {
     display: block !important;
     color: #111827 !important;
-    font-size: 8.5pt !important;
+    font-size: 8.6pt !important;
     line-height: 1.42 !important;
-    font-weight: 800 !important;
+    font-weight: 850 !important;
   }
 
-  #print-container .print-checklist-block {
-    padding: 2.2mm 2.5mm !important;
-    margin-bottom: 2.5mm !important;
+  #print-container .print-block {
+    padding: 2.2mm 2.6mm !important;
+    margin: 0 0 2.8mm !important;
     background: #fff !important;
     break-inside: auto !important;
     page-break-inside: auto !important;
   }
 
-  #print-container .print-checklist-block h3 {
-    font-size: 10.5pt !important;
-    margin-bottom: 1.6mm !important;
+  #print-container .print-checklist-block h3,
+  #print-container .print-timeline h3,
+  #print-container .print-flex-block h3 {
+    font-size: 10.8pt !important;
+    margin-bottom: 1.8mm !important;
   }
 
   #print-container .print-timeline {
-    margin-top: 2.5mm !important;
+    border: 0 !important;
+    padding: 0 !important;
+    margin-top: 1mm !important;
   }
 
   #print-container .print-step {
     display: grid !important;
-    grid-template-columns: 22mm 1fr !important;
-    gap: 2.3mm !important;
-    margin: 0 0 2.4mm !important;
-    padding: 0 0 2.4mm !important;
+    grid-template-columns: 21mm 1fr !important;
+    gap: 2.4mm !important;
+    margin: 0 0 2.3mm !important;
+    padding: 0 0 2.3mm !important;
     border-bottom: 1px solid #e5e7eb !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
@@ -520,56 +523,54 @@
 
   #print-container .print-step-time {
     align-self: start !important;
-    padding: 1.2mm 1.3mm !important;
+    padding: 1mm 1.1mm !important;
     border: 1px solid #334155 !important;
-    border-radius: 2mm !important;
+    border-radius: 1.8mm !important;
     background: #f8fafc !important;
     color: #111827 !important;
-    font-size: 8pt !important;
-    line-height: 1.2 !important;
+    font-size: 7.9pt !important;
+    line-height: 1.18 !important;
     text-align: center !important;
-    font-weight: 900 !important;
+    font-weight: 950 !important;
     white-space: normal !important;
   }
 
   #print-container .print-step-main h4 {
-    margin-bottom: 0.8mm !important;
+    margin-bottom: 0.7mm !important;
     color: #111827 !important;
-    font-size: 10.6pt !important;
-    line-height: 1.32 !important;
+    font-size: 10.7pt !important;
+    line-height: 1.3 !important;
     font-weight: 950 !important;
   }
 
   #print-container .print-step-main p {
     color: #1f2937 !important;
-    font-size: 9.2pt !important;
-    line-height: 1.55 !important;
-    font-weight: 600 !important;
+    font-size: 9.15pt !important;
+    line-height: 1.52 !important;
+    font-weight: 650 !important;
   }
 
   #print-container .print-tip {
-    margin-top: 1.3mm !important;
-    padding: 1.5mm 2mm !important;
-    border-left: 3px solid #f59e0b !important;
-    border-radius: 1.8mm !important;
+    margin-top: 1.1mm !important;
+    padding: 1.2mm 1.8mm !important;
+    border-left: 3px solid #d97706 !important;
+    border-radius: 1.5mm !important;
     background: #fffbeb !important;
     color: #374151 !important;
-    font-size: 8.5pt !important;
-    line-height: 1.46 !important;
+    font-size: 8.35pt !important;
+    line-height: 1.42 !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
 
   #print-container .print-tip span {
     display: inline !important;
-    margin: 0 1.3mm 0 0 !important;
+    margin: 0 1.2mm 0 0 !important;
     color: #92400e !important;
-    font-size: 7.5pt !important;
+    font-size: 7.3pt !important;
   }
 
   #print-container .print-flex-block {
-    margin-top: 3mm !important;
-    padding: 2.5mm !important;
     background: #f8fafc !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
@@ -577,35 +578,35 @@
 
   #print-container .print-flex-item {
     display: grid !important;
-    grid-template-columns: 42mm 1fr !important;
+    grid-template-columns: 38mm 1fr !important;
     gap: 2.5mm !important;
-    padding: 1.2mm 0 !important;
+    padding: 1.25mm 0 !important;
     border-top: 1px dashed #cbd5e1 !important;
-    font-size: 8.5pt !important;
-    line-height: 1.42 !important;
+    font-size: 8.4pt !important;
+    line-height: 1.4 !important;
   }
 
   #print-container .print-flex-item strong {
     color: #0f172a !important;
-    font-weight: 900 !important;
+    font-weight: 950 !important;
   }
 
   #print-container .print-warning {
-    margin-top: 3mm !important;
-    padding: 2mm 2.5mm !important;
-    border-color: #f87171 !important;
-    background: #fef2f2 !important;
+    margin-top: 2.6mm !important;
+    padding: 1.8mm 2.4mm !important;
+    border-color: #fca5a5 !important;
+    background: #fff1f2 !important;
     color: #991b1b !important;
-    font-size: 9pt !important;
-    line-height: 1.45 !important;
-    font-weight: 800 !important;
+    font-size: 8.8pt !important;
+    line-height: 1.43 !important;
+    font-weight: 850 !important;
     break-inside: avoid !important;
     page-break-inside: avoid !important;
   }
 
   #print-container .print-warning strong {
     color: #991b1b !important;
-    font-size: 8pt !important;
+    font-size: 7.8pt !important;
   }
 
   #print-container a[href]::after {
@@ -4395,23 +4396,24 @@ function renderPrintViewHtml() {
         .replace(/<div\s+class=["'][^"']*(?:flex|gap-2|mt-3)[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, '')
         .replace(/<a\b[^>]*>([\s\S]*?)<\/a>/gi, '$1');
 
-    const plain = (value) => escapeHtml(normalizePrintText(htmlToPlainText(removePrintActionBlocks(value))));
+    const plainText = (value) => normalizePrintText(htmlToPlainText(removePrintActionBlocks(value)));
+    const plain = (value) => escapeHtml(plainText(value));
     const inline = (value) => plain(value).replace(/\n+/g, ' / ');
-    const stripTitlePrefix = (value) => normalizePrintText(htmlToPlainText(value)).replace(/^Day\s*\d+\s*[｜|]\s*/i, '').trim();
+    const stripTitlePrefix = (value) => plainText(value).replace(/^Day\s*\d+\s*[｜|]\s*/i, '').trim();
 
     const compactRows = (items) => items
         .map(item => `<div class="print-check-row"><span class="print-box">□</span><span>${escapeHtml(normalizePrintText(item))}</span></div>`)
         .join('');
 
     const globalEssentials = [
-        '每位旅客 VJW 入境審查＋海關申報 QR 已截圖，紙本放護照夾。',
-        '護照、台灣駕照正本、日文譯本、租車訂單、信用卡集中管理。',
-        '不帶肉鬆、肉乾、香腸、火腿、含肉泡麵、水果、生鮮蔬菜入境。',
-        '常備藥保留原包裝；處方藥帶處方箋或診斷證明影本。',
-        '兩台車各有飯店地址、停車場、LINE 群組、迷路集合點。',
-        '取車時拍車身四面、輪框、油量、ETC、行李箱與兒童座椅。',
-        '非急症先聯絡保險協助；急症先打 119；收據、診斷書、藥袋留存。',
-        '最後一天 15:30 後進入返程優先模式，不再臨時加點。'
+        'VJW 入境審查＋海關 QR：每位旅客截圖並列印，紙本放護照夾。',
+        '證件包：護照、駕照正本、日文譯本、租車單、信用卡集中管理。',
+        '禁帶品：肉乾、香腸、含肉泡麵、水果、生鮮蔬菜不要入境。',
+        '藥品：常備藥保留原包裝；處方藥帶處方箋或診斷證明。',
+        '兩車 SOP：前導/壓車、LINE 群組、迷路集合點、每日下一站導航。',
+        '取車拍照：車身、輪框、油量、ETC、行李箱、兒童座椅。',
+        '醫療：非急症先聯絡保險；急症先打 119；收據診斷書留存。',
+        '返程日：15:30 後加油、還車、機場優先，不再臨時加點。'
     ];
 
     const dayIndex = itineraryData.map(data => `
@@ -4424,11 +4426,11 @@ function renderPrintViewHtml() {
         <section class="print-cover">
             <div class="print-cover-title">
                 <h1>九州親子大冒險｜紙本攻略</h1>
-                <p>雙家庭（2大2小）・離線備援・自駕行程・Day 1–8</p>
+                <p>雙家庭自駕・離線備援・Day 1–8</p>
             </div>
             <div class="print-cover-grid">
                 <section class="print-card print-card-primary">
-                    <h2>全程最高優先原則</h2>
+                    <h2>全程鐵則</h2>
                     <div class="print-check-grid">${compactRows(globalEssentials)}</div>
                 </section>
                 <section class="print-card">
@@ -4436,6 +4438,7 @@ function renderPrintViewHtml() {
                     <div class="print-index-grid">${dayIndex}</div>
                 </section>
             </div>
+            <p class="print-cover-note">閱讀方式：每天從新頁開始；先看「今天只要守住什麼」，再看防呆清單與時間軸。導航與官網連結已從紙本版移除，避免正文干擾。</p>
         </section>`;
 
     itineraryData.forEach(data => {
@@ -4443,15 +4446,15 @@ function renderPrintViewHtml() {
         const regularSections = (data.sections || []).filter(sec => sec.type !== 'rain' && sec.time !== '彈性方案');
         const flexSections = (data.sections || []).filter(sec => sec.type === 'rain' || sec.time === '彈性方案');
 
-        const focusHtml = focus ? `<div class="print-focus">
-            <div><span>今日任務</span><strong>${plain(focus.mission)}</strong></div>
-            <div><span>成功標準</span><strong>${plain(focus.win)}</strong></div>
-            <div><span>硬切時間</span><strong>${plain(focus.hardCut)}</strong></div>
-            <div><span>主要風險</span><strong>${plain(focus.risk)}</strong></div>
-        </div>` : '';
+        const focusHtml = focus ? `<section class="print-focus-grid">
+            <div class="print-focus-card primary"><span>今天只要守住</span><strong>${plain(focus.mission)}</strong></div>
+            <div class="print-focus-card"><span>成功標準</span><strong>${plain(focus.win)}</strong></div>
+            <div class="print-focus-card"><span>硬切時間</span><strong>${plain(focus.hardCut)}</strong></div>
+            <div class="print-focus-card"><span>最大風險</span><strong>${plain(focus.risk)}</strong></div>
+        </section>` : '';
 
         const checklistHtml = (data.checklist || []).length ? `
-            <section class="print-checklist-block">
+            <section class="print-block print-checklist-block">
                 <h3>出發前防呆清單</h3>
                 <div class="print-check-grid">${compactRows(data.checklist || [])}</div>
             </section>` : '';
@@ -4470,28 +4473,26 @@ function renderPrintViewHtml() {
             </section>`;
         }).join('');
 
-        const flexHtml = flexSections.length ? `<section class="print-flex-block">
+        const flexHtml = flexSections.length ? `<section class="print-block print-flex-block">
             <h3>彈性／備案</h3>
             ${flexSections.map(sec => `<div class="print-flex-item"><strong>${inline(sec.title)}</strong><span>${plain(sec.content)}</span></div>`).join('')}
         </section>` : '';
 
         html += `<article class="print-day">
             <header class="print-day-header">
+                <div class="print-day-kicker">${escapeHtml(data.date)}・${inline(data.weather || '')}</div>
                 <div class="print-day-title-row">
                     <h2>Day ${escapeHtml(data.day)}</h2>
-                    <div>
-                        <strong>${escapeHtml(data.date)}｜${escapeHtml(stripTitlePrefix(data.title))}</strong>
-                        <span>${inline(data.weather || '')}</span>
-                    </div>
+                    <strong>${escapeHtml(stripTitlePrefix(data.title))}</strong>
                 </div>
                 <div class="print-meta-grid">
                     <div><span>動線</span>${inline(data.route)}</div>
                     <div><span>住宿</span>${inline(data.hotel)}</div>
                 </div>
                 ${focusHtml}
-                ${checklistHtml}
             </header>
-            <section class="print-timeline">
+            ${checklistHtml}
+            <section class="print-block print-timeline">
                 <h3>當日時間軸</h3>
                 ${sectionHtml}
             </section>
