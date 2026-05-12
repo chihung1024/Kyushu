@@ -16,6 +16,15 @@ const sourceFiles = [
   'js/data/day-gourmet.js',
   'js/components/parking-buttons.js',
   'js/components/daily-gourmet.js',
+  'js/components/day-timeline.js',
+  'js/components/backup-list.js',
+  'js/components/day-info-modal.js',
+  'js/components/print-view.js',
+  'js/components/static-modals.js',
+  'js/controllers/modal.js',
+  'js/controllers/tabs.js',
+  'js/controllers/backup-modal.js',
+  'js/controllers/clipboard.js',
 ];
 
 
@@ -186,7 +195,7 @@ async function runAppRenderSmokeTest() {
   if (!firstDay.innerHTML.includes('今日動線') || !firstDay.innerHTML.includes('Day 1')) {
     throw new Error('app render failed: first day content is incomplete');
   }
-  if (!firstDay.innerHTML.includes('今日快速檢查')) {
+  if (!firstDay.innerHTML.includes('防呆清單') || !firstDay.innerHTML.includes('每日輔助資訊')) {
     throw new Error('app render failed: day diagnostics panel is missing');
   }
 }
