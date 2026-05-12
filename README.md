@@ -9,11 +9,16 @@ index.html                 # 頁面骨架與靜態 modal 容器
 css/style.css              # CSS 載入 manifest
 css/*.css                  # 依原本樣式補丁拆出的樣式模組
 js/data/*.js               # 行程、停車場、備案、美食與每日重點資料
-js/components/*.js         # 可重用的 HTML render helper
-js/main.js                 # app 初始化、tabs、modal、列印與互動流程
+js/components/*.js         # 可重用的 HTML renderer/helper（每日行程、備案、美食、列印、靜態 modal 等）
+js/controllers/*.js        # tabs、modal、備案 modal、剪貼簿等互動控制器
+js/main.js                 # app bootstrap 與 controller wiring
 tools/build-single-html.mjs # 產出交付用單檔 HTML
 dist/kyushu-trip-final.html # 交付用單檔輸出
 ```
+
+## 架構審查與模組化建議
+
+完整的專案架構盤點、風險評估與分階段拆分方案請見 [`docs/architecture-modularization-review.md`](docs/architecture-modularization-review.md)。
 
 ## 本機開發預覽
 
