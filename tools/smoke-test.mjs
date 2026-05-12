@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 const sourceFiles = [
+  'js/utils/html.js',
   'js/data/constants.js',
   'js/data/parking.js',
   'js/data/itinerary.js',
@@ -201,7 +202,7 @@ async function runAppRenderSmokeTest() {
 }
 
 async function runDataAndComponentSmokeTest() {
-  const context = vm.createContext({ encodeURIComponent });
+  const context = vm.createContext({ encodeURIComponent, String, Array, Object });
 
   for (const file of sourceFiles) {
     const code = await readFile(resolveRepoPath(file), 'utf8');
@@ -214,13 +215,25 @@ async function runDataAndComponentSmokeTest() {
     if (!gourmetBackupDB.oita.length) throw new Error('missing gourmetBackupDB.oita');
     if (!dayFocusDB[1]) throw new Error('missing dayFocusDB[1]');
     if (!dayGourmetDB[1]) throw new Error('missing dayGourmetDB[1]');
+    if (htmlToPlainText('A<br>B</div><strong>C</strong>') !== 'A\\nB\\nC') throw new Error('htmlToPlainText failed to preserve line breaks');
+    if (!escapeHtml('<script>').includes('&lt;script&gt;')) throw new Error('escapeHtml failed');
     if (!renderParkingButtons('阿蘇くまもと空港 駐車場').includes('阿蘇熊本機場')) throw new Error('parking renderer failed');
     if (!renderDailyGourmet(1).includes('今日美食候選')) throw new Error('gourmet renderer failed');
+    const backupContainer = { innerHTML: '' };
+    renderBackupList(backupContainer, 'oita', 'sight');
+    if (!backupContainer.innerHTML.includes('九州自然動物園 African Safari')) throw new Error('backup renderer failed');
+    renderBackupList(backupContainer, 'unknown-region', 'sight');
+    if (!backupContainer.innerHTML.includes('目前沒有符合的備案資料')) throw new Error('backup empty-state failed');
+    const staticModals = renderStaticModals();
+    if (!staticModals.includes('id="dayInfoModal"') || !staticModals.includes('id="backupModal"')) throw new Error('static modal renderer failed');
+    const printHtml = renderPrintViewHtml();
+    if (!printHtml.includes('Day 1') || !printHtml.includes('Day 8')) throw new Error('print renderer failed');
   `).runInContext(context);
 }
 
 await assertMissing('js/data.js');
 await assertMissing('js/components.js');
+await assertContains('index.html', /js\/utils\/html\.js/, 'shared HTML helpers');
 await assertContains('index.html', /js\/data\/constants\.js/, 'modular data scripts');
 await assertContains('index.html', /js\/components\/parking-buttons\.js/, 'modular component scripts');
 const dist = await assertContains('dist/kyushu-trip-final.html', /kyushu-inline-styles/, 'inlined CSS marker');

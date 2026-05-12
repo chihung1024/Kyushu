@@ -5,13 +5,13 @@ function createDailyItineraryClipboardController({ getCurrentDay }) {
         const data = itineraryData.find(d => d.day === getCurrentDay());
         if(!data) return;
 
-        let textToCopy = `🚗 九州大冒險 - Day ${data.day} (${data.date})\n📌 主題：${data.title}\n🗺️ 動線：${data.route.replace(/<[^>]*>?/gm, '')}\n🏨 住宿：${data.hotel}\n\n`;
+        let textToCopy = `🚗 九州大冒險 - Day ${data.day} (${htmlToPlainText(data.date)})\n📌 主題：${htmlToPlainText(data.title)}\n🗺️ 動線：${htmlToPlainText(data.route)}\n🏨 住宿：${htmlToPlainText(data.hotel)}\n\n`;
         data.sections.forEach(sec => {
-            textToCopy += `【${sec.title.replace(/<[^>]*>?/gm, '')}】${sec.time ? ` (${sec.time})` : ''}\n${sec.content.replace(/<[^>]*>?/gm, '').replace(/<br>/g, '\n')}\n`;
-            if(sec.deepTip) textToCopy += `💡 筆記：${sec.deepTip.replace(/<[^>]*>?/gm, '').replace(/<br>/g, ' / ')}\n`;
+            textToCopy += `【${htmlToPlainText(sec.title)}】${sec.time ? ` (${htmlToPlainText(sec.time)})` : ''}\n${htmlToPlainText(sec.content)}\n`;
+            if(sec.deepTip) textToCopy += `💡 筆記：${htmlToPlainText(sec.deepTip)}\n`;
             textToCopy += `\n`;
         });
-        if(data.tips) textToCopy += `⚠️ 注意事項：${data.tips}\n\n`;
+        if(data.tips) textToCopy += `⚠️ 注意事項：${htmlToPlainText(data.tips)}\n\n`;
 
         try {
             if (navigator.clipboard && window.isSecureContext) {
