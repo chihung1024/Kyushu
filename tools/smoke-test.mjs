@@ -253,7 +253,7 @@ async function runDataAndComponentSmokeTest() {
     const staticModals = renderStaticModals();
     if (!staticModals.includes('id="dayInfoModal"') || !staticModals.includes('id="backupModal"')) throw new Error('static modal renderer failed');
     const printHtml = renderPrintViewHtml();
-    if (!printHtml.includes('Day 1') || !printHtml.includes('Day 8') || !printHtml.includes('Chrome / Edge 預覽左側需向下捲動')) throw new Error('print renderer failed');
+    if (!printHtml.includes('Day 1') || !printHtml.includes('Day 8') || !printHtml.includes('九州親子大冒險｜紙本攻略') || !printHtml.includes('當日時間軸')) throw new Error('print renderer failed');
   `).runInContext(context);
 }
 
