@@ -253,7 +253,7 @@ async function runDataAndComponentSmokeTest() {
     const staticModals = renderStaticModals();
     if (!staticModals.includes('id="dayInfoModal"') || !staticModals.includes('id="backupModal"')) throw new Error('static modal renderer failed');
     const printHtml = renderPrintViewHtml();
-    if (!printHtml.includes('Day 1') || !printHtml.includes('Day 8')) throw new Error('print renderer failed');
+    if (!printHtml.includes('Day 1') || !printHtml.includes('Day 8') || !printHtml.includes('Chrome / Edge 預覽左側需向下捲動')) throw new Error('print renderer failed');
   `).runInContext(context);
 }
 
@@ -262,6 +262,7 @@ await assertMissing('js/components.js');
 await assertContains('index.html', /js\/utils\/html\.js/, 'shared HTML helpers');
 await assertContains('index.html', /js\/data\/constants\.js/, 'modular data scripts');
 await assertContains('index.html', /js\/components\/parking-buttons\.js/, 'modular component scripts');
+await assertContains('css/style.css', /print\.css/, 'print stylesheet import');
 await assertPrintContainerOutsidePrintHidden('index.html');
 const dist = await assertContains('dist/kyushu-trip-final.html', /kyushu-inline-styles/, 'inlined CSS marker');
 await assertPrintContainerOutsidePrintHidden('dist/kyushu-trip-final.html');
