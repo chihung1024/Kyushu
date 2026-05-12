@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "node tools/build-single-html.mjs",
-    "check:js": "node --check tools/build-single-html.mjs && node --check tools/smoke-test.mjs",
+    "check:js": "node --check tools/build-single-html.mjs && node --check tools/smoke-test.mjs && node --check js/main.js && node --check js/components/parking-buttons.js && node --check js/components/daily-gourmet.js",
     "test": "npm run build && npm run check:js && node tools/smoke-test.mjs"
   }
 }
