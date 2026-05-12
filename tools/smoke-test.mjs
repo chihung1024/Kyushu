@@ -59,6 +59,7 @@ async function runDataAndComponentSmokeTest() {
 }
 
 await assertMissing('js/data.js');
+await assertMissing('js/components.js');
 await assertContains('index.html', /js\/data\/constants\.js/, 'modular data scripts');
 await assertContains('index.html', /js\/components\/parking-buttons\.js/, 'modular component scripts');
 const dist = await assertContains('dist/kyushu-trip-final.html', /kyushu-inline-styles/, 'inlined CSS marker');

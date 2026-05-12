@@ -51,4 +51,4 @@ dist/kyushu-trip-final.html
 npm test
 ```
 
-`npm test` 會重新產出單檔 HTML、檢查 build script / smoke test 語法，並確認舊版 `js/data.js` 不存在、模組化資料與元件 helper 可正常載入。
+`npm test` 會重新產出單檔 HTML、檢查 build script / smoke test 語法，並確認舊版 `js/data.js` / `js/components.js` 不存在、模組化資料與元件 helper 可正常載入。
