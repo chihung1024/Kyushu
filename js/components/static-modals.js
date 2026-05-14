@@ -46,12 +46,12 @@ function renderStaticModals() {
 <div class="decision-modal-body flex-grow overflow-y-auto custom-scrollbar" id="backup-list-container"></div>
 </dialog>
 
-<dialog class="mobile-more-modal bg-white w-11/12 max-w-md rounded-[1.5rem] p-0 shadow-2xl relative max-h-[86vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="mobileMoreModal">
+<dialog class="mobile-more-modal bg-white w-11/12 max-w-2xl rounded-[1.5rem] p-0 shadow-2xl relative max-h-[86vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="mobileMoreModal">
 <button aria-label="關閉視窗" class="mobile-more-close" onclick="closeModal('mobileMoreModal')">✕</button>
 <div class="mobile-more-head">
-    <div class="mobile-more-kicker">MOBILE TOOLBOX</div>
-    <h2>其他</h2>
-    <p>低頻工具收在這裡；旅途中首頁只保留現場決策與 Day 切換。</p>
+    <div class="mobile-more-kicker">TOOLS</div>
+    <h2>其他工具</h2>
+    <p>行前、紙本、複製與住宿預算資訊集中收納；首頁只保留現場決策與 Day 切換。</p>
 </div>
 <div class="mobile-more-list">
     <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('preTripModal'), 0);">

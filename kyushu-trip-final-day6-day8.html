@@ -1601,69 +1601,269 @@
   }
 }
 
+/* Header command consolidation: desktop and mobile use the same high-frequency tools. */
+.site-hero-inner {
+  max-width: 1080px !important;
+  gap: 1.25rem;
+}
+
+.desktop-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  flex: 0 0 auto;
+}
+
+.desktop-hero-action {
+  min-height: 46px;
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "icon title" "icon subtitle";
+  align-items: center;
+  column-gap: 0.55rem;
+  padding: 0.62rem 0.95rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.44);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #0f172a;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  text-align: left;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.desktop-hero-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.12);
+}
+
+.desktop-hero-action span {
+  grid-area: icon;
+  width: 32px;
+  height: 32px;
+  border-radius: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 23, 42, 0.06);
+  font-size: 1rem;
+}
+
+.desktop-hero-action strong {
+  grid-area: title;
+  display: block;
+  font-size: 0.92rem;
+  line-height: 1.15;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.desktop-hero-action small {
+  grid-area: subtitle;
+  display: block;
+  margin-top: 0.08rem;
+  font-size: 0.7rem;
+  line-height: 1.2;
+  font-weight: 850;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.desktop-hero-action-primary {
+  background: linear-gradient(135deg, #083344 0%, #0e7490 100%);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 26px rgba(14, 116, 144, 0.22);
+}
+
+.desktop-hero-action-primary span {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.desktop-hero-action-primary small {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.desktop-tool-carousel,
+.desktop-day-actions {
+  display: none !important;
+}
+
+.mobile-more-modal[open] {
+  display: block !important;
+  padding: 0 !important;
+}
+
+.mobile-more-modal {
+  max-width: 42rem !important;
+}
+
+.mobile-more-close {
+  position: sticky;
+  top: 0.8rem;
+  float: right;
+  margin: 0.75rem 0.75rem -2.4rem 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 1.1rem;
+  font-weight: 900;
+  z-index: 10;
+}
+
+.mobile-more-head {
+  padding: 1.2rem 1.2rem 0.95rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.mobile-more-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: #0e7490;
+  font-weight: 900;
+  margin-bottom: 0.2rem;
+}
+
+.mobile-more-head h2 {
+  font-size: 1.38rem;
+  line-height: 1.2;
+  color: #0f172a;
+  font-weight: 900;
+}
+
+.mobile-more-head p {
+  margin-top: 0.35rem;
+  padding-right: 2.7rem;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  font-weight: 750;
+  color: #64748b;
+}
+
+.mobile-more-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  padding: 0.9rem;
+}
+
+.mobile-more-item {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  grid-template-areas: "icon title" "icon desc";
+  align-items: center;
+  column-gap: 0.68rem;
+  min-height: 66px;
+  padding: 0.78rem 0.85rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+  color: #0f172a;
+  text-align: left;
+  text-decoration: none !important;
+}
+
+.mobile-more-item:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.mobile-more-item span {
+  grid-area: icon;
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 1.1rem;
+}
+
+.mobile-more-item strong {
+  grid-area: title;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  font-weight: 900;
+}
+
+.mobile-more-item small {
+  grid-area: desc;
+  margin-top: 0.12rem;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  font-weight: 750;
+  color: #64748b;
+}
+
+@media (max-width: 767px) {
+  .site-hero {
+    padding: 1.05rem 1rem !important;
+    border-radius: 0 0 22px 22px !important;
+  }
+
+  .site-hero-inner {
+    display: block !important;
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .desktop-hero-actions {
+    display: none !important;
+  }
+
+  /* After removing the old mobile carousel, make sure legacy first-child rules do not target Day tabs. */
+  main > .day-tabs-shell:first-of-type {
+    margin-left: -0.8rem !important;
+    margin-right: -0.8rem !important;
+    padding-left: 0.8rem !important;
+    padding-right: 0.8rem !important;
+  }
+
+  main > .day-tabs-shell:first-of-type > div {
+    width: 100% !important;
+  }
+
+  .mobile-more-modal {
+    max-width: calc(100vw - 16px) !important;
+  }
+
+  .mobile-more-list {
+    grid-template-columns: 1fr;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 0.95rem);
+  }
+}
+
 </style>
 </head>
 <body class="text-gray-900 font-sans antialiased pb-24 print:pb-0 print:bg-white">
 
 <div class="print:hidden">
 
-<header class="bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 relative z-30">
-<div class="max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
-<div>
+<header class="site-hero bg-gradient-to-r from-kawaii-pink to-pink-400 text-white rounded-b-[2.5rem] shadow-kawaii p-6 relative z-30">
+<div class="site-hero-inner max-w-4xl mx-auto flex justify-between items-center md:px-6 lg:px-12">
+<div class="site-hero-copy">
 <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🧭✨</h1>
 <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">雙家庭(2大2小) 每日路線・備選方案</p>
 </div>
-<div class="text-3xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('行程資訊已準備就緒，預祝旅途愉快！')">
-                    🐻
-                </div>
+<nav class="desktop-hero-actions" aria-label="桌機版主要工具">
+<button class="desktop-hero-action desktop-hero-action-primary" type="button" onclick="initBackupModal(); showModal('backupModal');">
+<span>🗺️</span><strong>現場決策庫</strong><small>景點・吃飯・補給</small>
+</button>
+<button class="desktop-hero-action" type="button" onclick="showModal('mobileMoreModal')">
+<span>☰</span><strong>其他工具</strong><small>行前・紙本・複製</small>
+</button>
+</nav>
 </div>
 </header>
 
 <main class="max-w-4xl mx-auto px-4 mt-6">
-
-<div class="desktop-tool-carousel flex flex-row md:grid md:grid-cols-5 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-1 overflow-x-auto md:overflow-visible hide-scrollbar scroll-snap-x py-2">
-<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 text-left shadow-sm border-2 border-amber-200 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('preTripModal')">
-<div class="text-2xl shrink-0 drop-shadow">🧳</div>
-<div>
-<div class="text-[10px] text-amber-700 font-bold bg-white px-2 py-0.5 rounded-full inline-block shadow-sm mb-0.5">出發前必看</div>
-<div class="text-xs md:text-sm font-black text-amber-900 leading-tight">VJW＋旅遊醫療保險教學</div>
-</div>
-</div>
-<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-rose-50 to-orange-50 rounded-xl p-4 text-left shadow-sm border-2 border-rose-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('preDepartureModal')">
-<div class="text-2xl shrink-0 drop-shadow">📋</div>
-<div>
-<div class="text-[10px] text-rose-700 font-bold bg-white px-2 py-0.5 rounded-full inline-block shadow-sm mb-0.5">文件・租車・訂位</div>
-<div class="text-xs md:text-sm font-black text-rose-900 leading-tight">出發前總檢查</div>
-</div>
-</div>
-<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 text-left shadow-sm border-2 border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('hotelModal')">
-<div class="text-2xl relative shrink-0">
-                        🏨
-                        <span class="absolute -top-1 -right-1 flex h-3 w-3">
-<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-</span>
-</div>
-<div>
-<div class="text-[10px] text-purple-600 font-bold mb-0.5">目前訂房狀態與比較</div>
-<div class="text-xs md:text-sm font-black text-purple-800 leading-tight">新鶴田首選＋備案保留</div>
-</div>
-</div>
-<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-white rounded-xl p-4 text-left shadow-sm border-2 border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('budgetModal')">
-<div class="text-2xl shrink-0">💰</div>
-<div>
-<div class="text-[10px] text-gray-500 font-bold mb-0.5">單一家庭實際預算</div>
-<div class="text-xs md:text-sm font-black text-kawaii-blue leading-tight">單家約 10.7 萬 TWD</div>
-</div>
-</div>
-<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 rounded-xl p-4 text-left shadow-sm border-2 border-orange-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="initBackupModal(); showModal('backupModal');">
-<div class="text-2xl shrink-0 animate-pulse drop-shadow">🗺️</div>
-<div>
-<div class="text-[10px] text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block shadow-sm mb-0.5">S/A/B/C/X 決策</div>
-<div class="text-xs md:text-sm font-black text-cyan-800 leading-tight">現場決策庫</div>
-</div>
-</div>
-</div>
 
 <section class="mobile-command-bar" aria-label="手機版快速工具">
 <button class="mobile-command-btn mobile-command-primary" type="button" onclick="initBackupModal(); showModal('backupModal');">
@@ -1684,15 +1884,6 @@
 <span class="day-tabs-dot active"></span>
 <span class="day-tabs-dot"></span>
 </div>
-</div>
-
-<div class="desktop-day-actions flex justify-end gap-2 mb-4 pr-2">
-<a class="text-xs bg-gray-200 text-gray-800 font-bold px-4 py-3 md:py-2 rounded-full shadow-sm hover:bg-gray-300 transition flex items-center gap-1.5 min-w-[44px]" href="kyushu-travel-manual.pdf" target="_blank" rel="noopener noreferrer" onclick="return window.openPaperGuidePdf ? window.openPaperGuidePdf(event) : true" title="開啟正式 A4 紙本 PDF 手冊">
-<span class="text-sm">🖨️</span> 列印紙本攻略
-                </a>
-<button class="text-xs bg-gray-800 text-white px-4 py-3 md:py-2 rounded-full shadow-md hover:bg-gray-700 transition flex items-center gap-2 min-w-[44px]" onclick="copyDailyItinerary()">
-<span>📋</span> 複製今日行程給伴侶
-                </button>
 </div>
 
 <div class="bg-white rounded-[2rem] p-4 sm:p-6 md:py-8 md:px-12 lg:px-16 shadow-kawaii border-4 border-white mb-6" id="itinerary-content">
@@ -6302,12 +6493,12 @@ function renderStaticModals() {
 <div class="decision-modal-body flex-grow overflow-y-auto custom-scrollbar" id="backup-list-container"></div>
 </dialog>
 
-<dialog class="mobile-more-modal bg-white w-11/12 max-w-md rounded-[1.5rem] p-0 shadow-2xl relative max-h-[86vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="mobileMoreModal">
+<dialog class="mobile-more-modal bg-white w-11/12 max-w-2xl rounded-[1.5rem] p-0 shadow-2xl relative max-h-[86vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="mobileMoreModal">
 <button aria-label="關閉視窗" class="mobile-more-close" onclick="closeModal('mobileMoreModal')">✕</button>
 <div class="mobile-more-head">
-    <div class="mobile-more-kicker">MOBILE TOOLBOX</div>
-    <h2>其他</h2>
-    <p>低頻工具收在這裡；旅途中首頁只保留現場決策與 Day 切換。</p>
+    <div class="mobile-more-kicker">TOOLS</div>
+    <h2>其他工具</h2>
+    <p>行前、紙本、複製與住宿預算資訊集中收納；首頁只保留現場決策與 Day 切換。</p>
 </div>
 <div class="mobile-more-list">
     <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('preTripModal'), 0);">
