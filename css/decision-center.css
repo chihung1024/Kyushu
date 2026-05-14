@@ -318,3 +318,124 @@
   .decision-section>header p,
   .food-section-v3>header p{text-align:left!important;margin-top:.35rem!important;}
 }
+
+/* decision-center-ui-v6: mobile modal uses one real scroll container.
+   Previous mobile rules let the inner body become visible while the dialog itself
+   was overflow:hidden, which made iOS/Android touch scrolling unreliable. */
+#backupModal.decision-modal:not([open]){
+  display:none!important;
+}
+#backupModal.decision-modal[open]{
+  display:flex!important;
+  flex-direction:column!important;
+  overflow:hidden!important;
+  min-height:0!important;
+  max-height:min(92vh, calc((var(--app-vh, 1vh) * 100) - 24px))!important;
+  height:min(92vh, calc((var(--app-vh, 1vh) * 100) - 24px))!important;
+}
+#backupModal.decision-modal .decision-modal-header{
+  flex:0 0 auto!important;
+}
+#backupModal.decision-modal .decision-modal-body,
+#backupModal.decision-modal #backup-list-container{
+  flex:1 1 auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  -webkit-overflow-scrolling:touch!important;
+  overscroll-behavior:contain!important;
+  touch-action:pan-y!important;
+}
+
+@media(max-width:640px){
+  #backupModal.decision-modal[open]{
+    top:max(8px, env(safe-area-inset-top))!important;
+    right:8px!important;
+    bottom:auto!important;
+    left:8px!important;
+    width:calc(100vw - 16px)!important;
+    max-width:calc(100vw - 16px)!important;
+    height:calc((var(--app-vh, 1vh) * 100) - max(8px, env(safe-area-inset-top)) - env(safe-area-inset-bottom) - 16px)!important;
+    max-height:calc((var(--app-vh, 1vh) * 100) - max(8px, env(safe-area-inset-top)) - env(safe-area-inset-bottom) - 16px)!important;
+    margin:0!important;
+    padding:0!important;
+    border-radius:1.25rem!important;
+  }
+  #backupModal.decision-modal .decision-modal-close{
+    position:absolute!important;
+    top:.55rem!important;
+    right:.55rem!important;
+  }
+  #backupModal.decision-modal .decision-modal-header{
+    position:relative!important;
+    top:auto!important;
+    margin:0!important;
+    padding:.78rem .72rem .68rem!important;
+    border-radius:1.25rem 1.25rem 0 0!important;
+    max-height:none!important;
+  }
+  #backupModal.decision-modal .decision-modal-titlebar{
+    display:block!important;
+    padding-right:2.65rem!important;
+  }
+  #backupModal.decision-modal .decision-modal-kicker{
+    font-size:.58rem!important;
+    margin-bottom:.18rem!important;
+  }
+  #backupModal.decision-modal .decision-modal-titlebar h2{
+    font-size:1.05rem!important;
+    line-height:1.2!important;
+  }
+  #backupModal.decision-modal .decision-modal-titlebar p{
+    font-size:.72rem!important;
+    line-height:1.45!important;
+    margin-top:.25rem!important;
+  }
+  #backupModal.decision-modal .decision-modal-nav-grid{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:.5rem!important;
+    margin-top:.58rem!important;
+  }
+  #backupModal.decision-modal .decision-nav-block{
+    padding:.5rem!important;
+    border-radius:14px!important;
+  }
+  #backupModal.decision-modal .decision-nav-label{
+    font-size:.58rem!important;
+    margin-bottom:.28rem!important;
+  }
+  #backupModal.decision-modal .decision-segment{
+    grid-template-columns:repeat(2, minmax(0, 1fr))!important;
+    gap:.38rem!important;
+  }
+  #backupModal.decision-modal .decision-category-tabs{
+    grid-template-columns:repeat(3, minmax(0, 1fr))!important;
+    gap:.38rem!important;
+  }
+  #backupModal.decision-modal .decision-segment-btn,
+  #backupModal.decision-modal .decision-category-tab{
+    min-height:2.35rem!important;
+    padding:.42rem .48rem!important;
+    border-radius:11px!important;
+  }
+  #backupModal.decision-modal .decision-segment-btn span,
+  #backupModal.decision-modal .decision-category-tab span{
+    font-size:.72rem!important;
+    line-height:1.15!important;
+  }
+  #backupModal.decision-modal .decision-segment-btn small,
+  #backupModal.decision-modal .decision-category-tab small{
+    font-size:.56rem!important;
+    line-height:1.1!important;
+  }
+  #backupModal.decision-modal .decision-modal-body,
+  #backupModal.decision-modal #backup-list-container{
+    padding:.72rem!important;
+    padding-bottom:calc(env(safe-area-inset-bottom) + 1rem)!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+  }
+}

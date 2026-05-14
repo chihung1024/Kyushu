@@ -7,6 +7,7 @@ function createBackupModalController() {
     function render() {
         const container = document.getElementById('backup-list-container');
         renderBackupList(container, currentBackupRegion, currentBackupCategory);
+        if (container) container.scrollTop = 0;
     }
 
     function syncCategoryTabs() {
