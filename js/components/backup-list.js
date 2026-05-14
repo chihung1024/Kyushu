@@ -186,12 +186,27 @@ function renderDecisionRuleStrip(category) {
     return `<div class="decision-rule-strip">${rules.map(rule => `<span>${escapeHtml(rule)}</span>`).join('')}</div>`;
 }
 
+function renderDecisionSectionIntro(title, description, label = 'FIELD PICKS') {
+    return `<header class="decision-section-intro">
+        <div>
+            <span>${escapeHtml(label)}</span>
+            <h3>${escapeHtml(title)}</h3>
+            <p>${escapeHtml(description)}</p>
+        </div>
+    </header>`;
+}
+
 function renderDecisionSpotlight(entries, category) {
     const picks = entries.filter(item => ['S', 'S-', 'A'].includes(item.rank)).slice(0, 3);
     if (!picks.length) return '';
-    const label = category === 'food' ? '先看這幾個' : category === 'shop' ? '最穩補給' : '優先判斷';
+    const title = category === 'food' ? '先看這幾個' : category === 'shop' ? '最穩補給' : '優先判斷';
+    const description = category === 'shop'
+        ? '先處理水、點心、藥妝與停車；不需要時不要把補給變成第二套行程。'
+        : category === 'food'
+            ? '先用 S / A 做決策；排隊、孩子狀態或硬切時間不合時，直接降級。'
+            : '先看 S / A，再看 B；C / X 僅作提醒，不主動排。';
     return `<section class="decision-spotlight">
-        <header><span>${escapeHtml(label)}</span><p>${escapeHtml(getRankLegend(category))}</p></header>
+        ${renderDecisionSectionIntro(title, description, getRankLegend(category))}
         <div class="decision-spotlight-grid">
             ${picks.map(item => renderDecisionBackupCard(item, true)).join('')}
         </div>
@@ -310,10 +325,7 @@ function renderFoodSpotlight(sorted) {
     const picks = sorted.filter(item => ['S', 'S-', 'A'].includes(item.rank)).slice(0, 4);
     if (!picks.length) return '';
     return `<section class="food-quick-picks">
-        <header>
-            <span>今日先看</span>
-            <p>先用這幾個做決策；不符合條件時，直接往 B / 商場 / 便利商店降級。</p>
-        </header>
+        ${renderDecisionSectionIntro('今日先看', '先用 S / A 做決策；不符合條件時，直接往 B、商場、美食街或便利商店降級。', 'FOOD PRIORITY')}
         <div class="food-quick-grid">
             ${picks.map(item => renderFoodDecisionCard(item, true)).join('')}
         </div>

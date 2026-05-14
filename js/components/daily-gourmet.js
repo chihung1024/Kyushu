@@ -90,7 +90,10 @@ function renderDailyGourmet(day) {
             <div class="daily-gourmet-brief">${escapeDailyGourmetHtml(data.headline)}</div>
             <div class="daily-gourmet-rules">${rules}</div>
         </div>
-        <div class="daily-gourmet-alert">S＝今日最穩/主線餐；A＝高優先；B＝保底救場；C＝收藏不主動排；X＝本趟不建議。甜點零食只服務行程，不反過來支配行程。</div>
+        <div class="daily-gourmet-legend">
+            <div class="daily-gourmet-legend-title">分級讀法</div>
+            <div class="daily-gourmet-legend-text">S＝今日最穩 / 主線餐；A＝高優先；B＝保底救場；C＝收藏不主動排；X＝本趟不建議。甜點零食只服務行程，不反過來支配行程。</div>
+        </div>
         <div class="daily-gourmet-body">${categories}</div>
         <div class="daily-gourmet-footer">使用方式：先展開「今日最穩」，再看高優先與甜點。若排隊、孩子狀態、天候或硬切時間不對，就直接切到保底餐或商場補給。</div>
     </section>`;
