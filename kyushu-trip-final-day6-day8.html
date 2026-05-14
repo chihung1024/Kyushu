@@ -1587,6 +1587,20 @@
 
 
 
+/* Mobile final override: paper/clipboard tools live inside 「其他」 only. */
+@media (max-width: 767px) {
+  .desktop-day-actions {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+}
+
 </style>
 </head>
 <body class="text-gray-900 font-sans antialiased pb-24 print:pb-0 print:bg-white">

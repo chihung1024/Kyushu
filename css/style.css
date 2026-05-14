@@ -12,3 +12,17 @@
 @import url("./decision-center.css");
 @import url("./mobile-home.css");
 @import url("./print.css");
+
+/* Mobile final override: paper/clipboard tools live inside 「其他」 only. */
+@media (max-width: 767px) {
+  .desktop-day-actions {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+}
