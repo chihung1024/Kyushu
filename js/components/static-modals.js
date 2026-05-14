@@ -478,7 +478,7 @@ function renderStaticModals() {
 <span class="text-3xl">🧭</span> 九州現場決策彈藥庫
                 </h2>
 <p class="text-xs md:text-sm text-gray-500 mt-2 font-bold ml-1 md:ml-10">
-                    景點與採買改為 S/A/B/C/X 決策分級；美食保留完整餐廳卡。原則：保護主線、睡眠、駕駛安全與返程時間。
+                    景點、採買與美食甜點全部改為決策分級；美食不再是名店大全，而是「今日最穩、高優先、保底救場、甜點零食、伴手禮、不建議硬追」。
                 </p>
 
 <div class="flex gap-2 mt-4 overflow-x-auto custom-scrollbar pb-2 px-1">
@@ -492,7 +492,7 @@ function renderStaticModals() {
 
 <div class="flex gap-8 mt-2 ml-2 text-sm" id="backup-category-tabs">
 <button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="sight" id="btn-cat-sight"><span class="text-lg">📸</span> 景點決策</button>
-<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="food" id="btn-cat-food"><span class="text-lg">🍽️</span> 超詳細美食</button>
+<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="food" id="btn-cat-food"><span class="text-lg">🍽️</span> 吃什麼決策</button>
 <button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="shop" id="btn-cat-shop"><span class="text-lg">🛍️</span> 補給決策</button>
 </div>
 </div>

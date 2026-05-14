@@ -84,9 +84,9 @@ function renderPrintViewHtml() {
                 });
             });
         });
-        const score = { S: 4, A: 3, B: 2, C: 1 };
+        const score = { S: 5, 'S-': 4, A: 3, B: 2, C: 1, X: 0 };
         return items
-            .sort((a, b) => (score[b.rank] || 0) - (score[a.rank] || 0))
+            .sort((a, b) => ((b.paperPriority || score[b.rank] || 0) - (a.paperPriority || score[a.rank] || 0)))
             .slice(0, limit);
     };
 
@@ -121,14 +121,16 @@ function renderPrintViewHtml() {
 
     const topGourmetBackupItems = (region, limit = 12) => {
         const source = (gourmetBackupDB && gourmetBackupDB[region]) || [];
-        const score = { S: 4, A: 3, B: 2, C: 1 };
+        const score = { S: 5, 'S-': 4, A: 3, B: 2, C: 1, X: 0 };
         return source
+            .filter(item => item.includeInPaper !== false && item.rank !== 'X' && item.rank !== 'C')
             .slice()
-            .sort((a, b) => (score[b.rank] || 0) - (score[a.rank] || 0))
+            .sort((a, b) => ((b.paperPriority || score[b.rank] || 0) - (a.paperPriority || score[a.rank] || 0)))
             .slice(0, limit)
             .map(item => ({
                 name: normalizePrintText(item.name),
                 rank: normalizePrintText(item.rank),
+                category: normalizePrintText(item.category),
                 type: normalizePrintText(item.type),
                 bestDay: normalizePrintText(item.bestDay),
                 must: normalizePrintText(item.must),
@@ -369,23 +371,17 @@ function renderPrintViewHtml() {
     const backupSection = (region, title) => `
         <section class="print-manual-page print-page">
             <h2>${escapeHtml(title)}決策型備案索引</h2>
-            <p class="print-section-lead">紙本只列可用於現場決策的備案；完整資料請看網頁彈藥庫。S=主線/條件主線，A=高優先加點，B=救場，C/X 不主動排。</p>
+            <p class="print-section-lead">紙本只列可用於現場決策的備案；完整資料請看網頁彈藥庫。景點 S=主線/條件主線；美食 S=主線餐，A=高優先，B=保底救場，C/X 不主動排。</p>
             <div class="print-two-col">
                 ${backupListBlock(region, 'sight', '景點決策', 10)}
                 ${backupListBlock(region, 'shop', '採買 / 補給決策', 8)}
             </div>
             <section class="print-card print-gourmet-index">
-                <h3>${escapeHtml(title)}精選餐廳備案</h3>
-                <table class="print-table">
-                    <thead><tr><th>級</th><th>店名</th><th>類型/適合日</th><th>必點與策略</th></tr></thead>
-                    <tbody>${topGourmetBackupItems(region, 3).map(item => `
-                        <tr>
-                            <td>${escapeHtml(item.rank)}</td>
-                            <td><strong>${escapeHtml(item.name)}</strong></td>
-                            <td>${escapeHtml([item.type, item.bestDay].filter(Boolean).join(' / '))}</td>
-                            <td>${escapeHtml([item.must, item.strategy].filter(Boolean).join('；'))}</td>
-                        </tr>`).join('')}</tbody>
-                </table>
+                <h3>${escapeHtml(title)}吃什麼決策精選</h3>
+                <div class="print-two-col">
+                    ${topGourmetBackupItems(region, 4).map(item => `
+                        <div class="print-backup-line"><strong>${escapeHtml(item.rank)}｜${escapeHtml(item.name)}</strong><p>${escapeHtml([item.category, item.type, item.bestDay, item.must, item.strategy].filter(Boolean).join('；'))}</p></div>`).join('')}
+                </div>
             </section>
         </section>`;
 

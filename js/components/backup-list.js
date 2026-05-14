@@ -157,68 +157,134 @@ function renderDecisionBackupList(container, currentBackupRegion, currentBackupC
     </div>`;
 }
 
+function getFoodRankLabel(rank) {
+    const labels = {
+        S: 'S 主線餐',
+        'S-': 'S- 條件主線',
+        A: 'A 高優先',
+        B: 'B 保底/救場',
+        C: 'C 收藏',
+        X: 'X 不建議'
+    };
+    return labels[rank] || `${rank || 'B'} 決策`;
+}
+
+function normalizeFoodRankClass(rank) {
+    return String(rank || 'B').replace(/[^A-Za-z0-9_-]/g, '').replace(/-/g, 'minus').toLowerCase();
+}
+
+function renderFoodDecisionChip(label, value, extraClass = '') {
+    if (!value) return '';
+    return `<span class="food-decision-chip ${escapeAttr(extraClass)}"><b>${escapeHtml(label)}</b>${escapeHtml(value)}</span>`;
+}
+
+function renderFoodDecisionCard(item) {
+    const rank = item.rank || 'B';
+    const rankKey = normalizeFoodRankClass(rank);
+    const query = item.mapQuery || item.name;
+    const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query || '')}`;
+    const searchUrl = `https://www.google.com/search?q=${encodeURIComponent((query || '') + ' 営業時間 定休日 メニュー 予約 テイクアウト')}`;
+    const links = (item.links || []).map(link => {
+        const url = safeExternalUrl(link.url, mapUrl);
+        return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer" class="gourmet-action secondary">🔎 ${escapeHtml(link.label || '官方')}</a>`;
+    }).join('');
+    const warnBlock = item.warning ? `<div class="food-decision-note warn"><strong>注意</strong><span>${escapeHtml(item.warning)}</span></div>` : '';
+    const cardTone = rank === 'S' || rank === 'S-' ? 's-rank' : rank === 'A' ? 'a-rank' : rank === 'X' ? 'x-rank' : '';
+    return `<article class="gourmet-card food-decision-card ${cardTone}">
+        <div class="gourmet-head">
+            <span class="gourmet-rank rank-${escapeAttr(rankKey)}">${escapeHtml(rank)}</span>
+            <div class="min-w-0">
+                <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-title">${escapeHtml(item.name)}</a>
+                <div class="gourmet-meta">
+                    <span class="gourmet-chip type">${escapeHtml(item.type || '')}</span>
+                    <span class="gourmet-chip day">${escapeHtml(item.bestDay || '')}</span>
+                    <span class="gourmet-chip family">${escapeHtml(item.area || '')}</span>
+                </div>
+            </div>
+        </div>
+        <div class="food-decision-chip-row">
+            ${renderFoodDecisionChip('類別', item.category)}
+            ${renderFoodDecisionChip('排隊', item.queueRisk)}
+            ${renderFoodDecisionChip('外帶', item.takeout)}
+        </div>
+        <div class="food-decision-note primary"><strong>必點 / 買什麼</strong><span>${escapeHtml(item.must)}</span></div>
+        <div class="food-decision-note"><strong>為什麼留下</strong><span>${escapeHtml(item.why)}</span></div>
+        <div class="food-decision-note decision"><strong>現場決策</strong><span>${escapeHtml(item.strategy)}</span></div>
+        <div class="food-decision-note"><strong>親子判斷</strong><span>${escapeHtml(item.kid)}</span></div>
+        ${warnBlock}
+        <div class="gourmet-actions">
+            <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-action">📍 導航</a>
+            <a href="${escapeAttr(searchUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-action secondary">⏱️ 查營業/外帶</a>
+            ${links}
+        </div>
+    </article>`;
+}
+
 function renderGourmetBackupList(container, currentBackupRegion) {
     if (!container) return;
     const dataList = gourmetBackupDB[currentBackupRegion] || [];
     const regionName = currentBackupRegion === 'oita' ? '大分・別府・由布院' : '熊本・阿蘇・上天草';
-    const topS = dataList.filter(item => item.rank === 'S').slice(0, 4).map(item => String(item.name || '').replace(/／.*/, '')).join('、');
-    const caution = currentBackupRegion === 'kumamoto'
-        ? '<strong>6 月上天草策略：</strong>牡蠣小屋與生海膽活動多偏冬春，Day7 應主攻車海老、刺身、海鮮丼、鮑魚；牡蠣與海膽有貨再加點。'
-        : '<strong>別府策略：</strong>海鮮吃りゅうきゅう丼、関あじ有貨再點；麵食優先別府冷麵；豐後牛則放 Day3 或 Day4 晚餐。';
-
-    let html = `<div class="animate-[fadeIn_0.3s_ease-out]">
-        <div class="gourmet-warning">${caution}<br>帶小孩同行時，牡蠣、生魚片、牛肉生食一律保守；燒肉由成人烤熟後再分食。</div>
-        <div id="gourmet-summary-grid">
-            <div class="gourmet-summary-card"><h4>區域</h4><p>${escapeHtml(regionName)}</p></div>
-            <div class="gourmet-summary-card"><h4>S 級主菜</h4><p>${escapeHtml(topS || '依當天動線選擇')}</p></div>
-            <div class="gourmet-summary-card"><h4>使用規則</h4><p>S＝主動排；A＝順路優先；B＝備案／願望清單；C＝季節或不建議硬追。</p></div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">`;
-
     if (!dataList.length) {
         container.innerHTML = `<div class="bg-gray-50 border-2 border-gray-200 rounded-2xl p-4 font-bold text-gray-700">目前沒有美食備案資料。</div>`;
         return;
     }
 
-    dataList.forEach((item) => {
-        const rank = escapeHtml(item.rank || 'B');
-        const rankClass = `rank-${rank}`;
-        const cardRankClass = item.rank === 'S' ? 's-rank' : item.rank === 'A' ? 'a-rank' : '';
-        const query = item.mapQuery || item.name;
-        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query || '')}`;
-        const searchUrl = `https://www.google.com/search?q=${encodeURIComponent((query || '') + ' 営業時間 定休日 メニュー')}`;
-        const links = (item.links || []).map(link => {
-            const url = safeExternalUrl(link.url, mapUrl);
-            return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer" class="gourmet-action secondary">🔎 ${escapeHtml(link.label || '官方')}</a>`;
-        }).join('');
-        const warnBlock = item.warning ? `<div class="gourmet-section"><div class="gourmet-label">避雷／注意</div><div class="gourmet-text">${escapeHtml(item.warning)}</div></div>` : '';
-        html += `<article class="gourmet-card ${cardRankClass}">
-            <div class="gourmet-head">
-                <span class="gourmet-rank ${rankClass}">${rank}</span>
-                <div class="min-w-0">
-                    <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-title">${escapeHtml(item.name)}</a>
-                    <div class="gourmet-meta">
-                        <span class="gourmet-chip type">${escapeHtml(item.type)}</span>
-                        <span class="gourmet-chip day">${escapeHtml(item.bestDay)}</span>
-                        <span class="gourmet-chip family">${escapeHtml(item.area)}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="gourmet-section"><div class="gourmet-label">必點</div><div class="gourmet-text"><strong>${escapeHtml(item.must)}</strong></div></div>
-            <div class="gourmet-section"><div class="gourmet-label">為什麼值得</div><div class="gourmet-text">${escapeHtml(item.why)}</div></div>
-            <div class="gourmet-section"><div class="gourmet-label">排法</div><div class="gourmet-text">${escapeHtml(item.strategy)}</div></div>
-            <div class="gourmet-section"><div class="gourmet-label">親子判斷</div><div class="gourmet-text">${escapeHtml(item.kid)}</div></div>
-            ${warnBlock}
-            <div class="gourmet-actions">
-                <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-action">📍 導航</a>
-                <a href="${escapeAttr(searchUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-action secondary">⏱️ 查營業</a>
-                ${links}
-            </div>
-        </article>`;
+    const categoryOrder = ['主線餐', '地方代表', '高優先餐', '親子保底', '保底餐 / 補給', '保底餐 / 補給', '甜點零食', '甜點零食 / 伴手禮', '伴手禮', '願望餐', '成人加碼', '收藏', '不建議硬追'];
+    const rankScore = { S: 90, 'S-': 84, A: 70, B: 52, C: 30, X: 0 };
+    const sorted = dataList.slice().sort((a, b) => (rankScore[b.rank] || 0) - (rankScore[a.rank] || 0));
+    const rankCounts = sorted.reduce((acc, item) => {
+        const key = item.rank || 'B';
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+    }, {});
+    const topSafe = sorted.filter(item => ['S', 'S-', 'A'].includes(item.rank)).slice(0, 5).map(item => item.name).join('、');
+    const caution = currentBackupRegion === 'kumamoto'
+        ? '熊本策略：赤牛、太平燕、天草海鮮與伴手禮分開決策；Day8 返程日只接受可控餐、機場餐與可外帶點心。'
+        : '大分策略：別府在地味以地獄蒸、冷麵、琉球丼、豐後牛為核心；由布院只用甜點/小吃短打，不把甜點排成主線。';
+
+    const groups = sorted.reduce((acc, item) => {
+        const key = item.category || '其他';
+        if (!acc[key]) acc[key] = [];
+        acc[key].push(item);
+        return acc;
+    }, {});
+    const orderedKeys = Object.keys(groups).sort((a, b) => {
+        const ia = categoryOrder.indexOf(a);
+        const ib = categoryOrder.indexOf(b);
+        return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib) || a.localeCompare(b, 'zh-Hant');
     });
 
-    html += `</div></div>`;
-    container.innerHTML = html;
+    const groupHtml = orderedKeys.map(key => {
+        const items = groups[key];
+        return `<section class="food-decision-section">
+            <header>
+                <div>
+                    <span>Food Decision</span>
+                    <h3>${escapeHtml(key)}</h3>
+                </div>
+                <p>${escapeHtml(items.length)} 項。先看 S/A，再看 B；C/X 只作提醒，不主動排。</p>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">${items.map(renderFoodDecisionCard).join('')}</div>
+        </section>`;
+    }).join('');
+
+    container.innerHTML = `<div class="food-decision-layout animate-[fadeIn_0.3s_ease-out]">
+        <section class="food-control-panel">
+            <div>
+                <span>Food / Sweets / Snacks</span>
+                <h3>${escapeHtml(regionName)}｜吃什麼決策中心</h3>
+                <p>${escapeHtml(caution)} 帶小孩同行時，牡蠣、生魚片、牛肉生食採保守原則；燒肉由成人烤熟後再分食。</p>
+            </div>
+            <div class="food-summary-stats">
+                <strong>${sorted.length}</strong><span>保留項目</span>
+                <strong>${(rankCounts.S || 0) + (rankCounts['S-'] || 0)}</strong><span>主線餐</span>
+                <strong>${rankCounts.A || 0}</strong><span>高優先</span>
+                <strong>${(rankCounts.C || 0) + (rankCounts.X || 0)}</strong><span>收藏/不建議</span>
+            </div>
+        </section>
+        <div class="gourmet-warning"><strong>優先清單：</strong>${escapeHtml(topSafe || '依當天動線選擇')}<br>S＝主線餐；A＝高優先；B＝保底/救場；C＝收藏；X＝本趟不建議硬追。</div>
+        ${groupHtml}
+    </div>`;
 }
 
 function renderBackupList(container, currentBackupRegion, currentBackupCategory) {

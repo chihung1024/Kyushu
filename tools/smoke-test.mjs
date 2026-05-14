@@ -244,7 +244,7 @@ async function runDataAndComponentSmokeTest() {
     if (htmlToPlainText('A<br>B</div><strong>C</strong>') !== 'A\\nB\\nC') throw new Error('htmlToPlainText failed to preserve line breaks');
     if (!escapeHtml('<script>').includes('&lt;script&gt;')) throw new Error('escapeHtml failed');
     if (!renderParkingButtons('阿蘇くまもと空港 駐車場').includes('阿蘇熊本機場')) throw new Error('parking renderer failed');
-    if (!renderDailyGourmet(1).includes('今日美食候選')) throw new Error('gourmet renderer failed');
+    if (!renderDailyGourmet(1).includes('今日吃什麼決策')) throw new Error('gourmet renderer failed');
     const backupContainer = { innerHTML: '' };
     renderBackupList(backupContainer, 'oita', 'sight');
     if (!backupContainer.innerHTML.includes('九州自然動物園 African Safari')) throw new Error('backup renderer failed');
