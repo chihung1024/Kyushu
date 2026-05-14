@@ -65,7 +65,56 @@
         container.dataset.printReady = 'true';
         return true;
     };
-    window.printPaperGuide = async function() {
+
+    // The printed paper manual is a fixed, already-typeset A4 PDF.
+    // Do not route the toolbar button through the browser's HTML print layout: that
+    // can reflow the interactive web cards and produce a different paper experience.
+    window.getPaperGuidePdfUrl = function(anchorHref) {
+        if (anchorHref) return anchorHref;
+
+        const currentPath = window.location.pathname || '';
+        const fileName = 'kyushu-travel-manual.pdf';
+
+        // Works for the root index.html / kyushu-trip-final-day6-day8.html because
+        // a root copy of the PDF is committed. It also works for dist/kyushu-trip-final.html
+        // because dist already contains the same PDF beside the single-file build.
+        if (/\/dist\//.test(currentPath)) {
+            return new URL(fileName, window.location.href).href;
+        }
+
+        return new URL(fileName, window.location.href).href;
+    };
+
+    window.openPaperGuidePdf = function(event) {
+        if (event && typeof event.preventDefault === 'function') {
+            event.preventDefault();
+        }
+
+        const anchor = event && event.currentTarget ? event.currentTarget : null;
+        const pdfUrl = window.getPaperGuidePdfUrl(anchor && anchor.href);
+        const opened = window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+
+        if (!opened) {
+            window.location.href = pdfUrl;
+        }
+
+        return false;
+    };
+
+    // Backward-compatible name for any existing inline handlers.
+    // It intentionally opens the official PDF instead of printing the HTML app.
+    window.printPaperGuide = function() {
+        const pdfUrl = window.getPaperGuidePdfUrl();
+        const opened = window.open(pdfUrl, '_blank', 'noopener,noreferrer');
+
+        if (!opened) {
+            window.location.href = pdfUrl;
+        }
+    };
+
+    // Developer-only fallback: generate the HTML manual and call window.print().
+    // Keep this separate so the user-facing toolbar never triggers the reflowed web layout.
+    window.printGeneratedPaperGuide = async function() {
         if (!window.preparePrintView()) return;
         if (document.fonts && document.fonts.ready) {
             try {
@@ -77,10 +126,7 @@
         await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
         window.print();
     };
-    window.printPaperGuideFallback = function() {
-        if (!window.preparePrintView()) return;
-        setTimeout(() => window.print(), 200);
-    };
+    window.printPaperGuideFallback = window.printGeneratedPaperGuide;
 
     modalController.init();
     backupModalController.init();

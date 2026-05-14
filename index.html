@@ -80,9 +80,9 @@
 </div>
 
 <div class="flex justify-end gap-2 mb-4 pr-2">
-<button class="text-xs bg-gray-200 text-gray-800 font-bold px-4 py-3 md:py-2 rounded-full shadow-sm hover:bg-gray-300 transition flex items-center gap-1.5 min-w-[44px]" onclick="window.printPaperGuide ? window.printPaperGuide() : (window.preparePrintView &amp;&amp; window.preparePrintView(), setTimeout(() =&gt; window.print(), 200))">
+<a class="text-xs bg-gray-200 text-gray-800 font-bold px-4 py-3 md:py-2 rounded-full shadow-sm hover:bg-gray-300 transition flex items-center gap-1.5 min-w-[44px]" href="kyushu-travel-manual.pdf" target="_blank" rel="noopener noreferrer" onclick="return window.openPaperGuidePdf ? window.openPaperGuidePdf(event) : true" title="開啟正式 A4 紙本 PDF 手冊">
 <span class="text-sm">🖨️</span> 列印紙本攻略
-                </button>
+                </a>
 <button class="text-xs bg-gray-800 text-white px-4 py-3 md:py-2 rounded-full shadow-md hover:bg-gray-700 transition flex items-center gap-2 min-w-[44px]" onclick="copyDailyItinerary()">
 <span>📋</span> 複製今日行程給伴侶
                 </button>

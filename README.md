@@ -21,7 +21,9 @@ dist/kyushu-trip-final.html # 交付用單檔輸出
 
 ## 紙本攻略列印
 
-「列印紙本攻略」按鈕會重新產生專用的 `#print-container`，並等待字型與版面 reflow 後才呼叫瀏覽器列印，避免印到互動版網頁或尚未完成排版的內容。紙本內容由 `js/components/print-view.js` 依最新 `js/data/*.js` 資料即時組出；`dist/kyushu-travel-manual.pdf` 只作既有紙本範例/備援，不再作為按鈕的資料來源。
+「列印紙本攻略」按鈕會直接開啟已排版完成的正式 A4 PDF：`kyushu-travel-manual.pdf`。這份 PDF 與 `dist/kyushu-travel-manual.pdf` 保持相同內容，用來避免瀏覽器把互動版網頁卡片重新 reflow 後產生不同格式的列印畫面。
+
+`js/components/print-view.js` 與 `window.printGeneratedPaperGuide()` 仍保留作為開發備援，但使用者介面的按鈕不再呼叫 HTML print renderer。
 
 ## 架構審查與模組化建議
 
