@@ -1,13 +1,10 @@
-import { copyFile, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const inputHtml = path.join(repoRoot, 'index.html');
 const outputHtml = path.join(repoRoot, 'dist', 'kyushu-trip-final.html');
-const legacyOutputHtml = path.join(repoRoot, 'kyushu-trip-final-day6-day8.html');
-const sourcePdf = path.join(repoRoot, 'kyushu-travel-manual.pdf');
-const outputPdf = path.join(repoRoot, 'dist', 'kyushu-travel-manual.pdf');
 
 async function readText(relativeOrAbsolutePath) {
   return readFile(relativeOrAbsolutePath, 'utf8');
@@ -89,11 +86,8 @@ async function buildSingleHtml() {
 
   const banner = '<!-- Built by tools/build-single-html.mjs. Edit source modules, not this file. -->\n';
   await mkdir(path.dirname(outputHtml), { recursive: true });
-  const builtHtml = banner + html;
-  await writeFile(outputHtml, builtHtml);
-  await writeFile(legacyOutputHtml, builtHtml);
-  await copyFile(sourcePdf, outputPdf);
-  console.log(`Built ${path.relative(repoRoot, outputHtml)}, refreshed ${path.relative(repoRoot, legacyOutputHtml)} and synced ${path.relative(repoRoot, outputPdf)}`);
+  await writeFile(outputHtml, banner + html);
+  console.log(`Built ${path.relative(repoRoot, outputHtml)}`);
 }
 
 await buildSingleHtml();

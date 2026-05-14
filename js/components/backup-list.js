@@ -233,17 +233,15 @@ function renderDecisionBackupList(container, currentBackupRegion, currentBackupC
         .filter(rank => grouped[rank] && grouped[rank].length)
         .map(rank => {
             const meta = getBackupRankMeta(rank);
-            const isOpen = ['S', 'S-', 'A'].includes(rank);
-            return `<details class="decision-section decision-collapsible rank-tone-${escapeAttr(meta.tone)}" ${isOpen ? 'open' : ''}>
-                <summary>
+            return `<section class="decision-section rank-tone-${escapeAttr(meta.tone)}">
+                <header>
                     <div><span class="decision-rank rank-tone-${escapeAttr(meta.tone)}">${escapeHtml(rank)}</span><h3>${escapeHtml(meta.label)}</h3></div>
                     <p>${escapeHtml(meta.copy)}</p>
-                    <span class="decision-collapse-indicator" aria-hidden="true"></span>
-                </summary>
+                </header>
                 <div class="decision-card-grid">
                     ${grouped[rank].map(item => renderDecisionBackupCard(item)).join('')}
                 </div>
-            </details>`;
+            </section>`;
         }).join('');
 
     container.innerHTML = `<div class="decision-layout animate-[fadeIn_0.3s_ease-out]">
@@ -364,18 +362,16 @@ function renderGourmetBackupList(container, currentBackupRegion) {
         const items = sortFoodEntries(groups[key]);
         const bestRank = items[0]?.rank || 'B';
         const meta = getFoodRankMeta(bestRank);
-        const isOpen = ['S', 'S-', 'A'].includes(bestRank);
-        return `<details class="food-section-v3 decision-collapsible rank-tone-${escapeAttr(meta.tone)}" ${isOpen ? 'open' : ''}>
-            <summary>
+        return `<section class="food-section-v3 rank-tone-${escapeAttr(meta.tone)}">
+            <header>
                 <div>
                     <span>${escapeHtml(items.length)} 選</span>
                     <h3>${escapeHtml(key)}</h3>
                 </div>
                 <p>${escapeHtml(meta.copy)}</p>
-                <span class="decision-collapse-indicator" aria-hidden="true"></span>
-            </summary>
+            </header>
             <div class="food-card-grid-v3">${items.map(item => renderFoodDecisionCard(item)).join('')}</div>
-        </details>`;
+        </section>`;
     }).join('');
 
     container.innerHTML = `<div class="decision-layout food-layout-v3 animate-[fadeIn_0.3s_ease-out]">

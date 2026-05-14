@@ -1,23 +1,5 @@
 // Daily itinerary timeline renderer.
 
-function renderDayDiagnostics(data, focus, flexibleCount, hasChecklist) {
-    const sectionCount = (data.sections || []).filter(sec => sec.type !== 'rain' && sec.time !== '彈性方案').length;
-    const parkingCount = (data.sections || []).filter(sec => sec.parkingQuery || parkingLookup[sec.mapQuery]).length;
-    const mustText = (focus && Array.isArray(focus.priority) && focus.priority[0]) ? focus.priority[0] : '先守住主線與移動安全';
-    const decisionText = focus?.hardCut || focus?.decision || '依天候、孩子體力與車程即時收束。';
-    return `
-        <section class="day-diagnostics-panel" aria-label="今日快讀">
-            <div class="day-diagnostic-title"><span aria-hidden="true">⚡</span> 今日快讀｜10 秒決策</div>
-            <div class="day-diagnostic-chips">
-                <span class="day-diagnostic-chip must"><span>主線段落</span><strong>${sectionCount}</strong></span>
-                <span class="day-diagnostic-chip flex"><span>彈性方案</span><strong>${flexibleCount}</strong></span>
-                <span class="day-diagnostic-chip check"><span>防呆清單</span><strong>${hasChecklist ? data.checklist.length : 0}</strong></span>
-                <span class="day-diagnostic-chip map"><span>停車提示</span><strong>${parkingCount}</strong></span>
-            </div>
-            <div class="day-diagnostic-cut"><span>必守 / 收束規則</span><strong>${mustText}</strong><br>${decisionText}</div>
-        </section>`;
-}
-
 function renderDayContent(data, currentDay) {
                     let sectionsHtml = '';
                     data.sections.forEach(sec => {
@@ -65,7 +47,6 @@ function renderDayContent(data, currentDay) {
                     const focus = dayFocusDB[data.day] || null;
                     const hasChecklist = data.checklist && data.checklist.length > 0;
                     const flexibleCount = (data.sections || []).filter(sec => sec.type === 'rain' || sec.time === '彈性方案').length;
-                    const dayDiagnosticsHtml = renderDayDiagnostics(data, focus, flexibleCount, hasChecklist);
                     const dayToolsHtml = `
                         <div class="day-tools-panel mb-5 bg-white/85 border-2 border-gray-200 rounded-2xl p-3 shadow-sm">
                             <div class="day-tools-heading text-[11px] font-black text-gray-500 tracking-wider mb-2">每日輔助資訊</div>
@@ -102,7 +83,6 @@ function renderDayContent(data, currentDay) {
                                 <div><div class="day-summary-label text-blue-500 font-bold uppercase tracking-wider mb-0.5">夜宿點</div><div class="day-summary-value text-blue-900 leading-tight">${data.hotel}</div></div>
                             </div>
                         </div>
-                        ${dayDiagnosticsHtml}
                         ${dayToolsHtml}
                         <div class="mt-4 pt-2">${sectionsHtml}${tipsHtml}</div>
                     `;

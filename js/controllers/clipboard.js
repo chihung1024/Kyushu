@@ -1,14 +1,6 @@
 // Daily itinerary clipboard controller.
 
 function createDailyItineraryClipboardController({ getCurrentDay }) {
-    function notifyClipboard(message) {
-        if (typeof window.showAppStatus === 'function') {
-            window.showAppStatus(message);
-        } else {
-            console.info(message);
-        }
-    }
-
     async function copyDailyItinerary() {
         const data = itineraryData.find(d => d.day === getCurrentDay());
         if(!data) return;
@@ -24,24 +16,16 @@ function createDailyItineraryClipboardController({ getCurrentDay }) {
         try {
             if (navigator.clipboard && window.isSecureContext) {
                 await navigator.clipboard.writeText(textToCopy);
-                notifyClipboard(`Day ${data.day} 行程與實戰攻略已複製`);
+                alert(`✅ Day ${data.day} 行程與實戰攻略已複製！`);
             } else throw new Error('Clipboard API restricted');
         } catch (err) {
-            const textArea = document.createElement('textarea');
+            const textArea = document.createElement("textarea");
             textArea.value = textToCopy;
-            textArea.style.position = 'fixed';
-            textArea.style.top = '0';
-            textArea.style.left = '0';
-            textArea.setAttribute('readonly', 'readonly');
+            textArea.style.position = "fixed"; textArea.style.top = "0"; textArea.style.left = "0";
             document.body.appendChild(textArea);
-            textArea.focus();
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                notifyClipboard(`Day ${data.day} 行程與實戰攻略已複製`);
-            } catch (fallbackErr) {
-                notifyClipboard('複製失敗，請手動選取複製');
-            }
+            textArea.focus(); textArea.select();
+            try { document.execCommand('copy'); alert(`✅ Day ${data.day} 行程與實戰攻略已複製！`); }
+            catch (fallbackErr) { alert('❌ 複製失敗，請手動選取複製。'); }
             document.body.removeChild(textArea);
         }
     }

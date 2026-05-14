@@ -21,32 +21,31 @@
 <h1 class="text-2xl md:text-3xl font-black tracking-wider drop-shadow-md">九州親子大冒險 🧭✨</h1>
 <p class="text-xs md:text-sm mt-1 opacity-90 font-bold bg-white/20 inline-block px-3 py-1 rounded-full">雙家庭(2大2小) 每日路線・備選方案</p>
 </div>
-<button type="button" class="trip-status-button text-3xl drop-shadow-lg" onclick="showAppStatus('行程資訊已準備就緒，預祝旅途愉快！')" aria-label="顯示行程狀態">
+<div class="text-3xl animate-bounce drop-shadow-lg cursor-pointer" onclick="alert('行程資訊已準備就緒，預祝旅途愉快！')">
                     🐻
-                </button>
+                </div>
 </div>
 </header>
-<div id="app-status" class="visually-hidden" aria-live="polite"></div>
 
 <main class="max-w-4xl mx-auto px-4 mt-6">
 
-<section class="top-action-grid flex flex-row md:grid md:grid-cols-5 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-1 overflow-x-auto md:overflow-visible hide-scrollbar scroll-snap-x py-2" aria-label="旅程快速功能">
-<button type="button" class="top-action-card w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 text-left shadow-sm border-2 border-amber-200 transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('preTripModal')" aria-haspopup="dialog" aria-controls="preTripModal">
-<div class="text-2xl shrink-0 drop-shadow" aria-hidden="true">🧳</div>
+<div class="flex flex-row md:grid md:grid-cols-5 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-1 overflow-x-auto md:overflow-visible hide-scrollbar scroll-snap-x py-2">
+<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 text-left shadow-sm border-2 border-amber-200 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('preTripModal')">
+<div class="text-2xl shrink-0 drop-shadow">🧳</div>
 <div>
 <div class="text-[10px] text-amber-700 font-bold bg-white px-2 py-0.5 rounded-full inline-block shadow-sm mb-0.5">出發前必看</div>
 <div class="text-xs md:text-sm font-black text-amber-900 leading-tight">VJW＋旅遊醫療保險教學</div>
 </div>
-</button>
-<button type="button" class="top-action-card w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-rose-50 to-orange-50 rounded-xl p-4 text-left shadow-sm border-2 border-rose-300 transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('preDepartureModal')" aria-haspopup="dialog" aria-controls="preDepartureModal">
-<div class="text-2xl shrink-0 drop-shadow" aria-hidden="true">📋</div>
+</div>
+<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-rose-50 to-orange-50 rounded-xl p-4 text-left shadow-sm border-2 border-rose-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('preDepartureModal')">
+<div class="text-2xl shrink-0 drop-shadow">📋</div>
 <div>
 <div class="text-[10px] text-rose-700 font-bold bg-white px-2 py-0.5 rounded-full inline-block shadow-sm mb-0.5">文件・租車・訂位</div>
 <div class="text-xs md:text-sm font-black text-rose-900 leading-tight">出發前總檢查</div>
 </div>
-</button>
-<button type="button" class="top-action-card w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 text-left shadow-sm border-2 border-purple-300 transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('hotelModal')" aria-haspopup="dialog" aria-controls="hotelModal">
-<div class="text-2xl relative shrink-0" aria-hidden="true">
+</div>
+<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 text-left shadow-sm border-2 border-purple-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('hotelModal')">
+<div class="text-2xl relative shrink-0">
                         🏨
                         <span class="absolute -top-1 -right-1 flex h-3 w-3">
 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -57,22 +56,22 @@
 <div class="text-[10px] text-purple-600 font-bold mb-0.5">目前訂房狀態與比較</div>
 <div class="text-xs md:text-sm font-black text-purple-800 leading-tight">新鶴田首選＋備案保留</div>
 </div>
-</button>
-<button type="button" class="top-action-card w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-white rounded-xl p-4 text-left shadow-sm border-2 border-kawaii-light-blue transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('budgetModal')" aria-haspopup="dialog" aria-controls="budgetModal">
-<div class="text-2xl shrink-0" aria-hidden="true">💰</div>
+</div>
+<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-white rounded-xl p-4 text-left shadow-sm border-2 border-kawaii-light-blue cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('budgetModal')">
+<div class="text-2xl shrink-0">💰</div>
 <div>
 <div class="text-[10px] text-gray-500 font-bold mb-0.5">單一家庭實際預算</div>
 <div class="text-xs md:text-sm font-black text-kawaii-blue leading-tight">單家約 10.7 萬 TWD</div>
 </div>
-</button>
-<button type="button" class="top-action-card w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 rounded-xl p-4 text-left shadow-sm border-2 border-orange-300 transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('backupModal'); initBackupModal();" aria-haspopup="dialog" aria-controls="backupModal">
-<div class="text-2xl shrink-0 animate-pulse drop-shadow" aria-hidden="true">🗺️</div>
+</div>
+<div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 rounded-xl p-4 text-left shadow-sm border-2 border-orange-300 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('backupModal'); initBackupModal();">
+<div class="text-2xl shrink-0 animate-pulse drop-shadow">🗺️</div>
 <div>
 <div class="text-[10px] text-cyan-600 font-bold bg-white px-2 py-0.5 rounded-full inline-block shadow-sm mb-0.5">S/A/B/C/X 決策</div>
 <div class="text-xs md:text-sm font-black text-cyan-800 leading-tight">現場決策庫</div>
 </div>
-</button>
-</section>
+</div>
+</div>
 
 <div class="sticky top-0 z-40 bg-kawaii-bg/95 backdrop-blur-md pt-1 pb-2 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all shadow-sm">
 <div class="flex overflow-x-auto md:overflow-visible hide-scrollbar space-x-3 md:justify-center py-3 px-2" id="tabs-container">
@@ -82,7 +81,7 @@
 
 <div class="flex justify-end gap-2 mb-4 pr-2">
 <a class="text-xs bg-gray-200 text-gray-800 font-bold px-4 py-3 md:py-2 rounded-full shadow-sm hover:bg-gray-300 transition flex items-center gap-1.5 min-w-[44px]" href="kyushu-travel-manual.pdf" target="_blank" rel="noopener noreferrer" onclick="return window.openPaperGuidePdf ? window.openPaperGuidePdf(event) : true" title="開啟正式 A4 紙本 PDF 手冊">
-<span class="text-sm">🖨️</span> 開啟 A4 紙本 PDF
+<span class="text-sm">🖨️</span> 列印紙本攻略
                 </a>
 <button class="text-xs bg-gray-800 text-white px-4 py-3 md:py-2 rounded-full shadow-md hover:bg-gray-700 transition flex items-center gap-2 min-w-[44px]" onclick="copyDailyItinerary()">
 <span>📋</span> 複製今日行程給伴侶
@@ -94,13 +93,6 @@
 </div>
 </main>
 
-<nav class="mobile-bottom-action-bar" aria-label="手機快捷操作">
-<button type="button" onclick="openCurrentDayInfo('focus')"><span aria-hidden="true">🧭</span><b>今日</b></button>
-<button type="button" onclick="openCurrentDayMap()"><span aria-hidden="true">📍</span><b>導航</b></button>
-<button type="button" onclick="openCurrentDayParking()"><span aria-hidden="true">🅿️</span><b>停車</b></button>
-<button type="button" onclick="openBackupDecision()"><span aria-hidden="true">🗺️</span><b>備案</b></button>
-<button type="button" onclick="copyDailyItinerary()"><span aria-hidden="true">📋</span><b>複製</b></button>
-</nav>
 
 <div id="dialogs-root"></div>
 </div>

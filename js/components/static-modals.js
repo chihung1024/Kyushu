@@ -2,14 +2,14 @@
 
 function renderStaticModals() {
     return `
-<dialog class="decision-modal bg-white w-11/12 max-w-[94vw] lg:max-w-5xl rounded-[2rem] p-0 shadow-2xl relative max-h-[92vh] flex-col outline-none border-0 custom-scrollbar m-auto" id="backupModal" aria-labelledby="backupModalTitle">
+<dialog class="decision-modal bg-white w-11/12 max-w-[94vw] lg:max-w-5xl rounded-[2rem] p-0 shadow-2xl relative max-h-[92vh] flex-col outline-none border-0 custom-scrollbar m-auto" id="backupModal">
 <button aria-label="關閉視窗" class="decision-modal-close" onclick="closeModal('backupModal')">✕</button>
 
 <div class="decision-modal-header flex-shrink-0">
     <div class="decision-modal-titlebar">
         <div>
             <div class="decision-modal-kicker">FIELD DECISION CENTER</div>
-            <h2 id="backupModalTitle" tabindex="-1">九州現場決策中心</h2>
+            <h2>九州現場決策中心</h2>
             <p>把景點、用餐與補給拆成「主線、可攻、保底、收藏、不建議」。旅途中先看最穩選擇，再決定是否加碼。</p>
         </div>
         <div class="decision-modal-principle">
@@ -46,14 +46,14 @@ function renderStaticModals() {
 <div class="decision-modal-body flex-grow overflow-y-auto custom-scrollbar" id="backup-list-container"></div>
 </dialog>
 
-<dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preTripModal" aria-labelledby="preTripModalTitle">
+<dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preTripModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('preTripModal')">✕</button>
 <div class="mb-6 border-b-2 border-amber-100 pb-4 pr-10">
-<h2 id="preTripModalTitle" tabindex="-1" class="text-2xl md:text-3xl font-black text-amber-700 flex items-center gap-3"><span>🧳</span> 出發前必看｜VJW＋旅遊醫療保險教學</h2>
+<h2 class="text-2xl md:text-3xl font-black text-amber-700 flex items-center gap-3"><span>🧳</span> 出發前必看｜VJW＋旅遊醫療保險教學</h2>
 <p class="text-sm text-gray-600 mt-2 font-bold bg-amber-50 inline-block px-3 py-1.5 rounded-md border border-amber-100">用法：先照 S 級流程完成入境與保險；出發前一天只重看「截圖、紙本、緊急聯絡」三件事。</p>
 <div class="flex flex-wrap gap-2 mt-3">
 <a class="inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.vjw.digital.go.jp/" rel="noopener noreferrer" target="_blank"><span>🛂</span> Visit Japan Web 官方</a>
-<a class="inline-flex items-center gap-2 bg-white text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.japan.travel/en/plan/travel-insurance-in-japan/" rel="noopener noreferrer" target="_blank"><span>🏥</span> JNTO 醫療/保險說明</a>
+<a class="inline-flex items-center gap-2 bg-white text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.japan.travel/en/plan/insurance/" rel="noopener noreferrer" target="_blank"><span>🏥</span> JNTO 醫療/保險說明</a>
 <a class="inline-flex items-center gap-2 bg-white text-green-700 border-2 border-green-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.jnto.go.jp/emergency/eng/mi_guide.html" rel="noopener noreferrer" target="_blank"><span>🏨</span> 日本就醫指南</a>
 <a class="inline-flex items-center gap-2 bg-white text-rose-700 border-2 border-rose-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/teikyouseido/index_00003.html" rel="noopener noreferrer" target="_blank"><span>💊</span> 外國旅客就醫資訊</a>
 </div>
@@ -100,10 +100,10 @@ function renderStaticModals() {
 </div>
 </dialog>
 
-<dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preDepartureModal" aria-labelledby="preDepartureModalTitle">
+<dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preDepartureModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('preDepartureModal')">✕</button>
 <div class="mb-6 border-b-2 border-rose-100 pb-4 pr-10">
-<h2 id="preDepartureModalTitle" tabindex="-1" class="text-2xl md:text-3xl font-black text-rose-700 flex items-center gap-3"><span>📋</span> 出發前總檢查｜文件・租車・訂位・禁帶品・飯店・醫療</h2>
+<h2 class="text-2xl md:text-3xl font-black text-rose-700 flex items-center gap-3"><span>📋</span> 出發前總檢查｜文件・租車・訂位・禁帶品・飯店・醫療</h2>
 <p class="text-sm text-gray-600 mt-2 font-bold bg-rose-50 inline-block px-3 py-1.5 rounded-md border border-rose-100">用法：出發前 10 天開始逐項打勾；出發前 1 天只看 S 級與 Day1 清單。</p>
 <div class="flex flex-wrap gap-2 mt-3">
 <a class="inline-flex items-center gap-2 bg-white text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://english.jaf.or.jp/driving-in-japan" rel="noopener noreferrer" target="_blank"><span>🚗</span> JAF 日本駕駛說明</a>
@@ -285,9 +285,9 @@ function renderStaticModals() {
 </div>
 </dialog>
 
-<dialog class="bg-white w-11/12 max-w-5xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="hotelModal" aria-labelledby="hotelModalTitle">
+<dialog class="bg-white w-11/12 max-w-5xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="hotelModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg" onclick="closeModal('hotelModal')">✕</button>
-<h2 id="hotelModalTitle" tabindex="-1" class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2 pr-8"><span>🏨</span> 飯店訂單資訊與抉擇分析</h2>
+<h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2 pr-8"><span>🏨</span> 飯店訂單資訊與抉擇分析</h2>
 <p class="text-xs md:text-sm text-gray-500 mb-4 bg-purple-50 p-2 md:p-3 rounded-lg border border-purple-100 leading-relaxed">
                 全線 7 晚維持「大分/別府 4晚 ＋ 熊本 3晚」雙基地策略。以下金額一律改用「單一家庭（1間房／2大2小）」呈現：先看每晚單價，再看該段住宿總價；雙家庭訂單總額僅保留在備註中作核對。
             </p>
@@ -364,9 +364,9 @@ function renderStaticModals() {
 </div>
 </dialog>
 
-<dialog class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 md:p-8 shadow-2xl relative outline-none border-0 m-auto" id="budgetModal" aria-labelledby="budgetModalTitle">
+<dialog class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 md:p-8 shadow-2xl relative outline-none border-0 m-auto" id="budgetModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('budgetModal')">✕</button>
-<h2 id="budgetModalTitle" tabindex="-1" class="text-2xl font-black text-kawaii-pink mb-4 flex items-center gap-2 pr-8"><span>📊</span> 單家預算結算表 <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full ml-auto shrink-0">單家口徑</span></h2>
+<h2 class="text-2xl font-black text-kawaii-pink mb-4 flex items-center gap-2 pr-8"><span>📊</span> 單家預算結算表 <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded-full ml-auto shrink-0">單家口徑</span></h2>
 <p class="text-sm text-gray-500 mb-5 font-bold bg-gray-100 px-3 py-2 rounded-lg border border-gray-200 leading-relaxed">
                 ⚠️ 以下開銷全部統一以<span class="text-pink-600">「單一家庭 (1間房／2大2小)」</span>呈現；每個項目盡量標示單價與總價，避免再混用雙家庭總額。
             </p>
@@ -423,10 +423,10 @@ function renderStaticModals() {
 </div>
 </dialog>
 
-<dialog class="bg-white w-11/12 max-w-4xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[88vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="dayInfoModal" aria-labelledby="dayInfoModalTitle">
+<dialog class="bg-white w-11/12 max-w-4xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[88vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="dayInfoModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg" onclick="closeModal('dayInfoModal')">✕</button>
 <div class="pr-10 border-b border-gray-100 pb-4 mb-4">
-<h2 class="text-2xl md:text-3xl font-black text-gray-900 flex items-center gap-3" id="dayInfoModalTitle" tabindex="-1">每日資訊</h2>
+<h2 class="text-2xl md:text-3xl font-black text-gray-900 flex items-center gap-3" id="dayInfoModalTitle">每日資訊</h2>
 <p class="text-sm text-gray-500 font-bold mt-2" id="dayInfoModalSubtitle">行程輔助資訊</p>
 </div>
 <div class="space-y-4 text-gray-900 leading-relaxed" id="dayInfoModalBody"></div>
