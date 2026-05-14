@@ -227,6 +227,36 @@ async function assertPrintContainerOutsidePrintHidden(file) {
   }
 }
 
+
+async function assertModalLinkIntegrity() {
+  const staticCode = await readFile(resolveRepoPath('js/components/static-modals.js'), 'utf8');
+  const context = vm.createContext({});
+  new vm.Script(staticCode, { filename: 'js/components/static-modals.js' }).runInContext(context);
+  const renderedStatic = new vm.Script('renderStaticModals();').runInContext(context);
+
+  const dialogIds = Array.from(renderedStatic.matchAll(/<dialog\b[^>]*\bid=["']([^"']+)["']/g)).map(match => match[1]);
+  const idCounts = new Map();
+  for (const id of Array.from(renderedStatic.matchAll(/\bid=["']([^"']+)["']/g)).map(match => match[1])) {
+    idCounts.set(id, (idCounts.get(id) || 0) + 1);
+  }
+  const duplicateIds = Array.from(idCounts.entries()).filter(([, count]) => count > 1).map(([id, count]) => `${id}×${count}`);
+  if (duplicateIds.length) {
+    throw new Error(`static modal markup contains duplicate ids: ${duplicateIds.join(', ')}`);
+  }
+
+  const indexHtml = await readFile(resolveRepoPath('index.html'), 'utf8');
+  const itineraryJs = await readFile(resolveRepoPath('js/data/itinerary.js'), 'utf8');
+  const allInlineHandlers = `${indexHtml}\n${itineraryJs}\n${renderedStatic}`;
+  const requestedModalIds = Array.from(new Set(Array.from(allInlineHandlers.matchAll(/showModal\(['"]([^'"]+)['"]\)/g)).map(match => match[1])));
+  const missingModalIds = requestedModalIds.filter(id => !dialogIds.includes(id));
+  if (missingModalIds.length) {
+    throw new Error(`showModal handlers reference missing dialogs: ${missingModalIds.join(', ')}`);
+  }
+  if (!dialogIds.includes('preTripModal') || !renderedStatic.includes('VJW＋旅遊醫療保險教學')) {
+    throw new Error('preTripModal is missing or does not contain the VJW/medical insurance guide');
+  }
+}
+
 async function runDataAndComponentSmokeTest() {
   const context = vm.createContext({ encodeURIComponent, String, Array, Object });
 
@@ -264,6 +294,7 @@ await assertContains('index.html', /js\/data\/constants\.js/, 'modular data scri
 await assertContains('index.html', /js\/components\/parking-buttons\.js/, 'modular component scripts');
 await assertContains('css/style.css', /print\.css/, 'print stylesheet import');
 await assertPrintContainerOutsidePrintHidden('index.html');
+await assertModalLinkIntegrity();
 const dist = await assertContains('dist/kyushu-trip-final.html', /kyushu-inline-styles/, 'inlined CSS marker');
 await assertPrintContainerOutsidePrintHidden('dist/kyushu-trip-final.html');
 if (/\[object Promise\]/.test(dist)) {

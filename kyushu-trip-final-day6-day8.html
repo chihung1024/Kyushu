@@ -5615,6 +5615,60 @@ function renderStaticModals() {
 <div class="decision-modal-body flex-grow overflow-y-auto custom-scrollbar" id="backup-list-container"></div>
 </dialog>
 
+<dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preTripModal">
+<button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('preTripModal')">✕</button>
+<div class="mb-6 border-b-2 border-amber-100 pb-4 pr-10">
+<h2 class="text-2xl md:text-3xl font-black text-amber-700 flex items-center gap-3"><span>🧳</span> 出發前必看｜VJW＋旅遊醫療保險教學</h2>
+<p class="text-sm text-gray-600 mt-2 font-bold bg-amber-50 inline-block px-3 py-1.5 rounded-md border border-amber-100">用法：先照 S 級流程完成入境與保險；出發前一天只重看「截圖、紙本、緊急聯絡」三件事。</p>
+<div class="flex flex-wrap gap-2 mt-3">
+<a class="inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.vjw.digital.go.jp/" rel="noopener noreferrer" target="_blank"><span>🛂</span> Visit Japan Web 官方</a>
+<a class="inline-flex items-center gap-2 bg-white text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.japan.travel/en/plan/insurance/" rel="noopener noreferrer" target="_blank"><span>🏥</span> JNTO 醫療/保險說明</a>
+<a class="inline-flex items-center gap-2 bg-white text-green-700 border-2 border-green-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.jnto.go.jp/emergency/eng/mi_guide.html" rel="noopener noreferrer" target="_blank"><span>🏨</span> 日本就醫指南</a>
+<a class="inline-flex items-center gap-2 bg-white text-rose-700 border-2 border-rose-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/teikyouseido/index_00003.html" rel="noopener noreferrer" target="_blank"><span>💊</span> 外國旅客就醫資訊</a>
+</div>
+</div>
+<div class="space-y-5 pb-2">
+<section class="guide-panel p-4 md:p-5 bg-gradient-to-br from-amber-50 to-white border-amber-200">
+<h3 class="text-xl mb-3 flex items-center gap-2"><span>✅</span> 先做這 5 件事</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-bold leading-relaxed text-gray-800">
+<div class="check-row"><span class="box"></span><span><strong>每位旅客各自完成 VJW：</strong>大人、小孩都要有入境審查與海關申報資料；不要只做代表人。</span></div>
+<div class="check-row"><span class="box"></span><span><strong>QR code 三備份：</strong>手機截圖、雲端相簿、紙本列印；紙本放護照夾，另一位大人也留一份。</span></div>
+<div class="check-row"><span class="box"></span><span><strong>保險分層：</strong>台灣端旅平險/不便險先覆蓋全程；日本當地保險只當醫療補強，不取代台灣保單。</span></div>
+<div class="check-row"><span class="box"></span><span><strong>醫療資料包：</strong>保單號碼、海外急難救助電話、信用卡旅遊保險、家屬聯絡人、孩子藥物過敏史。</span></div>
+<div class="check-row"><span class="box"></span><span><strong>抵日前後核對：</strong>第一晚飯店地址電話、回程機票、租車資訊、台灣駕照正本＋日文譯本。</span></div>
+</div>
+</section>
+<section class="guide-panel p-4 md:p-5">
+<h3 class="text-xl mb-3 flex items-center gap-2"><span>🛂</span> Visit Japan Web 防呆流程</h3>
+<table class="guide-table">
+<tr><th>1 建帳/登入</th><td>建議由一位大人統一管理帳號，但每位同行者資料要分別建立；英文姓名、生日、護照號碼逐字核對。</td></tr>
+<tr><th>2 入境資料</th><td>填入航班、抵達機場、第一晚住宿地址電話、停留日數；資料不確定時先查飯店訂單，不憑印象填。</td></tr>
+<tr><th>3 海關申報</th><td>每個家庭依實際攜帶物品申報；肉類、水果、生鮮、未吃完機上餐不要帶入境。</td></tr>
+<tr><th>4 截圖與列印</th><td>抵達前把 QR code、飯店地址、保險卡、租車訂單放同一個手機相簿；紙本列印放護照夾。</td></tr>
+<tr><th>5 現場原則</th><td>若現場畫面與教學不同，以官方系統當下欄位為準；不要在入境隊伍中臨時找資料。</td></tr>
+</table>
+</section>
+<section class="guide-panel p-4 md:p-5 bg-green-50 border-green-200">
+<h3 class="text-xl mb-3 flex items-center gap-2"><span>🏥</span> 旅遊醫療保險與就醫 SOP</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm font-bold leading-relaxed text-gray-800">
+<div class="bg-white border border-green-100 rounded-xl p-3"><strong class="text-green-800">非急症：</strong>先量體溫、拍症狀、記時間 → 聯絡保險公司或 JNTO 協助 → 依指示就醫 → 保留收據、診斷書、藥袋、刷卡紀錄。</div>
+<div class="bg-white border border-green-100 rounded-xl p-3"><strong class="text-green-800">急症：</strong>優先撥 119 或請飯店/店家協助叫救護車；先處理人身安全，理賠資料之後再補。</div>
+<div class="bg-white border border-green-100 rounded-xl p-3"><strong class="text-green-800">兒童：</strong>退燒藥、腸胃藥、過敏藥保留原包裝；藥名、劑量、上次服用時間用手機備忘錄記錄。</div>
+<div class="bg-white border border-green-100 rounded-xl p-3"><strong class="text-green-800">理賠：</strong>收據、診斷書、明細、藥單、醫院名片、事故時間線都要留；不要只拍一張總金額。</div>
+</div>
+</section>
+<section class="guide-panel p-4 md:p-5 bg-slate-50 border-slate-200">
+<h3 class="text-xl mb-3 flex items-center gap-2"><span>📌</span> 出發前一天只看這張表</h3>
+<table class="guide-table">
+<tr><th>手機</th><td>VJW QR、保險、租車、飯店、門票、餐廳訂位、Google Maps 清單、離線截圖。</td></tr>
+<tr><th>紙本</th><td>VJW QR、護照影本、保單摘要、租車訂單、第一晚飯店、緊急電話、孩子用藥資訊。</td></tr>
+<tr><th>家人同步</th><td>兩位大人都能打開同一份資料；不要讓所有 QR code 和保險電話只在一支手機。</td></tr>
+<tr><th>現場原則</th><td>入境、就醫、租車三件事只求穩，不求省 5 分鐘；不確定就找官方櫃台或飯店協助。</td></tr>
+</table>
+</section>
+</div>
+</dialog>
+
 <dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preDepartureModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('preDepartureModal')">✕</button>
 <div class="mb-6 border-b-2 border-rose-100 pb-4 pr-10">
@@ -5947,38 +6001,7 @@ function renderStaticModals() {
 <div class="space-y-4 text-gray-900 leading-relaxed" id="dayInfoModalBody"></div>
 </dialog>
 
-<dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-4xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] flex-col outline-none border-0 custom-scrollbar m-auto" id="backupModal">
-<button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-12 h-12 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-20 text-xl flex items-center justify-center" onclick="closeModal('backupModal')">✕</button>
 
-<div class="flex-shrink-0 border-b border-gray-100 pb-4 mb-4 pr-10">
-<h2 class="text-2xl md:text-3xl font-black text-cyan-600 flex items-center gap-3 drop-shadow-sm">
-<span class="text-3xl">🧭</span> 九州現場決策彈藥庫
-                </h2>
-<p class="text-xs md:text-sm text-gray-500 mt-2 font-bold ml-1 md:ml-10">
-                    景點、採買與美食甜點全部改為決策分級；美食不再是名店大全，而是「今日最穩、高優先、保底救場、甜點零食、伴手禮、不建議硬追」。
-                </p>
-
-<div class="flex gap-2 mt-4 overflow-x-auto custom-scrollbar pb-2 px-1">
-<button class="flex-shrink-0 px-5 py-3 rounded-xl font-black text-sm transition-all duration-200 flex items-center gap-1 border-2 border-transparent" id="btn-region-oita" onclick="setBackupRegion('oita')">
-<span class="text-lg">♨️</span> 大分·別府
-                    </button>
-<button class="flex-shrink-0 px-5 py-3 rounded-xl font-black text-sm transition-all duration-200 flex items-center gap-1 border-2 border-transparent" id="btn-region-kumamoto" onclick="setBackupRegion('kumamoto')">
-<span class="text-lg">🐻</span> 熊本·阿蘇
-                    </button>
-</div>
-
-<div class="flex gap-8 mt-2 ml-2 text-sm" id="backup-category-tabs">
-<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="sight" id="btn-cat-sight"><span class="text-lg">📸</span> 景點決策</button>
-<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="food" id="btn-cat-food"><span class="text-lg">🍽️</span> 吃什麼決策</button>
-<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="shop" id="btn-cat-shop"><span class="text-lg">🛍️</span> 補給決策</button>
-</div>
-</div>
-
-<div class="flex-grow overflow-y-auto custom-scrollbar pr-2 space-y-3 pb-6 relative" id="backup-list-container">
-
-</div>
-</dialog>
-</div>
 `;
 }
 
