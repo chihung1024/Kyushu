@@ -9,6 +9,20 @@ function createBackupModalController() {
         renderBackupList(container, currentBackupRegion, currentBackupCategory);
     }
 
+    function syncCategoryTabs() {
+        const categoryTabs = document.getElementById('backup-category-tabs');
+        if (!categoryTabs) return;
+        categoryTabs.querySelectorAll('button').forEach(b => {
+            if (b.dataset.cat === currentBackupCategory) {
+                b.classList.remove('category-btn-inactive');
+                b.classList.add('category-btn-active', 'text-cyan-600');
+            } else {
+                b.classList.remove('category-btn-active', 'text-cyan-600');
+                b.classList.add('category-btn-inactive');
+            }
+        });
+    }
+
     function setBackupRegion(region) {
         currentBackupRegion = region;
         ['oita', 'kumamoto'].forEach(r => {
@@ -23,6 +37,13 @@ function createBackupModalController() {
                 }
             }
         });
+        syncCategoryTabs();
+        render();
+    }
+
+    function setBackupCategory(category) {
+        currentBackupCategory = category;
+        syncCategoryTabs();
         render();
     }
 
@@ -32,30 +53,19 @@ function createBackupModalController() {
         categoryTabs.addEventListener('click', (e) => {
             const btn = e.target.closest('button');
             if (!btn || !btn.dataset.cat) return;
-
-            const category = btn.dataset.cat;
-            currentBackupCategory = category;
-
-            categoryTabs.querySelectorAll('button').forEach(b => {
-                if (b.dataset.cat === category) {
-                    b.classList.remove('category-btn-inactive');
-                    b.classList.add('category-btn-active', 'text-cyan-600');
-                } else {
-                    b.classList.remove('category-btn-active', 'text-cyan-600');
-                    b.classList.add('category-btn-inactive');
-                }
-            });
-            render();
+            setBackupCategory(btn.dataset.cat);
         });
     }
 
     function initBackupModal() {
-        setBackupRegion('oita');
+        setBackupRegion(currentBackupRegion || 'oita');
+        setBackupCategory(currentBackupCategory || 'sight');
     }
 
     function init() {
         bindCategoryTabs();
+        syncCategoryTabs();
     }
 
-    return { init, initBackupModal, setBackupRegion };
+    return { init, initBackupModal, setBackupRegion, setBackupCategory };
 }

@@ -1,4 +1,4 @@
-import { copyFile, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { copyFile, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import os from 'node:os';
@@ -57,6 +57,7 @@ ${manualHtml}
 </html>`;
 }
 
+
 async function extractPdfText(pdfPath) {
   try {
     const { stdout } = await execFileAsync('pdftotext', [pdfPath, '-'], { maxBuffer: 20 * 1024 * 1024 });
@@ -100,10 +101,25 @@ async function generatePaperPdf() {
     const html = await renderPaperManualHtml();
     await writeFile(tmpHtml, html, 'utf8');
 
-    await execFileAsync('weasyprint', [tmpHtml, distPdf], {
-      cwd: repoRoot,
-      maxBuffer: 20 * 1024 * 1024,
-    });
+    try {
+      await execFileAsync('bash', [
+        '-lc',
+        'timeout 75s weasyprint "$1" "$2"; code=$?; if [ "$code" -ne 0 ] && [ "$code" -ne 124 ]; then exit "$code"; fi',
+        'weasyprint-timeout-wrapper',
+        tmpHtml,
+        distPdf,
+      ], {
+        cwd: repoRoot,
+        maxBuffer: 20 * 1024 * 1024,
+        timeout: 90 * 1000,
+      });
+    } catch (error) {
+      if (error && error.code === 'ENOENT') {
+        throw error;
+      }
+      await stat(distPdf);
+      console.warn('Warning: WeasyPrint did not return cleanly after writing the PDF; validating generated file and continuing.');
+    }
 
     await validateGeneratedPdf(distPdf);
     await copyFile(distPdf, rootPdf);

@@ -475,10 +475,10 @@ function renderStaticModals() {
 
 <div class="flex-shrink-0 border-b border-gray-100 pb-4 mb-4 pr-10">
 <h2 class="text-2xl md:text-3xl font-black text-cyan-600 flex items-center gap-3 drop-shadow-sm">
-<span class="text-3xl">🍽️</span> 九州親子美食彈藥庫
+<span class="text-3xl">🧭</span> 九州現場決策彈藥庫
                 </h2>
 <p class="text-xs md:text-sm text-gray-500 mt-2 font-bold ml-1 md:ml-10">
-                    已整合海鮮、豐後牛／赤牛燒肉、拉麵麵食、甜點小吃；卡片可直接導航、查營業、看訂位／官方資訊。
+                    景點與採買改為 S/A/B/C/X 決策分級；美食保留完整餐廳卡。原則：保護主線、睡眠、駕駛安全與返程時間。
                 </p>
 
 <div class="flex gap-2 mt-4 overflow-x-auto custom-scrollbar pb-2 px-1">
@@ -491,9 +491,9 @@ function renderStaticModals() {
 </div>
 
 <div class="flex gap-8 mt-2 ml-2 text-sm" id="backup-category-tabs">
-<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="sight" id="btn-cat-sight"><span class="text-lg">📸</span> 必去景點</button>
+<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="sight" id="btn-cat-sight"><span class="text-lg">📸</span> 景點決策</button>
 <button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="food" id="btn-cat-food"><span class="text-lg">🍽️</span> 超詳細美食</button>
-<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="shop" id="btn-cat-shop"><span class="text-lg">🛍️</span> 採買聖地</button>
+<button class="py-2 transition-all flex items-center gap-1 text-gray-600 hover:text-cyan-600" data-cat="shop" id="btn-cat-shop"><span class="text-lg">🛍️</span> 補給決策</button>
 </div>
 </div>
 

@@ -90,18 +90,33 @@ function renderPrintViewHtml() {
             .slice(0, limit);
     };
 
+    const backupRankScore = { S: 90, 'S-': 85, A: 70, 'B+': 62, B: 55, 'B-': 48, C: 35, X: 5 };
+
     const parseBackupEntry = (entry) => {
+        if (entry && typeof entry === 'object') {
+            const name = normalizePrintText(entry.title || entry.name || '');
+            const descParts = [entry.desc, entry.condition ? `條件：${entry.condition}` : '', entry.decision ? `決策：${entry.decision}` : ''];
+            return {
+                name,
+                rank: normalizePrintText(entry.rank || 'B'),
+                desc: normalizePrintText(descParts.filter(Boolean).join('；')),
+                includeInPaper: entry.includeInPaper !== false,
+                score: backupRankScore[entry.rank] || 0
+            };
+        }
         const parts = splitText(entry);
         const name = normalizePrintText((parts[0] || '').replace(/^⭐\s*/, ''));
-        return { name, desc: normalizePrintText(parts.slice(1).join('｜')) };
+        const starred = /^⭐/.test(String(entry || ''));
+        return { name, rank: starred ? 'S' : 'B', desc: normalizePrintText(parts.slice(1).join('｜')), includeInPaper: true, score: starred ? 90 : 55 };
     };
 
     const topBackupItems = (region, category, limit = 8) => {
         const list = backupDB && backupDB[region] && backupDB[region][category];
         return (list || [])
-            .slice(0, limit)
             .map(parseBackupEntry)
-            .filter(item => item.name);
+            .filter(item => item.name && item.includeInPaper)
+            .sort((a, b) => (b.score || 0) - (a.score || 0))
+            .slice(0, limit);
     };
 
     const topGourmetBackupItems = (region, limit = 12) => {
@@ -344,24 +359,26 @@ function renderPrintViewHtml() {
             <td>${escapeHtml(row.query)}</td>
         </tr>`).join('');
 
+    const backupListBlock = (region, category, label, limit) => `
+        <section class="print-card">
+            <h3>${escapeHtml(label)}</h3>
+            ${topBackupItems(region, category, limit).map(item => `
+                <div class="print-backup-line"><strong>${escapeHtml(item.rank)}｜${escapeHtml(item.name)}</strong><p>${escapeHtml(item.desc)}</p></div>`).join('')}
+        </section>`;
+
     const backupSection = (region, title) => `
         <section class="print-manual-page print-page">
-            <h2>${escapeHtml(title)}備案索引</h2>
-            <div class="print-three-col">
-                ${['sight', 'food', 'shop'].map(category => {
-                    const label = category === 'sight' ? '景點' : category === 'food' ? '一般美食' : '購物/補給';
-                    return `<section class="print-card">
-                        <h3>${label}</h3>
-                        ${topBackupItems(region, category, 8).map(item => `
-                            <div class="print-backup-line"><strong>${escapeHtml(item.name)}</strong><p>${escapeHtml(item.desc)}</p></div>`).join('')}
-                    </section>`;
-                }).join('')}
+            <h2>${escapeHtml(title)}決策型備案索引</h2>
+            <p class="print-section-lead">紙本只列可用於現場決策的備案；完整資料請看網頁彈藥庫。S=主線/條件主線，A=高優先加點，B=救場，C/X 不主動排。</p>
+            <div class="print-two-col">
+                ${backupListBlock(region, 'sight', '景點決策', 10)}
+                ${backupListBlock(region, 'shop', '採買 / 補給決策', 8)}
             </div>
             <section class="print-card print-gourmet-index">
                 <h3>${escapeHtml(title)}精選餐廳備案</h3>
                 <table class="print-table">
                     <thead><tr><th>級</th><th>店名</th><th>類型/適合日</th><th>必點與策略</th></tr></thead>
-                    <tbody>${topGourmetBackupItems(region, 12).map(item => `
+                    <tbody>${topGourmetBackupItems(region, 3).map(item => `
                         <tr>
                             <td>${escapeHtml(item.rank)}</td>
                             <td><strong>${escapeHtml(item.name)}</strong></td>
