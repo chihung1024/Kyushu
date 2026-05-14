@@ -60,9 +60,26 @@
     window.openDayInfo = (day, mode) => openDayInfoModal(day, mode, modalController.openDialog);
     window.preparePrintView = function() {
         const container = document.getElementById('print-container');
-        if (!container || container.dataset.printReady === 'true') return;
+        if (!container) return false;
         container.innerHTML = renderPrintViewHtml();
         container.dataset.printReady = 'true';
+        return true;
+    };
+    window.printPaperGuide = async function() {
+        if (!window.preparePrintView()) return;
+        if (document.fonts && document.fonts.ready) {
+            try {
+                await document.fonts.ready;
+            } catch (error) {
+                // Font readiness is an enhancement only; print should still proceed.
+            }
+        }
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        window.print();
+    };
+    window.printPaperGuideFallback = function() {
+        if (!window.preparePrintView()) return;
+        setTimeout(() => window.print(), 200);
     };
 
     modalController.init();

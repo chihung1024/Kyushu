@@ -24,6 +24,7 @@
     print-color-adjust: exact !important;
   }
 
+  body > *:not(#print-container),
   body > .print\:hidden,
   body > div.print\:hidden,
   .print\:hidden {

@@ -16,6 +16,13 @@ tools/build-single-html.mjs # 產出交付用單檔 HTML
 dist/kyushu-trip-final.html # 交付用單檔輸出
 ```
 
+
+
+
+## 紙本攻略列印
+
+「列印紙本攻略」按鈕會重新產生專用的 `#print-container`，並等待字型與版面 reflow 後才呼叫瀏覽器列印，避免印到互動版網頁或尚未完成排版的內容。紙本內容由 `js/components/print-view.js` 依最新 `js/data/*.js` 資料即時組出；`dist/kyushu-travel-manual.pdf` 只作既有紙本範例/備援，不再作為按鈕的資料來源。
+
 ## 架構審查與模組化建議
 
 完整的專案架構盤點、風險評估與分階段拆分方案請見 [`docs/architecture-modularization-review.md`](docs/architecture-modularization-review.md)。

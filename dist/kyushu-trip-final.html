@@ -234,6 +234,7 @@
     print-color-adjust: exact !important;
   }
 
+  body > *:not(#print-container),
   body > .print\:hidden,
   body > div.print\:hidden,
   .print\:hidden {
@@ -991,7 +992,7 @@
 </div>
 
 <div class="flex justify-end gap-2 mb-4 pr-2">
-<button class="text-xs bg-gray-200 text-gray-800 font-bold px-4 py-3 md:py-2 rounded-full shadow-sm hover:bg-gray-300 transition flex items-center gap-1.5 min-w-[44px]" onclick="window.preparePrintView &amp;&amp; window.preparePrintView(); setTimeout(() =&gt; window.print(), 50)">
+<button class="text-xs bg-gray-200 text-gray-800 font-bold px-4 py-3 md:py-2 rounded-full shadow-sm hover:bg-gray-300 transition flex items-center gap-1.5 min-w-[44px]" onclick="window.printPaperGuide ? window.printPaperGuide() : (window.preparePrintView &amp;&amp; window.preparePrintView(), setTimeout(() =&gt; window.print(), 200))">
 <span class="text-sm">🖨️</span> 列印紙本攻略
                 </button>
 <button class="text-xs bg-gray-800 text-white px-4 py-3 md:py-2 rounded-full shadow-md hover:bg-gray-700 transition flex items-center gap-2 min-w-[44px]" onclick="copyDailyItinerary()">
@@ -6022,9 +6023,26 @@ function createDailyItineraryClipboardController({ getCurrentDay }) {
     window.openDayInfo = (day, mode) => openDayInfoModal(day, mode, modalController.openDialog);
     window.preparePrintView = function() {
         const container = document.getElementById('print-container');
-        if (!container || container.dataset.printReady === 'true') return;
+        if (!container) return false;
         container.innerHTML = renderPrintViewHtml();
         container.dataset.printReady = 'true';
+        return true;
+    };
+    window.printPaperGuide = async function() {
+        if (!window.preparePrintView()) return;
+        if (document.fonts && document.fonts.ready) {
+            try {
+                await document.fonts.ready;
+            } catch (error) {
+                // Font readiness is an enhancement only; print should still proceed.
+            }
+        }
+        await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        window.print();
+    };
+    window.printPaperGuideFallback = function() {
+        if (!window.preparePrintView()) return;
+        setTimeout(() => window.print(), 200);
     };
 
     modalController.init();
