@@ -1,0 +1,34 @@
+/* gourmet-backup-redesign-v1 */
+#gourmet-summary-grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:.75rem;margin-bottom:1rem}
+@media (min-width:768px){#gourmet-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.gourmet-summary-card{background:linear-gradient(180deg,#fff 0%,#fff7ed 100%);border:1px solid #fed7aa;border-radius:18px;padding:1rem;box-shadow:0 6px 16px rgba(15,23,42,.06)}
+.gourmet-summary-card h4{font-size:.83rem;font-weight:900;color:#9a3412;letter-spacing:.04em;margin-bottom:.35rem;text-transform:uppercase}
+.gourmet-summary-card p{font-size:.9rem;line-height:1.65;color:#374151;font-weight:750}
+.gourmet-card{background:#fff;border:1px solid #e5e7eb;border-radius:22px;padding:1rem;box-shadow:0 8px 20px rgba(15,23,42,.06);display:flex;flex-direction:column;gap:.75rem;min-height:100%}
+.gourmet-card.s-rank{border-color:#facc15;background:linear-gradient(180deg,#fffbeb 0%,#fff 50%);box-shadow:0 10px 24px rgba(245,158,11,.12)}
+.gourmet-card.a-rank{border-color:#fdba74;background:linear-gradient(180deg,#fff7ed 0%,#fff 48%)}
+.gourmet-card .gourmet-head{display:flex;align-items:flex-start;gap:.7rem}
+.gourmet-rank{width:2.2rem;height:2.2rem;border-radius:999px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:900;color:#fff;flex-shrink:0;box-shadow:0 4px 10px rgba(15,23,42,.14)}
+.gourmet-rank.rank-S{background:linear-gradient(135deg,#f59e0b,#eab308)}
+.gourmet-rank.rank-A{background:linear-gradient(135deg,#fb923c,#f97316)}
+.gourmet-rank.rank-B{background:linear-gradient(135deg,#64748b,#475569)}
+.gourmet-rank.rank-C{background:linear-gradient(135deg,#94a3b8,#64748b)}
+.gourmet-title{font-weight:900;color:#172033;font-size:1rem;line-height:1.35;text-decoration:none}
+.gourmet-title:hover{color:#0e7490;text-decoration:underline;text-underline-offset:3px}
+.gourmet-meta{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.35rem}
+.gourmet-chip{display:inline-flex;align-items:center;gap:.2rem;font-size:.68rem;line-height:1.2;font-weight:900;border-radius:999px;padding:.22rem .48rem;border:1px solid #e2e8f0;background:#f8fafc;color:#475569}
+.gourmet-chip.type{background:#ecfeff;border-color:#a5f3fc;color:#0e7490}
+.gourmet-chip.day{background:#fef3c7;border-color:#fde68a;color:#92400e}
+.gourmet-chip.family{background:#fdf2f8;border-color:#fbcfe8;color:#be185d}
+.gourmet-section{border-top:1px dashed #e5e7eb;padding-top:.65rem}
+.gourmet-label{font-size:.7rem;font-weight:900;color:#64748b;letter-spacing:.06em;margin-bottom:.25rem;text-transform:uppercase}
+.gourmet-text{font-size:.82rem;line-height:1.72;color:#334155;font-weight:680}
+.gourmet-text strong{font-weight:900;color:#111827}
+.gourmet-actions{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:auto;padding-top:.2rem}
+.gourmet-action{display:inline-flex;align-items:center;justify-content:center;gap:.25rem;min-height:34px;border-radius:999px;padding:.45rem .65rem;font-size:.73rem;font-weight:900;border:1px solid #bfdbfe;background:#eff6ff;color:#1d4ed8;text-decoration:none!important;line-height:1.2}
+.gourmet-action.secondary{border-color:#fed7aa;background:#fff7ed;color:#c2410c}
+.gourmet-action.warn{border-color:#fecaca;background:#fef2f2;color:#b91c1c}
+.gourmet-action:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(15,23,42,.08)}
+.gourmet-warning{background:#fff7ed;border:1px solid #fed7aa;color:#7c2d12;border-radius:16px;padding:.75rem .85rem;font-size:.82rem;line-height:1.65;font-weight:750;margin-bottom:1rem}
+.gourmet-warning strong{font-weight:900;color:#9a3412}
+@media (max-width:640px){.gourmet-card{padding:.9rem;border-radius:18px}.gourmet-actions{display:grid;grid-template-columns:1fr;gap:.45rem}.gourmet-action{width:100%;min-height:38px}.gourmet-title{font-size:.98rem}.gourmet-text{font-size:.82rem}}
