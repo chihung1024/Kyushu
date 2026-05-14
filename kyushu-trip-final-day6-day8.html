@@ -158,6 +158,78 @@
 
 
 
+/* === css/decision-center.css === */
+/* decision-center-ui-v3: calm, field-use oriented modal and food decision cards. */
+:root{
+  --decision-ink:#172033;
+  --decision-muted:#64748b;
+  --decision-line:#e2e8f0;
+  --decision-soft:#f8fafc;
+  --decision-surface:#ffffff;
+  --decision-primary:#0f172a;
+  --decision-cyan:#0e7490;
+  --decision-cyan-soft:#ecfeff;
+  --decision-amber:#b45309;
+  --decision-amber-soft:#fffbeb;
+  --decision-red:#b91c1c;
+  --decision-red-soft:#fef2f2;
+  --decision-shadow:0 18px 44px rgba(15,23,42,.12);
+  --decision-shadow-soft:0 8px 22px rgba(15,23,42,.06);
+}
+
+#backupModal.decision-modal{
+  overflow:hidden!important;
+  background:linear-gradient(180deg,#fff 0%,#f8fafc 100%)!important;
+  border:1px solid rgba(226,232,240,.96)!important;
+}
+.decision-modal-close{
+  position:absolute;top:1rem;right:1rem;z-index:30;width:2.75rem;height:2.75rem;
+  border-radius:999px;background:#fff;border:1px solid var(--decision-line);color:#475569;
+  font-weight:950;font-size:1.05rem;box-shadow:0 8px 20px rgba(15,23,42,.08);
+  display:flex;align-items:center;justify-content:center;transition:.18s ease;
+}
+.decision-modal-close:hover{background:#0f172a;color:#fff;transform:translateY(-1px)}
+.decision-modal-header{
+  position:sticky;top:0;z-index:20;padding:1.15rem 1.25rem 1rem;background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--decision-line);
+}
+.decision-modal-titlebar{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.72fr);gap:1rem;align-items:end;padding-right:3.3rem}
+.decision-modal-kicker{font-size:.68rem;font-weight:950;letter-spacing:.12em;color:var(--decision-cyan);text-transform:uppercase;margin-bottom:.25rem}
+.decision-modal-titlebar h2{font-size:1.55rem;line-height:1.22;font-weight:950;color:var(--decision-ink);margin:0}
+.decision-modal-titlebar p{font-size:.88rem;line-height:1.7;color:var(--decision-muted);font-weight:740;margin-top:.42rem;max-width:780px}
+.decision-modal-principle{background:var(--decision-soft);border:1px solid var(--decision-line);border-radius:18px;padding:.75rem .85rem;box-shadow:var(--decision-shadow-soft)}
+.decision-modal-principle strong{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:#334155;font-weight:950;margin-bottom:.22rem}
+.decision-modal-principle span{display:block;color:#475569;font-size:.82rem;line-height:1.6;font-weight:800}
+.decision-modal-nav-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:.85rem;margin-top:1rem}
+.decision-nav-block{border:1px solid var(--decision-line);background:#fff;border-radius:18px;padding:.72rem;box-shadow:0 4px 14px rgba(15,23,42,.04)}
+.decision-nav-label{display:block;font-size:.7rem;font-weight:950;letter-spacing:.08em;color:#64748b;text-transform:uppercase;margin:0 0 .45rem .15rem}
+.decision-segment,.decision-category-tabs{display:grid;gap:.5rem}.decision-segment{grid-template-columns:repeat(2,minmax(0,1fr))}.decision-category-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.decision-segment-btn,.decision-category-tab{min-height:3.25rem;border-radius:14px;border:1px solid var(--decision-line);background:#f8fafc;color:#334155;padding:.55rem .7rem;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:.05rem;font-weight:900;transition:.16s ease;text-align:left}
+.decision-segment-btn span,.decision-category-tab span{font-size:.86rem;line-height:1.25}.decision-segment-btn small,.decision-category-tab small{font-size:.67rem;line-height:1.25;color:#64748b;font-weight:850}
+.decision-segment-btn:hover,.decision-category-tab:hover{background:#fff;transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,23,42,.07)}
+.decision-segment-btn.is-active,.decision-category-tab.is-active{background:#0f172a;color:#fff;border-color:#0f172a;box-shadow:0 10px 22px rgba(15,23,42,.16)}
+.decision-segment-btn.is-active small,.decision-category-tab.is-active small{color:#cbd5e1}.decision-category-tab.is-active:nth-child(2){background:#0e7490;border-color:#0e7490}.decision-category-tab.is-active:nth-child(3){background:#78350f;border-color:#78350f}
+.decision-modal-body{padding:1rem 1.25rem 1.25rem;max-height:calc(92vh - 218px);overflow-y:auto!important;background:linear-gradient(180deg,#f8fafc 0%,#fff 100%)}
+
+.decision-layout{display:grid;gap:1rem}.decision-empty{background:#fff;border:1px solid var(--decision-line);border-radius:20px;padding:1.2rem;color:#334155;font-weight:850;text-align:center}
+.decision-hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:1rem;align-items:center;background:#fff;border:1px solid var(--decision-line);border-radius:22px;padding:1rem;box-shadow:var(--decision-shadow-soft)}
+.decision-eyebrow{font-size:.7rem;font-weight:950;letter-spacing:.1em;text-transform:uppercase;color:var(--decision-cyan);margin-bottom:.25rem}.decision-hero h3{font-size:1.42rem;font-weight:950;color:var(--decision-ink);line-height:1.25;margin:0}.decision-hero p{font-size:.9rem;line-height:1.75;color:#475569;font-weight:740;margin-top:.35rem}.decision-metrics{display:flex;flex-wrap:wrap;gap:.45rem;justify-content:flex-end}.decision-metric{display:inline-flex;align-items:baseline;gap:.25rem;border:1px solid var(--decision-line);background:var(--decision-soft);border-radius:999px;padding:.34rem .65rem;font-size:.72rem;font-weight:900;color:#64748b}.decision-metric strong{font-size:1rem;color:var(--decision-ink);font-weight:950}.decision-rule-strip{display:flex;flex-wrap:wrap;gap:.45rem}.decision-rule-strip span{background:#fff;border:1px solid var(--decision-line);box-shadow:0 4px 12px rgba(15,23,42,.04);border-radius:999px;padding:.45rem .72rem;font-size:.78rem;font-weight:900;color:#334155}.decision-spotlight,.food-quick-picks{background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%);border:1px solid #cbd5e1;border-radius:22px;padding:1rem;box-shadow:var(--decision-shadow-soft)}.decision-spotlight header,.food-quick-picks header{display:flex;justify-content:space-between;align-items:flex-end;gap:.8rem;margin-bottom:.75rem}.decision-spotlight header span,.food-quick-picks header span{font-size:.96rem;font-weight:950;color:var(--decision-ink)}.decision-spotlight header p,.food-quick-picks header p{font-size:.78rem;color:#64748b;font-weight:800;text-align:right;line-height:1.55}.decision-spotlight-grid,.food-quick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}.food-quick-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+.decision-section,.food-section-v3{border:1px solid var(--decision-line);border-radius:22px;background:#fff;padding:1rem;box-shadow:var(--decision-shadow-soft)}.decision-section>header,.food-section-v3>header{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.8rem}.decision-section>header>div,.food-section-v3>header>div{display:flex;align-items:center;gap:.55rem}.food-section-v3>header>div{display:block}.food-section-v3>header span{display:block;font-size:.68rem;font-weight:950;letter-spacing:.09em;text-transform:uppercase;color:var(--decision-cyan);margin-bottom:.12rem}.decision-section h3,.food-section-v3 h3{font-size:1.08rem;line-height:1.3;font-weight:950;color:var(--decision-ink);margin:0}.decision-section header p,.food-section-v3 header p{max-width:560px;font-size:.8rem;line-height:1.6;color:#64748b;font-weight:760;text-align:right}.decision-card-grid,.food-card-grid-v3{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+
+.decision-card,.food-card-v3{background:#fff;border:1px solid var(--decision-line);border-radius:18px;padding:.9rem;box-shadow:0 6px 18px rgba(15,23,42,.045);display:flex;flex-direction:column;gap:.68rem;min-height:100%}.decision-card.compact,.food-card-v3.compact{box-shadow:none;padding:.82rem}.decision-card:hover,.food-card-v3:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(15,23,42,.08)}.decision-card-head,.food-card-top{display:flex;align-items:flex-start;gap:.7rem}.decision-rank,.food-rank-badge{display:inline-flex;align-items:center;justify-content:center;min-width:2.25rem;height:2.25rem;border-radius:999px;font-size:.78rem;font-weight:950;flex:0 0 auto}.decision-card h4,.food-card-title{font-size:1rem;line-height:1.38;font-weight:950;color:var(--decision-ink);text-decoration:none}.decision-card h4{margin:0}.food-card-title:hover{color:#0e7490;text-decoration:underline;text-underline-offset:3px}.decision-card p,.food-card-top p{font-size:.78rem;line-height:1.6;color:#64748b;font-weight:760;margin:.2rem 0 0}.decision-chip-row{display:flex;flex-wrap:wrap;gap:.34rem}.decision-chip{display:inline-flex;gap:.22rem;align-items:center;border:1px solid var(--decision-line);background:#f8fafc;border-radius:999px;padding:.22rem .5rem;font-size:.68rem;line-height:1.25;font-weight:850;color:#475569}.decision-chip b{color:#0f172a;font-weight:950}.decision-rows,.food-decision-grid-v3{display:grid;gap:.42rem}.decision-row{border:1px solid var(--decision-line);background:#f8fafc;border-radius:13px;padding:.52rem .62rem}.decision-row b{display:block;font-size:.67rem;letter-spacing:.06em;text-transform:uppercase;color:#64748b;font-weight:950;margin-bottom:.12rem}.decision-row span{display:block;font-size:.78rem;line-height:1.58;color:#334155;font-weight:720}.decision-row.primary{border-color:#bae6fd;background:#ecfeff}.decision-row.primary b{color:#0e7490}.decision-row.warn{border-color:#fed7aa;background:#fff7ed}.decision-row.warn b{color:#c2410c}.decision-tags{display:flex;flex-wrap:wrap;gap:.3rem}.decision-tags span{font-size:.66rem;font-weight:900;background:#eef2ff;color:#4338ca;border:1px solid #c7d2fe;border-radius:999px;padding:.16rem .45rem}.decision-card-actions{display:flex;flex-wrap:wrap;gap:.42rem;margin-top:auto}.decision-card-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;border-radius:11px;padding:.42rem .62rem;font-size:.72rem;line-height:1.2;font-weight:920;background:#0f172a;color:#fff!important;text-decoration:none!important;border:1px solid #0f172a}.decision-card-actions a:nth-child(n+2){background:#fff;color:#334155!important;border-color:#cbd5e1}.decision-card-actions a:hover{transform:translateY(-1px);box-shadow:0 6px 14px rgba(15,23,42,.08)}
+
+.rank-tone-s .decision-rank,.decision-rank.rank-tone-s{background:#fee2e2;color:#991b1b}.rank-tone-a .decision-rank,.decision-rank.rank-tone-a{background:#fef3c7;color:#92400e}.rank-tone-b .decision-rank,.decision-rank.rank-tone-b{background:#dbeafe;color:#1d4ed8}.rank-tone-c .decision-rank,.decision-rank.rank-tone-c{background:#e2e8f0;color:#475569}.rank-tone-x .decision-rank,.decision-rank.rank-tone-x{background:#111827;color:#fff}.decision-card.rank-tone-s,.decision-section.rank-tone-s,.food-card-v3.rank-s,.food-card-v3.rank-sminus{border-color:#fecaca;background:linear-gradient(180deg,#fffafa 0%,#fff 65%)}.decision-card.rank-tone-a,.decision-section.rank-tone-a,.food-card-v3.rank-a{border-color:#fde68a;background:linear-gradient(180deg,#fffdf7 0%,#fff 65%)}.decision-card.rank-tone-b,.decision-section.rank-tone-b,.food-card-v3.rank-b{border-color:#bfdbfe}.decision-card.rank-tone-c,.decision-section.rank-tone-c,.food-card-v3.rank-c{background:#f8fafc}.decision-card.rank-tone-x,.decision-section.rank-tone-x,.food-card-v3.rank-x{background:#f8fafc;border-color:#94a3b8}
+.food-layout-v3 .decision-hero .decision-eyebrow{color:#b45309}.food-layout-v3 .decision-hero{border-color:#fed7aa;background:linear-gradient(180deg,#fff 0%,#fffaf0 100%)}.food-strategy-card{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(220px,.7fr);gap:.8rem;background:#fff;border:1px solid #fed7aa;border-radius:20px;padding:.9rem;box-shadow:var(--decision-shadow-soft)}.food-strategy-card span{display:block;font-size:.7rem;font-weight:950;letter-spacing:.08em;text-transform:uppercase;color:#b45309}.food-strategy-card p{font-size:.86rem;line-height:1.7;color:#475569;font-weight:760;margin-top:.18rem}.food-strategy-rule{background:#fff7ed;border:1px solid #fed7aa;border-radius:15px;padding:.7rem}.food-strategy-rule strong{display:block;color:#7c2d12;font-size:.75rem;font-weight:950;margin-bottom:.2rem}.food-strategy-rule span{font-size:.82rem;line-height:1.55;color:#92400e;letter-spacing:0;text-transform:none}.food-rank-badge.rank-s,.food-rank-badge.rank-sminus{background:#fef3c7;color:#92400e}.food-rank-badge.rank-a{background:#ecfeff;color:#0e7490}.food-rank-badge.rank-b{background:#dbeafe;color:#1d4ed8}.food-rank-badge.rank-c{background:#e2e8f0;color:#475569}.food-rank-badge.rank-x{background:#111827;color:#fff}.food-section-v3.rank-tone-s{border-color:#fed7aa;background:#fffaf0}.food-section-v3.rank-tone-a{border-color:#bae6fd;background:#fbfdff}.food-section-v3.rank-tone-b{border-color:#bfdbfe;background:#f8fbff}.food-section-v3.rank-tone-c,.food-section-v3.rank-tone-x{background:#f8fafc}.food-card-v3 .decision-card-actions a:first-child{background:#78350f;border-color:#78350f}.food-card-v3.rank-x .decision-card-actions a:first-child{background:#0f172a;border-color:#0f172a}
+
+/* Calm down older daily food cards: keep data rich, reduce visual noise. */
+.daily-gourmet-panel{border-color:#e2e8f0!important;background:#fff!important;box-shadow:var(--decision-shadow-soft)!important;border-radius:22px!important}.daily-gourmet-header{background:linear-gradient(180deg,#fff 0%,#f8fafc 100%)!important;border-bottom:1px solid var(--decision-line)!important}.daily-gourmet-title{color:var(--decision-ink)!important}.daily-gourmet-brief{color:#475569!important}.daily-gourmet-rule{border-color:#cbd5e1!important;background:#f8fafc!important;color:#334155!important}.daily-gourmet-alert{border-left-color:#0e7490!important;background:#ecfeff!important;color:#0f172a!important}.daily-gourmet-category{border-color:#e2e8f0!important;box-shadow:none!important}.daily-gourmet-category summary::after{background:#f8fafc!important;border-color:#cbd5e1!important;color:#334155!important}.daily-gourmet-card{box-shadow:none!important;border-color:#e2e8f0!important}.daily-gourmet-card.gourmet-s,.daily-gourmet-card.gourmet-sminus{border-color:#fed7aa!important;background:#fffaf0!important}.daily-gourmet-card.gourmet-a{border-color:#bae6fd!important;background:#fbfdff!important}.daily-gourmet-card-section.decision{background:#f8fafc!important;border-color:#e2e8f0!important}.daily-gourmet-footer{background:#f8fafc!important;border-top-color:#e2e8f0!important;color:#475569!important}
+
+@media(max-width:980px){.decision-modal-titlebar,.decision-modal-nav-grid,.decision-hero,.food-strategy-card{grid-template-columns:1fr}.decision-modal-titlebar{padding-right:3rem}.decision-metrics{justify-content:flex-start}.decision-spotlight-grid,.food-quick-grid,.decision-card-grid,.food-card-grid-v3{grid-template-columns:1fr}.decision-section>header,.food-section-v3>header,.decision-spotlight header,.food-quick-picks header{display:block}.decision-section header p,.food-section-v3 header p,.decision-spotlight header p,.food-quick-picks header p{text-align:left;margin-top:.35rem}.decision-modal-body{max-height:none}}
+@media(max-width:640px){#backupModal.decision-modal{max-height:calc((var(--app-vh,1vh) * 100) - 16px)!important}.decision-modal-header{padding:.85rem}.decision-modal-close{top:.7rem;right:.7rem;width:2.35rem;height:2.35rem}.decision-modal-titlebar{padding-right:2.7rem}.decision-modal-titlebar h2{font-size:1.18rem}.decision-modal-titlebar p{font-size:.78rem;line-height:1.6}.decision-modal-principle{display:none}.decision-segment,.decision-category-tabs{grid-template-columns:1fr}.decision-segment-btn,.decision-category-tab{min-height:2.9rem}.decision-modal-body{padding:.75rem}.decision-hero,.decision-section,.food-section-v3,.decision-spotlight,.food-quick-picks,.food-strategy-card{border-radius:18px;padding:.82rem}.decision-card,.food-card-v3{border-radius:16px;padding:.78rem}.decision-card-actions{display:grid;grid-template-columns:1fr}.decision-card-actions a{width:100%}.decision-metrics{gap:.35rem}.decision-metric{font-size:.68rem;padding:.28rem .52rem}.decision-rule-strip span{font-size:.72rem;padding:.36rem .58rem}.decision-modal-body{max-height:none!important;overflow-y:visible!important}.daily-gourmet-actions{grid-template-columns:1fr!important}}
+
+
+
 /* === css/print.css === */
 /* print-paper-guide-v5: formal A4 travel manual. */
 @media print {
@@ -4591,19 +4663,45 @@ function renderDayContent(data, currentDay) {
 
 </script>
 <script data-source="js/components/backup-list.js">
-// Backup spot and gourmet list renderers.
+// Backup spot, shop and gourmet decision center renderers.
+// The modal is intentionally decision-first: keep main routes safe, then decide
+// whether a spot / meal / supply run is worth inserting.
 
 const BACKUP_RANK_ORDER = ['S', 'S-', 'A', 'B+', 'B', 'B-', 'C', 'X'];
 const BACKUP_RANK_SCORE = { S: 90, 'S-': 85, A: 70, 'B+': 62, B: 55, 'B-': 48, C: 35, X: 5 };
 const BACKUP_RANK_META = {
-    S: { label: 'S 主線核心', tone: 's', copy: '應固定保留；不要再把其他加點壓到它前面。' },
-    'S-': { label: 'S- 條件型主線', tone: 's', copy: '價值高，但必須服從天候、潮汐、時間或返程安全。' },
-    A: { label: 'A 高優先加點', tone: 'a', copy: '有條件就做；時間不足時可以砍，不需要補償。' },
-    'B+': { label: 'B+ 強力救場', tone: 'b', copy: '下雨、太熱、孩子累、主線提前結束時使用。' },
-    B: { label: 'B 情境救場', tone: 'b', copy: '主要價值是解決現場問題，不是增加景點數。' },
-    'B-': { label: 'B- 需重排備案', tone: 'b', copy: '除非整段改線，否則不硬插。' },
-    C: { label: 'C 收藏', tone: 'c', copy: '保留在資料庫；這趟不主動排。' },
-    X: { label: 'X 本趟不建議', tone: 'x', copy: '景點本身可能很好，但會破壞本趟節奏。' },
+    S: { label: '主線核心', tone: 's', copy: '應固定保留；不要再把其他加點壓到它前面。' },
+    'S-': { label: '條件型主線', tone: 's', copy: '價值高，但必須服從天候、潮汐、時間或返程安全。' },
+    A: { label: '高優先加點', tone: 'a', copy: '有條件就做；時間不足時可以砍，不需要補償。' },
+    'B+': { label: '強力救場', tone: 'b', copy: '下雨、太熱、孩子累、主線提前結束時使用。' },
+    B: { label: '情境救場', tone: 'b', copy: '主要價值是解決現場問題，不是增加景點數。' },
+    'B-': { label: '需重排備案', tone: 'b', copy: '除非整段改線，否則不硬插。' },
+    C: { label: '收藏', tone: 'c', copy: '保留在資料庫；這趟不主動排。' },
+    X: { label: '本趟不建議', tone: 'x', copy: '景點本身可能很好，但會破壞本趟節奏。' },
+};
+
+const FOOD_CATEGORY_ORDER = [
+    '主線餐',
+    '高優先餐',
+    '地方代表',
+    '親子保底',
+    '保底餐 / 補給',
+    '甜點零食',
+    '甜點零食 / 伴手禮',
+    '伴手禮',
+    '願望餐',
+    '成人加碼',
+    '收藏',
+    '不建議硬追',
+];
+const FOOD_RANK_SCORE = { S: 90, 'S-': 84, A: 70, B: 52, C: 30, X: 0 };
+const FOOD_RANK_META = {
+    S: { label: '主線餐', tone: 's', copy: '可以為它保留時間，但仍要服從硬切時間。' },
+    'S-': { label: '條件主線', tone: 's', copy: '值得吃；但需要天候、排隊或當天動線成立。' },
+    A: { label: '高優先', tone: 'a', copy: '有時間就攻；排隊過長就降級。' },
+    B: { label: '保底 / 救場', tone: 'b', copy: '孩子累、太晚、天候差時用。' },
+    C: { label: '收藏', tone: 'c', copy: '可以記住，但這趟不主動追。' },
+    X: { label: '不建議硬追', tone: 'x', copy: '不是不好吃，而是不符合這趟節奏。' },
 };
 
 function normalizeBackupEntry(item) {
@@ -4640,6 +4738,10 @@ function getBackupRankMeta(rank) {
     return BACKUP_RANK_META[rank] || BACKUP_RANK_META.B;
 }
 
+function getFoodRankMeta(rank) {
+    return FOOD_RANK_META[rank] || FOOD_RANK_META.B;
+}
+
 function sortBackupEntries(entries) {
     return entries.slice().sort((a, b) => {
         const rankDelta = (BACKUP_RANK_SCORE[b.rank] || 0) - (BACKUP_RANK_SCORE[a.rank] || 0);
@@ -4647,68 +4749,116 @@ function sortBackupEntries(entries) {
     });
 }
 
+function sortFoodEntries(entries) {
+    return entries.slice().sort((a, b) => {
+        const priorityDelta = (b.paperPriority || 0) - (a.paperPriority || 0);
+        const rankDelta = (FOOD_RANK_SCORE[b.rank] || 0) - (FOOD_RANK_SCORE[a.rank] || 0);
+        return priorityDelta || rankDelta || String(a.name).localeCompare(String(b.name), 'zh-Hant');
+    });
+}
+
+function compactCount(entries, ranks) {
+    return entries.filter(item => ranks.includes(item.rank)).length;
+}
+
+function renderDecisionMetric(label, value) {
+    return `<span class="decision-metric"><strong>${escapeHtml(String(value))}</strong>${escapeHtml(label)}</span>`;
+}
+
+function getRankLegend(category) {
+    if (category === 'food') return 'S 主線餐 / A 可攻 / B 保底 / C 收藏 / X 不硬追';
+    if (category === 'shop') return 'S 主力補給 / A 順路優先 / B 缺東西才用 / C/X 不主動排';
+    return 'S 主線 / A 可攻 / B 救場 / C 收藏 / X 不建議';
+}
+
 function backupMetaChip(label, value) {
     if (!value) return '';
-    return `<span class="backup-meta-chip"><b>${escapeHtml(label)}</b>${escapeHtml(value)}</span>`;
+    return `<span class="decision-chip"><b>${escapeHtml(label)}</b>${escapeHtml(value)}</span>`;
 }
 
 function backupActionLinks(entry) {
     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(entry.mapQuery || entry.title)}`;
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent((entry.mapQuery || entry.title) + ' 営業時間 駐車場 公式')}`;
-    return `<div class="backup-actions">
-        <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer">📍 導航</a>
-        <a href="${escapeAttr(searchUrl)}" target="_blank" rel="noopener noreferrer">🔎 查營業/停車</a>
+    return `<div class="decision-card-actions">
+        <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer">導航</a>
+        <a href="${escapeAttr(searchUrl)}" target="_blank" rel="noopener noreferrer">查營業 / 停車</a>
     </div>`;
 }
 
-function renderDecisionBackupCard(entry) {
+function renderDecisionRow(label, value, tone = '') {
+    if (!value) return '';
+    return `<div class="decision-row ${escapeAttr(tone)}"><b>${escapeHtml(label)}</b><span>${escapeHtml(value)}</span></div>`;
+}
+
+function renderDecisionBackupCard(entry, compact = false) {
     const meta = getBackupRankMeta(entry.rank);
-    const tagHtml = (entry.tags || []).slice(0, 4).map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
-    return `<article class="backup-decision-card rank-tone-${escapeAttr(meta.tone)}">
-        <div class="backup-decision-head">
-            <span class="backup-rank-pill rank-tone-${escapeAttr(meta.tone)}">${escapeHtml(entry.rank)}</span>
+    const tagHtml = (entry.tags || []).slice(0, compact ? 2 : 4).map(tag => `<span>${escapeHtml(tag)}</span>`).join('');
+    return `<article class="decision-card rank-tone-${escapeAttr(meta.tone)} ${compact ? 'compact' : ''}">
+        <div class="decision-card-head">
+            <span class="decision-rank rank-tone-${escapeAttr(meta.tone)}">${escapeHtml(entry.rank)}</span>
             <div class="min-w-0">
                 <h4>${escapeHtml(entry.title)}</h4>
-                <p>${escapeHtml(entry.desc || '尚未填寫說明。')}</p>
+                ${entry.desc ? `<p>${escapeHtml(entry.desc)}</p>` : ''}
             </div>
         </div>
-        <div class="backup-meta-row">
+        <div class="decision-chip-row">
             ${backupMetaChip('類型', entry.type)}
             ${backupMetaChip('適合', entry.bestDays)}
             ${backupMetaChip('時間', entry.time)}
             ${backupMetaChip('風險', entry.risk)}
         </div>
-        <div class="backup-decision-grid">
-            ${entry.condition ? `<div><strong>插入條件</strong><span>${escapeHtml(entry.condition)}</span></div>` : ''}
-            ${entry.sacrifice ? `<div><strong>犧牲代價</strong><span>${escapeHtml(entry.sacrifice)}</span></div>` : ''}
-            ${entry.decision ? `<div class="decision"><strong>一句決策</strong><span>${escapeHtml(entry.decision)}</span></div>` : ''}
+        <div class="decision-rows">
+            ${renderDecisionRow('適合情境', entry.condition || meta.copy)}
+            ${renderDecisionRow('犧牲代價', entry.sacrifice)}
+            ${renderDecisionRow('一句決策', entry.decision, 'primary')}
         </div>
-        ${tagHtml ? `<div class="backup-tag-row">${tagHtml}</div>` : ''}
+        ${tagHtml ? `<div class="decision-tags">${tagHtml}</div>` : ''}
         ${backupActionLinks(entry)}
     </article>`;
 }
 
-function renderBackupSummary(entries, currentBackupCategory) {
-    const rankCount = entries.reduce((acc, entry) => {
-        const key = entry.rank && entry.rank.startsWith('S') ? 'S' : entry.rank && entry.rank.startsWith('B') ? 'B' : entry.rank || 'B';
-        acc[key] = (acc[key] || 0) + 1;
-        return acc;
-    }, {});
-    const title = currentBackupCategory === 'shop' ? '採買補給決策' : '景點決策分級';
-    const rule = currentBackupCategory === 'shop'
-        ? 'S＝主力補給；A＝順路優先；B＝缺東西或改案時使用；C/X 不主動排。'
-        : 'S＝主線核心；A＝高優先加點；B＝情境救場；C＝收藏；X＝本趟不建議。';
-    return `<section class="backup-control-panel">
+function renderDecisionHero(entries, currentBackupCategory, currentBackupRegion) {
+    const titleMap = { sight: '去哪裡', food: '吃什麼', shop: '怎麼補給' };
+    const subtitleMap = {
+        sight: '先保護主線，再用 A/B 備案處理天候、疲勞與早到晚到。',
+        food: '先選可控餐，再看排隊與孩子電量；甜點只服務行程，不反客為主。',
+        shop: '把補給視為風險控制，不把購物變成第二套行程。',
+    };
+    const regionName = currentBackupRegion === 'oita' ? '大分・別府・由布院' : '熊本・阿蘇・上天草';
+    const metrics = [
+        renderDecisionMetric('全部', entries.length),
+        renderDecisionMetric('S / S-', compactCount(entries, ['S', 'S-'])),
+        renderDecisionMetric('A', compactCount(entries, ['A'])),
+        renderDecisionMetric('B 系', entries.filter(item => String(item.rank || '').startsWith('B')).length),
+        renderDecisionMetric('C / X', compactCount(entries, ['C', 'X'])),
+    ].join('');
+    return `<section class="decision-hero">
         <div>
-            <span>Decision Arsenal</span>
-            <h3>${escapeHtml(title)}</h3>
-            <p>${escapeHtml(rule)} 目標不是多跑，而是保護主線、睡眠、還車與駕駛安全。</p>
+            <div class="decision-eyebrow">${escapeHtml(regionName)}</div>
+            <h3>${escapeHtml(titleMap[currentBackupCategory] || '現場決策')}</h3>
+            <p>${escapeHtml(subtitleMap[currentBackupCategory] || '')}</p>
         </div>
-        <div class="backup-summary-stats">
-            <strong>${entries.length}</strong><span>可查項目</span>
-            <strong>${rankCount.S || 0}</strong><span>主線/條件主線</span>
-            <strong>${rankCount.A || 0}</strong><span>高優先</span>
-            <strong>${rankCount.B || 0}</strong><span>救場</span>
+        <div class="decision-metrics">${metrics}</div>
+    </section>`;
+}
+
+function renderDecisionRuleStrip(category) {
+    const rules = category === 'food'
+        ? ['排隊超過 30 分鐘：降級', '返程日不追名店', '小孩餓了先保底', '生食與牡蠣保守處理']
+        : category === 'shop'
+            ? ['先買水與點心', '缺東西才進商場', '購物不壓縮睡眠', '返程日只買機場可帶走']
+            : ['先看硬切時間', '孩子累直接降級', '下雨改室內', '不為補點犧牲還車'];
+    return `<div class="decision-rule-strip">${rules.map(rule => `<span>${escapeHtml(rule)}</span>`).join('')}</div>`;
+}
+
+function renderDecisionSpotlight(entries, category) {
+    const picks = entries.filter(item => ['S', 'S-', 'A'].includes(item.rank)).slice(0, 3);
+    if (!picks.length) return '';
+    const label = category === 'food' ? '先看這幾個' : category === 'shop' ? '最穩補給' : '優先判斷';
+    return `<section class="decision-spotlight">
+        <header><span>${escapeHtml(label)}</span><p>${escapeHtml(getRankLegend(category))}</p></header>
+        <div class="decision-spotlight-grid">
+            ${picks.map(item => renderDecisionBackupCard(item, true)).join('')}
         </div>
     </section>`;
 }
@@ -4718,7 +4868,7 @@ function renderDecisionBackupList(container, currentBackupRegion, currentBackupC
     const entries = sortBackupEntries(rawList.map(normalizeBackupEntry).filter(entry => entry.title));
 
     if (!entries.length) {
-        container.innerHTML = `<div class="bg-gray-50 border-2 border-gray-200 rounded-2xl p-4 font-bold text-gray-700">目前沒有符合的備案資料。</div>`;
+        container.innerHTML = `<div class="decision-empty">目前沒有符合的備案資料。</div>`;
         return;
     }
 
@@ -4733,84 +4883,106 @@ function renderDecisionBackupList(container, currentBackupRegion, currentBackupC
         .filter(rank => grouped[rank] && grouped[rank].length)
         .map(rank => {
             const meta = getBackupRankMeta(rank);
-            return `<section class="backup-rank-section rank-tone-${escapeAttr(meta.tone)}">
+            return `<section class="decision-section rank-tone-${escapeAttr(meta.tone)}">
                 <header>
-                    <div><span class="backup-rank-pill rank-tone-${escapeAttr(meta.tone)}">${escapeHtml(rank)}</span><h3>${escapeHtml(meta.label)}</h3></div>
+                    <div><span class="decision-rank rank-tone-${escapeAttr(meta.tone)}">${escapeHtml(rank)}</span><h3>${escapeHtml(meta.label)}</h3></div>
                     <p>${escapeHtml(meta.copy)}</p>
                 </header>
-                <div class="backup-card-grid">
-                    ${grouped[rank].map(renderDecisionBackupCard).join('')}
+                <div class="decision-card-grid">
+                    ${grouped[rank].map(item => renderDecisionBackupCard(item)).join('')}
                 </div>
             </section>`;
         }).join('');
 
-    container.innerHTML = `<div class="backup-decision-layout animate-[fadeIn_0.3s_ease-out]">
-        ${renderBackupSummary(entries, currentBackupCategory)}
+    container.innerHTML = `<div class="decision-layout animate-[fadeIn_0.3s_ease-out]">
+        ${renderDecisionHero(entries, currentBackupCategory, currentBackupRegion)}
+        ${renderDecisionRuleStrip(currentBackupCategory)}
+        ${renderDecisionSpotlight(entries, currentBackupCategory)}
         ${groupHtml}
     </div>`;
-}
-
-function getFoodRankLabel(rank) {
-    const labels = {
-        S: 'S 主線餐',
-        'S-': 'S- 條件主線',
-        A: 'A 高優先',
-        B: 'B 保底/救場',
-        C: 'C 收藏',
-        X: 'X 不建議'
-    };
-    return labels[rank] || `${rank || 'B'} 決策`;
 }
 
 function normalizeFoodRankClass(rank) {
     return String(rank || 'B').replace(/[^A-Za-z0-9_-]/g, '').replace(/-/g, 'minus').toLowerCase();
 }
 
-function renderFoodDecisionChip(label, value, extraClass = '') {
+function foodDecisionChip(label, value) {
     if (!value) return '';
-    return `<span class="food-decision-chip ${escapeAttr(extraClass)}"><b>${escapeHtml(label)}</b>${escapeHtml(value)}</span>`;
+    return `<span class="decision-chip"><b>${escapeHtml(label)}</b>${escapeHtml(value)}</span>`;
 }
 
-function renderFoodDecisionCard(item) {
+function getFoodAvoidText(item) {
+    if (item.warning) return item.warning;
+    if (item.rank === 'X') return '不要為它改動主線；這趟只作提醒。';
+    if (item.rank === 'C') return '這趟不主動追，剛好遇到再說。';
+    if (String(item.queueRisk || '').includes('高')) return '排隊或等待過長就放棄，不補償。';
+    return '排隊、孩子狀態或硬切時間不對，就直接降級。';
+}
+
+function getFoodFallbackText(item) {
+    const category = item.category || '';
+    if (category.includes('甜點')) return '買不到就改便利商店甜點或飯店宵夜，不補點。';
+    if (category.includes('伴手禮')) return '最後可用機場 / 商場伴手禮櫃收斂。';
+    if (category.includes('保底')) return '這本身就是保底，不需要再找第二個保底。';
+    if (item.area && item.area.includes('別府')) return '改 Youme Town / MEGA Trial / 飯店附近餐。';
+    if (item.area && item.area.includes('天草')) return '改天のや、道之驛或車上補給。';
+    return '改商場、美食街、便利商店或飯店附近可控餐。';
+}
+
+function renderFoodDecisionCard(item, compact = false) {
     const rank = item.rank || 'B';
     const rankKey = normalizeFoodRankClass(rank);
+    const rankMeta = getFoodRankMeta(rank);
     const query = item.mapQuery || item.name;
     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query || '')}`;
     const searchUrl = `https://www.google.com/search?q=${encodeURIComponent((query || '') + ' 営業時間 定休日 メニュー 予約 テイクアウト')}`;
-    const links = (item.links || []).map(link => {
+    const links = (item.links || []).slice(0, compact ? 1 : 2).map(link => {
         const url = safeExternalUrl(link.url, mapUrl);
-        return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer" class="gourmet-action secondary">🔎 ${escapeHtml(link.label || '官方')}</a>`;
+        return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label || '官方')}</a>`;
     }).join('');
-    const warnBlock = item.warning ? `<div class="food-decision-note warn"><strong>注意</strong><span>${escapeHtml(item.warning)}</span></div>` : '';
-    const cardTone = rank === 'S' || rank === 'S-' ? 's-rank' : rank === 'A' ? 'a-rank' : rank === 'X' ? 'x-rank' : '';
-    return `<article class="gourmet-card food-decision-card ${cardTone}">
-        <div class="gourmet-head">
-            <span class="gourmet-rank rank-${escapeAttr(rankKey)}">${escapeHtml(rank)}</span>
+
+    return `<article class="food-card-v3 rank-${escapeAttr(rankKey)} ${compact ? 'compact' : ''}">
+        <div class="food-card-top">
+            <span class="food-rank-badge rank-${escapeAttr(rankKey)}">${escapeHtml(rank)}</span>
             <div class="min-w-0">
-                <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-title">${escapeHtml(item.name)}</a>
-                <div class="gourmet-meta">
-                    <span class="gourmet-chip type">${escapeHtml(item.type || '')}</span>
-                    <span class="gourmet-chip day">${escapeHtml(item.bestDay || '')}</span>
-                    <span class="gourmet-chip family">${escapeHtml(item.area || '')}</span>
-                </div>
+                <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer" class="food-card-title">${escapeHtml(item.name)}</a>
+                <p>${escapeHtml(item.type || rankMeta.label)}</p>
             </div>
         </div>
-        <div class="food-decision-chip-row">
-            ${renderFoodDecisionChip('類別', item.category)}
-            ${renderFoodDecisionChip('排隊', item.queueRisk)}
-            ${renderFoodDecisionChip('外帶', item.takeout)}
+        <div class="decision-chip-row">
+            ${foodDecisionChip('時機', item.bestDay)}
+            ${foodDecisionChip('區域', item.area)}
+            ${foodDecisionChip('排隊', item.queueRisk)}
+            ${foodDecisionChip('外帶', item.takeout)}
         </div>
-        <div class="food-decision-note primary"><strong>必點 / 買什麼</strong><span>${escapeHtml(item.must)}</span></div>
-        <div class="food-decision-note"><strong>為什麼留下</strong><span>${escapeHtml(item.why)}</span></div>
-        <div class="food-decision-note decision"><strong>現場決策</strong><span>${escapeHtml(item.strategy)}</span></div>
-        <div class="food-decision-note"><strong>親子判斷</strong><span>${escapeHtml(item.kid)}</span></div>
-        ${warnBlock}
-        <div class="gourmet-actions">
-            <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-action">📍 導航</a>
-            <a href="${escapeAttr(searchUrl)}" target="_blank" rel="noopener noreferrer" class="gourmet-action secondary">⏱️ 查營業/外帶</a>
+        <div class="food-decision-grid-v3">
+            ${renderDecisionRow('點什麼', item.must || item.order, 'primary')}
+            ${renderDecisionRow('適合', item.why || rankMeta.copy)}
+            ${renderDecisionRow('不要硬排', getFoodAvoidText(item), 'warn')}
+            ${compact ? '' : renderDecisionRow('替代', getFoodFallbackText(item))}
+            ${compact ? '' : renderDecisionRow('親子判斷', item.kid)}
+            ${compact ? '' : renderDecisionRow('現場策略', item.strategy)}
+        </div>
+        <div class="decision-card-actions">
+            <a href="${escapeAttr(mapUrl)}" target="_blank" rel="noopener noreferrer">導航</a>
+            <a href="${escapeAttr(searchUrl)}" target="_blank" rel="noopener noreferrer">查營業 / 外帶</a>
             ${links}
         </div>
     </article>`;
+}
+
+function renderFoodSpotlight(sorted) {
+    const picks = sorted.filter(item => ['S', 'S-', 'A'].includes(item.rank)).slice(0, 4);
+    if (!picks.length) return '';
+    return `<section class="food-quick-picks">
+        <header>
+            <span>今日先看</span>
+            <p>先用這幾個做決策；不符合條件時，直接往 B / 商場 / 便利商店降級。</p>
+        </header>
+        <div class="food-quick-grid">
+            ${picks.map(item => renderFoodDecisionCard(item, true)).join('')}
+        </div>
+    </section>`;
 }
 
 function renderGourmetBackupList(container, currentBackupRegion) {
@@ -4818,22 +4990,14 @@ function renderGourmetBackupList(container, currentBackupRegion) {
     const dataList = gourmetBackupDB[currentBackupRegion] || [];
     const regionName = currentBackupRegion === 'oita' ? '大分・別府・由布院' : '熊本・阿蘇・上天草';
     if (!dataList.length) {
-        container.innerHTML = `<div class="bg-gray-50 border-2 border-gray-200 rounded-2xl p-4 font-bold text-gray-700">目前沒有美食備案資料。</div>`;
+        container.innerHTML = `<div class="decision-empty">目前沒有美食備案資料。</div>`;
         return;
     }
 
-    const categoryOrder = ['主線餐', '地方代表', '高優先餐', '親子保底', '保底餐 / 補給', '保底餐 / 補給', '甜點零食', '甜點零食 / 伴手禮', '伴手禮', '願望餐', '成人加碼', '收藏', '不建議硬追'];
-    const rankScore = { S: 90, 'S-': 84, A: 70, B: 52, C: 30, X: 0 };
-    const sorted = dataList.slice().sort((a, b) => (rankScore[b.rank] || 0) - (rankScore[a.rank] || 0));
-    const rankCounts = sorted.reduce((acc, item) => {
-        const key = item.rank || 'B';
-        acc[key] = (acc[key] || 0) + 1;
-        return acc;
-    }, {});
-    const topSafe = sorted.filter(item => ['S', 'S-', 'A'].includes(item.rank)).slice(0, 5).map(item => item.name).join('、');
+    const sorted = sortFoodEntries(dataList);
     const caution = currentBackupRegion === 'kumamoto'
         ? '熊本策略：赤牛、太平燕、天草海鮮與伴手禮分開決策；Day8 返程日只接受可控餐、機場餐與可外帶點心。'
-        : '大分策略：別府在地味以地獄蒸、冷麵、琉球丼、豐後牛為核心；由布院只用甜點/小吃短打，不把甜點排成主線。';
+        : '大分策略：別府在地味以地獄蒸、冷麵、琉球丼、豐後牛為核心；由布院只用甜點 / 小吃短打，不把甜點排成主線。';
 
     const groups = sorted.reduce((acc, item) => {
         const key = item.category || '其他';
@@ -4842,40 +5006,35 @@ function renderGourmetBackupList(container, currentBackupRegion) {
         return acc;
     }, {});
     const orderedKeys = Object.keys(groups).sort((a, b) => {
-        const ia = categoryOrder.indexOf(a);
-        const ib = categoryOrder.indexOf(b);
+        const ia = FOOD_CATEGORY_ORDER.indexOf(a);
+        const ib = FOOD_CATEGORY_ORDER.indexOf(b);
         return (ia < 0 ? 999 : ia) - (ib < 0 ? 999 : ib) || a.localeCompare(b, 'zh-Hant');
     });
 
     const groupHtml = orderedKeys.map(key => {
-        const items = groups[key];
-        return `<section class="food-decision-section">
+        const items = sortFoodEntries(groups[key]);
+        const bestRank = items[0]?.rank || 'B';
+        const meta = getFoodRankMeta(bestRank);
+        return `<section class="food-section-v3 rank-tone-${escapeAttr(meta.tone)}">
             <header>
                 <div>
-                    <span>Food Decision</span>
+                    <span>${escapeHtml(items.length)} 選</span>
                     <h3>${escapeHtml(key)}</h3>
                 </div>
-                <p>${escapeHtml(items.length)} 項。先看 S/A，再看 B；C/X 只作提醒，不主動排。</p>
+                <p>${escapeHtml(meta.copy)}</p>
             </header>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">${items.map(renderFoodDecisionCard).join('')}</div>
+            <div class="food-card-grid-v3">${items.map(item => renderFoodDecisionCard(item)).join('')}</div>
         </section>`;
     }).join('');
 
-    container.innerHTML = `<div class="food-decision-layout animate-[fadeIn_0.3s_ease-out]">
-        <section class="food-control-panel">
-            <div>
-                <span>Food / Sweets / Snacks</span>
-                <h3>${escapeHtml(regionName)}｜吃什麼決策中心</h3>
-                <p>${escapeHtml(caution)} 帶小孩同行時，牡蠣、生魚片、牛肉生食採保守原則；燒肉由成人烤熟後再分食。</p>
-            </div>
-            <div class="food-summary-stats">
-                <strong>${sorted.length}</strong><span>保留項目</span>
-                <strong>${(rankCounts.S || 0) + (rankCounts['S-'] || 0)}</strong><span>主線餐</span>
-                <strong>${rankCounts.A || 0}</strong><span>高優先</span>
-                <strong>${(rankCounts.C || 0) + (rankCounts.X || 0)}</strong><span>收藏/不建議</span>
-            </div>
+    container.innerHTML = `<div class="decision-layout food-layout-v3 animate-[fadeIn_0.3s_ease-out]">
+        ${renderDecisionHero(sorted, 'food', currentBackupRegion)}
+        <section class="food-strategy-card">
+            <div><span>用餐策略</span><p>${escapeHtml(caution)} 帶小孩同行時，牡蠣、生魚片、牛肉生食採保守原則；燒肉由成人烤熟後再分食。</p></div>
+            <div class="food-strategy-rule"><strong>硬規則</strong><span>排隊或等待超過 30 分鐘，直接降級，不做補償。</span></div>
         </section>
-        <div class="gourmet-warning"><strong>優先清單：</strong>${escapeHtml(topSafe || '依當天動線選擇')}<br>S＝主線餐；A＝高優先；B＝保底/救場；C＝收藏；X＝本趟不建議硬追。</div>
+        ${renderDecisionRuleStrip('food')}
+        ${renderFoodSpotlight(sorted)}
         ${groupHtml}
     </div>`;
 }
@@ -5412,140 +5571,48 @@ function renderPrintViewHtml() {
 
 function renderStaticModals() {
     return `
-<dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-4xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preTripModal">
-<button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('preTripModal')">✕</button>
-<div class="mb-6 border-b-2 border-amber-100 pb-4 pr-10">
-<h2 class="text-2xl md:text-3xl font-black text-amber-700 flex items-center gap-3"><span>🧳</span> 行前準備中心：VJW＋TOKIO 保險</h2>
-<p class="text-sm text-gray-600 mt-2 font-bold bg-amber-50 inline-block px-3 py-1.5 rounded-md border border-amber-100">適用：台灣出發、日本九州親子自由行｜每位大人與小孩都要逐一檢查</p>
-<div class="flex flex-wrap gap-2 mt-3">
-<a class="inline-flex items-center gap-2 bg-white text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.vjw.digital.go.jp/" rel="noopener noreferrer" target="_blank"><span>🔗</span> Visit Japan Web 官方</a>
-<a class="inline-flex items-center gap-2 bg-white text-amber-700 border-2 border-amber-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://tokiomarinenichido.jp/zh-hant/china2/" rel="noopener noreferrer" target="_blank"><span>🔗</span> TOKIO OMOTENASHI POLICY</a>
-<a class="inline-flex items-center gap-2 bg-white text-slate-700 border-2 border-slate-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.customs.go.jp/english/passenger/" rel="noopener noreferrer" target="_blank"><span>🔗</span> 日本海關旅客申報</a>
+<dialog class="decision-modal bg-white w-11/12 max-w-[94vw] lg:max-w-5xl rounded-[2rem] p-0 shadow-2xl relative max-h-[92vh] flex-col outline-none border-0 custom-scrollbar m-auto" id="backupModal">
+<button aria-label="關閉視窗" class="decision-modal-close" onclick="closeModal('backupModal')">✕</button>
+
+<div class="decision-modal-header flex-shrink-0">
+    <div class="decision-modal-titlebar">
+        <div>
+            <div class="decision-modal-kicker">FIELD DECISION CENTER</div>
+            <h2>九州現場決策中心</h2>
+            <p>把景點、用餐與補給拆成「主線、可攻、保底、收藏、不建議」。旅途中先看最穩選擇，再決定是否加碼。</p>
+        </div>
+        <div class="decision-modal-principle">
+            <strong>現場原則</strong>
+            <span>排隊、天候、孩子電量、硬切時間任一不對，就直接降級。</span>
+        </div>
+    </div>
+
+    <div class="decision-modal-nav-grid">
+        <div class="decision-nav-block">
+            <span class="decision-nav-label">地區</span>
+            <div class="decision-segment" role="tablist" aria-label="備案地區">
+                <button class="decision-segment-btn" id="btn-region-oita" onclick="setBackupRegion('oita')" type="button">
+                    <span>大分・別府・由布院</span>
+                    <small>Days 1-4</small>
+                </button>
+                <button class="decision-segment-btn" id="btn-region-kumamoto" onclick="setBackupRegion('kumamoto')" type="button">
+                    <span>熊本・阿蘇・上天草</span>
+                    <small>Days 5-8</small>
+                </button>
+            </div>
+        </div>
+        <div class="decision-nav-block">
+            <span class="decision-nav-label">決策類型</span>
+            <div class="decision-category-tabs" id="backup-category-tabs" role="tablist" aria-label="備案分類">
+                <button class="decision-category-tab" data-cat="sight" id="btn-cat-sight" type="button"><span>景點</span><small>去哪裡</small></button>
+                <button class="decision-category-tab" data-cat="food" id="btn-cat-food" type="button"><span>吃什麼</span><small>正餐 / 甜點</small></button>
+                <button class="decision-category-tab" data-cat="shop" id="btn-cat-shop" type="button"><span>補給</span><small>採買 / 救場</small></button>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-<div class="space-y-5 pb-2">
-<section class="guide-panel p-4 md:p-5 bg-gradient-to-br from-amber-50 to-white border-amber-200">
-<h3 class="text-xl mb-3 flex items-center gap-2"><span>✅</span> 最先記住的結論</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm leading-relaxed text-gray-700 font-bold">
-<div class="p-3 rounded-xl bg-white border border-amber-100"><strong class="text-amber-800">Visit Japan Web：</strong>建議出發前 7～10 天填好。它不是簽證，而是預先完成入境審查、海關申報與免稅 QR 資訊。每位旅客都要有自己的 QR code。</div>
-<div class="p-3 rounded-xl bg-white border border-amber-100"><strong class="text-amber-800">TOKIO OMOTENASHI POLICY：</strong>不是入境必填，也不是完整旅平險替代品。它主要補強日本境內突然生病/受傷時的就醫協助與醫療費用。</div>
-<div class="p-3 rounded-xl bg-white border border-red-100"><strong class="text-red-700">最大防呆：</strong>VJW 要在台灣先填好；TOKIO 通常台灣不能先買，需抵達日本後再申請，而且常見是申請隔天 00:00 起生效。</div>
-<div class="p-3 rounded-xl bg-white border border-cyan-100"><strong class="text-cyan-700">親子同行：</strong>小孩也要獨立 VJW 資料與 QR；TOKIO 可由 18 歲以上大人作投保人，小孩作被保險人。</div>
-</div>
-</section>
-<section class="guide-panel p-4 md:p-5">
-<h3 class="text-xl mb-3 flex items-center gap-2"><span>🛂</span> Visit Japan Web 填寫教學</h3>
-<table class="guide-table text-left">
-<tbody>
-<tr><th>用途</th><td>預先登錄日本入境審查、海關申報、免稅購物 QR。它不是簽證，也不是保險。</td></tr>
-<tr><th>建議時間</th><td>航班與第一晚飯店確定後即可填；建議出發前 7～10 天完成，出發前一天再重新登入檢查 QR code。</td></tr>
-<tr><th>準備資料</th><td>每位旅客護照、Email、航班號碼、抵達日本日期、第一晚飯店名稱/地址/電話、停留天數、職業、海關申報資訊。</td></tr>
-<tr><th>家庭成員</th><td>同行家人可由主帳號代填，但每個人都要個別資料與個別 QR code。大人若可能分開排隊，建議各自手機也存自己的 QR 截圖。</td></tr>
-<tr><th>航班填法</th><td>航空公司從下拉選單選；航班號若系統已選航空公司，通常只填數字。例如 BR118 多半填 118。</td></tr>
-<tr><th>住宿填法</th><td>填第一晚飯店即可，不需要把所有住宿都塞進地址欄。電話欄通常只填數字，不加 +81 或連字號。</td></tr>
-<tr><th>海關申報</th><td>一般旅遊沒有別送品、商業貨品、超額酒菸、超額現金或限制物品，多數問題照實選 No；若攜帶藥品、食品、肉製品、水果或大額現金，需另行確認規定。</td></tr>
-<tr><th>出發前備份</th><td>每位旅客 QR code 截圖、紙本印出一份、護照夾備份、主要手機保持可登入 VJW。不要只截主申請人的 QR。</td></tr>
-</tbody>
-</table>
-<div class="mt-3 p-3 rounded-xl bg-cyan-50 border border-cyan-200 text-sm text-cyan-900 leading-relaxed font-bold">實戰順序：建立帳號 → 本人資料 → 同行家人 → 新增入境/回國預定 → 勾選同行者 → 填入境審查及海關申報 → 顯示每位旅客 QR code → 截圖與列印。</div>
-<div class="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 leading-relaxed font-bold">畫面語言提醒：VJW 通常可切換中文；若現場或官方手冊顯示日文，直接用下方「日文欄位 → 中文意思 → 這趟怎麼填」對照。所有英文姓名、地址、飯店名建議用半形英文/數字輸入。</div>
-<h4 class="text-lg font-black text-cyan-800 mt-4 mb-2">VJW 日文欄位對照填寫表</h4>
-<table class="guide-table text-left">
-<thead><tr><th>日文欄位 / 畫面</th><th>中文意思</th><th>你們這趟建議填法</th></tr></thead>
-<tbody>
-<tr><th>新規アカウント作成 / ログイン</th><td>建立帳號 / 登入</td><td>用出國當天仍能收信的 Email；密碼先存在密碼管理器或備忘錄。</td></tr>
-<tr><th>本人の情報</th><td>本人資料</td><td>先登錄主申請人。護照資料必須與護照英文頁完全一致。</td></tr>
-<tr><th>同伴家族の情報</th><td>同行家人資料</td><td>小孩與不熟手機的家人可登錄在主帳號內；但每個人仍要有自己的 QR code。</td></tr>
-<tr><th>日本政府発行のパスポート確認</th><td>是否為日本政府發行護照</td><td>台灣護照一般選「いいえ / No」。</td></tr>
-<tr><th>再入国許可の確認</th><td>是否持有日本再入國許可</td><td>一般台灣觀光客選「いいえ / No」。</td></tr>
-<tr><th>免税QRコードを利用しますか？</th><td>是否使用免稅 QR</td><td>可選「はい / Yes」或「いいえ / No」。即使開啟，購物時仍建議帶護照最穩。</td></tr>
-<tr><th>旅券番号</th><td>護照號碼</td><td>照護照輸入半形英文/數字，不要多空格。</td></tr>
-<tr><th>姓 / 名</th><td>姓 / 名</td><td>照護照英文填。中文姓名不要填；中間空格依護照。</td></tr>
-<tr><th>国籍・地域</th><td>國籍/地區</td><td>依下拉選單選 Taiwan / 台湾 / TAIWAN 相關選項。</td></tr>
-<tr><th>生年月日 / 有効期間満了日</th><td>生日 / 護照效期</td><td>照護照選年、月、日。小孩生日最容易點錯，完成後逐人檢查。</td></tr>
-<tr><th>職業</th><td>職業</td><td>大人依實際選公司員工/自營/主婦等；小孩選學生、幼兒、無職或最接近選項。</td></tr>
-<tr><th>現住所：国名 / 都市名</th><td>現居國家 / 城市</td><td>國家填 TAIWAN；城市依實際填 TAIPEI、NEW TAIPEI、TAICHUNG、KAOHSIUNG 等。</td></tr>
-<tr><th>入国・帰国の予定を登録</th><td>新增入境/回國預定</td><td>建立這次九州行的行程，旅行名稱可填 2026 KYUSHU FAMILY TRIP。</td></tr>
-<tr><th>日本への到着予定日 / 入国日</th><td>預定抵達日本日 / 入境日</td><td>填抵達日本當天，不是台灣出發日。你們若 2026/5/29 抵達熊本，就填 2026/05/29。</td></tr>
-<tr><th>航空会社名</th><td>航空公司</td><td>從下拉選單選航空公司。若是虎航，找 Tigerair Taiwan / IT 類似選項。</td></tr>
-<tr><th>便名 / 搭乗機名</th><td>航班號 / 搭乘班機</td><td>依畫面填：若已分開選航空公司，便號多半只填數字；若欄位是搭乗機名，照機票填完整航班，例如 IT766。</td></tr>
-<tr><th>出発地</th><td>出發地</td><td>依下拉選單找 Kaohsiung / KHH / Taiwan；若沒有就用半形英文直接輸入。</td></tr>
-<tr><th>日本での連絡先（滞在先）</th><td>日本聯絡地址/住宿地</td><td>填第一晚飯店即可；不用把所有飯店都塞進去。</td></tr>
-<tr><th>郵便番号 / 郵便番号から自動入力</th><td>郵遞區號 / 用郵遞區號自動帶入</td><td>輸入第一晚飯店郵遞區號，通常不加連字號；可用自動帶入縣市區町。</td></tr>
-<tr><th>都道府県 / 市区町村名</th><td>都道府縣 / 市區町村</td><td>第一晚在別府就選大分県、別府市；若第一晚變更，依實際飯店修正。</td></tr>
-<tr><th>町字、番地</th><td>町名、番地</td><td>填飯店地址後段，半形英文/數字最穩。從訂房確認信複製後再檢查。</td></tr>
-<tr><th>滞在先・ホテル名</th><td>住宿地/飯店名稱</td><td>填第一晚飯店英文或羅馬拼音名稱，例如 HOTEL NEW TSURUTA BEPPU。</td></tr>
-<tr><th>日本国内で連絡可能な電話番号 / 連絡先電話番号</th><td>日本國內可聯絡電話</td><td>填第一晚飯店電話；通常只填數字，不加 +81、空格或連字號。</td></tr>
-<tr><th>同伴家族を選択してください</th><td>請選擇同行家人</td><td>務必勾選本趟一起入境的人。沒勾到的人不會出現在這趟行程 QR 內。</td></tr>
-<tr><th>入国審査及び税関申告</th><td>入境審查及海關申報</td><td>外國旅客主要要完成這一項，完成後才會有入境/海關 QR。</td></tr>
-<tr><th>渡航目的</th><td>旅行目的</td><td>一般旅遊選「観光 / Tourism / Sightseeing」或畫面中最接近的觀光選項。</td></tr>
-<tr><th>日本滞在予定期間：年数 / 月数 / 日数</th><td>預定停留日本期間：年/月/日</td><td>你們 5/29～6/5 通常可填年 0、月 0、日 8；至少不要三欄都填 0。</td></tr>
-<tr><th>質問事項</th><td>問題事項</td><td>拒絕入境、犯罪紀錄、毒品/槍械等問題照實回答；一般無特殊狀況多為「いいえ / No」。</td></tr>
-<tr><th>携帯品・別送品申告</th><td>攜帶品/後送品海關申報</td><td>一般旅遊沒有別送品、商業貨、超額酒菸香水、大額現金，多數選「いいえ / No」；有不確定物品就先查規定。</td></tr>
-<tr><th>酒類・紙巻・加熱式・葉巻・香水</th><td>酒、紙菸、加熱菸、雪茄、香水</td><td>沒有或未超額就照實填 0/No；超額要輸入數量。</td></tr>
-<tr><th>入力内容確認 / 登録完了</th><td>確認輸入內容 / 登錄完成</td><td>完成前逐人核對護照號碼、姓名、生日、抵達日、航班、飯店電話；完成後顯示每位 QR 並截圖。</td></tr>
-</tbody>
-</table>
-</section>
-<section class="guide-panel p-4 md:p-5">
-<h3 class="text-xl mb-3 flex items-center gap-2"><span>🏥</span> TOKIO OMOTENASHI POLICY 填寫教學</h3>
-<table class="guide-table text-left">
-<tbody>
-<tr><th>定位</th><td>日本境內訪日旅客醫療保險，主要處理在日本突然生病、受傷、住院、手術、醫療搬送等風險。</td></tr>
-<tr><th>不是什麼</th><td>不是 VJW 必填、不是日本入境條件、不是台灣旅平險/旅遊不便險替代品。班機延誤、行李延誤、旅程取消主要仍靠台灣保險。</td></tr>
-<tr><th>投保地點</th><td>台灣出發通常無法在台灣預先申請；請抵達日本、手機連上日本網路後再開官方頁操作。</td></tr>
-<tr><th>生效時間</th><td>常見規則是申請日隔天或入境日，取較晚者開始。若抵達當天才買，當天通常仍需靠台灣旅平險承接風險。</td></tr>
-<tr><th>投保人</th><td>必須是 18 歲以上個人。小孩不能當投保人，但可以由大人作投保人、小孩作被保險人。</td></tr>
-<tr><th>每人一份</th><td>不要以為爸爸買一張全家都保。每位要保障的人都要確認完成投保、收到完成 Email 或保單資訊。</td></tr>
-<tr><th>填寫資料</th><td>Email、密碼、入境/出境日期、投保人資料、被保險人資料、健康確認、重要事項說明、信用卡付款。</td></tr>
-<tr><th>就醫用法</th><td>非緊急狀況先聯絡保險服務中心或 App，由對方協助找醫院與處理 cashless medical service。危及生命時先打日本 119。</td></tr>
-</tbody>
-</table>
-<div class="mt-3 p-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-800 leading-relaxed font-bold">限制提醒：已經生病、受傷、既有疾病、牙科、投保前已發生的狀況通常不能當作事後補票。請誠實回答健康問題，避免理賠失效。</div>
-<div class="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 leading-relaxed font-bold">畫面語言提醒：TOKIO 申請頁常可選中文或英文；若你看到英文步驟或日文提示，下表可作對照。此保險請抵達日本、連上日本網路後再操作；每位旅客逐一完成。</div>
-<h4 class="text-lg font-black text-amber-800 mt-4 mb-2">TOKIO OMOTENASHI POLICY 欄位對照填寫表</h4>
-<table class="guide-table text-left">
-<thead><tr><th>日文/英文欄位或畫面</th><th>中文意思</th><th>你們這趟建議填法</th></tr></thead>
-<tbody>
-<tr><th>申込み / Application</th><td>申請/投保</td><td>抵達日本後再開官方頁；台灣網路通常可能無法完成申請。</td></tr>
-<tr><th>メールアドレス / E-mail address</th><td>Email</td><td>填可立即收信的 Email；完成投保與登入連結會寄到這裡。</td></tr>
-<tr><th>認証文字 / Authentication characters</th><td>畫面驗證碼</td><td>照畫面輸入；收不到信先看垃圾信，再換 Email。</td></tr>
-<tr><th>パスワード / Password</th><td>密碼</td><td>通常需英文大小寫、數字、符號組合；先記下來避免下一位投保時卡住。</td></tr>
-<tr><th>Schedule / スケジュール入力</th><td>行程/保險期間輸入</td><td>入境日填 2026/05/29；離境日填 2026/06/05。完成前仔細核對，送出後通常不能改。</td></tr>
-<tr><th>Arrival date / 入国日</th><td>入境日本日期</td><td>填抵達日本當天。若抵達當天投保，保險多半從隔天 00:00 起算。</td></tr>
-<tr><th>Insurance start date / 保険開始日</th><td>保險開始日</td><td>畫面若可選，通常選申請隔天或系統可選最早日；不要誤以為抵達當天立即生效。</td></tr>
-<tr><th>Insurance end date / 保険終了日</th><td>保險結束日</td><td>至少涵蓋 2026/06/05 出境當天；這趟保守抓 8 天。</td></tr>
-<tr><th>Subscriber / Policyholder / 契約者 / 申込人</th><td>投保人/要保人</td><td>必須是 18 歲以上大人。爸爸或媽媽可幫小孩投保。</td></tr>
-<tr><th>Insured / 被保険者</th><td>被保險人</td><td>實際要被保障的人。大人可自己作被保險人；小孩由大人投保、小孩作被保險人。</td></tr>
-<tr><th>COPY</th><td>複製投保人資料</td><td>投保人＝被保險人時可按 COPY；幫小孩投保時不要直接 COPY 到小孩資料。</td></tr>
-<tr><th>Name / 氏名</th><td>姓名</td><td>依護照英文填，不填中文；每位旅客各自核對。</td></tr>
-<tr><th>Date of birth / 生年月日</th><td>出生年月日</td><td>依護照生日選年/月/日。小孩最容易填錯。</td></tr>
-<tr><th>Nationality / 国籍</th><td>國籍</td><td>選 Taiwan / 台湾 / TAIWAN 相關選項，依畫面提供為準。</td></tr>
-<tr><th>Questions on Insured Person / 被保険者に関する質問</th><td>被保險人健康確認</td><td>目前已生病、受傷、投保前已發生狀況，不要為了投保硬選 No；否則可能不能理賠。</td></tr>
-<tr><th>Cancellation / 解約・取消 / Premium refund</th><td>取消/解約/退款處理</td><td>閱讀後依畫面勾選同意。行程未確定前不要亂買，因為事後改資料不方便。</td></tr>
-<tr><th>Description of Important Matters / 重要事項説明書</th><td>重要事項說明書</td><td>必須打開確認才能繼續。手機若返回不了，改用 Chrome/Safari 或飯店 Wi‑Fi 下用筆電/平板處理。</td></tr>
-<tr><th>Credit Card / クレジットカード</th><td>信用卡付款</td><td>準備 Visa/Master/JCB 與 3D 驗證；台灣卡可能要先開海外交易與簡訊/銀行 App 推播。</td></tr>
-<tr><th>Application Completion / 申込完了</th><td>申請完成</td><td>每完成一人就截圖完成頁、確認 Email，並放入手機「日本保險」相簿。</td></tr>
-<tr><th>TOKIO MARINE Safety Information</th><td>安全資訊/聯絡 App</td><td>完成後下載或記下聯絡方式。非緊急就醫先聯絡保險服務中心；危急先打 119。</td></tr>
-</tbody>
-</table>
-<div class="mt-3 p-3 rounded-xl bg-amber-50 border border-amber-200 text-sm text-amber-900 leading-relaxed font-bold">8 人團防呆：不要連續填到麻木。每投保 1 人就立刻核對「姓名、生日、保險起訖日、完成 Email」，再填下一位。</div>
-</section>
-<section class="guide-panel p-4 md:p-5">
-<h3 class="text-xl mb-3 flex items-center gap-2"><span>📋</span> 出發前／抵日後防呆清單</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700 font-bold leading-relaxed">
-<div class="check-row"><span class="box"></span><span>每位旅客護照效期、英文姓名、生日與 VJW 登錄資料完全一致。</span></div>
-<div class="check-row"><span class="box"></span><span>每位旅客 VJW 入境審查＋海關申報 QR code 已截圖。</span></div>
-<div class="check-row"><span class="box"></span><span>VJW QR code 已紙本列印，放入護照夾或透明文件夾。</span></div>
-<div class="check-row"><span class="box"></span><span>第一晚飯店地址、電話、訂房確認信已存手機與離線備份。</span></div>
-<div class="check-row"><span class="box"></span><span>台灣旅平險與旅遊不便險已涵蓋 5/29 出發到 6/5 回台全程。</span></div>
-<div class="check-row"><span class="box"></span><span>抵達日本後若要加買 TOKIO，確認日本網路、Email、信用卡 3D 驗證可用。</span></div>
-<div class="check-row"><span class="box"></span><span>每完成一位 TOKIO 投保，就截圖完成頁並確認完成 Email。</span></div>
-<div class="check-row"><span class="box"></span><span>建立手機相簿：護照、VJW QR、保險、租車、飯店、緊急聯絡。</span></div>
-<div class="check-row"><span class="box"></span><span>更多文件、租車、訂位、禁帶品、飯店取消期限與兩車 SOP，回首頁點「📋 出發前總檢查」。</span></div>
-</div>
-</section>
-</div>
+
+<div class="decision-modal-body flex-grow overflow-y-auto custom-scrollbar" id="backup-list-container"></div>
 </dialog>
 
 <dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preDepartureModal">
@@ -6100,13 +6167,9 @@ function createBackupModalController() {
         const categoryTabs = document.getElementById('backup-category-tabs');
         if (!categoryTabs) return;
         categoryTabs.querySelectorAll('button').forEach(b => {
-            if (b.dataset.cat === currentBackupCategory) {
-                b.classList.remove('category-btn-inactive');
-                b.classList.add('category-btn-active', 'text-cyan-600');
-            } else {
-                b.classList.remove('category-btn-active', 'text-cyan-600');
-                b.classList.add('category-btn-inactive');
-            }
+            const active = b.dataset.cat === currentBackupCategory;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-selected', active ? 'true' : 'false');
         });
     }
 
@@ -6115,13 +6178,9 @@ function createBackupModalController() {
         ['oita', 'kumamoto'].forEach(r => {
             const btn = document.getElementById(`btn-region-${r}`);
             if(btn) {
-                if (r === region) {
-                    btn.classList.remove('region-btn-inactive', 'border-transparent');
-                    btn.classList.add('region-btn-active');
-                } else {
-                    btn.classList.remove('region-btn-active');
-                    btn.classList.add('region-btn-inactive', 'border-transparent');
-                }
+                const active = r === region;
+                btn.classList.toggle('is-active', active);
+                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
             }
         });
         syncCategoryTabs();

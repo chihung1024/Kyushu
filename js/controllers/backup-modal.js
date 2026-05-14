@@ -13,13 +13,9 @@ function createBackupModalController() {
         const categoryTabs = document.getElementById('backup-category-tabs');
         if (!categoryTabs) return;
         categoryTabs.querySelectorAll('button').forEach(b => {
-            if (b.dataset.cat === currentBackupCategory) {
-                b.classList.remove('category-btn-inactive');
-                b.classList.add('category-btn-active', 'text-cyan-600');
-            } else {
-                b.classList.remove('category-btn-active', 'text-cyan-600');
-                b.classList.add('category-btn-inactive');
-            }
+            const active = b.dataset.cat === currentBackupCategory;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-selected', active ? 'true' : 'false');
         });
     }
 
@@ -28,13 +24,9 @@ function createBackupModalController() {
         ['oita', 'kumamoto'].forEach(r => {
             const btn = document.getElementById(`btn-region-${r}`);
             if(btn) {
-                if (r === region) {
-                    btn.classList.remove('region-btn-inactive', 'border-transparent');
-                    btn.classList.add('region-btn-active');
-                } else {
-                    btn.classList.remove('region-btn-active');
-                    btn.classList.add('region-btn-inactive', 'border-transparent');
-                }
+                const active = r === region;
+                btn.classList.toggle('is-active', active);
+                btn.setAttribute('aria-pressed', active ? 'true' : 'false');
             }
         });
         syncCategoryTabs();

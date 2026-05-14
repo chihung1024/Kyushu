@@ -2,140 +2,48 @@
 
 function renderStaticModals() {
     return `
-<dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-4xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preTripModal">
-<button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('preTripModal')">✕</button>
-<div class="mb-6 border-b-2 border-amber-100 pb-4 pr-10">
-<h2 class="text-2xl md:text-3xl font-black text-amber-700 flex items-center gap-3"><span>🧳</span> 行前準備中心：VJW＋TOKIO 保險</h2>
-<p class="text-sm text-gray-600 mt-2 font-bold bg-amber-50 inline-block px-3 py-1.5 rounded-md border border-amber-100">適用：台灣出發、日本九州親子自由行｜每位大人與小孩都要逐一檢查</p>
-<div class="flex flex-wrap gap-2 mt-3">
-<a class="inline-flex items-center gap-2 bg-white text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.vjw.digital.go.jp/" rel="noopener noreferrer" target="_blank"><span>🔗</span> Visit Japan Web 官方</a>
-<a class="inline-flex items-center gap-2 bg-white text-amber-700 border-2 border-amber-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://tokiomarinenichido.jp/zh-hant/china2/" rel="noopener noreferrer" target="_blank"><span>🔗</span> TOKIO OMOTENASHI POLICY</a>
-<a class="inline-flex items-center gap-2 bg-white text-slate-700 border-2 border-slate-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.customs.go.jp/english/passenger/" rel="noopener noreferrer" target="_blank"><span>🔗</span> 日本海關旅客申報</a>
+<dialog class="decision-modal bg-white w-11/12 max-w-[94vw] lg:max-w-5xl rounded-[2rem] p-0 shadow-2xl relative max-h-[92vh] flex-col outline-none border-0 custom-scrollbar m-auto" id="backupModal">
+<button aria-label="關閉視窗" class="decision-modal-close" onclick="closeModal('backupModal')">✕</button>
+
+<div class="decision-modal-header flex-shrink-0">
+    <div class="decision-modal-titlebar">
+        <div>
+            <div class="decision-modal-kicker">FIELD DECISION CENTER</div>
+            <h2>九州現場決策中心</h2>
+            <p>把景點、用餐與補給拆成「主線、可攻、保底、收藏、不建議」。旅途中先看最穩選擇，再決定是否加碼。</p>
+        </div>
+        <div class="decision-modal-principle">
+            <strong>現場原則</strong>
+            <span>排隊、天候、孩子電量、硬切時間任一不對，就直接降級。</span>
+        </div>
+    </div>
+
+    <div class="decision-modal-nav-grid">
+        <div class="decision-nav-block">
+            <span class="decision-nav-label">地區</span>
+            <div class="decision-segment" role="tablist" aria-label="備案地區">
+                <button class="decision-segment-btn" id="btn-region-oita" onclick="setBackupRegion('oita')" type="button">
+                    <span>大分・別府・由布院</span>
+                    <small>Days 1-4</small>
+                </button>
+                <button class="decision-segment-btn" id="btn-region-kumamoto" onclick="setBackupRegion('kumamoto')" type="button">
+                    <span>熊本・阿蘇・上天草</span>
+                    <small>Days 5-8</small>
+                </button>
+            </div>
+        </div>
+        <div class="decision-nav-block">
+            <span class="decision-nav-label">決策類型</span>
+            <div class="decision-category-tabs" id="backup-category-tabs" role="tablist" aria-label="備案分類">
+                <button class="decision-category-tab" data-cat="sight" id="btn-cat-sight" type="button"><span>景點</span><small>去哪裡</small></button>
+                <button class="decision-category-tab" data-cat="food" id="btn-cat-food" type="button"><span>吃什麼</span><small>正餐 / 甜點</small></button>
+                <button class="decision-category-tab" data-cat="shop" id="btn-cat-shop" type="button"><span>補給</span><small>採買 / 救場</small></button>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-<div class="space-y-5 pb-2">
-<section class="guide-panel p-4 md:p-5 bg-gradient-to-br from-amber-50 to-white border-amber-200">
-<h3 class="text-xl mb-3 flex items-center gap-2"><span>✅</span> 最先記住的結論</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm leading-relaxed text-gray-700 font-bold">
-<div class="p-3 rounded-xl bg-white border border-amber-100"><strong class="text-amber-800">Visit Japan Web：</strong>建議出發前 7～10 天填好。它不是簽證，而是預先完成入境審查、海關申報與免稅 QR 資訊。每位旅客都要有自己的 QR code。</div>
-<div class="p-3 rounded-xl bg-white border border-amber-100"><strong class="text-amber-800">TOKIO OMOTENASHI POLICY：</strong>不是入境必填，也不是完整旅平險替代品。它主要補強日本境內突然生病/受傷時的就醫協助與醫療費用。</div>
-<div class="p-3 rounded-xl bg-white border border-red-100"><strong class="text-red-700">最大防呆：</strong>VJW 要在台灣先填好；TOKIO 通常台灣不能先買，需抵達日本後再申請，而且常見是申請隔天 00:00 起生效。</div>
-<div class="p-3 rounded-xl bg-white border border-cyan-100"><strong class="text-cyan-700">親子同行：</strong>小孩也要獨立 VJW 資料與 QR；TOKIO 可由 18 歲以上大人作投保人，小孩作被保險人。</div>
-</div>
-</section>
-<section class="guide-panel p-4 md:p-5">
-<h3 class="text-xl mb-3 flex items-center gap-2"><span>🛂</span> Visit Japan Web 填寫教學</h3>
-<table class="guide-table text-left">
-<tbody>
-<tr><th>用途</th><td>預先登錄日本入境審查、海關申報、免稅購物 QR。它不是簽證，也不是保險。</td></tr>
-<tr><th>建議時間</th><td>航班與第一晚飯店確定後即可填；建議出發前 7～10 天完成，出發前一天再重新登入檢查 QR code。</td></tr>
-<tr><th>準備資料</th><td>每位旅客護照、Email、航班號碼、抵達日本日期、第一晚飯店名稱/地址/電話、停留天數、職業、海關申報資訊。</td></tr>
-<tr><th>家庭成員</th><td>同行家人可由主帳號代填，但每個人都要個別資料與個別 QR code。大人若可能分開排隊，建議各自手機也存自己的 QR 截圖。</td></tr>
-<tr><th>航班填法</th><td>航空公司從下拉選單選；航班號若系統已選航空公司，通常只填數字。例如 BR118 多半填 118。</td></tr>
-<tr><th>住宿填法</th><td>填第一晚飯店即可，不需要把所有住宿都塞進地址欄。電話欄通常只填數字，不加 +81 或連字號。</td></tr>
-<tr><th>海關申報</th><td>一般旅遊沒有別送品、商業貨品、超額酒菸、超額現金或限制物品，多數問題照實選 No；若攜帶藥品、食品、肉製品、水果或大額現金，需另行確認規定。</td></tr>
-<tr><th>出發前備份</th><td>每位旅客 QR code 截圖、紙本印出一份、護照夾備份、主要手機保持可登入 VJW。不要只截主申請人的 QR。</td></tr>
-</tbody>
-</table>
-<div class="mt-3 p-3 rounded-xl bg-cyan-50 border border-cyan-200 text-sm text-cyan-900 leading-relaxed font-bold">實戰順序：建立帳號 → 本人資料 → 同行家人 → 新增入境/回國預定 → 勾選同行者 → 填入境審查及海關申報 → 顯示每位旅客 QR code → 截圖與列印。</div>
-<div class="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 leading-relaxed font-bold">畫面語言提醒：VJW 通常可切換中文；若現場或官方手冊顯示日文，直接用下方「日文欄位 → 中文意思 → 這趟怎麼填」對照。所有英文姓名、地址、飯店名建議用半形英文/數字輸入。</div>
-<h4 class="text-lg font-black text-cyan-800 mt-4 mb-2">VJW 日文欄位對照填寫表</h4>
-<table class="guide-table text-left">
-<thead><tr><th>日文欄位 / 畫面</th><th>中文意思</th><th>你們這趟建議填法</th></tr></thead>
-<tbody>
-<tr><th>新規アカウント作成 / ログイン</th><td>建立帳號 / 登入</td><td>用出國當天仍能收信的 Email；密碼先存在密碼管理器或備忘錄。</td></tr>
-<tr><th>本人の情報</th><td>本人資料</td><td>先登錄主申請人。護照資料必須與護照英文頁完全一致。</td></tr>
-<tr><th>同伴家族の情報</th><td>同行家人資料</td><td>小孩與不熟手機的家人可登錄在主帳號內；但每個人仍要有自己的 QR code。</td></tr>
-<tr><th>日本政府発行のパスポート確認</th><td>是否為日本政府發行護照</td><td>台灣護照一般選「いいえ / No」。</td></tr>
-<tr><th>再入国許可の確認</th><td>是否持有日本再入國許可</td><td>一般台灣觀光客選「いいえ / No」。</td></tr>
-<tr><th>免税QRコードを利用しますか？</th><td>是否使用免稅 QR</td><td>可選「はい / Yes」或「いいえ / No」。即使開啟，購物時仍建議帶護照最穩。</td></tr>
-<tr><th>旅券番号</th><td>護照號碼</td><td>照護照輸入半形英文/數字，不要多空格。</td></tr>
-<tr><th>姓 / 名</th><td>姓 / 名</td><td>照護照英文填。中文姓名不要填；中間空格依護照。</td></tr>
-<tr><th>国籍・地域</th><td>國籍/地區</td><td>依下拉選單選 Taiwan / 台湾 / TAIWAN 相關選項。</td></tr>
-<tr><th>生年月日 / 有効期間満了日</th><td>生日 / 護照效期</td><td>照護照選年、月、日。小孩生日最容易點錯，完成後逐人檢查。</td></tr>
-<tr><th>職業</th><td>職業</td><td>大人依實際選公司員工/自營/主婦等；小孩選學生、幼兒、無職或最接近選項。</td></tr>
-<tr><th>現住所：国名 / 都市名</th><td>現居國家 / 城市</td><td>國家填 TAIWAN；城市依實際填 TAIPEI、NEW TAIPEI、TAICHUNG、KAOHSIUNG 等。</td></tr>
-<tr><th>入国・帰国の予定を登録</th><td>新增入境/回國預定</td><td>建立這次九州行的行程，旅行名稱可填 2026 KYUSHU FAMILY TRIP。</td></tr>
-<tr><th>日本への到着予定日 / 入国日</th><td>預定抵達日本日 / 入境日</td><td>填抵達日本當天，不是台灣出發日。你們若 2026/5/29 抵達熊本，就填 2026/05/29。</td></tr>
-<tr><th>航空会社名</th><td>航空公司</td><td>從下拉選單選航空公司。若是虎航，找 Tigerair Taiwan / IT 類似選項。</td></tr>
-<tr><th>便名 / 搭乗機名</th><td>航班號 / 搭乘班機</td><td>依畫面填：若已分開選航空公司，便號多半只填數字；若欄位是搭乗機名，照機票填完整航班，例如 IT766。</td></tr>
-<tr><th>出発地</th><td>出發地</td><td>依下拉選單找 Kaohsiung / KHH / Taiwan；若沒有就用半形英文直接輸入。</td></tr>
-<tr><th>日本での連絡先（滞在先）</th><td>日本聯絡地址/住宿地</td><td>填第一晚飯店即可；不用把所有飯店都塞進去。</td></tr>
-<tr><th>郵便番号 / 郵便番号から自動入力</th><td>郵遞區號 / 用郵遞區號自動帶入</td><td>輸入第一晚飯店郵遞區號，通常不加連字號；可用自動帶入縣市區町。</td></tr>
-<tr><th>都道府県 / 市区町村名</th><td>都道府縣 / 市區町村</td><td>第一晚在別府就選大分県、別府市；若第一晚變更，依實際飯店修正。</td></tr>
-<tr><th>町字、番地</th><td>町名、番地</td><td>填飯店地址後段，半形英文/數字最穩。從訂房確認信複製後再檢查。</td></tr>
-<tr><th>滞在先・ホテル名</th><td>住宿地/飯店名稱</td><td>填第一晚飯店英文或羅馬拼音名稱，例如 HOTEL NEW TSURUTA BEPPU。</td></tr>
-<tr><th>日本国内で連絡可能な電話番号 / 連絡先電話番号</th><td>日本國內可聯絡電話</td><td>填第一晚飯店電話；通常只填數字，不加 +81、空格或連字號。</td></tr>
-<tr><th>同伴家族を選択してください</th><td>請選擇同行家人</td><td>務必勾選本趟一起入境的人。沒勾到的人不會出現在這趟行程 QR 內。</td></tr>
-<tr><th>入国審査及び税関申告</th><td>入境審查及海關申報</td><td>外國旅客主要要完成這一項，完成後才會有入境/海關 QR。</td></tr>
-<tr><th>渡航目的</th><td>旅行目的</td><td>一般旅遊選「観光 / Tourism / Sightseeing」或畫面中最接近的觀光選項。</td></tr>
-<tr><th>日本滞在予定期間：年数 / 月数 / 日数</th><td>預定停留日本期間：年/月/日</td><td>你們 5/29～6/5 通常可填年 0、月 0、日 8；至少不要三欄都填 0。</td></tr>
-<tr><th>質問事項</th><td>問題事項</td><td>拒絕入境、犯罪紀錄、毒品/槍械等問題照實回答；一般無特殊狀況多為「いいえ / No」。</td></tr>
-<tr><th>携帯品・別送品申告</th><td>攜帶品/後送品海關申報</td><td>一般旅遊沒有別送品、商業貨、超額酒菸香水、大額現金，多數選「いいえ / No」；有不確定物品就先查規定。</td></tr>
-<tr><th>酒類・紙巻・加熱式・葉巻・香水</th><td>酒、紙菸、加熱菸、雪茄、香水</td><td>沒有或未超額就照實填 0/No；超額要輸入數量。</td></tr>
-<tr><th>入力内容確認 / 登録完了</th><td>確認輸入內容 / 登錄完成</td><td>完成前逐人核對護照號碼、姓名、生日、抵達日、航班、飯店電話；完成後顯示每位 QR 並截圖。</td></tr>
-</tbody>
-</table>
-</section>
-<section class="guide-panel p-4 md:p-5">
-<h3 class="text-xl mb-3 flex items-center gap-2"><span>🏥</span> TOKIO OMOTENASHI POLICY 填寫教學</h3>
-<table class="guide-table text-left">
-<tbody>
-<tr><th>定位</th><td>日本境內訪日旅客醫療保險，主要處理在日本突然生病、受傷、住院、手術、醫療搬送等風險。</td></tr>
-<tr><th>不是什麼</th><td>不是 VJW 必填、不是日本入境條件、不是台灣旅平險/旅遊不便險替代品。班機延誤、行李延誤、旅程取消主要仍靠台灣保險。</td></tr>
-<tr><th>投保地點</th><td>台灣出發通常無法在台灣預先申請；請抵達日本、手機連上日本網路後再開官方頁操作。</td></tr>
-<tr><th>生效時間</th><td>常見規則是申請日隔天或入境日，取較晚者開始。若抵達當天才買，當天通常仍需靠台灣旅平險承接風險。</td></tr>
-<tr><th>投保人</th><td>必須是 18 歲以上個人。小孩不能當投保人，但可以由大人作投保人、小孩作被保險人。</td></tr>
-<tr><th>每人一份</th><td>不要以為爸爸買一張全家都保。每位要保障的人都要確認完成投保、收到完成 Email 或保單資訊。</td></tr>
-<tr><th>填寫資料</th><td>Email、密碼、入境/出境日期、投保人資料、被保險人資料、健康確認、重要事項說明、信用卡付款。</td></tr>
-<tr><th>就醫用法</th><td>非緊急狀況先聯絡保險服務中心或 App，由對方協助找醫院與處理 cashless medical service。危及生命時先打日本 119。</td></tr>
-</tbody>
-</table>
-<div class="mt-3 p-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-800 leading-relaxed font-bold">限制提醒：已經生病、受傷、既有疾病、牙科、投保前已發生的狀況通常不能當作事後補票。請誠實回答健康問題，避免理賠失效。</div>
-<div class="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-800 leading-relaxed font-bold">畫面語言提醒：TOKIO 申請頁常可選中文或英文；若你看到英文步驟或日文提示，下表可作對照。此保險請抵達日本、連上日本網路後再操作；每位旅客逐一完成。</div>
-<h4 class="text-lg font-black text-amber-800 mt-4 mb-2">TOKIO OMOTENASHI POLICY 欄位對照填寫表</h4>
-<table class="guide-table text-left">
-<thead><tr><th>日文/英文欄位或畫面</th><th>中文意思</th><th>你們這趟建議填法</th></tr></thead>
-<tbody>
-<tr><th>申込み / Application</th><td>申請/投保</td><td>抵達日本後再開官方頁；台灣網路通常可能無法完成申請。</td></tr>
-<tr><th>メールアドレス / E-mail address</th><td>Email</td><td>填可立即收信的 Email；完成投保與登入連結會寄到這裡。</td></tr>
-<tr><th>認証文字 / Authentication characters</th><td>畫面驗證碼</td><td>照畫面輸入；收不到信先看垃圾信，再換 Email。</td></tr>
-<tr><th>パスワード / Password</th><td>密碼</td><td>通常需英文大小寫、數字、符號組合；先記下來避免下一位投保時卡住。</td></tr>
-<tr><th>Schedule / スケジュール入力</th><td>行程/保險期間輸入</td><td>入境日填 2026/05/29；離境日填 2026/06/05。完成前仔細核對，送出後通常不能改。</td></tr>
-<tr><th>Arrival date / 入国日</th><td>入境日本日期</td><td>填抵達日本當天。若抵達當天投保，保險多半從隔天 00:00 起算。</td></tr>
-<tr><th>Insurance start date / 保険開始日</th><td>保險開始日</td><td>畫面若可選，通常選申請隔天或系統可選最早日；不要誤以為抵達當天立即生效。</td></tr>
-<tr><th>Insurance end date / 保険終了日</th><td>保險結束日</td><td>至少涵蓋 2026/06/05 出境當天；這趟保守抓 8 天。</td></tr>
-<tr><th>Subscriber / Policyholder / 契約者 / 申込人</th><td>投保人/要保人</td><td>必須是 18 歲以上大人。爸爸或媽媽可幫小孩投保。</td></tr>
-<tr><th>Insured / 被保険者</th><td>被保險人</td><td>實際要被保障的人。大人可自己作被保險人；小孩由大人投保、小孩作被保險人。</td></tr>
-<tr><th>COPY</th><td>複製投保人資料</td><td>投保人＝被保險人時可按 COPY；幫小孩投保時不要直接 COPY 到小孩資料。</td></tr>
-<tr><th>Name / 氏名</th><td>姓名</td><td>依護照英文填，不填中文；每位旅客各自核對。</td></tr>
-<tr><th>Date of birth / 生年月日</th><td>出生年月日</td><td>依護照生日選年/月/日。小孩最容易填錯。</td></tr>
-<tr><th>Nationality / 国籍</th><td>國籍</td><td>選 Taiwan / 台湾 / TAIWAN 相關選項，依畫面提供為準。</td></tr>
-<tr><th>Questions on Insured Person / 被保険者に関する質問</th><td>被保險人健康確認</td><td>目前已生病、受傷、投保前已發生狀況，不要為了投保硬選 No；否則可能不能理賠。</td></tr>
-<tr><th>Cancellation / 解約・取消 / Premium refund</th><td>取消/解約/退款處理</td><td>閱讀後依畫面勾選同意。行程未確定前不要亂買，因為事後改資料不方便。</td></tr>
-<tr><th>Description of Important Matters / 重要事項説明書</th><td>重要事項說明書</td><td>必須打開確認才能繼續。手機若返回不了，改用 Chrome/Safari 或飯店 Wi‑Fi 下用筆電/平板處理。</td></tr>
-<tr><th>Credit Card / クレジットカード</th><td>信用卡付款</td><td>準備 Visa/Master/JCB 與 3D 驗證；台灣卡可能要先開海外交易與簡訊/銀行 App 推播。</td></tr>
-<tr><th>Application Completion / 申込完了</th><td>申請完成</td><td>每完成一人就截圖完成頁、確認 Email，並放入手機「日本保險」相簿。</td></tr>
-<tr><th>TOKIO MARINE Safety Information</th><td>安全資訊/聯絡 App</td><td>完成後下載或記下聯絡方式。非緊急就醫先聯絡保險服務中心；危急先打 119。</td></tr>
-</tbody>
-</table>
-<div class="mt-3 p-3 rounded-xl bg-amber-50 border border-amber-200 text-sm text-amber-900 leading-relaxed font-bold">8 人團防呆：不要連續填到麻木。每投保 1 人就立刻核對「姓名、生日、保險起訖日、完成 Email」，再填下一位。</div>
-</section>
-<section class="guide-panel p-4 md:p-5">
-<h3 class="text-xl mb-3 flex items-center gap-2"><span>📋</span> 出發前／抵日後防呆清單</h3>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-gray-700 font-bold leading-relaxed">
-<div class="check-row"><span class="box"></span><span>每位旅客護照效期、英文姓名、生日與 VJW 登錄資料完全一致。</span></div>
-<div class="check-row"><span class="box"></span><span>每位旅客 VJW 入境審查＋海關申報 QR code 已截圖。</span></div>
-<div class="check-row"><span class="box"></span><span>VJW QR code 已紙本列印，放入護照夾或透明文件夾。</span></div>
-<div class="check-row"><span class="box"></span><span>第一晚飯店地址、電話、訂房確認信已存手機與離線備份。</span></div>
-<div class="check-row"><span class="box"></span><span>台灣旅平險與旅遊不便險已涵蓋 5/29 出發到 6/5 回台全程。</span></div>
-<div class="check-row"><span class="box"></span><span>抵達日本後若要加買 TOKIO，確認日本網路、Email、信用卡 3D 驗證可用。</span></div>
-<div class="check-row"><span class="box"></span><span>每完成一位 TOKIO 投保，就截圖完成頁並確認完成 Email。</span></div>
-<div class="check-row"><span class="box"></span><span>建立手機相簿：護照、VJW QR、保險、租車、飯店、緊急聯絡。</span></div>
-<div class="check-row"><span class="box"></span><span>更多文件、租車、訂位、禁帶品、飯店取消期限與兩車 SOP，回首頁點「📋 出發前總檢查」。</span></div>
-</div>
-</section>
-</div>
+
+<div class="decision-modal-body flex-grow overflow-y-auto custom-scrollbar" id="backup-list-container"></div>
 </dialog>
 
 <dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preDepartureModal">
