@@ -1,0 +1,202 @@
+/* ux-upgrades-v1: final field-use refinements, accessibility and mobile shortcuts. */
+:root {
+  --ui-bg: #fffdf7;
+  --ui-surface: #ffffff;
+  --ui-ink: #172033;
+  --ui-muted: #64748b;
+  --ui-line: #e2e8f0;
+  --ui-line-strong: #cbd5e1;
+  --ui-primary: #0f172a;
+  --ui-accent: #0e7490;
+  --ui-warn: #b45309;
+  --ui-radius-card: 20px;
+  --ui-radius-panel: 28px;
+  --ui-shadow-card: 0 14px 34px rgba(15, 23, 42, 0.08);
+  --ui-shadow-soft: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(14, 116, 144, 0.45) !important;
+  outline-offset: 3px !important;
+}
+
+.trip-status-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  transition: transform .18s ease, background-color .18s ease;
+}
+.trip-status-button:hover { transform: translateY(-1px); background: rgba(255,255,255,.26); }
+.trip-status-button.is-confirmed { transform: scale(1.08); background: rgba(255,255,255,.34); }
+
+.top-action-grid > .top-action-card {
+  cursor: pointer;
+  min-height: 92px;
+  border-width: 1px !important;
+  border-color: rgba(226,232,240,.96) !important;
+  background: rgba(255,255,255,.94) !important;
+  border-radius: var(--ui-radius-card) !important;
+  box-shadow: var(--ui-shadow-soft) !important;
+  color: var(--ui-ink);
+}
+.top-action-grid > .top-action-card:hover { transform: translateY(-2px) !important; }
+.top-action-grid > .top-action-card:active { transform: translateY(0) scale(.99) !important; }
+
+.mobile-bottom-action-bar {
+  display: none;
+}
+.mobile-bottom-action-bar button {
+  min-width: 0;
+  min-height: 48px;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.98);
+  background: #fff;
+  color: var(--ui-ink);
+  font-size: .72rem;
+  font-weight: 900;
+  box-shadow: 0 8px 18px rgba(15,23,42,.07);
+}
+.mobile-bottom-action-bar span {
+  display: block;
+  font-size: 1.12rem;
+  line-height: 1;
+  margin-bottom: .12rem;
+}
+.mobile-bottom-action-bar b {
+  display: block;
+  font-size: .72rem;
+  line-height: 1.1;
+}
+
+.day-diagnostics-panel {
+  background: #fff !important;
+  border: 1px solid var(--ui-line) !important;
+  box-shadow: var(--ui-shadow-soft) !important;
+}
+.day-diagnostic-title { color: var(--ui-ink) !important; }
+.day-diagnostic-cut {
+  border-left-color: #0e7490 !important;
+  background: #f8fafc !important;
+  color: #334155 !important;
+}
+.day-diagnostic-cut span { color: #0e7490 !important; }
+
+.decision-collapsible {
+  overflow: hidden;
+}
+.decision-collapsible > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+.decision-collapsible > summary::-webkit-details-marker { display: none; }
+.decision-collapsible > summary .decision-collapse-indicator::before {
+  content: "展開";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3rem;
+  border: 1px solid var(--decision-line, #e2e8f0);
+  border-radius: 999px;
+  background: #fff;
+  color: #475569;
+  padding: .28rem .58rem;
+  font-size: .72rem;
+  font-weight: 950;
+}
+.decision-collapsible[open] > summary .decision-collapse-indicator::before { content: "收合"; }
+.decision-section.decision-collapsible > summary,
+.food-section-v3.decision-collapsible > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .9rem;
+}
+.decision-section.decision-collapsible:not([open]) > .decision-card-grid,
+.food-section-v3.decision-collapsible:not([open]) > .food-card-grid-v3 { display: none; }
+
+@media (min-width: 1024px) {
+  main.max-w-4xl { max-width: 1180px !important; }
+  #itinerary-content {
+    display: block;
+  }
+  .day-summary-grid {
+    grid-template-columns: 1.12fr .88fr !important;
+  }
+  .day-diagnostics-panel,
+  .day-tools-panel {
+    position: relative;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(5.25rem + env(safe-area-inset-bottom)) !important;
+  }
+  .top-action-grid > .top-action-card {
+    width: 78vw !important;
+    min-height: 88px;
+  }
+  .mobile-bottom-action-bar {
+    position: fixed;
+    left: max(.55rem, env(safe-area-inset-left));
+    right: max(.55rem, env(safe-area-inset-right));
+    bottom: max(.55rem, env(safe-area-inset-bottom));
+    z-index: 60;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: .42rem;
+    padding: .5rem;
+    border: 1px solid rgba(226,232,240,.95);
+    border-radius: 24px;
+    background: rgba(255,255,255,.92);
+    box-shadow: 0 18px 40px rgba(15,23,42,.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  .mobile-bottom-action-bar button:active { transform: scale(.98); }
+  main > .flex.justify-end a,
+  main > .flex.justify-end button {
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+  }
+  .day-diagnostics-panel { border-radius: 18px !important; padding: .85rem !important; }
+  .day-diagnostic-chips { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .day-diagnostic-chip { min-height: 2.35rem; font-size: .72rem; }
+  .decision-modal-titlebar,
+  .decision-modal-nav-grid { grid-template-columns: 1fr !important; }
+  .decision-modal-titlebar { padding-right: 3rem !important; }
+  .decision-spotlight-grid,
+  .food-quick-grid,
+  .decision-card-grid,
+  .food-card-grid-v3 { grid-template-columns: 1fr !important; }
+  .decision-section.decision-collapsible > summary,
+  .food-section-v3.decision-collapsible > summary {
+    align-items: flex-start;
+  }
+  .decision-collapsible > summary .decision-collapse-indicator::before { min-width: 2.8rem; }
+}
+
+@media print {
+  .mobile-bottom-action-bar,
+  .top-action-grid,
+  .trip-status-button { display: none !important; }
+}

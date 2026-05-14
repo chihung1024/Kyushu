@@ -17,6 +17,7 @@ function createDayTabsController({ getCurrentDay, setCurrentDay, ensureDayConten
             btn.onclick = () => selectDay(data.day);
             container.appendChild(btn);
         });
+        container.addEventListener('keydown', handleTabKeyboard);
         updateTabsUI();
     }
 
@@ -50,18 +51,39 @@ function createDayTabsController({ getCurrentDay, setCurrentDay, ensureDayConten
         });
     }
 
-    function selectDay(day) {
+    function emitDayChange(day) {
+        window.dispatchEvent(new CustomEvent('kyushu:daychange', { detail: { day } }));
+    }
+
+    function selectDay(day, options = {}) {
         setCurrentDay(day);
-        window.history.pushState(null, '', `#day${day}`);
+        if (!options.fromPopstate) window.history.pushState(null, '', `#day${day}`);
         updateTabsUI();
         switchDayContent(day);
-        if(window.innerWidth < 768) {
+        emitDayChange(day);
+        if(options.scroll !== false && window.innerWidth < 768) {
             const content = document.getElementById('itinerary-content');
             if (content) {
                 const contentTop = content.getBoundingClientRect().top + window.scrollY;
                 window.scrollTo({ top: contentTop - 80, behavior: 'smooth' });
             }
         }
+    }
+
+    function handleTabKeyboard(event) {
+        const keys = ['ArrowLeft', 'ArrowRight', 'Home', 'End'];
+        if (!keys.includes(event.key)) return;
+        event.preventDefault();
+        const days = itineraryData.map(item => item.day);
+        const currentIndex = days.indexOf(getCurrentDay());
+        let nextIndex = currentIndex;
+        if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % days.length;
+        if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + days.length) % days.length;
+        if (event.key === 'Home') nextIndex = 0;
+        if (event.key === 'End') nextIndex = days.length - 1;
+        const nextDay = days[nextIndex];
+        selectDay(nextDay, { scroll: false });
+        document.getElementById(`tab-btn-${nextDay}`)?.focus();
     }
 
     function handlePopstate() {
@@ -71,9 +93,7 @@ function createDayTabsController({ getCurrentDay, setCurrentDay, ensureDayConten
             const parsedDay = parseInt(hash.replace('#day', ''));
             if (!isNaN(parsedDay) && itineraryData.some(d => d.day === parsedDay)) day = parsedDay;
         }
-        setCurrentDay(day);
-        updateTabsUI();
-        switchDayContent(day);
+        selectDay(day, { fromPopstate: true, scroll: false });
     }
 
     function init() {
