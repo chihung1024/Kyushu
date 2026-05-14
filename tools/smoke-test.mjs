@@ -187,7 +187,13 @@ async function runAppRenderSmokeTest() {
   const tabs = document.getElementById('tabs-container');
   const content = document.getElementById('itinerary-content');
   const firstDay = document.getElementById('day-content-1');
-  if (!tabs || tabs.children.length !== 8) {
+  const countTabButtons = (node) => {
+    if (!node) return 0;
+    let count = /^tab-btn-/.test(node.id || '') ? 1 : 0;
+    for (const child of node.children || []) count += countTabButtons(child);
+    return count;
+  };
+  if (!tabs || countTabButtons(tabs) !== 8) {
     throw new Error('app render failed: day tabs were not created');
   }
   if (!content || content.children.length === 0 || !firstDay) {

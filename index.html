@@ -29,7 +29,7 @@
 
 <main class="max-w-4xl mx-auto px-4 mt-6">
 
-<div class="flex flex-row md:grid md:grid-cols-5 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-1 overflow-x-auto md:overflow-visible hide-scrollbar scroll-snap-x py-2">
+<div class="desktop-tool-carousel flex flex-row md:grid md:grid-cols-5 gap-2 md:gap-3 mb-5 -mx-4 px-4 md:mx-auto md:px-1 overflow-x-auto md:overflow-visible hide-scrollbar scroll-snap-x py-2">
 <div class="w-[70vw] sm:w-[260px] md:w-auto snap-start shrink-0 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 text-left shadow-sm border-2 border-amber-200 cursor-pointer transition-all hover:scale-105 hover:shadow-md flex items-center gap-3" onclick="showModal('preTripModal')">
 <div class="text-2xl shrink-0 drop-shadow">🧳</div>
 <div>
@@ -73,13 +73,28 @@
 </div>
 </div>
 
-<div class="sticky top-0 z-40 bg-kawaii-bg/95 backdrop-blur-md pt-1 pb-2 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all shadow-sm">
+<section class="mobile-command-bar" aria-label="手機版快速工具">
+<button class="mobile-command-btn mobile-command-primary" type="button" onclick="initBackupModal(); showModal('backupModal');">
+<span class="mobile-command-icon">🗺️</span>
+<span><strong>現場決策庫</strong><small>景點・吃飯・補給</small></span>
+</button>
+<button class="mobile-command-btn" type="button" onclick="showModal('mobileMoreModal')">
+<span class="mobile-command-icon">☰</span>
+<span><strong>其他</strong><small>行前・紙本・複製</small></span>
+</button>
+</section>
+
+<div class="day-tabs-shell sticky top-0 z-40 bg-kawaii-bg/95 backdrop-blur-md pt-1 pb-2 -mx-4 px-4 md:mx-0 md:px-0 border-b-2 border-kawaii-light-pink/50 mb-4 transition-all shadow-sm">
 <div class="flex overflow-x-auto md:overflow-visible hide-scrollbar space-x-3 md:justify-center py-3 px-2" id="tabs-container">
 
 </div>
+<div class="day-tabs-dots" id="day-tabs-dots" aria-hidden="true">
+<span class="day-tabs-dot active"></span>
+<span class="day-tabs-dot"></span>
+</div>
 </div>
 
-<div class="flex justify-end gap-2 mb-4 pr-2">
+<div class="desktop-day-actions flex justify-end gap-2 mb-4 pr-2">
 <a class="text-xs bg-gray-200 text-gray-800 font-bold px-4 py-3 md:py-2 rounded-full shadow-sm hover:bg-gray-300 transition flex items-center gap-1.5 min-w-[44px]" href="kyushu-travel-manual.pdf" target="_blank" rel="noopener noreferrer" onclick="return window.openPaperGuidePdf ? window.openPaperGuidePdf(event) : true" title="開啟正式 A4 紙本 PDF 手冊">
 <span class="text-sm">🖨️</span> 列印紙本攻略
                 </a>

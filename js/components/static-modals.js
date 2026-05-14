@@ -46,6 +46,35 @@ function renderStaticModals() {
 <div class="decision-modal-body flex-grow overflow-y-auto custom-scrollbar" id="backup-list-container"></div>
 </dialog>
 
+<dialog class="mobile-more-modal bg-white w-11/12 max-w-md rounded-[1.5rem] p-0 shadow-2xl relative max-h-[86vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="mobileMoreModal">
+<button aria-label="關閉視窗" class="mobile-more-close" onclick="closeModal('mobileMoreModal')">✕</button>
+<div class="mobile-more-head">
+    <div class="mobile-more-kicker">MOBILE TOOLBOX</div>
+    <h2>其他</h2>
+    <p>低頻工具收在這裡；旅途中首頁只保留現場決策與 Day 切換。</p>
+</div>
+<div class="mobile-more-list">
+    <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('preTripModal'), 0);">
+        <span>🧳</span><strong>出發前必看</strong><small>VJW＋旅遊醫療保險教學</small>
+    </button>
+    <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('preDepartureModal'), 0);">
+        <span>📋</span><strong>文件・租車・訂位</strong><small>出發前總檢查</small>
+    </button>
+    <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('hotelModal'), 0);">
+        <span>🏨</span><strong>飯店與備案</strong><small>新鶴田 / Candeo / 比較</small>
+    </button>
+    <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('budgetModal'), 0);">
+        <span>💰</span><strong>預算估算</strong><small>單家約 10.7 萬 TWD</small>
+    </button>
+    <a class="mobile-more-item" href="kyushu-travel-manual.pdf" target="_blank" rel="noopener noreferrer" onclick="return window.openPaperGuidePdf ? window.openPaperGuidePdf(event) : true">
+        <span>🖨️</span><strong>列印紙本攻略</strong><small>開啟正式 A4 PDF</small>
+    </a>
+    <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); copyDailyItinerary();">
+        <span>📋</span><strong>複製今日行程</strong><small>貼給伴侶 / LINE 群組</small>
+    </button>
+</div>
+</dialog>
+
 <dialog class="bg-white w-11/12 max-w-[90vw] lg:max-w-5xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto pretrip-guide" id="preTripModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('preTripModal')">✕</button>
 <div class="mb-6 border-b-2 border-amber-100 pb-4 pr-10">
