@@ -2360,6 +2360,394 @@ dialog a[class*="-action"]:focus-visible {
 }
 
 
+/* Accommodation modal navigation optimization: overview + sticky hotel switcher + collapsed secondary content. */
+.hotel-modal {
+  scroll-padding-top: 8.5rem;
+}
+
+.accom-overview-panel {
+  margin: 1rem 0 0.85rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.05);
+}
+
+.accom-overview-title {
+  display: grid;
+  gap: 0.22rem;
+  margin-bottom: 0.8rem;
+}
+
+.accom-overview-title span {
+  color: #7c3aed;
+  font-size: 0.7rem;
+  font-weight: 950;
+  letter-spacing: 0.16em;
+}
+
+.accom-overview-title h3 {
+  color: #0f172a;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  font-weight: 950;
+}
+
+.accom-overview-title p {
+  color: #475569;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  font-weight: 800;
+}
+
+.accom-overview-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.accom-overview-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  background: #ffffff;
+}
+
+.accom-overview-row.is-active {
+  border-color: #a5b4fc;
+  background: #eef2ff;
+}
+
+.accom-overview-main {
+  display: grid;
+  gap: 0.12rem;
+  min-width: 0;
+}
+
+.accom-overview-main span {
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+}
+
+.accom-overview-main strong {
+  color: #0f172a;
+  font-size: 0.95rem;
+  line-height: 1.25;
+  font-weight: 950;
+}
+
+.accom-overview-main small {
+  color: #475569;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  font-weight: 850;
+}
+
+.accom-overview-meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.accom-overview-meta em {
+  font-style: normal;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.accom-overview-btn,
+.accom-hotel-tab {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+}
+
+.accom-overview-btn {
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 0.72rem;
+  font-weight: 950;
+  white-space: nowrap;
+}
+
+.accom-overview-btn.is-active {
+  border-color: #0f172a;
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.accom-switcher {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin: 0.85rem 0 0.65rem;
+  padding: 0.72rem;
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  border-radius: 1.15rem;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+}
+
+.accom-hotel-tab {
+  display: grid;
+  justify-items: start;
+  gap: 0.15rem;
+  min-height: 3.05rem;
+  padding: 0.62rem 0.8rem;
+  border-radius: 0.95rem;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  text-align: left;
+  box-shadow: none;
+}
+
+.accom-hotel-tab span {
+  color: inherit;
+  font-size: 0.84rem;
+  line-height: 1.25;
+  font-weight: 950;
+}
+
+.accom-hotel-tab small {
+  color: inherit;
+  opacity: 0.78;
+  font-size: 0.7rem;
+  line-height: 1.25;
+  font-weight: 850;
+}
+
+.accom-hotel-tab.is-active {
+  border-color: #0f172a;
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.accom-current-label {
+  margin: 0 0 0.7rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.9rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  font-weight: 900;
+}
+
+.accom-current-label strong {
+  color: #0f172a;
+  font-weight: 950;
+}
+
+.accommodation-card[hidden] {
+  display: none !important;
+}
+
+.accom-secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.accom-secondary-details,
+.accom-section {
+  overflow: hidden;
+}
+
+.accom-secondary-details {
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  background: #ffffff;
+}
+
+.accom-reason-details {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.accom-rules-details {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.accom-secondary-details summary,
+.accom-section-title {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.9rem !important;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accom-secondary-details summary {
+  min-height: 3.2rem;
+  padding: 0.85rem 0.95rem;
+}
+
+.accom-secondary-details summary::-webkit-details-marker,
+.accom-section-title::-webkit-details-marker {
+  display: none;
+}
+
+.accom-secondary-details summary span {
+  display: grid;
+  gap: 0.14rem;
+  min-width: 0;
+}
+
+.accom-secondary-details summary strong {
+  color: #0f172a;
+  font-size: 0.88rem;
+  line-height: 1.3;
+  font-weight: 950;
+}
+
+.accom-secondary-details summary small {
+  color: #64748b;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  font-weight: 850;
+}
+
+.accom-secondary-details summary b,
+.accom-section-toggle {
+  flex: 0 0 auto;
+  padding: 0.22rem 0.58rem;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  font-size: 0.68rem;
+  line-height: 1.2;
+  font-weight: 950;
+}
+
+.accom-secondary-details[open] summary b,
+.accom-section[open] .accom-section-toggle {
+  font-size: 0;
+}
+
+.accom-secondary-details[open] summary b::after,
+.accom-section[open] .accom-section-toggle::after {
+  content: "收合";
+  font-size: 0.68rem;
+}
+
+.accom-secondary-body {
+  padding: 0 0.95rem 0.95rem;
+}
+
+.accom-secondary-body ul {
+  list-style: disc;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.28rem;
+  color: #1e293b;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  font-weight: 800;
+}
+
+.accom-rules-list {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.accom-section-title {
+  margin: 0 !important;
+  padding: 0.85rem 0.95rem !important;
+  border-bottom: 0 !important;
+}
+
+.accom-section-title > span {
+  display: grid;
+  gap: 0.18rem;
+  min-width: 0;
+}
+
+.accom-section .accom-detail-grid {
+  padding: 0 1rem 1rem;
+}
+
+.accom-section[open] .accom-section-title {
+  border-bottom: 1px solid #e2e8f0 !important;
+  margin-bottom: 0.8rem !important;
+}
+
+@media (max-width: 767px) {
+  .hotel-modal {
+    scroll-padding-top: 7.2rem;
+  }
+
+  .accom-overview-panel {
+    margin-top: 0.85rem;
+    padding: 0.85rem;
+  }
+
+  .accom-overview-list,
+  .accom-secondary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .accom-overview-row {
+    align-items: stretch;
+  }
+
+  .accom-switcher {
+    grid-template-columns: 1fr;
+    top: 0;
+    gap: 0.5rem;
+    padding: 0.55rem;
+    border-radius: 1rem;
+  }
+
+  .accom-hotel-tab {
+    min-height: 2.7rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .accom-current-label {
+    font-size: 0.74rem;
+  }
+
+  .accom-secondary-details summary,
+  .accom-section-title {
+    align-items: flex-start !important;
+  }
+
+  .accom-secondary-details summary b,
+  .accom-section-toggle {
+    margin-top: 0.12rem;
+  }
+}
+
 </style>
 </head>
 <body class="text-gray-900 font-sans antialiased pb-24 print:pb-0 print:bg-white">
@@ -7460,6 +7848,56 @@ function renderAccommodationList(items = [], compact = false) {
     return (items || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
 }
 
+function getAccommodationShortName(hotel) {
+    if (!hotel) return '';
+    if ((hotel.key || '').includes('tsuruta')) return '新鶴田';
+    if ((hotel.key || '').includes('candeo')) return 'Candeo 熊本新市街';
+    return hotel.name || '';
+}
+
+function getAccommodationTabLabel(hotel) {
+    const stayNights = String(hotel.stay || '').match(/｜\s*(\d+)晚/);
+    const nights = stayNights ? `${stayNights[1]}晚` : '';
+    const area = String(hotel.area || '').replace('基地', '').trim();
+    const shortName = getAccommodationShortName(hotel);
+    return `${area}${nights ? ` ${nights}` : ''}｜${shortName}`;
+}
+
+function renderAccommodationOverview(hotels = []) {
+    const rows = hotels.map((hotel, index) => `
+        <article class="accom-overview-row${index === 0 ? ' is-active' : ''}" data-hotel-overview-row="${escapeAttr(hotel.key)}">
+            <div class="accom-overview-main">
+                <span>${escapeHtml(hotel.area)}</span>
+                <strong>${escapeHtml(getAccommodationShortName(hotel))}</strong>
+                <small>${escapeHtml(hotel.stay)}</small>
+            </div>
+            <div class="accom-overview-meta">
+                <em>${escapeHtml(hotel.status)}</em>
+                <button class="accom-overview-btn${index === 0 ? ' is-active' : ''}" type="button" data-hotel-overview-btn="${escapeAttr(hotel.key)}" aria-pressed="${index === 0 ? 'true' : 'false'}" onclick="selectAccommodationHotel('${escapeAttr(hotel.key)}')">${index === 0 ? '顯示中' : '查看詳情'}</button>
+            </div>
+        </article>`).join('');
+
+    return `<section class="accom-overview-panel" aria-label="住宿總覽">
+        <div class="accom-overview-title">
+            <span>LODGING OVERVIEW</span>
+            <h3>住宿總覽</h3>
+            <p>先切換飯店，再看詳細入住、停車、導航與周邊資訊；避免兩間住宿完整堆疊造成長距離捲動。</p>
+        </div>
+        <div class="accom-overview-list">${rows}</div>
+    </section>`;
+}
+
+function renderAccommodationTabs(hotels = []) {
+    const buttons = hotels.map((hotel, index) => `<button class="accom-hotel-tab${index === 0 ? ' is-active' : ''}" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}" aria-controls="accommodation-panel-${escapeAttr(hotel.key)}" data-hotel-tab="${escapeAttr(hotel.key)}" onclick="selectAccommodationHotel('${escapeAttr(hotel.key)}')">
+        <span>${escapeHtml(getAccommodationTabLabel(hotel))}</span>
+        <small>${escapeHtml(hotel.name)}</small>
+    </button>`).join('');
+
+    return `<div class="accom-switcher" role="tablist" aria-label="切換住宿飯店">
+        ${buttons}
+    </div>`;
+}
+
 function renderAccommodationDetailCard(item, variant = 'life') {
     const badge = item.role || item.category || item.type || '';
     const note = item.highlights || item.use || item.buy || item.order || '';
@@ -7482,20 +7920,37 @@ function renderAccommodationDetailCard(item, variant = 'life') {
 
 function renderAccommodationSection(title, subtitle, items = [], variant = 'life') {
     if (!items || items.length === 0) return '';
-    return `<section class="accom-section accom-section-${variant}">
-        <div class="accom-section-title">
-            <h4>${escapeHtml(title)}</h4>
-            ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}
-        </div>
+    return `<details class="accom-section accom-section-${variant}">
+        <summary class="accom-section-title">
+            <span>
+                <h4>${escapeHtml(title)}</h4>
+                ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}
+            </span>
+            <b class="accom-section-toggle" aria-hidden="true">展開</b>
+        </summary>
         <div class="accom-detail-grid">${items.map(item => renderAccommodationDetailCard(item, variant)).join('')}</div>
-    </section>`;
+    </details>`;
 }
 
-function renderAccommodationHotelCard(hotel) {
+function renderAccommodationTextDetails(title, subtitle, innerHtml, className = '') {
+    return `<details class="accom-secondary-details ${className}">
+        <summary>
+            <span>
+                <strong>${escapeHtml(title)}</strong>
+                ${subtitle ? `<small>${escapeHtml(subtitle)}</small>` : ''}
+            </span>
+            <b aria-hidden="true">展開</b>
+        </summary>
+        <div class="accom-secondary-body">${innerHtml}</div>
+    </details>`;
+}
+
+function renderAccommodationHotelCard(hotel, index = 0) {
     const featureList = renderAccommodationList(hotel.features || []);
     const ruleRows = (hotel.rules || []).map(item => `<div class="accom-rule-card">${escapeHtml(item)}</div>`).join('');
+    const isActive = index === 0;
 
-    return `<section class="accommodation-card">
+    return `<section class="accommodation-card${isActive ? ' is-active' : ''}" id="accommodation-panel-${escapeAttr(hotel.key)}" data-hotel-panel="${escapeAttr(hotel.key)}" data-hotel-key="${escapeAttr(hotel.key)}" role="tabpanel" aria-hidden="${isActive ? 'false' : 'true'}" ${isActive ? '' : 'hidden'}>
         <header class="accommodation-card-head">
             <div class="accom-hotel-icon" aria-hidden="true">${escapeHtml(hotel.icon || '🏨')}</div>
             <div class="accom-hotel-title">
@@ -7529,15 +7984,9 @@ function renderAccommodationHotelCard(hotel) {
                     <div class="accom-nav-grid">${renderAccommodationNavButtons(hotel.nav || [])}</div>
                 </div>
             </div>
-            <div class="accom-two-col">
-                <section class="accom-reason-box">
-                    <h4>為什麼維持首選</h4>
-                    <ul>${featureList}</ul>
-                </section>
-                <section class="accom-rules-box">
-                    <h4>現場使用規則</h4>
-                    <div>${ruleRows}</div>
-                </section>
+            <div class="accom-secondary-grid">
+                ${renderAccommodationTextDetails('為什麼維持首選', '需要確認住宿取捨時再展開。', `<ul>${featureList}</ul>`, 'accom-reason-details')}
+                ${renderAccommodationTextDetails('現場使用規則', '入住後照這個順序處理，不把補給變成新行程。', `<div class="accom-rules-list">${ruleRows}</div>`, 'accom-rules-details')}
             </div>
             ${renderAccommodationSection('生活機能｜便利・停車・親子救場', '先處理水、早餐、停車與孩子狀態；不要為了補買重新拉長移動。', hotel.life || [], 'life')}
             ${renderAccommodationSection('購物 / 補給名店｜實際會用到的店', '列出飯店步行圈或短程車程內最有用的購物點，避免現場亂查。', hotel.shoppingHighlights || [], 'shopping')}
@@ -7547,7 +7996,8 @@ function renderAccommodationHotelCard(hotel) {
 }
 
 function renderHotelInfoModal() {
-    const cards = (accommodationData || []).map(renderAccommodationHotelCard).join('');
+    const hotels = accommodationData || [];
+    const cards = hotels.map((hotel, index) => renderAccommodationHotelCard(hotel, index)).join('');
     return `<dialog class="hotel-modal bg-white w-11/12 max-w-[94vw] lg:max-w-6xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="hotelModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg" onclick="closeModal('hotelModal')">✕</button>
 <div class="hotel-modal-intro">
@@ -7555,8 +8005,55 @@ function renderHotelInfoModal() {
     <h2><span>🏨</span> 住宿首選與周邊生活機能</h2>
     <p>目前住宿暫定只保留首選：別府 4 晚住新鶴田、熊本 3 晚住 Candeo 熊本新市街。此頁重點是入住、停車、便利、購物與住宿圈美食，不再保留其他住宿備案。</p>
 </div>
+${renderAccommodationOverview(hotels)}
+${renderAccommodationTabs(hotels)}
+<div class="accom-current-label" aria-live="polite">目前顯示：<strong data-selected-hotel-label>${escapeHtml(hotels[0] ? getAccommodationTabLabel(hotels[0]) : '')}</strong></div>
 <div class="accommodation-stack">${cards}</div>
 </dialog>`;
+}
+
+function selectAccommodationHotel(key) {
+    const modal = document.getElementById('hotelModal');
+    if (!modal || !key) return;
+
+    const panels = Array.from(modal.querySelectorAll('[data-hotel-panel]'));
+    const targetPanel = panels.find(panel => panel.dataset.hotelPanel === key) || panels[0];
+    if (!targetPanel) return;
+
+    panels.forEach(panel => {
+        const active = panel === targetPanel;
+        panel.hidden = !active;
+        panel.classList.toggle('is-active', active);
+        panel.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+
+    modal.querySelectorAll('[data-hotel-tab]').forEach(button => {
+        const active = button.dataset.hotelTab === targetPanel.dataset.hotelPanel;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    modal.querySelectorAll('[data-hotel-overview-row]').forEach(row => {
+        row.classList.toggle('is-active', row.dataset.hotelOverviewRow === targetPanel.dataset.hotelPanel);
+    });
+
+    modal.querySelectorAll('[data-hotel-overview-btn]').forEach(button => {
+        const active = button.dataset.hotelOverviewBtn === targetPanel.dataset.hotelPanel;
+        button.classList.toggle('is-active', active);
+        button.textContent = active ? '顯示中' : '查看詳情';
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    const activeTab = Array.from(modal.querySelectorAll('[data-hotel-tab]')).find(button => button.dataset.hotelTab === targetPanel.dataset.hotelPanel);
+    const label = modal.querySelector('[data-selected-hotel-label]');
+    const activeTabText = activeTab ? activeTab.querySelector('span') : null;
+    if (label && activeTabText) label.textContent = activeTabText.textContent;
+
+    const switcher = modal.querySelector('.accom-switcher');
+    if (switcher && modal.open) {
+        const targetTop = Math.max(0, switcher.offsetTop - 12);
+        modal.scrollTo({ top: targetTop, behavior: 'smooth' });
+    }
 }
 
 function renderStaticModals() {

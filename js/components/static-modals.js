@@ -9,6 +9,56 @@ function renderAccommodationList(items = [], compact = false) {
     return (items || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
 }
 
+function getAccommodationShortName(hotel) {
+    if (!hotel) return '';
+    if ((hotel.key || '').includes('tsuruta')) return '新鶴田';
+    if ((hotel.key || '').includes('candeo')) return 'Candeo 熊本新市街';
+    return hotel.name || '';
+}
+
+function getAccommodationTabLabel(hotel) {
+    const stayNights = String(hotel.stay || '').match(/｜\s*(\d+)晚/);
+    const nights = stayNights ? `${stayNights[1]}晚` : '';
+    const area = String(hotel.area || '').replace('基地', '').trim();
+    const shortName = getAccommodationShortName(hotel);
+    return `${area}${nights ? ` ${nights}` : ''}｜${shortName}`;
+}
+
+function renderAccommodationOverview(hotels = []) {
+    const rows = hotels.map((hotel, index) => `
+        <article class="accom-overview-row${index === 0 ? ' is-active' : ''}" data-hotel-overview-row="${escapeAttr(hotel.key)}">
+            <div class="accom-overview-main">
+                <span>${escapeHtml(hotel.area)}</span>
+                <strong>${escapeHtml(getAccommodationShortName(hotel))}</strong>
+                <small>${escapeHtml(hotel.stay)}</small>
+            </div>
+            <div class="accom-overview-meta">
+                <em>${escapeHtml(hotel.status)}</em>
+                <button class="accom-overview-btn${index === 0 ? ' is-active' : ''}" type="button" data-hotel-overview-btn="${escapeAttr(hotel.key)}" aria-pressed="${index === 0 ? 'true' : 'false'}" onclick="selectAccommodationHotel('${escapeAttr(hotel.key)}')">${index === 0 ? '顯示中' : '查看詳情'}</button>
+            </div>
+        </article>`).join('');
+
+    return `<section class="accom-overview-panel" aria-label="住宿總覽">
+        <div class="accom-overview-title">
+            <span>LODGING OVERVIEW</span>
+            <h3>住宿總覽</h3>
+            <p>先切換飯店，再看詳細入住、停車、導航與周邊資訊；避免兩間住宿完整堆疊造成長距離捲動。</p>
+        </div>
+        <div class="accom-overview-list">${rows}</div>
+    </section>`;
+}
+
+function renderAccommodationTabs(hotels = []) {
+    const buttons = hotels.map((hotel, index) => `<button class="accom-hotel-tab${index === 0 ? ' is-active' : ''}" type="button" role="tab" aria-selected="${index === 0 ? 'true' : 'false'}" aria-controls="accommodation-panel-${escapeAttr(hotel.key)}" data-hotel-tab="${escapeAttr(hotel.key)}" onclick="selectAccommodationHotel('${escapeAttr(hotel.key)}')">
+        <span>${escapeHtml(getAccommodationTabLabel(hotel))}</span>
+        <small>${escapeHtml(hotel.name)}</small>
+    </button>`).join('');
+
+    return `<div class="accom-switcher" role="tablist" aria-label="切換住宿飯店">
+        ${buttons}
+    </div>`;
+}
+
 function renderAccommodationDetailCard(item, variant = 'life') {
     const badge = item.role || item.category || item.type || '';
     const note = item.highlights || item.use || item.buy || item.order || '';
@@ -31,20 +81,37 @@ function renderAccommodationDetailCard(item, variant = 'life') {
 
 function renderAccommodationSection(title, subtitle, items = [], variant = 'life') {
     if (!items || items.length === 0) return '';
-    return `<section class="accom-section accom-section-${variant}">
-        <div class="accom-section-title">
-            <h4>${escapeHtml(title)}</h4>
-            ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}
-        </div>
+    return `<details class="accom-section accom-section-${variant}">
+        <summary class="accom-section-title">
+            <span>
+                <h4>${escapeHtml(title)}</h4>
+                ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}
+            </span>
+            <b class="accom-section-toggle" aria-hidden="true">展開</b>
+        </summary>
         <div class="accom-detail-grid">${items.map(item => renderAccommodationDetailCard(item, variant)).join('')}</div>
-    </section>`;
+    </details>`;
 }
 
-function renderAccommodationHotelCard(hotel) {
+function renderAccommodationTextDetails(title, subtitle, innerHtml, className = '') {
+    return `<details class="accom-secondary-details ${className}">
+        <summary>
+            <span>
+                <strong>${escapeHtml(title)}</strong>
+                ${subtitle ? `<small>${escapeHtml(subtitle)}</small>` : ''}
+            </span>
+            <b aria-hidden="true">展開</b>
+        </summary>
+        <div class="accom-secondary-body">${innerHtml}</div>
+    </details>`;
+}
+
+function renderAccommodationHotelCard(hotel, index = 0) {
     const featureList = renderAccommodationList(hotel.features || []);
     const ruleRows = (hotel.rules || []).map(item => `<div class="accom-rule-card">${escapeHtml(item)}</div>`).join('');
+    const isActive = index === 0;
 
-    return `<section class="accommodation-card">
+    return `<section class="accommodation-card${isActive ? ' is-active' : ''}" id="accommodation-panel-${escapeAttr(hotel.key)}" data-hotel-panel="${escapeAttr(hotel.key)}" data-hotel-key="${escapeAttr(hotel.key)}" role="tabpanel" aria-hidden="${isActive ? 'false' : 'true'}" ${isActive ? '' : 'hidden'}>
         <header class="accommodation-card-head">
             <div class="accom-hotel-icon" aria-hidden="true">${escapeHtml(hotel.icon || '🏨')}</div>
             <div class="accom-hotel-title">
@@ -78,15 +145,9 @@ function renderAccommodationHotelCard(hotel) {
                     <div class="accom-nav-grid">${renderAccommodationNavButtons(hotel.nav || [])}</div>
                 </div>
             </div>
-            <div class="accom-two-col">
-                <section class="accom-reason-box">
-                    <h4>為什麼維持首選</h4>
-                    <ul>${featureList}</ul>
-                </section>
-                <section class="accom-rules-box">
-                    <h4>現場使用規則</h4>
-                    <div>${ruleRows}</div>
-                </section>
+            <div class="accom-secondary-grid">
+                ${renderAccommodationTextDetails('為什麼維持首選', '需要確認住宿取捨時再展開。', `<ul>${featureList}</ul>`, 'accom-reason-details')}
+                ${renderAccommodationTextDetails('現場使用規則', '入住後照這個順序處理，不把補給變成新行程。', `<div class="accom-rules-list">${ruleRows}</div>`, 'accom-rules-details')}
             </div>
             ${renderAccommodationSection('生活機能｜便利・停車・親子救場', '先處理水、早餐、停車與孩子狀態；不要為了補買重新拉長移動。', hotel.life || [], 'life')}
             ${renderAccommodationSection('購物 / 補給名店｜實際會用到的店', '列出飯店步行圈或短程車程內最有用的購物點，避免現場亂查。', hotel.shoppingHighlights || [], 'shopping')}
@@ -96,7 +157,8 @@ function renderAccommodationHotelCard(hotel) {
 }
 
 function renderHotelInfoModal() {
-    const cards = (accommodationData || []).map(renderAccommodationHotelCard).join('');
+    const hotels = accommodationData || [];
+    const cards = hotels.map((hotel, index) => renderAccommodationHotelCard(hotel, index)).join('');
     return `<dialog class="hotel-modal bg-white w-11/12 max-w-[94vw] lg:max-w-6xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="hotelModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg" onclick="closeModal('hotelModal')">✕</button>
 <div class="hotel-modal-intro">
@@ -104,8 +166,55 @@ function renderHotelInfoModal() {
     <h2><span>🏨</span> 住宿首選與周邊生活機能</h2>
     <p>目前住宿暫定只保留首選：別府 4 晚住新鶴田、熊本 3 晚住 Candeo 熊本新市街。此頁重點是入住、停車、便利、購物與住宿圈美食，不再保留其他住宿備案。</p>
 </div>
+${renderAccommodationOverview(hotels)}
+${renderAccommodationTabs(hotels)}
+<div class="accom-current-label" aria-live="polite">目前顯示：<strong data-selected-hotel-label>${escapeHtml(hotels[0] ? getAccommodationTabLabel(hotels[0]) : '')}</strong></div>
 <div class="accommodation-stack">${cards}</div>
 </dialog>`;
+}
+
+function selectAccommodationHotel(key) {
+    const modal = document.getElementById('hotelModal');
+    if (!modal || !key) return;
+
+    const panels = Array.from(modal.querySelectorAll('[data-hotel-panel]'));
+    const targetPanel = panels.find(panel => panel.dataset.hotelPanel === key) || panels[0];
+    if (!targetPanel) return;
+
+    panels.forEach(panel => {
+        const active = panel === targetPanel;
+        panel.hidden = !active;
+        panel.classList.toggle('is-active', active);
+        panel.setAttribute('aria-hidden', active ? 'false' : 'true');
+    });
+
+    modal.querySelectorAll('[data-hotel-tab]').forEach(button => {
+        const active = button.dataset.hotelTab === targetPanel.dataset.hotelPanel;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    modal.querySelectorAll('[data-hotel-overview-row]').forEach(row => {
+        row.classList.toggle('is-active', row.dataset.hotelOverviewRow === targetPanel.dataset.hotelPanel);
+    });
+
+    modal.querySelectorAll('[data-hotel-overview-btn]').forEach(button => {
+        const active = button.dataset.hotelOverviewBtn === targetPanel.dataset.hotelPanel;
+        button.classList.toggle('is-active', active);
+        button.textContent = active ? '顯示中' : '查看詳情';
+        button.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+
+    const activeTab = Array.from(modal.querySelectorAll('[data-hotel-tab]')).find(button => button.dataset.hotelTab === targetPanel.dataset.hotelPanel);
+    const label = modal.querySelector('[data-selected-hotel-label]');
+    const activeTabText = activeTab ? activeTab.querySelector('span') : null;
+    if (label && activeTabText) label.textContent = activeTabText.textContent;
+
+    const switcher = modal.querySelector('.accom-switcher');
+    if (switcher && modal.open) {
+        const targetTop = Math.max(0, switcher.offsetTop - 12);
+        modal.scrollTo({ top: targetTop, behavior: 'smooth' });
+    }
 }
 
 function renderStaticModals() {
