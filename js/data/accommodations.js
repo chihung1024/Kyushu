@@ -104,6 +104,101 @@ const accommodationData = [
         search: '別府 北浜 夕食 子連れ'
       }
     ],
+
+    shoppingHighlights: [
+      {
+        name: 'Youme Town 別府',
+        category: '主力商場｜超市・DAISO・KALDI・服飾',
+        distance: '飯店南側，步行或短程開車；有大型停車場',
+        time: '食品/直營 9:30-21:00；專門店 10:00-21:00；餐廳多為 11:00-21:00',
+        highlights: '81 店級商場；實用店包含 GU、UNIQLO、DAISO、KALDI、餐廳街、食品超市、ATM、休憩空間與親子設備。最適合 Day2 樂園後一次完成晚餐、水、隔日早餐、雨具與童裝補給。',
+        caution: '不要當成觀光點深逛；設定 60-75 分鐘上限，先吃飯再分頭採買。',
+        search: 'ゆめタウン別府 GU ユニクロ DAISO KALDI'
+      },
+      {
+        name: 'Tokiwa 別府店 / Food Kitchen',
+        category: '最近百貨食品｜熟食・精緻食品',
+        distance: '北濱步行圈，從飯店很近',
+        time: '百貨/食品多為 10:00-19:00',
+        highlights: '適合買現做熟食、蔬果、肉魚、甜點、成城石井類進口食品；Tokiwa 內也可用東洋軒 Tokiwa 別府店吃/外帶大分名物とり天。',
+        caution: '關門較早，19:00 後直接改 Don Quijote、Trial 或便利商店。',
+        search: 'トキハ別府店 Food Kitchen 東洋軒 とり天'
+      },
+      {
+        name: 'Don Quijote 別府店',
+        category: '晚間藥妝雜貨｜免稅・醫藥品・零食',
+        distance: '飯店往南的ヶ浜町方向，短程步行或開車',
+        time: '9:00-翌 2:00；無定休',
+        highlights: 'Youme Town / Tokiwa 關門後的主力：藥妝、日用品、行動配件、雨具、零食、伴手禮、免稅、ATM、停車。',
+        caution: '動線擁擠且容易失控購物；只買清單上物品，30 分鐘內撤退。',
+        search: 'ドン・キホーテ 別府店'
+      },
+      {
+        name: 'MEGA Trial 別府店',
+        category: '24 小時大型保底｜水・早餐・熟食・藥妝',
+        distance: '需開車，適合回飯店前順路處理',
+        time: '24 小時；藥妝 9-22；家電 9-24；免稅 24 小時',
+        highlights: '大量水、早餐、熟食、尿布濕巾、車上點心、冷飲、日用品最有效率；比市區小店更適合一次補整車。',
+        caution: '不是步行圈；只有已開車或深夜救場時使用。',
+        search: 'スーパーセンタートライアル 別府店'
+      },
+      {
+        name: '別府站 / 北濱便利圈',
+        category: '最小成本補給｜便利店・車站小買',
+        distance: 'JR 別府站、北濱巴士中心、飯店周邊步行圈',
+        time: '便利商店多為 24 小時；車站店依站內時段',
+        highlights: '只缺水、牛奶、冰、飯糰、咖啡、兒童點心時，用便利店即可。Day1 晚到或孩子累時不應再開車去大商場。',
+        caution: '小買用這層，大量採買才去 Youme Town / Trial。',
+        search: '別府駅 北浜 コンビニ ローソン ファミリーマート セブンイレブン'
+      }
+    ],
+    foodHighlights: [
+      {
+        name: '別府天丼 とよ常 本店 / 駅前店',
+        category: '別府人氣天丼｜炸蝦・海鮮・家庭晚餐',
+        distance: '北濱 / 別府站步行圈；本店接近海邊北濱區',
+        time: '熱門時段易排隊；以現場公告為準',
+        highlights: '招牌是特上天丼/大蝦天丼，適合想吃別府人氣老店、孩子也能接受炸物與白飯時。',
+        caution: '排隊超過 30 分鐘直接改商場、海鮮いづつ或便利店，不為名店拖晚孩子睡眠。',
+        search: '別府 とよ常 本店 特上天丼'
+      },
+      {
+        name: '海鮮いづつ',
+        category: '海鮮丼・りゅうきゅう・とり天',
+        distance: '楠町 / 北濱生活圈，從飯店步行可處理',
+        time: '11:00-15:00(L.O.14:30)；18:00-21:30(L.O.21:00)；週一休；無停車場',
+        highlights: '元鮮魚店系海鮮料理；人氣海鮮丼、りゅうきゅう、魚料理與とり天，可一次吃到大分海鮮與鄉土味。',
+        caution: '沒有停車場，停好飯店後步行最合理；帶小孩若排隊長就降級。',
+        search: '海鮮いづつ 別府'
+      },
+      {
+        name: '六盛 松原本店',
+        category: '別府冷麵代表｜冷麵・溫麵・飯糰',
+        distance: '松原町，飯店步行或短程車程',
+        time: '11:30-14:00 / 18:00-20:00；週三休；湯賣完可能提前結束',
+        highlights: '別府冷麵代表，6 月天氣熱很合適；也有溫麵、中華そば與飯糰。',
+        caution: '麵含蕎麥粉，過敏者避開；晚餐時段短，不要太晚才攻。',
+        search: '六盛 松原本店 別府冷麺'
+      },
+      {
+        name: '豊後牛ステーキの店 そむり 別府本店',
+        category: '豐後牛 / 大人犒賞餐',
+        distance: '北濱 1-4-28，別府站約步行 6 分',
+        time: '11:30-14:00(O.S.13:30)；17:30-21:30(O.S.20:30)；週一與週三晚餐休',
+        highlights: '豐後牛排、漢堡排與鐵板燒；想在別府吃一餐品質較高的牛肉時選這家。',
+        caution: '不適合孩子已累或需快速吃完的夜晚；要吃就提早抵達或先訂。',
+        search: 'そむり 別府本店 豊後牛'
+      },
+      {
+        name: '東洋軒 Tokiwa 別府店',
+        category: '大分とり天｜百貨內保底',
+        distance: 'Tokiwa 別府店內，飯店附近',
+        time: '依 Tokiwa / 店鋪公告',
+        highlights: '比跑本店更適合親子團；在百貨內用とり天、咖哩等處理一餐，停車與廁所壓力較低。',
+        caution: '若已安排海鮮或冷麵，不必再硬吃。',
+        search: '東洋軒 トキハ別府店 とり天'
+      }
+    ],
     rules: [
       '抵達後先停車、Check-in、確認鋪床/入浴稅，再決定是否外出。',
       '19:00 前：Tokiwa / Youme Town；21:00 後：Don Quijote / Trial；孩子累：便利商店。',
@@ -211,6 +306,110 @@ const accommodationData = [
         printUse: '早到/傍晚短走用；熊本城約 12 分、熊本城 Hall 約 7 分。',
         warning: '孩子累或下雨就改 SAKURA MACHI / 鶴屋。',
         search: '熊本城 城彩苑 熊本城ホール'
+      }
+    ],
+
+    shoppingHighlights: [
+      {
+        name: 'SAKURA MACHI Kumamoto',
+        category: '室內主基地｜約149店・巴士總站・屋上庭園',
+        distance: '飯店步行圈；辛島町 / 櫻町巴士總站旁',
+        time: '商店多為 10:00-20:00/21:00；餐飲多為 11:00-21:00/22:00',
+        highlights: '官方與觀光資料列為市中心大型複合商場；可用 Montbell、Misumi Store、Kumamon Village、DAISO、B1 食品/伴手禮、餐飲、屋上庭園、巴士總站與親子設備。',
+        caution: 'Day6 以熊本熊廣場時間為主；SAKURA MACHI 是室內基地，不要逛到超時。',
+        search: 'SAKURA MACHI Kumamoto Montbell DAISO Kumamon Village'
+      },
+      {
+        name: 'くまもと旬彩館さくら',
+        category: '熊本 / 九州伴手禮｜B1 綜合土產',
+        distance: 'SAKURA MACHI B1',
+        time: '依 SAKURA MACHI 時段',
+        highlights: '綜合土產店，集中熊本・九州銘品、全國銘菓、伴手禮甜點。適合 Day8 不想再跑機場前太多店時先買。',
+        caution: '返程日不要買太多冷藏品；先確認行李空間與機場安檢限制。',
+        search: 'くまもと旬彩館さくら サクラマチクマモト'
+      },
+      {
+        name: '鶴屋百貨 / 熊本熊廣場周邊',
+        category: '百貨・退稅・餐廳・熊本熊場次基地',
+        distance: '下通 / 通町筋方向，熊本熊廣場附近',
+        time: '百貨與餐廳以官方公告；餐廳街多為 11:00-21:00',
+        highlights: 'Day6 熊本熊前後最實用：冷氣、廁所、餐飲、退稅、伴手禮、兒童/家庭服務；餐廳層有家庭餐、天婦羅等選項。',
+        caution: '熊本熊場次優先；百貨只作卡位前後的舒適基地。',
+        search: '鶴屋百貨 熊本 熊本熊廣場 レストラン'
+      },
+      {
+        name: '下通・新市街商店街 / Don Quijote 下通り店',
+        category: '步行商圈｜藥妝・雜貨・深夜補買',
+        distance: '飯店出門即新市街，下通步行可達',
+        time: '商店街全天通行；Don Quijote 下通り店 9:00-翌 5:00',
+        highlights: '新市街是有屋頂、餐飲/商店/娛樂集中的購物街；Donki 可處理藥妝、零食、酒類、行動配件、免稅與深夜補買。',
+        caution: '夜間人多且動線複雜，兩家先約集合點；Donki 無停車場，步行使用。',
+        search: '熊本 下通 新市街 ドン・キホーテ 下通り店'
+      },
+      {
+        name: 'DAISO SAKURA MACHI Kumamoto店',
+        category: '百元雜貨｜旅行耗材補件',
+        distance: 'SAKURA MACHI 3F',
+        time: '10:00-21:00',
+        highlights: '旅行耗材最有效率：收納袋、雨具、小玩具、文具、濕紙巾、車上整理用品。',
+        caution: '只補缺品；不要讓大創採買壓縮晚餐。',
+        search: 'DAISO SAKURA MACHI Kumamoto'
+      }
+    ],
+    foodHighlights: [
+      {
+        name: '勝烈亭 新市街本店',
+        category: '親子保底正餐｜炸豬排',
+        distance: '新市街 8-18，辛島町站約步行 2 分，飯店附近',
+        time: '11:00-21:30（L.O.21:00）；年末年始休',
+        highlights: '飯、味噌湯、豬排對孩子接受度高；Day5 進城後或 Day6 市區恢復日晚餐最穩。',
+        caution: '熱門時段可能排隊；孩子太累就改商場餐飲或便利店。',
+        search: '勝烈亭 新市街本店'
+      },
+      {
+        name: '紅蘭亭 下通本店',
+        category: '熊本地方味｜太平燕・中華料理',
+        distance: '下通 / 通町筋方向，飯店步行圈',
+        time: '11:00-21:00',
+        highlights: '1934 年創立老字號；熊本名物太平燕很適合想吃地方味但不想吃太油重時。',
+        caution: '午餐尖峰可能排隊，建議早一點或晚一點用餐。',
+        search: '紅蘭亭 下通本店 太平燕'
+      },
+      {
+        name: '黒亭 下通店',
+        category: '熊本拉麵｜晚餐 / 宵夜補位',
+        distance: '下通 1-7-14，花畑町 / 下通步行圈',
+        time: '官方列 10:30-23:00 O.S.，23:30 閉店；臨時時段以官方公告為準',
+        highlights: '2024 重新開幕後座位擴大，券賣機與進店效率較好；適合晚餐後補一碗或大人宵夜。',
+        caution: '拉麵不是孩子每天必吃，若太晚就回飯店 SkySpa。',
+        search: '熊本ラーメン 黒亭 下通店'
+      },
+      {
+        name: '桂花ラーメン 本店',
+        category: '熊本老牌拉麵｜晚間備案',
+        distance: '花畑町 / 熊本城・市役所前步行圈',
+        time: '月-六 11:00-24:00；日/祝 11:00-16:30',
+        highlights: '營業時間長，適合 Day5 停好車後想快速吃熊本拉麵；太肉麵是代表品。',
+        caution: '日/祝較早關，週日不要當晚餐保底。',
+        search: '桂花ラーメン 本店 熊本'
+      },
+      {
+        name: 'あか牛Dining yoka-yoka サクラマチ店',
+        category: '赤牛主餐｜SAKURA MACHI 內',
+        distance: 'SAKURA MACHI 3F，飯店步行圈',
+        time: '11:00-22:00（L.O.21:00）；依 SAKURA MACHI 休館',
+        highlights: '赤牛丼、赤牛牛排、漢堡排都在商場內完成；不用開車，適合 Day6 修復日或早進熊本的晚餐。',
+        caution: '若已在阿蘇吃赤牛，這家可降級為備案。',
+        search: 'あか牛Dining yoka-yoka サクラマチ店'
+      },
+      {
+        name: '蜂楽饅頭 熊本本店',
+        category: '上通甜點｜白餡 / 黑餡大判燒',
+        distance: '上通町 5-4，通町筋附近',
+        time: '10:00-19:00；週二休；售完可能提前結束',
+        highlights: 'Day6 鶴屋 / 熊本熊前後散步補糖用，便宜、份量小、孩子接受度高。',
+        caution: '不是必跑；剛好在上通/鶴屋附近才買。',
+        search: '蜂楽饅頭 熊本本店 上通'
       }
     ],
     rules: [

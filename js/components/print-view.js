@@ -201,6 +201,29 @@ function renderPrintViewHtml() {
         </section>`;
 
 
+    const printAccommodationDetailRows = (items = [], mode = 'life') => (items || []).map(item => {
+        const label = item.role || item.category || item.type || '';
+        const timing = [item.distance, item.time].filter(Boolean).join('；');
+        const content = [
+            item.printUse || item.highlights || item.use || item.buy || item.order,
+            item.caution || item.warning || item.rule ? `規則：${item.caution || item.warning || item.rule}` : '',
+            item.search ? `導航：${item.search}` : ''
+        ].filter(Boolean).join('；');
+        return `
+            <tr>
+                <td><strong>${escapeHtml(normalizePrintText(item.name))}</strong><br><span>${escapeHtml(normalizePrintText(label))}</span></td>
+                <td>${escapeHtml(normalizePrintText(timing))}</td>
+                <td>${escapeHtml(normalizePrintText(content))}</td>
+            </tr>`;
+    }).join('');
+
+    const printDetailTable = (title, items = [], emptyText = '') => !items || items.length === 0 ? '' : `
+        <h3 class="print-subhead">${escapeHtml(title)}</h3>
+        <table class="print-table print-life-table">
+            <thead><tr><th>點位</th><th>距離/時間</th><th>現場用途與規則</th></tr></thead>
+            <tbody>${printAccommodationDetailRows(items)}</tbody>
+        </table>`;
+
     const printAccommodationCard = (hotel) => `
         <section class="print-manual-page print-page print-accommodation-card print-accommodation-full">
             <h2>${escapeHtml(normalizePrintText(`${hotel.area}｜${hotel.stay}`))}</h2>
@@ -217,18 +240,13 @@ function renderPrintViewHtml() {
                 <div><strong>為什麼住這裡</strong>${simpleList((hotel.features || []).slice(0, 5))}</div>
                 <div><strong>現場使用規則</strong>${simpleList((hotel.rules || []).slice(0, 4))}</div>
             </div>
-            <h3 class="print-subhead">周邊生活機能 - 具體使用方式</h3>
-            <table class="print-table print-life-table">
-                <thead><tr><th>點位</th><th>距離/時間</th><th>現場用途與規則</th></tr></thead>
-                <tbody>
-                    ${(hotel.life || []).map(item => `
-                        <tr>
-                            <td><strong>${escapeHtml(normalizePrintText(item.name))}</strong><br><span>${escapeHtml(normalizePrintText(item.role || ''))}</span></td>
-                            <td>${escapeHtml(normalizePrintText([item.distance, item.time].filter(Boolean).join('；')))}</td>
-                            <td>${escapeHtml(normalizePrintText([item.printUse || item.use, item.warning ? `規則：${item.warning}` : ''].filter(Boolean).join('；')))}</td>
-                        </tr>`).join('')}
-                </tbody>
-            </table>
+            ${printDetailTable('周邊生活機能 - 停車 / 便利 / 親子救場', hotel.life || [])}
+        </section>
+        <section class="print-manual-page print-page print-accommodation-card print-accommodation-full">
+            <h2>${escapeHtml(normalizePrintText(`${hotel.name}｜購物與美食名店`))}</h2>
+            <p class="print-section-lead">住宿圈只列現場最可能用到、值得導航搜尋的店；排隊、天候、孩子電量不對就降級。</p>
+            ${printDetailTable('購物 / 補給名店', hotel.shoppingHighlights || [])}
+            ${printDetailTable('美食 / 甜點名店', hotel.foodHighlights || [])}
         </section>`;
 
     const accommodationPrintSection = () => `

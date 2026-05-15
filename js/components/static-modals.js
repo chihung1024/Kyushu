@@ -2,90 +2,109 @@
 
 
 function renderAccommodationNavButtons(items = []) {
-    return items.map(item => `<a class="inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.query || item.label || '')}" target="_blank" rel="noopener noreferrer"><span>📍</span>${escapeHtml(item.label || item.query || '')}</a>`).join('');
+    return items.map(item => `<a class="accom-nav-btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.query || item.label || '')}" target="_blank" rel="noopener noreferrer"><span>📍</span>${escapeHtml(item.label || item.query || '')}</a>`).join('');
+}
+
+function renderAccommodationList(items = [], compact = false) {
+    return (items || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+}
+
+function renderAccommodationDetailCard(item, variant = 'life') {
+    const badge = item.role || item.category || item.type || '';
+    const note = item.highlights || item.use || item.buy || item.order || '';
+    const tactic = item.printUse || item.tactic || item.rule || item.caution || item.warning || '';
+    const search = item.search || item.name || '';
+    return `<article class="accom-detail-card accom-detail-${variant}">
+        <div class="accom-detail-head">
+            <h5>${escapeHtml(item.name)}</h5>
+            ${badge ? `<span>${escapeHtml(badge)}</span>` : ''}
+        </div>
+        <div class="accom-detail-meta">
+            ${item.distance ? `<b>距離</b><em>${escapeHtml(item.distance)}</em>` : ''}
+            ${item.time ? `<b>時間</b><em>${escapeHtml(item.time)}</em>` : ''}
+        </div>
+        ${note ? `<p class="accom-detail-note">${escapeHtml(note)}</p>` : ''}
+        ${tactic ? `<p class="accom-detail-rule">現場規則｜${escapeHtml(tactic)}</p>` : ''}
+        ${search ? `<a class="accom-detail-link" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(search)}" target="_blank" rel="noopener noreferrer">📍 導航搜尋</a>` : ''}
+    </article>`;
+}
+
+function renderAccommodationSection(title, subtitle, items = [], variant = 'life') {
+    if (!items || items.length === 0) return '';
+    return `<section class="accom-section accom-section-${variant}">
+        <div class="accom-section-title">
+            <h4>${escapeHtml(title)}</h4>
+            ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}
+        </div>
+        <div class="accom-detail-grid">${items.map(item => renderAccommodationDetailCard(item, variant)).join('')}</div>
+    </section>`;
 }
 
 function renderAccommodationHotelCard(hotel) {
-    const featureList = (hotel.features || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
-    const ruleRows = (hotel.rules || []).map(item => `<div class="rounded-xl bg-white border border-slate-200 p-3 font-bold text-slate-700 leading-relaxed">${escapeHtml(item)}</div>`).join('');
-    const lifeRows = (hotel.life || []).map(item => `
-        <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-            <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
-                <strong class="text-slate-900 text-sm leading-snug">${escapeHtml(item.name)}</strong>
-                <span class="text-[10px] font-black px-2 py-1 rounded-full bg-slate-100 text-slate-600 whitespace-nowrap">${escapeHtml(item.role)}</span>
-            </div>
-            <div class="flex flex-wrap gap-1.5 mb-2">
-                ${item.distance ? `<span class="text-[10px] font-black text-slate-600 bg-slate-50 border border-slate-200 px-2 py-1 rounded-full">距離｜${escapeHtml(item.distance)}</span>` : ''}
-                ${item.time ? `<span class="text-[10px] font-black text-blue-700 bg-blue-50 border border-blue-100 px-2 py-1 rounded-full">時間｜${escapeHtml(item.time)}</span>` : ''}
-            </div>
-            <p class="text-xs font-bold text-slate-700 leading-relaxed mb-2">${escapeHtml(item.use)}</p>
-            ${item.warning ? `<p class="text-[11px] font-black text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-2.5 py-2 mb-2 leading-relaxed">現場規則｜${escapeHtml(item.warning)}</p>` : ''}
-            <a class="inline-flex items-center gap-1 text-[11px] font-black text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1.5 rounded-full" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.search || item.name)}" target="_blank" rel="noopener noreferrer">📍 導航</a>
-        </div>`).join('');
+    const featureList = renderAccommodationList(hotel.features || []);
+    const ruleRows = (hotel.rules || []).map(item => `<div class="accom-rule-card">${escapeHtml(item)}</div>`).join('');
 
-    return `<section class="rounded-[1.5rem] border-2 border-slate-200 bg-white shadow-sm overflow-hidden">
-        <div class="bg-slate-900 text-white p-4 md:p-5">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-                <div>
-                    <div class="text-xs font-black tracking-[0.18em] text-slate-300 uppercase">${escapeHtml(hotel.area)}｜${escapeHtml(hotel.stay)}</div>
-                    <h3 class="text-xl md:text-2xl font-black mt-1 flex items-center gap-2"><span>${escapeHtml(hotel.icon || '🏨')}</span>${escapeHtml(hotel.name)}</h3>
-                    <p class="text-xs md:text-sm font-bold text-slate-300 mt-1">${escapeHtml(hotel.englishName || '')}</p>
-                </div>
-                <span class="bg-emerald-400 text-slate-950 text-xs font-black px-3 py-2 rounded-full">${escapeHtml(hotel.status)}</span>
+    return `<section class="accommodation-card">
+        <header class="accommodation-card-head">
+            <div class="accom-hotel-icon" aria-hidden="true">${escapeHtml(hotel.icon || '🏨')}</div>
+            <div class="accom-hotel-title">
+                <div class="accom-hotel-kicker">${escapeHtml(hotel.area)}｜${escapeHtml(hotel.stay)}</div>
+                <h3>${escapeHtml(hotel.name)}</h3>
+                <p>${escapeHtml(hotel.englishName || '')}</p>
             </div>
-        </div>
-        <div class="p-4 md:p-5 space-y-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                <div class="rounded-2xl bg-blue-50 border border-blue-100 p-3">
-                    <div class="text-[11px] font-black text-blue-700 mb-1">房型 / 訂單</div>
-                    <p class="text-sm font-bold text-slate-800 leading-relaxed">${escapeHtml(hotel.room)}</p>
-                    <p class="text-xs font-black text-blue-800 mt-2">${escapeHtml(hotel.price)}</p>
+            <span class="accom-status-chip">${escapeHtml(hotel.status)}</span>
+        </header>
+        <div class="accommodation-card-body">
+            <div class="accom-summary-grid">
+                <div class="accom-summary-box accom-summary-blue">
+                    <strong>房型 / 訂單</strong>
+                    <p>${escapeHtml(hotel.room)}</p>
+                    <small>${escapeHtml(hotel.price)}</small>
                 </div>
-                <div class="rounded-2xl bg-amber-50 border border-amber-100 p-3">
-                    <div class="text-[11px] font-black text-amber-700 mb-1">入住防呆</div>
-                    <p class="text-sm font-bold text-slate-800 leading-relaxed">${escapeHtml(hotel.check)}</p>
-                    <p class="text-xs font-bold text-slate-600 mt-2">${escapeHtml(hotel.access)}</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
-                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3 lg:col-span-2">
-                    <div class="text-[11px] font-black text-slate-500 mb-1">地址 / 電話 / 停車</div>
-                    <p class="text-sm font-bold text-slate-800 leading-relaxed">${escapeHtml(hotel.address)}｜${escapeHtml(hotel.phone)}</p>
-                    <p class="text-xs font-bold text-slate-600 mt-2 leading-relaxed">${escapeHtml(hotel.parking)}</p>
-                </div>
-                <div class="rounded-2xl bg-white border border-slate-200 p-3">
-                    <div class="text-[11px] font-black text-slate-500 mb-2">快速導航</div>
-                    <div class="flex flex-wrap gap-2">${renderAccommodationNavButtons(hotel.nav)}</div>
+                <div class="accom-summary-box accom-summary-amber">
+                    <strong>入住防呆</strong>
+                    <p>${escapeHtml(hotel.check)}</p>
+                    <small>${escapeHtml(hotel.access)}</small>
                 </div>
             </div>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div class="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
-                    <h4 class="font-black text-emerald-800 mb-2">為什麼維持首選</h4>
-                    <ul class="list-disc pl-5 space-y-1 text-sm font-bold text-slate-800 leading-relaxed">${featureList}</ul>
+            <div class="accom-info-grid">
+                <div class="accom-info-box accom-info-main">
+                    <strong>地址 / 電話 / 停車</strong>
+                    <p>${escapeHtml(hotel.address)}｜${escapeHtml(hotel.phone)}</p>
+                    <small>${escapeHtml(hotel.parking)}</small>
                 </div>
-                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                    <h4 class="font-black text-slate-900 mb-2">現場使用規則</h4>
-                    <div class="grid grid-cols-1 gap-2">${ruleRows}</div>
+                <div class="accom-info-box">
+                    <strong>快速導航</strong>
+                    <div class="accom-nav-grid">${renderAccommodationNavButtons(hotel.nav || [])}</div>
                 </div>
             </div>
-            <div>
-                <h4 class="font-black text-slate-900 mb-2">周邊生活機能</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">${lifeRows}</div>
+            <div class="accom-two-col">
+                <section class="accom-reason-box">
+                    <h4>為什麼維持首選</h4>
+                    <ul>${featureList}</ul>
+                </section>
+                <section class="accom-rules-box">
+                    <h4>現場使用規則</h4>
+                    <div>${ruleRows}</div>
+                </section>
             </div>
+            ${renderAccommodationSection('生活機能｜便利・停車・親子救場', '先處理水、早餐、停車與孩子狀態；不要為了補買重新拉長移動。', hotel.life || [], 'life')}
+            ${renderAccommodationSection('購物 / 補給名店｜實際會用到的店', '列出飯店步行圈或短程車程內最有用的購物點，避免現場亂查。', hotel.shoppingHighlights || [], 'shopping')}
+            ${renderAccommodationSection('美食 / 甜點名店｜住宿圈晚餐與補糖', '只列適合親子團、停車後可處理或值得當地味的名店；排隊過久直接降級。', hotel.foodHighlights || [], 'food')}
         </div>
     </section>`;
 }
 
 function renderHotelInfoModal() {
     const cards = (accommodationData || []).map(renderAccommodationHotelCard).join('');
-    return `<dialog class="bg-white w-11/12 max-w-[94vw] lg:max-w-6xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="hotelModal">
+    return `<dialog class="hotel-modal bg-white w-11/12 max-w-[94vw] lg:max-w-6xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="hotelModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg" onclick="closeModal('hotelModal')">✕</button>
-<div class="mb-6 pr-10">
-    <div class="text-xs font-black tracking-[0.18em] text-purple-600 uppercase">CONFIRMED LODGING BASES</div>
-    <h2 class="text-2xl md:text-3xl font-black text-slate-900 mt-1 flex items-center gap-2"><span>🏨</span> 住宿首選與周邊生活機能</h2>
-    <p class="text-sm text-slate-600 mt-2 font-bold bg-slate-50 border border-slate-200 p-3 rounded-2xl leading-relaxed">目前住宿暫定只保留首選：別府 4 晚住新鶴田、熊本 3 晚住 Candeo 熊本新市街。其他住宿備選已從主畫面移除；本頁改為入住資訊、停車防呆與周邊生活機能。</p>
+<div class="hotel-modal-intro">
+    <div class="hotel-modal-kicker">CONFIRMED LODGING BASES</div>
+    <h2><span>🏨</span> 住宿首選與周邊生活機能</h2>
+    <p>目前住宿暫定只保留首選：別府 4 晚住新鶴田、熊本 3 晚住 Candeo 熊本新市街。此頁重點是入住、停車、便利、購物與住宿圈美食，不再保留其他住宿備案。</p>
 </div>
-<div class="space-y-5 pb-2">${cards}</div>
+<div class="accommodation-stack">${cards}</div>
 </dialog>`;
 }
 
