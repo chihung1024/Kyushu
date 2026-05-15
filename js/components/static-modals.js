@@ -2,7 +2,7 @@
 
 
 function renderAccommodationNavButtons(items = []) {
-    return items.map(item => `<a class="accom-nav-btn inline-flex" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.query || item.label || '')}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📍</span>${escapeHtml(item.label || item.query || '')}</a>`).join('');
+    return items.map(item => `<a class="accom-nav-btn" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.query || item.label || '')}" target="_blank" rel="noopener noreferrer"><span>📍</span>${escapeHtml(item.label || item.query || '')}</a>`).join('');
 }
 
 function renderAccommodationList(items = [], compact = false) {
@@ -25,7 +25,7 @@ function renderAccommodationDetailCard(item, variant = 'life') {
         </div>
         ${note ? `<p class="accom-detail-note">${escapeHtml(note)}</p>` : ''}
         ${tactic ? `<p class="accom-detail-rule">現場規則｜${escapeHtml(tactic)}</p>` : ''}
-        ${search ? `<a class="accom-detail-link inline-flex" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(search)}" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">📍</span> 導航搜尋</a>` : ''}
+        ${search ? `<a class="accom-detail-link" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(search)}" target="_blank" rel="noopener noreferrer">📍 導航搜尋</a>` : ''}
     </article>`;
 }
 
@@ -190,7 +190,7 @@ function renderStaticModals() {
 <p class="text-sm text-gray-600 mt-2 font-bold bg-amber-50 inline-block px-3 py-1.5 rounded-md border border-amber-100">用法：先照 S 級流程完成入境與保險；出發前一天只重看「截圖、紙本、緊急聯絡」三件事。</p>
 <div class="flex flex-wrap gap-2 mt-3">
 <a class="inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.vjw.digital.go.jp/" rel="noopener noreferrer" target="_blank"><span>🛂</span> Visit Japan Web 官方</a>
-<a class="inline-flex items-center gap-2 bg-white text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.japan.travel/en/plan/travel-insurance-in-japan/" rel="noopener noreferrer" target="_blank"><span>🏥</span> JNTO 醫療/保險說明</a>
+<a class="inline-flex items-center gap-2 bg-white text-cyan-700 border-2 border-cyan-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.japan.travel/en/plan/insurance/" rel="noopener noreferrer" target="_blank"><span>🏥</span> JNTO 醫療/保險說明</a>
 <a class="inline-flex items-center gap-2 bg-white text-green-700 border-2 border-green-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.jnto.go.jp/emergency/eng/mi_guide.html" rel="noopener noreferrer" target="_blank"><span>🏨</span> 日本就醫指南</a>
 <a class="inline-flex items-center gap-2 bg-white text-rose-700 border-2 border-rose-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/teikyouseido/index_00003.html" rel="noopener noreferrer" target="_blank"><span>💊</span> 外國旅客就醫資訊</a>
 </div>
