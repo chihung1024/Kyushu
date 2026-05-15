@@ -2289,6 +2289,62 @@
   }
 }
 
+/* Navigation pill underline reset: map/search links already use capsule shape, so remove extra link underlines. */
+.accom-nav-btn,
+.accom-detail-link,
+.nav-pill,
+.parking-nav-pill,
+.decision-card-actions a,
+.backup-actions a,
+.daily-gourmet-actions a,
+.mobile-more-item,
+.desktop-hero-action,
+a[href*="google.com/maps/search"][class*="rounded-full"],
+a[href*="google.com/maps/search"][class*="nav-pill"],
+a[href*="google.com/maps/search"][class*="accom"],
+a[href*="google.com/search"][class*="rounded-full"] {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-color: transparent !important;
+  text-decoration-thickness: 0 !important;
+  text-underline-offset: 0 !important;
+  border-bottom: 0 !important;
+  background-image: none !important;
+}
+
+.accom-nav-btn *,
+.accom-detail-link *,
+.nav-pill *,
+.parking-nav-pill *,
+.decision-card-actions a *,
+.backup-actions a *,
+.daily-gourmet-actions a *,
+a[href*="google.com/maps/search"][class*="rounded-full"] *,
+a[href*="google.com/maps/search"][class*="nav-pill"] *,
+a[href*="google.com/maps/search"][class*="accom"] *,
+a[href*="google.com/search"][class*="rounded-full"] * {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  border-bottom: 0 !important;
+  background-image: none !important;
+}
+
+.accom-nav-btn:hover,
+.accom-detail-link:hover,
+.nav-pill:hover,
+.parking-nav-pill:hover,
+.decision-card-actions a:hover,
+.backup-actions a:hover,
+.daily-gourmet-actions a:hover,
+a[href*="google.com/maps/search"][class*="rounded-full"]:hover,
+a[href*="google.com/maps/search"][class*="nav-pill"]:hover,
+a[href*="google.com/maps/search"][class*="accom"]:hover,
+a[href*="google.com/search"][class*="rounded-full"]:hover {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+  border-bottom: 0 !important;
+}
+
 </style>
 </head>
 <body class="text-gray-900 font-sans antialiased pb-24 print:pb-0 print:bg-white">
