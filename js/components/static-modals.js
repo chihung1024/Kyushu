@@ -10,12 +10,16 @@ function renderAccommodationHotelCard(hotel) {
     const ruleRows = (hotel.rules || []).map(item => `<div class="rounded-xl bg-white border border-slate-200 p-3 font-bold text-slate-700 leading-relaxed">${escapeHtml(item)}</div>`).join('');
     const lifeRows = (hotel.life || []).map(item => `
         <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
-            <div class="flex flex-wrap items-start justify-between gap-2 mb-1">
-                <strong class="text-slate-900 text-sm">${escapeHtml(item.name)}</strong>
-                <span class="text-[10px] font-black px-2 py-1 rounded-full bg-slate-100 text-slate-600">${escapeHtml(item.role)}</span>
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+                <strong class="text-slate-900 text-sm leading-snug">${escapeHtml(item.name)}</strong>
+                <span class="text-[10px] font-black px-2 py-1 rounded-full bg-slate-100 text-slate-600 whitespace-nowrap">${escapeHtml(item.role)}</span>
             </div>
-            <div class="text-[11px] font-black text-slate-500 mb-1">${escapeHtml(item.time)}</div>
+            <div class="flex flex-wrap gap-1.5 mb-2">
+                ${item.distance ? `<span class="text-[10px] font-black text-slate-600 bg-slate-50 border border-slate-200 px-2 py-1 rounded-full">距離｜${escapeHtml(item.distance)}</span>` : ''}
+                ${item.time ? `<span class="text-[10px] font-black text-blue-700 bg-blue-50 border border-blue-100 px-2 py-1 rounded-full">時間｜${escapeHtml(item.time)}</span>` : ''}
+            </div>
             <p class="text-xs font-bold text-slate-700 leading-relaxed mb-2">${escapeHtml(item.use)}</p>
+            ${item.warning ? `<p class="text-[11px] font-black text-amber-800 bg-amber-50 border border-amber-100 rounded-xl px-2.5 py-2 mb-2 leading-relaxed">現場規則｜${escapeHtml(item.warning)}</p>` : ''}
             <a class="inline-flex items-center gap-1 text-[11px] font-black text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1.5 rounded-full" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.search || item.name)}" target="_blank" rel="noopener noreferrer">📍 導航</a>
         </div>`).join('');
 

@@ -771,3 +771,42 @@
     content: none !important;
   }
 }
+
+@media print {
+  #print-container .print-accommodation-full .print-section-lead {
+    margin-bottom: 2mm !important;
+  }
+
+  #print-container .print-accommodation-full .print-hotel-reason-columns {
+    margin-bottom: 2.5mm !important;
+  }
+
+  #print-container .print-subhead {
+    font-size: 9pt !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    margin: 2mm 0 1mm !important;
+    padding-top: 1mm !important;
+    border-top: 1px solid #e2e8f0 !important;
+  }
+
+  #print-container .print-life-table {
+    font-size: 6.85pt !important;
+    line-height: 1.25 !important;
+  }
+
+  #print-container .print-life-table th:nth-child(1),
+  #print-container .print-life-table td:nth-child(1) {
+    width: 36mm !important;
+  }
+
+  #print-container .print-life-table th:nth-child(2),
+  #print-container .print-life-table td:nth-child(2) {
+    width: 48mm !important;
+  }
+
+  #print-container .print-life-table th,
+  #print-container .print-life-table td {
+    padding: 1.05mm 1.2mm !important;
+  }
+}

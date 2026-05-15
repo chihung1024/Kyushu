@@ -202,32 +202,42 @@ function renderPrintViewHtml() {
 
 
     const printAccommodationCard = (hotel) => `
-        <section class="print-card print-accommodation-card">
-            <h3>${escapeHtml(normalizePrintText(`${hotel.area}｜${hotel.stay}`))}</h3>
-            <div class="print-hotel-name"><strong>${escapeHtml(normalizePrintText(hotel.name))}</strong><span>${escapeHtml(normalizePrintText(hotel.status))}</span></div>
+        <section class="print-manual-page print-page print-accommodation-card print-accommodation-full">
+            <h2>${escapeHtml(normalizePrintText(`${hotel.area}｜${hotel.stay}`))}</h2>
+            <p class="print-section-lead">${escapeHtml(normalizePrintText(`${hotel.name}｜${hotel.englishName || ''}｜${hotel.status}`))}</p>
             <table class="print-table print-mini-table">
                 <tbody>
                     <tr><th>房型/費用</th><td>${escapeHtml(normalizePrintText([hotel.room, hotel.price].join('；')))}</td></tr>
-                    <tr><th>入住</th><td>${escapeHtml(normalizePrintText(hotel.check))}</td></tr>
+                    <tr><th>入住/交通</th><td>${escapeHtml(normalizePrintText([hotel.check, hotel.access].join('；')))}</td></tr>
                     <tr><th>地址/電話</th><td>${escapeHtml(normalizePrintText([hotel.address, hotel.phone].join('；')))}</td></tr>
                     <tr><th>停車</th><td>${escapeHtml(normalizePrintText(hotel.parking))}</td></tr>
                 </tbody>
             </table>
-            <div class="print-simple-columns">
-                <div><strong>為什麼住這裡</strong>${simpleList((hotel.features || []).slice(0, 4))}</div>
-                <div><strong>周邊生活機能</strong>${simpleList((hotel.life || []).slice(0, 4).map(item => `${item.name}：${item.role}；${item.use}`))}</div>
+            <div class="print-simple-columns print-hotel-reason-columns">
+                <div><strong>為什麼住這裡</strong>${simpleList((hotel.features || []).slice(0, 5))}</div>
+                <div><strong>現場使用規則</strong>${simpleList((hotel.rules || []).slice(0, 4))}</div>
             </div>
-            <div class="print-backup-line"><strong>現場規則</strong><p>${escapeHtml(normalizePrintText((hotel.rules || []).join('；')))}</p></div>
+            <h3 class="print-subhead">周邊生活機能 - 具體使用方式</h3>
+            <table class="print-table print-life-table">
+                <thead><tr><th>點位</th><th>距離/時間</th><th>現場用途與規則</th></tr></thead>
+                <tbody>
+                    ${(hotel.life || []).map(item => `
+                        <tr>
+                            <td><strong>${escapeHtml(normalizePrintText(item.name))}</strong><br><span>${escapeHtml(normalizePrintText(item.role || ''))}</span></td>
+                            <td>${escapeHtml(normalizePrintText([item.distance, item.time].filter(Boolean).join('；')))}</td>
+                            <td>${escapeHtml(normalizePrintText([item.printUse || item.use, item.warning ? `規則：${item.warning}` : ''].filter(Boolean).join('；')))}</td>
+                        </tr>`).join('')}
+                </tbody>
+            </table>
         </section>`;
 
     const accommodationPrintSection = () => `
-        <section class="print-manual-page print-page">
+        <section class="print-section-divider print-page">
+            <span>SECTION</span>
             <h2>住宿首選與周邊生活機能</h2>
-            <p class="print-section-lead">住宿暫定只保留首選：別府 4 晚住新鶴田，熊本 3 晚住 Candeo 熊本新市街；其他住宿備選不再列入主攻略。這頁作為入住、停車、補給與周邊生活機能的紙本備援。</p>
-            <div class="print-two-col">
-                ${(accommodationData || []).map(printAccommodationCard).join('')}
-            </div>
-        </section>`;
+            <p>只保留首選住宿；這裡作為入住、停車、補給、親子設備、晚間採買與步行圈的紙本備援。</p>
+        </section>
+        ${(accommodationData || []).map(printAccommodationCard).join('')}`;
 
     let html = `
         <div class="print-page-footer">九州親子自駕紙本旅遊手冊｜Day 1-8｜列印前請確認最新營業時間、天候與道路管制</div>
