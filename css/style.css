@@ -355,6 +355,12 @@
   color: #475569;
   font-size: 0.82rem;
   font-weight: 800;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  display: block;
 }
 .accom-status-chip {
   align-self: start;
@@ -378,14 +384,16 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.85rem;
+  align-items: stretch;
 }
 .accom-info-grid {
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .accom-summary-box,
 .accom-info-box,
 .accom-reason-box,
 .accom-rules-box {
+  min-width: 0;
   border: 1px solid #e2e8f0;
   border-radius: 1rem;
   background: #f8fafc;
@@ -439,7 +447,8 @@
   color: #1d4ed8;
   font-size: 0.72rem;
   font-weight: 900;
-  text-decoration: none;
+  text-decoration: none !important;
+  text-decoration-line: none !important;
 }
 .accom-nav-btn:hover,
 .accom-detail-link:hover {
@@ -612,3 +621,65 @@
     padding: 0.9rem;
   }
 }
+
+
+/* Accommodation modal hardening: nested card headers must not inherit site-hero header/chip styles. */
+.hotel-modal .accommodation-card-head {
+  background: linear-gradient(135deg, #f8fafc 0%, #fff7ed 100%) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.hotel-modal .accom-hotel-title p {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Global safeguard: keep pill-style dialog links from inheriting generic dialog underline rules. */
+dialog a.accom-nav-btn,
+dialog a.accom-detail-link,
+dialog a.gourmet-action,
+dialog a.daily-gourmet-action,
+dialog a.decision-action,
+dialog .decision-card-actions a,
+dialog .backup-actions a,
+dialog a.nav-pill,
+dialog a.parking-nav-pill,
+dialog a[class*="rounded-full"],
+dialog a[class*="-btn"],
+dialog a[class*="-action"] {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+}
+
+dialog a.accom-nav-btn:hover,
+dialog a.accom-detail-link:hover,
+dialog a.gourmet-action:hover,
+dialog a.daily-gourmet-action:hover,
+dialog a.decision-action:hover,
+dialog .decision-card-actions a:hover,
+dialog .backup-actions a:hover,
+dialog a.nav-pill:hover,
+dialog a.parking-nav-pill:hover,
+dialog a[class*="rounded-full"]:hover,
+dialog a[class*="-btn"]:hover,
+dialog a[class*="-action"]:hover,
+dialog a.accom-nav-btn:focus-visible,
+dialog a.accom-detail-link:focus-visible,
+dialog a.gourmet-action:focus-visible,
+dialog a.daily-gourmet-action:focus-visible,
+dialog a.decision-action:focus-visible,
+dialog .decision-card-actions a:focus-visible,
+dialog .backup-actions a:focus-visible,
+dialog a.nav-pill:focus-visible,
+dialog a.parking-nav-pill:focus-visible,
+dialog a[class*="rounded-full"]:focus-visible,
+dialog a[class*="-btn"]:focus-visible,
+dialog a[class*="-action"]:focus-visible {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+}
+
