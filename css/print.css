@@ -696,6 +696,69 @@
     font-weight: 600 !important;
   }
 
+
+
+  #print-container .print-accommodation-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  #print-container .print-hotel-name {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 2mm !important;
+    align-items: baseline !important;
+    margin: 1mm 0 2mm !important;
+    padding: 1.2mm 1.6mm !important;
+    border-radius: 2mm !important;
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+
+  #print-container .print-hotel-name strong {
+    color: #0f172a !important;
+    font-size: 9.5pt !important;
+    font-weight: 900 !important;
+  }
+
+  #print-container .print-hotel-name span {
+    color: #047857 !important;
+    font-size: 7pt !important;
+    font-weight: 900 !important;
+    white-space: nowrap !important;
+  }
+
+  #print-container .print-mini-table {
+    margin: 1.5mm 0 !important;
+  }
+
+  #print-container .print-mini-table th {
+    width: 20mm !important;
+  }
+
+  #print-container .print-simple-columns {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2.5mm !important;
+    margin-top: 2mm !important;
+  }
+
+  #print-container .print-simple-columns > div {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 2mm !important;
+    padding: 2mm !important;
+    break-inside: avoid !important;
+  }
+
+  #print-container .print-simple-columns > div > strong {
+    display: block !important;
+    margin-bottom: 1mm !important;
+    color: #0f172a !important;
+    font-size: 8pt !important;
+    font-weight: 900 !important;
+  }
+
   #print-container .print-gourmet-index {
     margin-top: 2mm !important;
   }

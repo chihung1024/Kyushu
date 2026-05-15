@@ -15,6 +15,7 @@ const sourceFiles = [
   'js/data/gourmet-backup.js',
   'js/data/day-focus.js',
   'js/data/day-gourmet.js',
+  'js/data/accommodations.js',
   'js/components/parking-buttons.js',
   'js/components/daily-gourmet.js',
   'js/components/day-timeline.js',
@@ -236,7 +237,11 @@ async function assertPrintContainerOutsidePrintHidden(file) {
 
 async function assertModalLinkIntegrity() {
   const staticCode = await readFile(resolveRepoPath('js/components/static-modals.js'), 'utf8');
-  const context = vm.createContext({});
+  const htmlUtilsCode = await readFile(resolveRepoPath('js/utils/html.js'), 'utf8');
+  const accommodationCode = await readFile(resolveRepoPath('js/data/accommodations.js'), 'utf8');
+  const context = vm.createContext({ encodeURIComponent, String, Array, Object });
+  new vm.Script(htmlUtilsCode, { filename: 'js/utils/html.js' }).runInContext(context);
+  new vm.Script(accommodationCode, { filename: 'js/data/accommodations.js' }).runInContext(context);
   new vm.Script(staticCode, { filename: 'js/components/static-modals.js' }).runInContext(context);
   const renderedStatic = new vm.Script('renderStaticModals();').runInContext(context);
 

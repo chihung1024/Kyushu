@@ -20,6 +20,7 @@ const sourceFiles = [
   'js/data/gourmet-backup.js',
   'js/data/day-focus.js',
   'js/data/day-gourmet.js',
+  'js/data/accommodations.js',
   'js/components/print-view.js',
 ];
 
@@ -90,7 +91,11 @@ async function validateGeneratedPdf(pdfPath) {
   assertTextIncludes(text, 'Day6 定案為熊本市區慢節奏恢復日', 'current Day 6 decision text');
   assertTextIncludes(text, '返台前雕像收集日：魯夫・喬巴・布魯克＋機場收尾', 'current Day 8 title');
   assertTextIncludes(text, 'Day8 定案為雕像收集主軸', 'current Day 8 decision text');
+  assertTextIncludes(text, '住宿首選與周邊生活機能', 'confirmed lodging section');
+  assertTextIncludes(text, '別府溫泉 新鶴田飯店', 'Beppu primary hotel');
+  assertTextIncludes(text, 'Candeo Hotels 熊本新市街', 'Kumamoto primary hotel');
   assertTextExcludes(text, '熊本市區 → 御船恐龍/布魯克 → 市區休息 → 熊本熊廣場 → 光之森 Workman', 'old Day 6 route');
+  assertTextExcludes(text, '原方案保留', 'removed old hotel backup text');
 }
 
 async function generatePaperPdf() {

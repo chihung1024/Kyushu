@@ -200,6 +200,35 @@ function renderPrintViewHtml() {
             ${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ''}
         </section>`;
 
+
+    const printAccommodationCard = (hotel) => `
+        <section class="print-card print-accommodation-card">
+            <h3>${escapeHtml(normalizePrintText(`${hotel.area}｜${hotel.stay}`))}</h3>
+            <div class="print-hotel-name"><strong>${escapeHtml(normalizePrintText(hotel.name))}</strong><span>${escapeHtml(normalizePrintText(hotel.status))}</span></div>
+            <table class="print-table print-mini-table">
+                <tbody>
+                    <tr><th>房型/費用</th><td>${escapeHtml(normalizePrintText([hotel.room, hotel.price].join('；')))}</td></tr>
+                    <tr><th>入住</th><td>${escapeHtml(normalizePrintText(hotel.check))}</td></tr>
+                    <tr><th>地址/電話</th><td>${escapeHtml(normalizePrintText([hotel.address, hotel.phone].join('；')))}</td></tr>
+                    <tr><th>停車</th><td>${escapeHtml(normalizePrintText(hotel.parking))}</td></tr>
+                </tbody>
+            </table>
+            <div class="print-simple-columns">
+                <div><strong>為什麼住這裡</strong>${simpleList((hotel.features || []).slice(0, 4))}</div>
+                <div><strong>周邊生活機能</strong>${simpleList((hotel.life || []).slice(0, 4).map(item => `${item.name}：${item.role}；${item.use}`))}</div>
+            </div>
+            <div class="print-backup-line"><strong>現場規則</strong><p>${escapeHtml(normalizePrintText((hotel.rules || []).join('；')))}</p></div>
+        </section>`;
+
+    const accommodationPrintSection = () => `
+        <section class="print-manual-page print-page">
+            <h2>住宿首選與周邊生活機能</h2>
+            <p class="print-section-lead">住宿暫定只保留首選：別府 4 晚住新鶴田，熊本 3 晚住 Candeo 熊本新市街；其他住宿備選不再列入主攻略。這頁作為入住、停車、補給與周邊生活機能的紙本備援。</p>
+            <div class="print-two-col">
+                ${(accommodationData || []).map(printAccommodationCard).join('')}
+            </div>
+        </section>`;
+
     let html = `
         <div class="print-page-footer">九州親子自駕紙本旅遊手冊｜Day 1-8｜列印前請確認最新營業時間、天候與道路管制</div>
         <section class="print-cover print-page">
@@ -259,6 +288,8 @@ function renderPrintViewHtml() {
                 </div>
             </section>
         </section>
+
+        ${accommodationPrintSection()}
 
         ${sectionDivider('每日攻略', '每一天從新頁開始：先看重點四格，再看清單、時間軸、用餐與彈性方案。')}`;
 

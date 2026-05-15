@@ -260,7 +260,7 @@ const itineraryData = [
                     "weather": "🌤️ 預報 23-27°C",
                     "mapLink": "https://www.google.com/maps/dir/Hotel+New+Tsuruta+Beppu/大観峰/道の駅阿蘇/阿蘇神社/草千里ヶ浜/CANDEO+HOTELS+熊本新市街",
                     "route": "別府退房 🚗 → 大觀峰 → 阿蘇車站/午餐 → 阿蘇神社彈性加入 → 草千里 → 熊本",
-                    "hotel": "Candeo Hotels 熊本新市街 (連住第 1/3 晚)",
+                    "hotel": "Candeo Hotels 熊本新市街 (連住第 1/3 晚｜首選)",
                     "checklist": [
                               "山區自駕防呆：離開別府前油量至少半桶以上；阿蘇山區以安全、廁所與補給為優先，不把火口當固定必達點。",
                               "退房前：檢查房間充電器、兒童物品、藥品、停車券；兩台車油量與導航先設到大觀峰。",
@@ -335,7 +335,7 @@ const itineraryData = [
                     "weather": "🌤️ 預報 24-28°C",
                     "mapLink": "https://www.google.com/maps/dir/CANDEO+HOTELS+熊本新市街/鶴屋百貨店/桜の馬場+城彩苑/SAKURA+MACHI+Kumamoto/くまモンスクエア/ゆめタウン光の森/CANDEO+HOTELS+熊本新市街",
                     "route": "熊本市區慢遊（三案擇一）→ 13:40 熊本熊廣場 → 傍晚光之森/Workman 或飯店休息",
-                    "hotel": "Candeo Hotels 熊本新市街 (連住第 2/3 晚)",
+                    "hotel": "Candeo Hotels 熊本新市街 (連住第 2/3 晚｜首選)",
                     "checklist": [
                               "Day6 定案為市區慢節奏恢復日：上午至中午保留三方案，當天看天氣、體力與購物需求再決定。",
                               "今天不跑御船恐龍與布魯克；這兩個移到 Day8，避免 Day6 熊本市區↔御船折返跑。",
@@ -418,7 +418,7 @@ const itineraryData = [
                     "weather": "🌤️ 預報 24-28°C",
                     "mapLink": "https://www.google.com/maps/dir/CANDEO+HOTELS+熊本新市街/長部田海床路/ジンベエ像/海中水族館シードーナツ/mio+camino+AMAKUSA/CANDEO+HOTELS+熊本新市街",
                     "route": "熊本市區 🚗 → 長部田/甚平 → 天草五橋 → Sea Donut → 回程潮汐判斷 → 熊本",
-                    "hotel": "Candeo Hotels 熊本新市街 (連住第 3/3 晚)",
+                    "hotel": "Candeo Hotels 熊本新市街 (連住第 3/3 晚｜首選)",
                     "checklist": [
                               "天草午餐防呆：福伸或 L’isola 擇一先確認訂位/營業；若未訂，11:30 前決定餐廳，等待超過 20 分鐘就切換備案。",
                               "回程防呆：天草回熊本前確認油量、ETC、孩子是否上廁所；不要在傍晚疲勞時才臨時找加油站與晚餐。",

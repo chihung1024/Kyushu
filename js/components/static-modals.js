@@ -1,5 +1,90 @@
 // Static dialog/modal markup renderer.
 
+
+function renderAccommodationNavButtons(items = []) {
+    return items.map(item => `<a class="inline-flex items-center gap-2 bg-white text-blue-700 border-2 border-blue-200 text-xs md:text-sm font-bold px-4 py-2 rounded-full shadow-sm hover:scale-105 transition" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.query || item.label || '')}" target="_blank" rel="noopener noreferrer"><span>📍</span>${escapeHtml(item.label || item.query || '')}</a>`).join('');
+}
+
+function renderAccommodationHotelCard(hotel) {
+    const featureList = (hotel.features || []).map(item => `<li>${escapeHtml(item)}</li>`).join('');
+    const ruleRows = (hotel.rules || []).map(item => `<div class="rounded-xl bg-white border border-slate-200 p-3 font-bold text-slate-700 leading-relaxed">${escapeHtml(item)}</div>`).join('');
+    const lifeRows = (hotel.life || []).map(item => `
+        <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-sm">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-1">
+                <strong class="text-slate-900 text-sm">${escapeHtml(item.name)}</strong>
+                <span class="text-[10px] font-black px-2 py-1 rounded-full bg-slate-100 text-slate-600">${escapeHtml(item.role)}</span>
+            </div>
+            <div class="text-[11px] font-black text-slate-500 mb-1">${escapeHtml(item.time)}</div>
+            <p class="text-xs font-bold text-slate-700 leading-relaxed mb-2">${escapeHtml(item.use)}</p>
+            <a class="inline-flex items-center gap-1 text-[11px] font-black text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1.5 rounded-full" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.search || item.name)}" target="_blank" rel="noopener noreferrer">📍 導航</a>
+        </div>`).join('');
+
+    return `<section class="rounded-[1.5rem] border-2 border-slate-200 bg-white shadow-sm overflow-hidden">
+        <div class="bg-slate-900 text-white p-4 md:p-5">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                    <div class="text-xs font-black tracking-[0.18em] text-slate-300 uppercase">${escapeHtml(hotel.area)}｜${escapeHtml(hotel.stay)}</div>
+                    <h3 class="text-xl md:text-2xl font-black mt-1 flex items-center gap-2"><span>${escapeHtml(hotel.icon || '🏨')}</span>${escapeHtml(hotel.name)}</h3>
+                    <p class="text-xs md:text-sm font-bold text-slate-300 mt-1">${escapeHtml(hotel.englishName || '')}</p>
+                </div>
+                <span class="bg-emerald-400 text-slate-950 text-xs font-black px-3 py-2 rounded-full">${escapeHtml(hotel.status)}</span>
+            </div>
+        </div>
+        <div class="p-4 md:p-5 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div class="rounded-2xl bg-blue-50 border border-blue-100 p-3">
+                    <div class="text-[11px] font-black text-blue-700 mb-1">房型 / 訂單</div>
+                    <p class="text-sm font-bold text-slate-800 leading-relaxed">${escapeHtml(hotel.room)}</p>
+                    <p class="text-xs font-black text-blue-800 mt-2">${escapeHtml(hotel.price)}</p>
+                </div>
+                <div class="rounded-2xl bg-amber-50 border border-amber-100 p-3">
+                    <div class="text-[11px] font-black text-amber-700 mb-1">入住防呆</div>
+                    <p class="text-sm font-bold text-slate-800 leading-relaxed">${escapeHtml(hotel.check)}</p>
+                    <p class="text-xs font-bold text-slate-600 mt-2">${escapeHtml(hotel.access)}</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-3 lg:col-span-2">
+                    <div class="text-[11px] font-black text-slate-500 mb-1">地址 / 電話 / 停車</div>
+                    <p class="text-sm font-bold text-slate-800 leading-relaxed">${escapeHtml(hotel.address)}｜${escapeHtml(hotel.phone)}</p>
+                    <p class="text-xs font-bold text-slate-600 mt-2 leading-relaxed">${escapeHtml(hotel.parking)}</p>
+                </div>
+                <div class="rounded-2xl bg-white border border-slate-200 p-3">
+                    <div class="text-[11px] font-black text-slate-500 mb-2">快速導航</div>
+                    <div class="flex flex-wrap gap-2">${renderAccommodationNavButtons(hotel.nav)}</div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="rounded-2xl border border-emerald-100 bg-emerald-50 p-4">
+                    <h4 class="font-black text-emerald-800 mb-2">為什麼維持首選</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-sm font-bold text-slate-800 leading-relaxed">${featureList}</ul>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                    <h4 class="font-black text-slate-900 mb-2">現場使用規則</h4>
+                    <div class="grid grid-cols-1 gap-2">${ruleRows}</div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-black text-slate-900 mb-2">周邊生活機能</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">${lifeRows}</div>
+            </div>
+        </div>
+    </section>`;
+}
+
+function renderHotelInfoModal() {
+    const cards = (accommodationData || []).map(renderAccommodationHotelCard).join('');
+    return `<dialog class="bg-white w-11/12 max-w-[94vw] lg:max-w-6xl rounded-[2rem] p-5 md:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="hotelModal">
+<button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg" onclick="closeModal('hotelModal')">✕</button>
+<div class="mb-6 pr-10">
+    <div class="text-xs font-black tracking-[0.18em] text-purple-600 uppercase">CONFIRMED LODGING BASES</div>
+    <h2 class="text-2xl md:text-3xl font-black text-slate-900 mt-1 flex items-center gap-2"><span>🏨</span> 住宿首選與周邊生活機能</h2>
+    <p class="text-sm text-slate-600 mt-2 font-bold bg-slate-50 border border-slate-200 p-3 rounded-2xl leading-relaxed">目前住宿暫定只保留首選：別府 4 晚住新鶴田、熊本 3 晚住 Candeo 熊本新市街。其他住宿備選已從主畫面移除；本頁改為入住資訊、停車防呆與周邊生活機能。</p>
+</div>
+<div class="space-y-5 pb-2">${cards}</div>
+</dialog>`;
+}
+
 function renderStaticModals() {
     return `
 <dialog class="decision-modal bg-white w-11/12 max-w-[94vw] lg:max-w-5xl rounded-[2rem] p-0 shadow-2xl relative max-h-[92vh] flex-col outline-none border-0 custom-scrollbar m-auto" id="backupModal">
@@ -61,7 +146,7 @@ function renderStaticModals() {
         <span>📋</span><strong>文件・租車・訂位</strong><small>出發前總檢查</small>
     </button>
     <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('hotelModal'), 0);">
-        <span>🏨</span><strong>飯店與備案</strong><small>新鶴田 / Candeo / 比較</small>
+        <span>🏨</span><strong>住宿資訊</strong><small>新鶴田 / Candeo / 生活機能</small>
     </button>
     <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('budgetModal'), 0);">
         <span>💰</span><strong>預算估算</strong><small>單家約 10.7 萬 TWD</small>
@@ -214,7 +299,6 @@ function renderStaticModals() {
 <table class="guide-table">
 <tr><th>住宿</th><th>日期</th><th>出發前動作</th></tr>
 <tr><td>別府溫泉 新鶴田</td><td>5/29–6/2</td><td>確認 2大2小同住、鋪床方式、停車場、入浴稅、Check-in/Check-out、兒童備品。</td></tr>
-<tr><td>AMANEK / 龜之井備案</td><td>備選</td><td>保留備案時要標記取消期限；確定不住就出發前取消，不要留到當天。</td></tr>
 <tr><td>Candeo 熊本新市街</td><td>6/2–6/5</td><td>確認兩間房相鄰備註、兒童同住、停車場 TERRACE87、早餐、SkySpa 使用規則。</td></tr>
 </table>
 </section>
@@ -314,84 +398,7 @@ function renderStaticModals() {
 </div>
 </dialog>
 
-<dialog class="bg-white w-11/12 max-w-5xl rounded-[2rem] p-6 md:p-8 shadow-2xl relative max-h-[85vh] overflow-y-auto outline-none border-0 custom-scrollbar m-auto" id="hotelModal">
-<button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition z-10 text-lg" onclick="closeModal('hotelModal')">✕</button>
-<h2 class="text-2xl font-black text-purple-600 mb-2 flex items-center gap-2 pr-8"><span>🏨</span> 飯店訂單資訊與抉擇分析</h2>
-<p class="text-xs md:text-sm text-gray-500 mb-4 bg-purple-50 p-2 md:p-3 rounded-lg border border-purple-100 leading-relaxed">
-                全線 7 晚維持「大分/別府 4晚 ＋ 熊本 3晚」雙基地策略。以下金額一律改用「單一家庭（1間房／2大2小）」呈現：先看每晚單價，再看該段住宿總價；雙家庭訂單總額僅保留在備註中作核對。
-            </p>
-<div class="space-y-6 pb-2">
-
-<div class="border-2 border-kawaii-light-blue rounded-2xl p-4 shadow-sm bg-white relative">
-<div class="absolute -right-2 -top-2 text-3xl opacity-20">♨️</div>
-<h3 class="font-bold text-kawaii-blue mb-3 text-lg">第一階段 (4晚)：5/29 - 6/2 <span class="text-xs bg-white text-kawaii-blue px-2 py-0.5 rounded-full border ml-2">大分/別府連泊基地</span></h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
-<div class="p-3 bg-blue-50/70 rounded-xl border-2 border-blue-300 shadow-md flex flex-col justify-between">
-<div>
-<div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">別府溫泉 新鶴田飯店 <span class="bg-blue-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 首選・4晚確認</span></div>
-<div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">1間 標準日式房｜海景｜禁菸｜2大 + 2小(6、4)｜約55㎡</div>
-<div class="text-[10px] text-blue-700 font-bold mt-1 leading-relaxed">Rakuten 訂單核對：單一家庭 4晚總價 TWD 12,262（當地幣別 ¥61,220），平均每晚約 TWD 3,066。入住 2026/5/29 15:00 起，退房 2026/6/2 10:00 前。</div>
-<div class="text-[10px] text-slate-600 mt-1 leading-relaxed">優勢：日式大房與海景更適合 2大2小同房鋪被、攤開行李；北濱位置接近海邊、Youme Town 與別府市區採買。注意：中學生以上另收溫泉入浴稅 ¥250/人，現場付款；停車與鋪床方式入住前再確認。</div>
-</div>
-<div class="mt-2 text-right border-t border-blue-200 pt-2">
-<div class="text-[10px] text-slate-500 font-bold">單家單價：平均約 TWD 3,066 / 晚</div>
-<div class="font-black text-blue-700 text-sm">單家4晚總價：TWD 12,262</div>
-<div class="text-[10px] text-slate-500 mt-0.5">核對用：當地幣別 ¥61,220；訂單已登錄兒童年齡 6、4。</div>
-<div class="text-[10px] text-slate-500 mt-0.5">取消節點：2026/5/2 23:59（JST）前取消不收費；期限後再依訂單規定確認。</div>
-</div>
-</div>
-<div class="p-3 bg-amber-50/80 rounded-xl border-2 border-amber-200 shadow-sm flex flex-col justify-between opacity-95">
-<div>
-<div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">AMANEK Beppu YULA-RE <span class="bg-amber-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">留用備選・不移除</span></div>
-<div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 高級雙床房｜各 2大 + 2小｜禁菸｜Room Only</div>
-<div class="text-[10px] text-amber-700 font-bold mt-1 leading-relaxed">Booking.com 訂單核對：雙家庭訂單原總額 TWD 36,185，其中 TWD 3,618 已由 Booking.com 代付折抵，實際仍需支付 TWD 32,567。換算單一家庭：4晚總價約 TWD 16,284，平均每晚約 TWD 4,071。</div>
-<div class="text-[10px] text-slate-600 mt-1 leading-relaxed">定位：原首選改列留用備案。優勢是別府站前與市區步行便利；注意無法預約私人停車、附近公共停車約 ¥600/日、無早餐。</div>
-</div>
-<div class="mt-2 text-right border-t border-amber-200 pt-2">
-<div class="text-[10px] text-slate-500 font-bold">單家單價：平均約 TWD 4,071 / 晚</div>
-<div class="font-black text-amber-700 text-sm">單家4晚總價：約 TWD 16,284</div>
-<div class="text-[10px] text-slate-500 mt-0.5">核對用：雙家實付 TWD 32,567（已扣 Booking.com 代付 TWD 3,618）</div>
-<div class="text-[10px] text-slate-500 mt-0.5">保留至最後取消日前；取消條款照原訂單：入住前7天內取消約收 50%；未如期入住收全額。</div>
-</div>
-</div>
-<div class="p-3 bg-gray-50 rounded-xl border-2 border-gray-200 shadow-sm flex flex-col justify-between opacity-95">
-<div>
-<div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">龜之井酒店 別府 <span class="bg-gray-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">留用備選・待選</span></div>
-<div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 豪華雙床房 (禁菸)</div>
-<div class="text-[10px] text-gray-600 font-bold mt-1 leading-relaxed">原方案保留：雙家庭4晚合計 ¥108,328，換算單一家庭4晚約 ¥54,164，平均每晚約 ¥13,541（約 TWD 2,844）。優勢是價格低；缺點是相對市區步行便利性與新鮮感需再比較。</div>
-</div>
-<div class="mt-2 text-right border-t border-gray-200 pt-2">
-<div class="text-[10px] text-slate-500 font-bold">單家單價：約 ¥13,541 / 晚（約 TWD 2,844）</div>
-<div class="font-black text-gray-700 text-sm">單家4晚總價：約 ¥54,164（約 TWD 11,374）</div>
-<div class="text-[10px] text-slate-500 mt-0.5">核對用：雙家4晚合計 ¥108,328</div>
-</div>
-</div>
-</div>
-<div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs md:text-sm text-amber-900 leading-relaxed">
-<strong>別府住宿決策：</strong>目前以新鶴田日式房作為首選，理由是訂單已登錄 2大2小、房間空間較大、單家4晚 TWD 12,262 明顯低於 AMANEK。AMANEK 與龜之井都保留為留用備選，不移除；決策節點是 2026/5/2 23:59（JST）前，先核對停車、鋪床、兒童同住與溫泉稅後再取消備案。
-</div>
-</div>
-
-<div class="border-2 border-kawaii-light-pink rounded-2xl p-4 shadow-sm bg-white relative">
-<div class="absolute -right-2 -top-2 text-3xl opacity-20">🐻</div>
-<h3 class="font-bold text-kawaii-pink mb-3 text-lg">第二階段 (3晚)：6/2 - 6/5 <span class="text-xs bg-white text-kawaii-pink px-2 py-0.5 rounded-full border ml-2">熊本連泊基地</span></h3>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
-<div class="p-3 bg-pink-50/70 rounded-xl border-2 border-pink-300 shadow-md flex flex-col justify-between">
-<div>
-<div class="font-bold text-gray-800 text-sm flex flex-wrap items-center gap-1.5 mb-1">熊本新市街光芒飯店 <span class="bg-pink-500 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm animate-pulse">👑 3晚連泊確認</span></div>
-<div class="text-[10px] text-gray-500 bg-white px-2 py-0.5 rounded-full inline-block border mb-2">2間 好萊塢雙床房 (Room Only)</div>
-<div class="text-[10px] text-pink-700 font-bold mt-1">✨ 頂樓無敵星空溫泉 SkySpa！已備註兩間房相鄰 (close together)。</div>
-</div>
-<div class="mt-2 text-right border-t border-pink-200 pt-2">
-<div class="text-[10px] text-slate-500 font-bold">單家單價：約 ¥14,838 / 晚（約 TWD 3,116）</div>
-<div class="font-black text-pink-700 text-sm">單家3晚總價：約 ¥44,514（約 TWD 9,348）</div>
-<div class="text-[10px] text-slate-500 mt-0.5">核對用：雙家3晚合計 ¥89,028</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</dialog>
+${renderHotelInfoModal()}
 
 <dialog class="bg-white w-11/12 max-w-md rounded-[2rem] p-6 md:p-8 shadow-2xl relative outline-none border-0 m-auto" id="budgetModal">
 <button aria-label="關閉視窗" class="absolute top-4 right-4 bg-gray-100 text-gray-500 w-10 h-10 rounded-full font-bold hover:bg-gray-200 hover:text-gray-800 transition text-lg z-10" onclick="closeModal('budgetModal')">✕</button>
@@ -447,7 +454,7 @@ function renderStaticModals() {
 <span class="font-black text-2xl text-white tracking-tight">~106,610 <span class="text-sm text-gray-300">TWD</span></span>
 </div>
 <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 text-[10px] text-slate-600 leading-relaxed">
-<strong class="text-slate-800">單家口徑確認：</strong>以上總價已全部改為單一家庭估算；別府段目前採新鶴田首選價，AMANEK 與龜之井作為留用備案，不併入主要預算。
+<strong class="text-slate-800">單家口徑確認：</strong>以上總價已全部改為單一家庭估算；住宿暫定只採首選：別府新鶴田 4 晚＋熊本 Candeo 3 晚，其他住宿備選已從主要預算與主畫面移除。
 </div>
 </div>
 </dialog>
