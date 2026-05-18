@@ -2765,7 +2765,7 @@ dialog a[class*="-action"]:focus-visible {
 <span>🗺️</span><strong>現場決策庫</strong><small>景點・吃飯・補給</small>
 </button>
 <button class="desktop-hero-action" type="button" onclick="showModal('mobileMoreModal')">
-<span>☰</span><strong>其他工具</strong><small>行前・紙本・複製</small>
+<span>☰</span><strong>其他工具</strong><small>行前・紙本・住宿</small>
 </button>
 </nav>
 </div>
@@ -2780,7 +2780,7 @@ dialog a[class*="-action"]:focus-visible {
 </button>
 <button class="mobile-command-btn" type="button" onclick="showModal('mobileMoreModal')">
 <span class="mobile-command-icon">☰</span>
-<span><strong>其他</strong><small>行前・紙本・複製</small></span>
+<span><strong>其他</strong><small>行前・紙本・住宿</small></span>
 </button>
 </section>
 
@@ -6839,6 +6839,7 @@ function renderDayContent(data, currentDay) {
                                 <span class="bg-kawaii-yellow text-yellow-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">${data.date}</span>
                                 ${data.weather ? `<span class="bg-white border border-gray-200 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">${data.weather}</span>` : ''}
                                 ${data.mapLink ? `<a href="${data.mapLink}" target="_blank" rel="noopener noreferrer" class="bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 hover:bg-emerald-100 transition hover:scale-105 active:scale-95"><span>📍</span> 本日路線總覽</a>` : ''}
+                                <button type="button" onclick="copyDailyItinerary(${data.day})" class="bg-sky-50 border border-sky-200 text-sky-700 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1 hover:bg-sky-100 transition hover:scale-105 active:scale-95"><span>📋</span> 複製今日行程</button>
                             </div>
                             <h2 class="text-2xl sm:text-3xl font-black text-gray-900 mt-1 tracking-tight">${data.title}</h2>
                         </div>
@@ -8107,7 +8108,7 @@ function renderStaticModals() {
 <div class="mobile-more-head">
     <div class="mobile-more-kicker">TOOLS</div>
     <h2>其他工具</h2>
-    <p>行前、紙本、複製與住宿預算資訊集中收納；首頁只保留現場決策與 Day 切換。</p>
+    <p>行前、紙本與住宿預算資訊集中收納；原版紙本攻略保留，另新增旅遊插畫版 PDF 供下載列印。</p>
 </div>
 <div class="mobile-more-list">
     <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('preTripModal'), 0);">
@@ -8123,11 +8124,11 @@ function renderStaticModals() {
         <span>💰</span><strong>預算估算</strong><small>單家約 10.7 萬 TWD</small>
     </button>
     <a class="mobile-more-item" href="kyushu-travel-manual.pdf" target="_blank" rel="noopener noreferrer" onclick="return window.openPaperGuidePdf ? window.openPaperGuidePdf(event) : true">
-        <span>🖨️</span><strong>列印紙本攻略</strong><small>開啟正式 A4 PDF</small>
+        <span>🖨️</span><strong>列印紙本攻略</strong><small>開啟原版正式 A4 PDF</small>
     </a>
-    <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); copyDailyItinerary();">
-        <span>📋</span><strong>複製今日行程</strong><small>貼給伴侶 / LINE 群組</small>
-    </button>
+    <a class="mobile-more-item" href="kyushu-travel-manual-illustrated.pdf" target="_blank" rel="noopener noreferrer">
+        <span>🎨</span><strong>列印插畫版攻略</strong><small>開啟旅遊插畫風格 A4 PDF</small>
+    </a>
 </div>
 </dialog>
 
@@ -8739,8 +8740,12 @@ function createBackupModalController() {
 // Daily itinerary clipboard controller.
 
 function createDailyItineraryClipboardController({ getCurrentDay }) {
-    async function copyDailyItinerary() {
-        const data = itineraryData.find(d => d.day === getCurrentDay());
+    async function copyDailyItinerary(dayOverride) {
+        const requestedDay = Number(dayOverride);
+        const targetDay = Number.isInteger(requestedDay) && itineraryData.some(d => d.day === requestedDay)
+            ? requestedDay
+            : getCurrentDay();
+        const data = itineraryData.find(d => d.day === targetDay);
         if(!data) return;
 
         let textToCopy = `🚗 九州大冒險 - Day ${data.day} (${htmlToPlainText(data.date)})\n📌 主題：${htmlToPlainText(data.title)}\n🗺️ 動線：${htmlToPlainText(data.route)}\n🏨 住宿：${htmlToPlainText(data.hotel)}\n\n`;
