@@ -1,8 +1,12 @@
 // Daily itinerary clipboard controller.
 
 function createDailyItineraryClipboardController({ getCurrentDay }) {
-    async function copyDailyItinerary() {
-        const data = itineraryData.find(d => d.day === getCurrentDay());
+    async function copyDailyItinerary(dayOverride) {
+        const requestedDay = Number(dayOverride);
+        const targetDay = Number.isInteger(requestedDay) && itineraryData.some(d => d.day === requestedDay)
+            ? requestedDay
+            : getCurrentDay();
+        const data = itineraryData.find(d => d.day === targetDay);
         if(!data) return;
 
         let textToCopy = `🚗 九州大冒險 - Day ${data.day} (${htmlToPlainText(data.date)})\n📌 主題：${htmlToPlainText(data.title)}\n🗺️ 動線：${htmlToPlainText(data.route)}\n🏨 住宿：${htmlToPlainText(data.hotel)}\n\n`;

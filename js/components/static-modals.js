@@ -268,7 +268,7 @@ function renderStaticModals() {
 <div class="mobile-more-head">
     <div class="mobile-more-kicker">TOOLS</div>
     <h2>其他工具</h2>
-    <p>行前、紙本、複製與住宿預算資訊集中收納；首頁只保留現場決策與 Day 切換。</p>
+    <p>行前、紙本與住宿預算資訊集中收納；原版紙本攻略保留，另新增旅遊插畫版 PDF 供下載列印。</p>
 </div>
 <div class="mobile-more-list">
     <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); setTimeout(() => showModal('preTripModal'), 0);">
@@ -284,11 +284,11 @@ function renderStaticModals() {
         <span>💰</span><strong>預算估算</strong><small>單家約 10.7 萬 TWD</small>
     </button>
     <a class="mobile-more-item" href="kyushu-travel-manual.pdf" target="_blank" rel="noopener noreferrer" onclick="return window.openPaperGuidePdf ? window.openPaperGuidePdf(event) : true">
-        <span>🖨️</span><strong>列印紙本攻略</strong><small>開啟正式 A4 PDF</small>
+        <span>🖨️</span><strong>列印紙本攻略</strong><small>開啟原版正式 A4 PDF</small>
     </a>
-    <button class="mobile-more-item" type="button" onclick="closeModal('mobileMoreModal'); copyDailyItinerary();">
-        <span>📋</span><strong>複製今日行程</strong><small>貼給伴侶 / LINE 群組</small>
-    </button>
+    <a class="mobile-more-item" href="kyushu-travel-manual-illustrated.pdf" target="_blank" rel="noopener noreferrer">
+        <span>🎨</span><strong>列印插畫版攻略</strong><small>開啟旅遊插畫風格 A4 PDF</small>
+    </a>
 </div>
 </dialog>
 

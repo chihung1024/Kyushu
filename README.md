@@ -66,3 +66,20 @@ npm test
 ```
 
 `npm test` 會重新產出單檔 HTML、檢查 build script / smoke test 語法，並確認舊版 `js/data.js` / `js/components.js` 不存在、模組化資料與元件 helper 可正常載入。
+
+
+## 插畫版紙本攻略
+
+專案已整合旅遊插畫風格的完整紙本攻略：
+
+- 原版 PDF：`kyushu-travel-manual.pdf`
+- 插畫版 PDF：`kyushu-travel-manual-illustrated.pdf`
+- 插畫版各頁原始圖檔：`docs/illustrated-manual-pages/`
+- 單檔交付頁面（含下載入口）：`dist/kyushu-trip-final.html`
+
+「其他工具」中目前同時保留：
+
+1. `列印紙本攻略`（原版正式 A4 PDF）
+2. `列印插畫版攻略`（旅遊插畫風格 A4 PDF）
+
+原版紙本攻略保留作為資訊密度高、偏實務的列印版本；插畫版則作為導遊分享給團客使用的美化版本。
